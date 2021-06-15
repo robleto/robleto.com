@@ -152,7 +152,6 @@ blockquote {
     blockquote {
       padding: 5rem 5rem 3rem;
       font-size: 150%; } }
-
 h2 {
   font-family: bebas-neue, sans-serif;
   font-style: normal;
@@ -268,7 +267,6 @@ main {
   @media (min-width: 1090px) {
     main .skill {
       grid-column-end: span 1; } }
-
 /*----------------------------------------
 About Main
 ----------------------------------------*/
