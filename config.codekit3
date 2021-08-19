@@ -68,6 +68,32 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/source\/img\/design-team.png" : {
+      "ft" : 32768,
+      "iS" : 3087978,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/design-team.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/dri.png" : {
+      "ft" : 32768,
+      "iS" : 1774706,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/dri.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/source\/img\/everlastingstocks.png" : {
       "ft" : 32768,
       "iS" : 871753,
@@ -128,12 +154,64 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/source\/img\/onboarding2021.png" : {
+      "ft" : 32768,
+      "iS" : 1082616,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/onboarding2021.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/source\/img\/portfolioframeworks.png" : {
       "ft" : 32768,
       "iS" : 7427135,
       "oA" : 0,
       "oAP" : "\/build\/img\/portfolioframeworks.png",
       "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/premium-platform.png" : {
+      "ft" : 32768,
+      "iS" : 1306368,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/premium-platform.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/premium-platform2.png" : {
+      "ft" : 32768,
+      "iS" : 2002954,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/premium-platform2.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/premium-platform3.png" : {
+      "ft" : 32768,
+      "iS" : 4026805,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/premium-platform3.png",
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -211,6 +289,19 @@
       "iS" : 929417,
       "oA" : 0,
       "oAP" : "\/build\/img\/scorecards2.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/style-guide.png" : {
+      "ft" : 32768,
+      "iS" : 1926600,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/style-guide.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
@@ -319,6 +410,14 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/source\/scss\/resume.pdf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/scss\/resume.pdf",
+      "oF" : 0
     },
     "\/source\/scss\/style.scss" : {
       "aP" : 0,
