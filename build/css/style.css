@@ -285,14 +285,14 @@ main {
     main {
       display: grid;
       grid-template-columns: 1fr;
-      grid-template-columns: [first] repeat(auto-fill, minmax(120px, 1fr)) [end];
+      grid-template-columns: [first] repeat(4, minmax(120px, 1fr)) [end];
       grid-auto-rows: minmax(20px, auto);
       padding: 4rem 4rem;
       grid-gap: 1.5rem 3rem; } }
   @media (min-width: 886px) {
     main {
       padding: 4rem 7rem;
-      grid-template-columns: [first] repeat(auto-fill, minmax(175px, 1fr)) [end]; } }
+      grid-template-columns: [first] repeat(4, minmax(175px, 1fr)) [end]; } }
   @media (min-width: 1090px) {
     main {
       padding: 5rem 15rem;
