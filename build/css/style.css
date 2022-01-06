@@ -142,7 +142,7 @@ nav {
       width: 55px;
       margin: 0px 20px; }
   nav a {
-    margin: 2px 5px;
+    margin: 2px 10px;
     border-bottom: 1px dotted #c6c6c6; }
     @media (min-width: 696px) {
       nav a {
@@ -150,6 +150,8 @@ nav {
     nav a:hover {
       color: #aaa;
       border-bottom: 2px solid #ddd; }
+  nav .left a:first-child {
+    margin-left: 0; }
   nav .company-logo {
     align-self: flex-start;
     justify-self: center;
