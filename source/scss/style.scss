@@ -328,6 +328,10 @@ main {
       grid-column-end: 3;
     }
   }
+  section.articles {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
   
   section.bio-details {
     @media (min-width: 696px) {
