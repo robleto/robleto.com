@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.typekit.net/rky7luz.css">
+  <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
 
   <!-- I wrote this one -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -27,26 +28,48 @@
 
 <body class="about">
 
+<section class="container">
   <nav>
-
     <header class="center">
       <img src="/img/gr-logo.png" alt="robleto" />
     </header>
 
-    <a href="index.html" class="left nav"><i class="fas fa-palette"></i> Portfolio</a>
-    <a href="about.html" class="right nav"><i class="fas fa-address-card"></i> About</a>
+    <div class="left nav">
+      <a href="index.html"><i class="fal fa-palette"></i> Portfolio</a>
+      <a href="thoughts.html"><i class="fal fa-pencil"></i> Thoughts</a>
+    </div>
+    <div class="right nav">
+      <a href="experiments.html"><i class="fal fa-flask-potion"></i> Experiments</a>
+      <a href="about.html"><i class="fal fa-address-card"></i> About</a>
+    </div>
   </nav>
 
   <main>
 
-    <figure class="bioimage">
+
+    <blockquote>
+      <span class="greg">
+      <script>
+        const hours = new Date().getHours()
+        const isDayTime = hours > 6 && hours < 20;
+        if(isDayTime === true){
+          document.write('Good Morning');
+        } else {
+            document.write('Good Evening');
+        }
+        </script>
+      </span>
+      <span class="title">Thank you for coming to visit my little corner of the Internet.</span> 
+ </blockquote>
+
+    <h2 class="bio-title">Biography</h2>
+    <figure class="bio-image">
       <img src="/img/gregrobleto.jpg" alt="Greg Robleto" />
       <figcaption>Greg Robleto</figcaption>
-      <small><em>Product | UX | Design | Development</em></small>
+      <small><em>Product | Design | Strategy</em></small>
     </figure>
-
     <section class="bio-details">
-      <h2 class="hide">Bio Details</h2>
+
 
       <h3><i class="fa fa-map-marker"></i> Location</h3>
       <p>Rockville, Maryland</p>
@@ -77,37 +100,6 @@
     <section class="about">
 
         <p>Hi I’m Greg. Thanks for visiting this site. I am a product designer and developer. I love collaborating on a new idea and helping design it and shape it into a product that will grow a business and delight users.  I frequently work at a holistic level bringing disperate or new ideas together to work in one complete system. I have over 20 years of experience hands-on and leading teams in design strategy, design ops, front-end and product development. Want to know more? <a href="https://robleto.typeform.com/to/cN9h6m">Let's catch up and grab a coffee</a>.</p>
-    </section>
-
-    <hr />
-
-    <h2>Articles</h2>
-    <section class="articles">
-      <div class="article">
-        <a class="article-title" href="//medium.com/@robleto/setting-your-annual-goals-based-on-your-age-658053055f">Setting your annual goals based on your age</a>
-        <p class="article-meta">Published on Aug 7, 2019 · 5 min read</p>
-      </div>
-
-      <div class="article">
-        <a class="article-title" href="//medium.com/@robleto/the-complexities-of-building-a-stock-table-using-international-data-bc2ac6da1b6">The complexities of building a stock table using International data</a>
-        <p class="article-meta">Published on Sep 10, 2018 · 4 min read</p>
-      </div>
-
-      <div class="article">
-        <a class="article-title" href="//medium.com/@robleto/how-to-set-internal-border-lines-on-a-css-grid-layout-f2f1eeaafb61">How to set internal border lines on a CSS Grid layout</a>
-        <p class="article-meta">Published on Aug 10, 2018 ·4 min read</p>
-      </div>
-
-      <div class="article">
-        <a class="article-title" href="//medium.com/@robleto/5-practical-takeaways-for-improving-your-codes-accessibility-e6a99e976c01">5 Practical Takeaways for Improving Your Code’s Accessibility</a>
-        <p class="article-meta">Published on Aug 3, 2018 · 2 min read</p>
-      </div>
-
-      <div class="article">
-        <a class="article-title" href="//medium.com/@robleto/jumping-into-css-grid-9912b48cd44e">Jumping into CSS Grid</a>
-        <p class="article-meta">Published on Mar 11, 2018 ·7 min read</p>
-      </div>
-
     </section>
 
     <hr />
@@ -157,8 +149,37 @@
 
     <hr />
 
-    <h2>Notable</h2>
-    <section class="notables">
+    <h2>Highlights</h2>
+    <section class="highlights">
+
+    
+        <h3 class="year">2022</h3>
+        <ul>
+          <li>Design directed the first phase of the new <a href="https://www.fool.com/premium/backstage">Fool Premium</a> product suite</li>
+          <li>Design directed the brand redesign of <a href="https://www.fool.com/podcasts/">Motley Fool podcasts</a></li>
+        </ul>
+
+        <h3 class="year">2021</h3>
+        <ul>
+          <li>With the Head of Product architected a new product strategy converting 40 disparate newsletters into a single web application.</li>
+          <li>Embarked on building a design system with pattern library in Figma that matched component library in Storybook for increased consistency and efficiency in both designing and developing.</li>
+          <li>Crafted product development methodology for canonical Figma prototypes set in 3 month horizons.</li>
+          <li>Hired six new designers, both senior and junior.  Became a manager of managers.</li>
+          <li>Met with <a href="https://www.linkedin.com/in/danariely/">Dan Ariely</a> for consultation on onboarding for financial products</li>
+          <li>Joined the volunteer board of the Flower Valley Bath and Racquet Club as the tennis chair</li>
+          <li>Rebooted <a href="//www.fastcon.us">FASTCON</a> to coincide with debut of Fast9. Held a private showing of the film for attendees.</li>
+          <li>Product managed launch of new product <A href="https://www.fool.com/premium/everlasting-stocks">Everlasting Stocks </a> and new onboarding process.</li>
+          <li>First designer nominated to Motley Fool Hall of Fame</li>
+        </ul>
+
+        <h3 class="year">2020</h3>
+        <ul>
+          <li>Hired <a href="https://www.pentagram.com/work/the-motley-fool">Pentagram</a> brand agency and led an enterprise rebranding for The Motley Fool</li>
+          <li>Moved out of product development started a new Design team at The Motley Fool. Pulled in three designers from other parts of the company.</li>
+          <li>Met with <a href="https://www.linkedin.com/in/kenkocienda/">Ken Kocienda</a> for consultation on new product development strategy mirroring approach used at Apple focused on rapid prototyping.</li>
+          <li>New speaking engagements included <a href="https://www.fool.com/premium/live/">Motley Fool Live</a>, <a href="https://www.fool.com/podcasts/rule-breaker-investing/">RBI Podcast</a>, Foolapalooza conference, <a href="https://www.inwilmde.com/events/mostly-virtual-festival-week-1/">IN Wilmington Mostly Virtual Festival</a>.</li>
+          <li>Moved to working full-time remote.</li>
+        </ul>
 
         <h3 class="year">2019</h3>
         <ul>
@@ -166,7 +187,7 @@
           <li>Launched new Motley Fool premium services: <a href="//www.fool.com/premium/ipo-trailblazers">IPO Trailblazers</a>, <a href="//www.fool.com/premium/navigator">Navigator</a>, <a href="//www.fool.com/premium/augmented-reality">Augmented Reality</a>, <a href="//www.fool.com/premium/artificial-intelligence">Artificial Intelligence</a> and <a href="//www.fool.com/premium/blast-off">Blast Off</a>.<i class="fa fa-laptop effect"></i><i class="fa fa-code effect"></i></li>
           <li>Designed a custom online game Shoot the Moon for the <a href="//www.fool.com/premium/blast-off">Blast Off</a> service.<i class="fa fa-laptop effect"></i><i class="fa fa-code effect"></i></li>
           <li>Attended workshops learning Vue.js with Sarah Drasner and UX accessibility with Sara Soueidan.</li>
-          <li>Hired on two new developers, managed team of nine designers and developers, coached twelve coworkers, became a mentor for one front-end developer</li>
+          <li>Hired on two new developers, managed team of nine product developers, coached twelve coworkers, became a mentor for one front-end developer</li>
         </ul>
 
         <h3 class="year">2018</h3>
@@ -205,6 +226,7 @@
     </section>
 
   </main>
+</section>
 
 </body>
 </html>

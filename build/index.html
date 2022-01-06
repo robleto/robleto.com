@@ -10,37 +10,51 @@
   <meta name="description" content="Greg Robleto | Product Designer and Developer">
 
   <!-- Borrowing from across the web -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ckcachebust=651048716" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css?ckcachebust=651048716" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.typekit.net/rky7luz.css?ckcachebust=651048716">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css?ckcachebust=663201514" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css?ckcachebust=663201514" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="https://use.typekit.net/rky7luz.css?ckcachebust=663201514">
+  <script src="https://kit.fontawesome.com/ca070a0a98.js?ckcachebust=663201514" crossorigin="anonymous"></script>
 
   <!-- I wrote this one -->
-  <link rel="stylesheet" type="text/css" href="css/style.css?ckcachebust=651048716">
+  <link rel="stylesheet" type="text/css" href="css/style.css?ckcachebust=663201514">
 
   <!-- Other tablestakes -->
-  <link rel="icon" href="img/favicon.ico?ckcachebust=651048716">
-  <link rel="apple-touch-icon" href="../img/apple-favicon.png?ckcachebust=651048716">
-  <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-ipad.png?ckcachebust=651048716" />
-  <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-iphone4.png?ckcachebust=651048716" />
+  <link rel="icon" href="img/favicon.ico?ckcachebust=663201514">
+  <link rel="apple-touch-icon" href="../img/apple-favicon.png?ckcachebust=663201514">
+  <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-ipad.png?ckcachebust=663201514" />
+  <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-iphone4.png?ckcachebust=663201514" />
 
 </head>
 
 <body class="portfolio">
 
+<section class="container">
   <nav>
-
     <header class="center">
       <img src="/img/gr-logo.png" alt="robleto" />
     </header>
 
-    <a href="index.html" class="left nav"><i class="fas fa-palette"></i> Experience</a>
-    <a href="about.html" class="right nav"><i class="fas fa-address-card"></i> About</a>
+    <div class="left nav">
+      <a href="index.html"><i class="fal fa-palette"></i> Portfolio</a>
+      <a href="thoughts.html"><i class="fal fa-pencil"></i> Thoughts</a>
+    </div>
+    <div class="right nav">
+      <a href="experiments.html"><i class="fal fa-flask-potion"></i> Experiments</a>
+      <a href="about.html"><i class="fal fa-address-card"></i> About</a>
+    </div>
   </nav>
 
 
   <main>
-    <blockquote>Greg Robleto is a Director of Product Design and User Experience working remotely from Rockville, Maryland </blockquote>
+    <blockquote>
+      <span class="greg">Greg Robleto</span>
+      <span class="title">Director of Product Design and User Experience</span> 
+      <span class="location">working remotely from 
+        <img class="maryland" src="/img/rockvillemd.svg" alt="Rockville, Maryland" />Rockville, Maryland </span>
+    </blockquote>
 
+
+    
     <figure class="fullwidth">
       <a href="//robleto.medium.com/product-suite-redesign-3815c3c37bf2">
         <img src="/img/premium-platform2.png" alt="Motley Fool Premium Platform" />
@@ -49,7 +63,7 @@
       </a>
     </figure>
 
-     <figure>
+    <figure>
        <a href="//robleto.medium.com/building-a-product-design-team-fe8125904454">
         <img src="/img/design-team.png" alt="Building a Product Design Team" />
         <figcaption>Building a Product Design Team</figcaption>
@@ -57,7 +71,7 @@
       </a>
     </figure>
 
-      <figure>
+    <figure>
         <a href="//robleto.medium.com/centralized-design-system-124c717e057f">
          <img src="/img/style-guide.png" alt="Creating a Design System" />
          <figcaption>Centralized Design System</figcaption>
@@ -65,9 +79,11 @@
        </a>
      </figure>
 
-     <blockquote>Delivering product strategy, design, development and ownership from concept to completion, anticipating needs, collaborating with stakeholders, and uncovering new business opportunities.</blockquote>
+     <blockquote>
+       <span class="location">Delivering product strategy, design, development and ownership from concept to completion, anticipating needs, collaborating with stakeholders, and uncovering new business opportunities.</span>
+     </blockquote>
 
-       <figure>
+    <figure>
          <a href="//robleto.medium.com/onboarding-19cbfabe6980">
            <img src="/img/onboarding2021.png" alt="Onboarding" />
            <figcaption>Product Onboarding</figcaption>
@@ -75,15 +91,16 @@
          </a>
        </figure>
 
-        <figure>
+    <figure>
           <a href="//robleto.medium.com/product-design-development-process-3aed8a8b814e">
             <img src="/img/dri.png" alt="Product Design & Development Process" />
-            <figcaption>Product Design & Development Process</figcaption>
+            <figcaption>Design &amp; Development Process</figcaption>
             <small><em>Spearheading a completely new approach to product development.</em></small>
          </a>
        </figure>
 
   </main>
+</section>
 
 </body>
 </html>
