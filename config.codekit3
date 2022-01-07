@@ -591,7 +591,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/resume.pdf",
-      "oF" : 1
+      "oF" : 0
     },
     "\/source\/scss\/_base.scss" : {
       "aP" : 0,
@@ -607,14 +607,6 @@
       "oS" : 0,
       "pg" : 0,
       "sct" : 1
-    },
-    "\/source\/scss\/resume.pdf" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/build\/scss\/resume.pdf",
-      "oF" : 1
     },
     "\/source\/scss\/style.scss" : {
       "aP" : 0,
