@@ -80,11 +80,6 @@ body {
   padding: 0;
   margin: 0; }
 
-body.portfolio a.left,
-body.about a.right {
-  color: #333;
-  border-bottom: solid 2px #333; }
-
 section.container {
   padding: 10px;
   display: block;
