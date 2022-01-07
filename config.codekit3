@@ -15,6 +15,28 @@
       "oAP" : "\/build\/build",
       "oF" : 0
     },
+    "\/node_modules" : {
+      "ft" : 65536,
+      "oA" : 2,
+      "oAP" : "\/build\/node_modules",
+      "oF" : 0
+    },
+    "\/package-lock.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/build\/package-lock.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/package.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/build\/package.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
     "\/README.md" : {
       "cB" : 0,
       "cS" : 0,
@@ -34,17 +56,41 @@
       "rFN" : 0,
       "uCM" : 0
     },
-    "\/source\/about.html" : {
-      "cB" : 0,
-      "ft" : 8192,
+    "\/source\/_footer.kit" : {
+      "cB" : 1,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/_footer.html",
+      "oF" : 0
+    },
+    "\/source\/_header.kit" : {
+      "cB" : 1,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/_header.html",
+      "oF" : 0
+    },
+    "\/source\/_meta.kit" : {
+      "cB" : 1,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/_meta.html",
+      "oF" : 0
+    },
+    "\/source\/about.kit" : {
+      "cB" : 1,
+      "ft" : 2048,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/about.html",
-      "oF" : 1
+      "oF" : 0
     },
-    "\/source\/experiments.html" : {
-      "cB" : 0,
-      "ft" : 8192,
+    "\/source\/experiments.kit" : {
+      "cB" : 1,
+      "ft" : 2048,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/experiments.html",
@@ -400,13 +446,13 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/source\/index.html" : {
+    "\/source\/index.kit" : {
       "cB" : 1,
-      "ft" : 8192,
+      "ft" : 2048,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/index.html",
-      "oF" : 1
+      "oF" : 0
     },
     "\/source\/README.md" : {
       "cB" : 0,
@@ -512,9 +558,9 @@
       "pg" : 0,
       "sct" : 1
     },
-    "\/source\/thoughts.html" : {
-      "cB" : 0,
-      "ft" : 8192,
+    "\/source\/thoughts.kit" : {
+      "cB" : 1,
+      "ft" : 2048,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/thoughts.html",
@@ -554,7 +600,7 @@
     "displayValueWasSetByUser" : 1,
     "iconImageName" : "\/source\/scss\/apple-touch-icon-iphone4.png",
     "iconImageWasSetByUser" : 0,
-    "lastBuiltDate" : 663201519.17667198
+    "lastBuiltDate" : 663225090.44304895
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
@@ -846,7 +892,7 @@
     "bowerForceLatestOnConflict" : 1,
     "bowerTargetDependencyListType" : 1,
     "bowerUseExactVersion" : 0,
-    "browserRefreshDelay" : 0,
+    "browserRefreshDelay" : 2,
     "browserslistString" : ">0.2%, last 2 versions, Firefox ESR, not dead",
     "buildEnvironment" : 0,
     "buildFolderActive" : 1,
@@ -2457,7 +2503,7 @@
     "webpPresets" : {
 
     },
-    "websiteRelativeRoot" : "\/build"
+    "websiteRelativeRoot" : "build"
   },
   "settingsFileVersion" : "3"
 }

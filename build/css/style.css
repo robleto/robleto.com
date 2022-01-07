@@ -170,6 +170,24 @@ nav {
     nav .company-logo img {
       max-width: 300px; }
 
+#portfolio .portfolio,
+#thoughts .thoughts,
+#experiments .experiments,
+#about .about {
+  font-weight: bold;
+  border-bottom: dotted 2px #555; }
+  #portfolio .portfolio:hover,
+  #thoughts .thoughts:hover,
+  #experiments .experiments:hover,
+  #about .about:hover {
+    color: #333; }
+  #portfolio .portfolio i.fal,
+  #thoughts .thoughts i.fal,
+  #experiments .experiments i.fal,
+  #about .about i.fal {
+    opacity: 1;
+    font-weight: 400; }
+
 /*----------------------------------------
 Typography
 ----------------------------------------*/
@@ -369,17 +387,17 @@ section.bio-details h3 {
   padding-top: 1.5rem;
   margin-top: 1.5rem; }
 
-section.bio-details ul.social-list {
+ul.social-list {
   display: flex;
   flex-direction: row; }
-  section.bio-details ul.social-list li {
+  ul.social-list li {
     font-size: 140%;
     padding-right: 1.25rem;
     opacity: 0.7; }
     @media (min-width: 696px) {
-      section.bio-details ul.social-list li {
+      ul.social-list li {
         font-size: 180%; } }
-    section.bio-details ul.social-list li:hover {
+    ul.social-list li:hover {
       opacity: 1; }
 
 .hide {
@@ -397,7 +415,9 @@ section.bio-details ul.social-list {
     grid-gap: 0rem 3rem;
     grid-template-areas: "article-image article-title" "article-image article-desc" "article-image  article-meta"; }
     .articles .article:first-child {
-      border-top: none; }
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0; }
   .articles .article-image {
     grid-area: article-image; }
     .articles .article-image img {
@@ -551,46 +571,33 @@ main.company {
     line-height: 1.75; }
 
 footer {
-  max-width: 1180px; }
-  footer .more-about-me {
-    position: relative;
-    width: 100%;
-    display: grid;
-    grid-gaps: 1.5rem;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-areas: "bioleft" "biocenter" "bioright"; }
-    @media (min-width: 768px) {
-      footer .more-about-me {
-        grid-template-columns: 5fr auto 5fr;
-        grid-template-rows: 1fr;
-        grid-template-areas: "bioleft biocenter bioright"; } }
-  footer .resume {
-    grid-area: bioleft;
-    justify-self: center;
+  text-align: center; }
+  footer button {
+    display: inline-block;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: #3D3D3D;
+    color: #FFFFFF;
+    font-size: 16px;
+    border-radius: 7px;
+    padding: 0 33px;
+    font-weight: normal;
+    height: 50px;
+    cursor: pointer;
     text-align: center;
-    align-self: center; }
-    @media (min-width: 768px) {
-      footer .resume {
-        justify-self: start;
-        text-align: left;
-        align-self: center; } }
-  footer .me {
-    grid-area: biocenter;
-    justify-self: center;
-    text-align: center;
-    align-self: center; }
-    footer .me img {
-      max-width: 90px;
-      border-radius: 90%;
-      display: inline-block; }
-  footer .contact {
-    grid-area: bioright;
-    justify-self: center;
-    text-align: center;
-    align-self: center; }
-    @media (min-width: 768px) {
-      footer .contact {
-        justify-self: end;
-        text-align: right;
-        align-self: center; } }
+    margin: 0 auto;
+    display: block;
+    text-decoration: none; }
+    footer button:hover {
+      background-color: #000; }
+  footer ul.social-list {
+    padding: 2rem;
+    justify-content: center; }
+  footer .copy-text {
+    font-size: 80%;
+    color: #888; }
+    footer .copy-text a {
+      border-bottom: dotted 1px #555; }
+      footer .copy-text a:hover {
+        color: #222; }

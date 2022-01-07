@@ -121,6 +121,20 @@ nav {
   }
 }
 
+#portfolio .portfolio,
+#thoughts .thoughts, 
+#experiments .experiments,
+#about .about {
+  font-weight: bold;
+  border-bottom: dotted 2px #555;
+  &:hover {
+    color: #333;
+  }
+  i.fal {
+    opacity: 1;
+    font-weight: 400;
+  }
+}
 
 
 
@@ -378,21 +392,26 @@ section.bio-details {
       margin-top: 1.5rem;
     }
 
-    ul.social-list {
-      display: flex;
-      flex-direction: row;
-      li {
-        font-size: 140%;
-        padding-right: 1.25rem;
-        opacity: 0.7;
-        @media (min-width: 696px) {
-          font-size: 180%;
-        }
-        &:hover {
-          opacity: 1;
-        }
-      }
+
+}
+
+ul.social-list {
+  display: flex;
+  flex-direction: row;
+
+  li {
+    font-size: 140%;
+    padding-right: 1.25rem;
+    opacity: 0.7;
+
+    @media (min-width: 696px) {
+      font-size: 180%;
     }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .hide {
@@ -417,6 +436,8 @@ section.bio-details {
     "article-image  article-meta";
     &:first-child {
       border-top: none;
+      padding-top: 0;
+      margin-top: 0;
     }
   }
   .article-image {
@@ -614,58 +635,43 @@ main.company {
 }
 
 footer {
-    max-width: 1180px;
+  text-align: center;
 
-    .more-about-me {
-      position: relative;
-      width: 100%;
-      display: grid;
-      grid-gaps: 1.5rem;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
-      grid-template-areas:
-          "bioleft"
-          "biocenter"
-          "bioright";
+  button {
+    display:inline-block;
+    max-width:100%;
+    white-space:nowrap;
+    overflow:hidden;
+    background-color:#3D3D3D;
+    color:#FFFFFF;
+    font-size:16px;
+    border-radius:7px;
+    padding:0 33px;
+    font-weight:normal;
+    height:50px;
+    cursor:pointer;
+    text-align:center;
+    margin:0 auto;
+    display:block;
+    text-decoration:none;
+    &:hover {
+    background-color: #000;
+    }
+  }
 
-      @media (min-width: 768px) {
-          grid-template-columns: 5fr auto 5fr;
-          grid-template-rows: 1fr;
-          grid-template-areas:
-              "bioleft biocenter bioright";
+  ul.social-list {
+    padding: 2rem;
+    justify-content: center;
+  }
+
+  .copy-text {
+    font-size: 80%;
+    color: #888;
+    a {
+      border-bottom: dotted 1px #555;
+      &:hover {
+        color: #222;
       }
     }
-    .resume {
-        grid-area: bioleft;
-        justify-self: center;
-        text-align: center;
-        align-self: center;
-        @media (min-width: 768px) {
-            justify-self: start;
-            text-align: left;
-            align-self: center;
-        }
-    }
-    .me {
-        grid-area: biocenter;
-        justify-self: center;
-        text-align: center;
-        align-self: center;
-        img {
-            max-width: 90px;
-            border-radius: 90%;
-            display: inline-block;
-        }
-    }
-    .contact {
-        grid-area: bioright;
-        justify-self: center;
-        text-align: center;
-        align-self: center;
-         @media (min-width: 768px) {
-            justify-self: end;
-            text-align: right;
-            align-self: center;
-        }
-    }
+  }
 }
