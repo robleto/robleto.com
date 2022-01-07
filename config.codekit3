@@ -60,25 +60,25 @@
       "cB" : 1,
       "ft" : 2048,
       "hM" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/build\/_footer.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/_header.kit" : {
       "cB" : 1,
       "ft" : 2048,
       "hM" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/build\/_header.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/_meta.kit" : {
       "cB" : 1,
       "ft" : 2048,
       "hM" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/build\/_meta.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/about.kit" : {
       "cB" : 1,
@@ -86,7 +86,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/about.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/experiments.kit" : {
       "cB" : 1,
@@ -94,7 +94,85 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/experiments.html",
-      "oF" : 0
+      "oF" : 1
+    },
+    "\/source\/img\/android-chrome-192x192.png" : {
+      "ft" : 32768,
+      "iS" : 41608,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/android-chrome-192x192.png",
+      "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/android-chrome-512x512.png" : {
+      "ft" : 32768,
+      "iS" : 203810,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/android-chrome-512x512.png",
+      "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/apple-favicon.png" : {
+      "ft" : 32768,
+      "iS" : 3001,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/apple-favicon.png",
+      "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/apple-touch-icon-ipad.png" : {
+      "ft" : 32768,
+      "iS" : 3644,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/apple-touch-icon-ipad.png",
+      "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/apple-touch-icon-iphone4.png" : {
+      "ft" : 32768,
+      "iS" : 4610,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/apple-touch-icon-iphone4.png",
+      "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/apple-touch-icon.png" : {
+      "ft" : 32768,
+      "iS" : 37318,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/apple-touch-icon.png",
+      "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/source\/img\/beststocks.png" : {
       "ft" : 32768,
@@ -114,7 +192,7 @@
       "iS" : 451240,
       "oA" : 0,
       "oAP" : "\/build\/img\/company-page.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -127,7 +205,7 @@
       "iS" : 3087978,
       "oA" : 0,
       "oAP" : "\/build\/img\/design-team.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -140,7 +218,7 @@
       "iS" : 1774706,
       "oA" : 0,
       "oAP" : "\/build\/img\/dri.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -153,7 +231,7 @@
       "iS" : 871753,
       "oA" : 0,
       "oAP" : "\/build\/img\/everlastingstocks.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -167,7 +245,7 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/everythingisfine.jpg",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "ou" : "lpckwebp-none",
@@ -179,13 +257,47 @@
       "iS" : 15151185,
       "oA" : 0,
       "oAP" : "\/build\/img\/fastcon.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/source\/img\/favicon-16x16.png" : {
+      "ft" : 32768,
+      "iS" : 1021,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/favicon-16x16.png",
+      "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/favicon-32x32.png" : {
+      "ft" : 32768,
+      "iS" : 2621,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/favicon-32x32.png",
+      "oF" : 1,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/favicon.ico" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/favicon.ico",
+      "oF" : 1
     },
     "\/source\/img\/foolpremium.png" : {
       "ft" : 32768,
@@ -219,7 +331,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/Greg_resume_2019.pdf",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/img\/gregrobleto.jpg" : {
       "ft" : 16384,
@@ -239,7 +351,7 @@
       "miP" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/maryland.svg",
-      "oF" : 0,
+      "oF" : 1,
       "opt" : 1,
       "plM" : 3758088159,
       "prP" : 0
@@ -249,7 +361,7 @@
       "iS" : 1082616,
       "oA" : 0,
       "oAP" : "\/build\/img\/onboarding2021.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -262,7 +374,7 @@
       "iS" : 6245617,
       "oA" : 0,
       "oAP" : "\/build\/img\/palindrome.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -288,7 +400,7 @@
       "iS" : 1306368,
       "oA" : 0,
       "oAP" : "\/build\/img\/premium-platform.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -301,7 +413,7 @@
       "iS" : 2002954,
       "oA" : 0,
       "oAP" : "\/build\/img\/premium-platform2.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -314,7 +426,7 @@
       "iS" : 4026805,
       "oA" : 0,
       "oAP" : "\/build\/img\/premium-platform3.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -379,7 +491,7 @@
       "miP" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/rockvillemaryland.svg",
-      "oF" : 0,
+      "oF" : 1,
       "opt" : 1,
       "plM" : 3758088159,
       "prP" : 0
@@ -389,7 +501,7 @@
       "miP" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/rockvillemd.svg",
-      "oF" : 0,
+      "oF" : 1,
       "opt" : 1,
       "plM" : 3758088159,
       "prP" : 0
@@ -412,7 +524,7 @@
       "iS" : 929417,
       "oA" : 0,
       "oAP" : "\/build\/img\/scorecards2.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -425,7 +537,7 @@
       "iS" : 1926600,
       "oA" : 0,
       "oAP" : "\/build\/img\/style-guide.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -439,7 +551,7 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/unicorn.jpg",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "ou" : "lpckwebp-none",
@@ -452,7 +564,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/index.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/README.md" : {
       "cB" : 0,
@@ -479,7 +591,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/resume.pdf",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/scss\/_base.scss" : {
       "aP" : 0,
@@ -496,52 +608,13 @@
       "pg" : 0,
       "sct" : 1
     },
-    "\/source\/scss\/apple-favicon.png" : {
-      "ft" : 32768,
-      "iS" : 3001,
-      "oA" : 0,
-      "oAP" : "\/build\/scss\/apple-favicon.png",
-      "oF" : 1,
-      "oIPL" : 0,
-      "opt" : 1,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/source\/scss\/apple-touch-icon-ipad.png" : {
-      "ft" : 32768,
-      "iS" : 3644,
-      "oA" : 0,
-      "oAP" : "\/build\/scss\/apple-touch-icon-ipad.png",
-      "oF" : 1,
-      "oIPL" : 0,
-      "opt" : 1,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/source\/scss\/apple-touch-icon-iphone4.png" : {
-      "ft" : 32768,
-      "iS" : 4610,
-      "oA" : 0,
-      "oAP" : "\/build\/scss\/apple-touch-icon-iphone4.png",
-      "oF" : 1,
-      "oIPL" : 0,
-      "opt" : 1,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/source\/scss\/resume.pdf" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/scss\/resume.pdf",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/scss\/style.scss" : {
       "aP" : 0,
@@ -564,7 +637,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/thoughts.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/wantstoworkat\/compass.html" : {
       "cB" : 0,
@@ -579,7 +652,7 @@
       "iS" : 21507,
       "oA" : 0,
       "oAP" : "\/build\/wantstoworkat\/logo\/compass.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -596,9 +669,9 @@
   },
   "projectAttributes" : {
     "creationDate" : 587527816.43379104,
-    "displayValue" : "robleto2019",
+    "displayValue" : "Robleto2022",
     "displayValueWasSetByUser" : 1,
-    "iconImageName" : "\/source\/scss\/apple-touch-icon-iphone4.png",
+    "iconImageName" : "\/source\/img\/apple-touch-icon.png",
     "iconImageWasSetByUser" : 0,
     "lastBuiltDate" : 663225090.44304895
   },
