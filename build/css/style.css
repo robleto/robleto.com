@@ -257,7 +257,7 @@ span.greg {
   font-size: 220%;
   line-height: 1.15;
   display: block;
-  padding-bottom: 2rem; }
+  padding-bottom: .25rem; }
   @media (min-width: 696px) {
     span.greg {
       font-size: 380%; } }
