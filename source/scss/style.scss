@@ -7,6 +7,8 @@
 
 
 @import 'base';
+@import 'text-typing';
+
 body {
   padding: 0;
   margin: 0;
@@ -16,10 +18,10 @@ section.container {
   padding: 10px;
   display: block;
   width: 94%;
-  margin: 3%;
+  margin: 3% 5% 3% 2%;
   border: solid 1px #e3e3e3;
   box-shadow: inset 0 0 10px #dddddd;
-  background: linear-gradient(0.25turn, #fafafa, #f7f7f7, #e3e3e3);
+  background: linear-gradient(#fafafa, #f7f7f7, #e3e3e3);
 }
 
 /*----------------------------------------
@@ -142,9 +144,9 @@ blockquote {
   font-size: 170%;
   line-height: 1.45;
   text-align: center;
-  padding: 3rem 1rem 1rem;
+  padding: 2rem 1rem 1rem;
   @media (min-width: 696px) {
-    padding: 1rem 2rem 0rem 2rem;
+    padding: 0rem 2rem 0rem 2rem;
   }
 }
 span.greg {
@@ -165,7 +167,6 @@ span.greg {
 span.title {
   font-family: mrs-eaves-xl-serif, sans-serif;
   font-size: 80%;
-  display: block;
   @media (min-width: 696px) {
     font-size: 110%;
   }
@@ -190,6 +191,7 @@ span.location {
     @media (min-width: 696px) {
       height: 30px;
       display: inline;
+      margin-bottom: -12px;
     }
   }
 }
@@ -269,7 +271,7 @@ hr {
 Images
 ----------------------------------------*/
 figure {
-  margin: 2rem 0;
+  margin: 1rem 0;
   transition: all 300ms ease-in;
   transform: scale(1);
   &:hover {
@@ -321,11 +323,11 @@ main {
     grid-gap: 1.5rem 3rem;
   }
   @media (min-width: 886px) {
-    padding: 4rem 7rem;
+    padding: 3rem 7rem;
     grid-template-columns: [first] repeat(4, 1fr) [end];
   }
   @media (min-width: 1090px) {
-    padding: 5rem 15rem;
+    padding: 3rem 10rem;
     max-width: 1280px;
     grid-gap: 3rem;
   }
