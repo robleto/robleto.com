@@ -80,7 +80,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/about.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/experiments.kit" : {
       "cB" : 1,
@@ -88,7 +88,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/experiments.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/img\/android-chrome-192x192.png" : {
       "ft" : 32768,
@@ -213,9 +213,9 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/designprinciples.jpg",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
@@ -225,7 +225,7 @@
       "iS" : 3700820,
       "oA" : 0,
       "oAP" : "\/build\/img\/designprinciples.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -239,9 +239,9 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/designsystem.jpg",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
-      "opt" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
@@ -251,7 +251,7 @@
       "iS" : 2692225,
       "oA" : 0,
       "oAP" : "\/build\/img\/designsystem.png",
-      "oF" : 0,
+      "oF" : 1,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
@@ -610,7 +610,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/index.html",
-      "oF" : 0
+      "oF" : 1
     },
     "\/source\/README.md" : {
       "cB" : 0,
@@ -677,9 +677,9 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 1,
+      "oA" : 0,
       "oAP" : "\/build\/css\/text-typing.css",
-      "oF" : 0,
+      "oF" : 1,
       "oS" : 0,
       "pg" : 0,
       "sct" : 1
@@ -690,7 +690,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/thoughts.html",
-      "oF" : 0
+      "oF" : 1
     }
   },
   "hooks" : [
