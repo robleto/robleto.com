@@ -1,6 +1,6 @@
-# Robleto
+# Robleto.com
 
-This is the 2019 design of the personal website for Greg Robleto. This site is a small site to share information about  skills, interests and means of contacting Greg.
+This is the 2022 design of the personal website for Greg Robleto. This site is a small site to share information about  skills, interests and means of contacting Greg.
 
 ## Getting Started
 
@@ -25,9 +25,9 @@ This site is hosted by Netlify. Basic setup is all that was required.
 
 ## Authors
 
-* **Greg Robleto** - *Initial work* - [github.com/robleto/robleto2019](https://github.com/robleto/robleto2019)
+* **Greg Robleto** - *Initial work* - [github.com/robleto/robleto2019](https://github.com/robleto/robleto.com)
 
-See also the list of [contributors](https://github.com/robleto/robleto2019/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/robleto/robleto.com/contributors) who participated in this project.
 
 ## License
 
