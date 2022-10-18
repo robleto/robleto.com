@@ -4,32 +4,16 @@
     {
       "name" : "Process All Remaining Files and Folders",
       "stepType" : 1,
-      "uuidString" : "00D07873-8AD1-46EA-97CC-EAAB5EBCCD7F"
+      "uuidString" : "090ED1C0-265D-4E57-BFFD-0F7911C2C854"
     }
   ],
-  "creatorBuild" : "34335",
+  "creatorBuild" : "34434",
   "files" : {
     "\/build" : {
       "ft" : 65536,
       "oA" : 1,
       "oAP" : "\/build\/build",
       "oF" : 0
-    },
-    "\/package-lock.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/build\/package-lock.json",
-      "oF" : 0,
-      "oO" : 0,
-      "oS" : 1
-    },
-    "\/package.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/build\/package.json",
-      "oF" : 0,
-      "oO" : 0,
-      "oS" : 1
     },
     "\/README.md" : {
       "cB" : 0,
@@ -51,121 +35,137 @@
       "uCM" : 0
     },
     "\/source\/_footer.kit" : {
-      "cB" : 1,
+      "cB" : 0,
       "ft" : 2048,
       "hM" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/build\/_footer.html",
-      "oF" : 1
+      "oF" : 0
     },
     "\/source\/_header.kit" : {
-      "cB" : 1,
+      "cB" : 0,
       "ft" : 2048,
       "hM" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/build\/_header.html",
-      "oF" : 1
+      "oF" : 0
     },
     "\/source\/_meta.kit" : {
-      "cB" : 1,
+      "cB" : 0,
       "ft" : 2048,
       "hM" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/build\/_meta.html",
-      "oF" : 1
+      "oF" : 0
+    },
+    "\/source\/_nav.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/_nav.html",
+      "oF" : 0
+    },
+    "\/source\/_sociallist.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/_sociallist.html",
+      "oF" : 0
     },
     "\/source\/about.kit" : {
-      "cB" : 1,
+      "cB" : 0,
       "ft" : 2048,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/about.html",
-      "oF" : 1
+      "oF" : 0
     },
     "\/source\/experiments.kit" : {
-      "cB" : 1,
+      "cB" : 0,
       "ft" : 2048,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/experiments.html",
-      "oF" : 1
+      "oF" : 0
     },
     "\/source\/img\/android-chrome-192x192.png" : {
       "ft" : 32768,
-      "iS" : 41608,
+      "iS" : 15618,
       "oA" : 0,
       "oAP" : "\/build\/img\/android-chrome-192x192.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/android-chrome-512x512.png" : {
       "ft" : 32768,
-      "iS" : 203810,
+      "iS" : 43048,
       "oA" : 0,
       "oAP" : "\/build\/img\/android-chrome-512x512.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/apple-favicon.png" : {
       "ft" : 32768,
-      "iS" : 3001,
+      "iS" : 4829,
       "oA" : 0,
       "oAP" : "\/build\/img\/apple-favicon.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/apple-touch-icon-ipad.png" : {
       "ft" : 32768,
-      "iS" : 3644,
+      "iS" : 6245,
       "oA" : 0,
       "oAP" : "\/build\/img\/apple-touch-icon-ipad.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/apple-touch-icon-iphone4.png" : {
       "ft" : 32768,
-      "iS" : 4610,
+      "iS" : 9750,
       "oA" : 0,
       "oAP" : "\/build\/img\/apple-touch-icon-iphone4.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/apple-touch-icon.png" : {
       "ft" : 32768,
-      "iS" : 37318,
+      "iS" : 14779,
       "oA" : 0,
       "oAP" : "\/build\/img\/apple-touch-icon.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/beststocks.png" : {
@@ -173,36 +173,151 @@
       "iS" : 13151273,
       "oA" : 0,
       "oAP" : "\/build\/img\/beststocks.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/bg-white-wood.png" : {
+      "ft" : 32768,
+      "iS" : 2098492,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/bg-white-wood.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/blank-desk.jpg" : {
+      "ft" : 16384,
+      "iS" : 617261,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/blank-desk.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/source\/img\/blank-wall.jpg" : {
+      "ft" : 16384,
+      "iS" : 633265,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/blank-wall.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/blue-bricks.jpg" : {
+      "ft" : 16384,
+      "iS" : 3285619,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/blue-bricks.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/box-open-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/box-open-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/img\/clock-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/clock-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
     },
     "\/source\/img\/company-page.png" : {
       "ft" : 32768,
       "iS" : 451240,
       "oA" : 0,
       "oAP" : "\/build\/img\/company-page.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
+    },
+    "\/source\/img\/compass-drafting-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/compass-drafting-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/img\/compass-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/compass-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/img\/computer-mouse-scrollwheel-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/computer-mouse-scrollwheel-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
     },
     "\/source\/img\/design-team.png" : {
       "ft" : 32768,
-      "iS" : 3087978,
+      "iS" : 490298,
       "oA" : 0,
       "oAP" : "\/build\/img\/design-team.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/designprinciples-portrait.jpg" : {
+      "ft" : 16384,
+      "iS" : 165802,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/designprinciples-portrait.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
@@ -213,7 +328,7 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/designprinciples.jpg",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "ou" : "lpckwebp-none",
@@ -225,10 +340,23 @@
       "iS" : 3700820,
       "oA" : 0,
       "oAP" : "\/build\/img\/designprinciples.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/designsystem-portrait.jpg" : {
+      "ft" : 16384,
+      "iS" : 100061,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/designsystem-portrait.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
@@ -239,7 +367,7 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/designsystem.jpg",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "ou" : "lpckwebp-none",
@@ -251,38 +379,48 @@
       "iS" : 2692225,
       "oA" : 0,
       "oAP" : "\/build\/img\/designsystem.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/dri.png" : {
       "ft" : 32768,
-      "iS" : 1774706,
+      "iS" : 940953,
       "oA" : 0,
       "oAP" : "\/build\/img\/dri.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
+    },
+    "\/source\/img\/envelope-open-text-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/envelope-open-text-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
     },
     "\/source\/img\/everlastingstocks.png" : {
       "ft" : 32768,
       "iS" : 871753,
       "oA" : 0,
       "oAP" : "\/build\/img\/everlastingstocks.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/everythingisfine.jpg" : {
@@ -291,7 +429,7 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/everythingisfine.jpg",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "ou" : "lpckwebp-none",
@@ -300,41 +438,41 @@
     },
     "\/source\/img\/fastcon.png" : {
       "ft" : 32768,
-      "iS" : 15151185,
+      "iS" : 1649413,
       "oA" : 0,
       "oAP" : "\/build\/img\/fastcon.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/favicon-16x16.png" : {
       "ft" : 32768,
-      "iS" : 1021,
+      "iS" : 1685,
       "oA" : 0,
       "oAP" : "\/build\/img\/favicon-16x16.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/favicon-32x32.png" : {
       "ft" : 32768,
-      "iS" : 2621,
+      "iS" : 2855,
       "oA" : 0,
       "oAP" : "\/build\/img\/favicon-32x32.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/favicon.ico" : {
@@ -343,32 +481,55 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/favicon.ico",
-      "oF" : 1
+      "oF" : 0
+    },
+    "\/source\/img\/figma-adobe.com.png" : {
+      "ft" : 32768,
+      "iS" : 44138,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/figma-adobe.com.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/flag-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/flag-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
     },
     "\/source\/img\/foolpremium.png" : {
       "ft" : 32768,
       "iS" : 4236400,
       "oA" : 0,
       "oAP" : "\/build\/img\/foolpremium.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/gr-logo.png" : {
       "ft" : 32768,
-      "iS" : 8805,
+      "iS" : 8715,
       "oA" : 0,
       "oAP" : "\/build\/img\/gr-logo.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/Greg_resume_2019.pdf" : {
@@ -377,7 +538,33 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/Greg_resume_2019.pdf",
-      "oF" : 1
+      "oF" : 0
+    },
+    "\/source\/img\/greg-robleto.jpg" : {
+      "ft" : 16384,
+      "iS" : 107073,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/greg-robleto.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/greg-robleto.png" : {
+      "ft" : 32768,
+      "iS" : 876567,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/greg-robleto.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
     },
     "\/source\/img\/gregrobleto.jpg" : {
       "ft" : 16384,
@@ -385,47 +572,380 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/gregrobleto.jpg",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/source\/img\/hand-holding-heart-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/hand-holding-heart-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/img\/hands-laptop-bg-mobile.jpg" : {
+      "ft" : 16384,
+      "iS" : 296031,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/hands-laptop-bg-mobile.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/hands-laptop-bg-tablet.jpg" : {
+      "ft" : 16384,
+      "iS" : 380928,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/hands-laptop-bg-tablet.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/hands-laptop-bg.jpg" : {
+      "ft" : 16384,
+      "iS" : 357298,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/hands-laptop-bg.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/Isometric\/Layout 105.png" : {
+      "ft" : 32768,
+      "iS" : 485969,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/Isometric\/Layout 105.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/lights.jpg" : {
+      "ft" : 16384,
+      "iS" : 1799905,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/lights.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/img\/map-location-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/map-location-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
     },
     "\/source\/img\/maryland.svg" : {
       "ft" : 2097152,
       "miP" : 0,
-      "oA" : 0,
+      "oA" : 2,
       "oAP" : "\/build\/img\/maryland.svg",
-      "oF" : 1,
-      "opt" : 1,
-      "plM" : 3758088159,
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/img\/minimize-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/minimize-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
       "prP" : 0
     },
     "\/source\/img\/onboarding2021.png" : {
       "ft" : 32768,
-      "iS" : 1082616,
+      "iS" : 463637,
       "oA" : 0,
       "oAP" : "\/build\/img\/onboarding2021.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
+    },
+    "\/source\/img\/palette-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/palette-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
     },
     "\/source\/img\/palindrome.png" : {
       "ft" : 32768,
-      "iS" : 6245617,
+      "iS" : 1041273,
       "oA" : 0,
       "oAP" : "\/build\/img\/palindrome.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/parallax-arms.png" : {
+      "ft" : 32768,
+      "iS" : 308180,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/parallax-arms.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/parallax-coffee.png" : {
+      "ft" : 32768,
+      "iS" : 115019,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/parallax-coffee.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/parallax-macbook.png" : {
+      "ft" : 32768,
+      "iS" : 284453,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/parallax-macbook.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/parallax-moleskin.png" : {
+      "ft" : 32768,
+      "iS" : 303089,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/parallax-moleskin.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/parallax-pen.png" : {
+      "ft" : 32768,
+      "iS" : 21273,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/parallax-pen.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/parallax-phone-large.png" : {
+      "ft" : 32768,
+      "iS" : 118288,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/parallax-phone-large.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/parallax-phone.png" : {
+      "ft" : 32768,
+      "iS" : 44445,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/parallax-phone.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/parallax-sprial-notebook.png" : {
+      "ft" : 32768,
+      "iS" : 52606,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/parallax-sprial-notebook.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/phone-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/phone-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/img\/phone-light.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/phone-light.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/img\/phone-new-design-system.png" : {
+      "ft" : 32768,
+      "iS" : 248654,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/phone-new-design-system.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/portfolio-product-library-list.png" : {
+      "ft" : 32768,
+      "iS" : 370828,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/portfolio-product-library-list.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/portfolio-product-library.png" : {
+      "ft" : 32768,
+      "iS" : 922250,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/portfolio-product-library.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/portfolio-product-page.png" : {
+      "ft" : 32768,
+      "iS" : 614671,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/portfolio-product-page.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/portfolio-product-phone-cards.png" : {
+      "ft" : 32768,
+      "iS" : 533971,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/portfolio-product-phone-cards.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/portfolio-product-screens.png" : {
+      "ft" : 32768,
+      "iS" : 1446154,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/portfolio-product-screens.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/portfolio-product-Screens2.png" : {
+      "ft" : 32768,
+      "iS" : 1067403,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/portfolio-product-Screens2.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/portfolio-product-styletiles.png" : {
+      "ft" : 32768,
+      "iS" : 889911,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/portfolio-product-styletiles.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/portfolioframeworks.png" : {
@@ -433,25 +953,38 @@
       "iS" : 7427135,
       "oA" : 0,
       "oAP" : "\/build\/img\/portfolioframeworks.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/premium-platform-portrait.jpg" : {
+      "ft" : 16384,
+      "iS" : 114720,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/premium-platform-portrait.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
     },
     "\/source\/img\/premium-platform.png" : {
       "ft" : 32768,
-      "iS" : 1306368,
+      "iS" : 634256,
       "oA" : 0,
       "oAP" : "\/build\/img\/premium-platform.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/premium-platform2.png" : {
@@ -459,12 +992,12 @@
       "iS" : 2002954,
       "oA" : 0,
       "oAP" : "\/build\/img\/premium-platform2.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/premium-platform3.png" : {
@@ -472,12 +1005,12 @@
       "iS" : 4026805,
       "oA" : 0,
       "oAP" : "\/build\/img\/premium-platform3.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/premiumcommons.png" : {
@@ -485,12 +1018,12 @@
       "iS" : 3029766,
       "oA" : 0,
       "oAP" : "\/build\/img\/premiumcommons.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/reports.png" : {
@@ -498,12 +1031,12 @@
       "iS" : 3351155,
       "oA" : 0,
       "oAP" : "\/build\/img\/reports.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/robleto.png" : {
@@ -511,45 +1044,55 @@
       "iS" : 53394,
       "oA" : 0,
       "oAP" : "\/build\/img\/robleto.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/robletofamily.png" : {
       "ft" : 32768,
-      "iS" : 1086379,
+      "iS" : 426692,
       "oA" : 0,
       "oAP" : "\/build\/img\/robletofamily.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
+    },
+    "\/source\/img\/rocket-launch-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/rocket-launch-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
     },
     "\/source\/img\/rockvillemaryland.svg" : {
       "ft" : 2097152,
       "miP" : 0,
-      "oA" : 0,
+      "oA" : 2,
       "oAP" : "\/build\/img\/rockvillemaryland.svg",
-      "oF" : 1,
-      "opt" : 1,
-      "plM" : 3758088159,
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
       "prP" : 0
     },
     "\/source\/img\/rockvillemd.svg" : {
       "ft" : 2097152,
       "miP" : 0,
-      "oA" : 0,
+      "oA" : 2,
       "oAP" : "\/build\/img\/rockvillemd.svg",
-      "oF" : 1,
-      "opt" : 1,
-      "plM" : 3758088159,
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
       "prP" : 0
     },
     "\/source\/img\/scorecards.png" : {
@@ -557,12 +1100,12 @@
       "iS" : 3648193,
       "oA" : 0,
       "oAP" : "\/build\/img\/scorecards.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/scorecards2.png" : {
@@ -570,26 +1113,59 @@
       "iS" : 929417,
       "oA" : 0,
       "oAP" : "\/build\/img\/scorecards2.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
-      "q" : 100,
+      "q" : 90,
       "rq" : 75
     },
     "\/source\/img\/style-guide.png" : {
       "ft" : 32768,
-      "iS" : 1926600,
+      "iS" : 608931,
       "oA" : 0,
       "oAP" : "\/build\/img\/style-guide.png",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
+      "q" : 90,
+      "rq" : 75
+    },
+    "\/source\/img\/swatchbook-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/swatchbook-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/source\/img\/swirl.jpg" : {
+      "ft" : 16384,
+      "iS" : 4186101,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/swirl.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/source\/img\/telescope-duotone.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/build\/img\/telescope-duotone.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
     },
     "\/source\/img\/unicorn.jpg" : {
       "ft" : 16384,
@@ -597,20 +1173,92 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/build\/img\/unicorn.jpg",
-      "oF" : 1,
+      "oF" : 0,
       "oIPL" : 0,
       "opt" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
     },
+    "\/source\/img\/wood-bg.jpg" : {
+      "ft" : 16384,
+      "iS" : 3306878,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/img\/wood-bg.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/source\/index_aboutme.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/index_aboutme.html",
+      "oF" : 0
+    },
+    "\/source\/index_contact.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/index_contact.html",
+      "oF" : 0
+    },
+    "\/source\/index_overview.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/index_overview.html",
+      "oF" : 0
+    },
+    "\/source\/index_portfolio.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/index_portfolio.html",
+      "oF" : 0
+    },
+    "\/source\/index_sandbox.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/build\/index_sandbox.html",
+      "oF" : 0
+    },
+    "\/source\/index_skills.kit" : {
+      "cB" : 0,
+      "ft" : 2048,
+      "hM" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/index_skills.html",
+      "oF" : 0
+    },
     "\/source\/index.kit" : {
-      "cB" : 1,
+      "cB" : 0,
       "ft" : 2048,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/index.html",
-      "oF" : 1
+      "oF" : 0
+    },
+    "\/source\/js\/carousel.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/build\/js\/carousel-min.js",
+      "oF" : 0,
+      "sC" : 0,
+      "tS" : 0
     },
     "\/source\/js\/codepen-scripts.js" : {
       "bF" : 0,
@@ -618,9 +1266,20 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/build\/js\/codepen-scripts.js",
-      "oF" : 1,
-      "sC" : 3,
+      "oAP" : "\/build\/js\/codepen-scripts-min.js",
+      "oF" : 0,
+      "sC" : 0,
+      "tS" : 0
+    },
+    "\/source\/js\/parallax.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/build\/js\/parallax-min.js",
+      "oF" : 0,
+      "sC" : 0,
       "tS" : 0
     },
     "\/source\/README.md" : {
@@ -634,7 +1293,7 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/README.html",
-      "oF" : 1,
+      "oF" : 0,
       "oFM" : 0,
       "oS" : 0,
       "pHT" : 0,
@@ -658,12 +1317,57 @@
       "ec" : 1,
       "ft" : 4,
       "ma" : 0,
-      "oA" : 0,
+      "oA" : 1,
       "oAP" : "\/build\/css\/_base.css",
-      "oF" : 1,
+      "oF" : 0,
       "oS" : 0,
       "pg" : 0,
-      "sct" : 1
+      "sct" : 0
+    },
+    "\/source\/scss\/_progressbar.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/css\/_progressbar.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
+    "\/source\/scss\/_scrollsnap.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/css\/_scrollsnap.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
+    "\/source\/scss\/_text-typing.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/build\/css\/_text-typing.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
     },
     "\/source\/scss\/style.scss" : {
       "aP" : 0,
@@ -675,33 +1379,18 @@
       "ma" : 0,
       "oA" : 0,
       "oAP" : "\/build\/css\/style.css",
-      "oF" : 1,
+      "oF" : 0,
       "oS" : 0,
       "pg" : 0,
-      "sct" : 1
-    },
-    "\/source\/scss\/text-typing.scss" : {
-      "aP" : 0,
-      "bl" : 0,
-      "co" : 0,
-      "dP" : 10,
-      "ec" : 1,
-      "ft" : 4,
-      "ma" : 0,
-      "oA" : 0,
-      "oAP" : "\/build\/css\/text-typing.css",
-      "oF" : 1,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 1
+      "sct" : 0
     },
     "\/source\/thoughts.kit" : {
-      "cB" : 1,
+      "cB" : 0,
       "ft" : 2048,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/build\/thoughts.html",
-      "oF" : 1
+      "oF" : 0
     }
   },
   "hooks" : [
@@ -711,12 +1400,12 @@
 
   },
   "projectAttributes" : {
-    "creationDate" : 587527816.43379104,
-    "displayValue" : "Robleto2022",
-    "displayValueWasSetByUser" : 1,
+    "creationDate" : 687738160.84602499,
+    "displayValue" : "robleto2022",
+    "displayValueWasSetByUser" : 0,
     "iconImageName" : "\/source\/img\/apple-touch-icon.png",
     "iconImageWasSetByUser" : 0,
-    "lastBuiltDate" : 683390081.07570505
+    "lastBuiltDate" : 687755864.25229895
   },
   "projectSettings" : {
     "abortBuildOnError" : 1,
@@ -1008,7 +1697,7 @@
     "bowerForceLatestOnConflict" : 1,
     "bowerTargetDependencyListType" : 1,
     "bowerUseExactVersion" : 0,
-    "browserRefreshDelay" : 2,
+    "browserRefreshDelay" : 0,
     "browserslistString" : ">0.2%, last 2 versions, Firefox ESR, not dead",
     "buildEnvironment" : 0,
     "buildFolderActive" : 1,
@@ -1025,7 +1714,7 @@
     "esLintRules" : {
       "accessor-pairs" : {
         "active" : 0,
-        "optionString" : "{'setWithoutGet': true, 'getWithoutSet': false}"
+        "optionString" : "{'setWithoutGet': true, 'getWithoutSet': false, 'enforceForClassMembers': true}"
       },
       "array-bracket-newline" : {
         "active" : 0,
@@ -1066,13 +1755,9 @@
         "active" : 0,
         "optionString" : "'1tbs', {'allowSingleLine': true}"
       },
-      "callback-return" : {
-        "active" : 0,
-        "optionString" : "['callback', 'cb', 'next']"
-      },
       "camelcase" : {
         "active" : 0,
-        "optionString" : "{'properties': 'always', 'ignoreDestructuring': false}"
+        "optionString" : "{'properties': 'always', 'ignoreDestructuring': false, 'ignoreImports': false}"
       },
       "capitalized-comments" : {
         "active" : 0,
@@ -1080,7 +1765,7 @@
       },
       "class-methods-use-this" : {
         "active" : 0,
-        "optionString" : "{'exceptMethods': []}"
+        "optionString" : "{'exceptMethods': [], 'enforceForClassFields': true}"
       },
       "comma-dangle" : {
         "active" : 1,
@@ -1100,7 +1785,7 @@
       },
       "computed-property-spacing" : {
         "active" : 0,
-        "optionString" : "'never'"
+        "optionString" : "'never', {'enforceForClassMembers': true}"
       },
       "consistent-return" : {
         "active" : 0,
@@ -1143,7 +1828,7 @@
         "optionString" : "'always', {'null': 'always'}"
       },
       "for-direction" : {
-        "active" : 0
+        "active" : 1
       },
       "func-call-spacing" : {
         "active" : 0,
@@ -1161,6 +1846,10 @@
         "active" : 0,
         "optionString" : "'expression'"
       },
+      "function-call-argument-newline" : {
+        "active" : 0,
+        "optionString" : "'always'"
+      },
       "function-paren-newline" : {
         "active" : 0,
         "optionString" : "'multiline'"
@@ -1170,11 +1859,8 @@
         "optionString" : "{'before': true, 'after': false}"
       },
       "getter-return" : {
-        "active" : 0,
+        "active" : 1,
         "optionString" : "{'allowImplicit': false}"
-      },
-      "global-require" : {
-        "active" : 0
       },
       "grouped-accessor-pairs" : {
         "active" : 0,
@@ -1183,11 +1869,7 @@
       "guard-for-in" : {
         "active" : 0
       },
-      "handle-callback-err" : {
-        "active" : 0,
-        "optionString" : "'err'"
-      },
-      "id-blacklist" : {
+      "id-denylist" : {
         "active" : 0,
         "optionString" : "'data', 'err', 'e', 'cb', 'callback'"
       },
@@ -1241,7 +1923,7 @@
       },
       "max-classes-per-file" : {
         "active" : 0,
-        "optionString" : "1"
+        "optionString" : "{'ignoreExpressions': false, 'max': 1}"
       },
       "max-depth" : {
         "active" : 0,
@@ -1302,7 +1984,7 @@
         "active" : 0
       },
       "no-async-promise-executor" : {
-        "active" : 0
+        "active" : 1
       },
       "no-await-in-loop" : {
         "active" : 0
@@ -1310,9 +1992,6 @@
       "no-bitwise" : {
         "active" : 0,
         "optionString" : "{'allow': ['~'], 'int32Hint': true}"
-      },
-      "no-buffer-constructor" : {
-        "active" : 0
       },
       "no-caller" : {
         "active" : 0
@@ -1332,7 +2011,7 @@
       },
       "no-confusing-arrow" : {
         "active" : 0,
-        "optionString" : "{'allowParens': true}"
+        "optionString" : "{'allowParens': true, 'onlyOneSimpleParam': false}"
       },
       "no-console" : {
         "active" : 1,
@@ -1340,6 +2019,9 @@
       },
       "no-const-assign" : {
         "active" : 1
+      },
+      "no-constant-binary-expression" : {
+        "active" : 0
       },
       "no-constant-condition" : {
         "active" : 1,
@@ -1373,6 +2055,9 @@
         "active" : 1
       },
       "no-dupe-keys" : {
+        "active" : 1
+      },
+      "no-duplicate-case" : {
         "active" : 1
       },
       "no-duplicate-imports" : {
@@ -1416,18 +2101,19 @@
       "no-extra-boolean-cast" : {
         "active" : 1
       },
-      "no-extra-labels" : {
+      "no-extra-label" : {
         "active" : 0
       },
       "no-extra-parens" : {
         "active" : 0,
-        "optionString" : "'all', {'conditionalAssign': false, 'returnAssign': false, 'nestedBinaryExpressions': false, 'ignoreJSX': 'none', 'enforceForArrowConditionals': false}"
+        "optionString" : "'all'"
       },
       "no-extra-semi" : {
         "active" : 1
       },
       "no-fallthrough" : {
-        "active" : 1
+        "active" : 1,
+        "optionString" : "{'allowEmptyCase': false}"
       },
       "no-floating-decimal" : {
         "active" : 0
@@ -1441,7 +2127,7 @@
       },
       "no-implicit-coercion" : {
         "active" : 0,
-        "optionString" : "{'boolean': true, 'number': true, 'string': true, 'allow': []}"
+        "optionString" : "{'boolean': true, 'number': true, 'string': true, 'disallowTemplateShorthand': false, 'allow': []}"
       },
       "no-implicit-globals" : {
         "active" : 0
@@ -1465,7 +2151,7 @@
       },
       "no-invalid-this" : {
         "active" : 0,
-        "optionString" : ""
+        "optionString" : "{'capIsConstructor': true}"
       },
       "no-irregular-whitespace" : {
         "active" : 1,
@@ -1491,11 +2177,11 @@
         "active" : 0
       },
       "no-loss-of-precision" : {
-        "active" : 0
+        "active" : 1
       },
       "no-magic-numbers" : {
         "active" : 0,
-        "optionString" : "{'ignore': [], 'ignoreArrayIndexes': true, 'enforceConst': false, 'detectObjects': false}"
+        "optionString" : "{'ignore': [], 'ignoreArrayIndexes': true, 'ignoreDefaultValues': false, 'enforceConst': false, 'detectObjects': false}"
       },
       "no-misleading-character-class" : {
         "active" : 0
@@ -1504,12 +2190,8 @@
         "active" : 0,
         "optionString" : "{'groups': [['+', '-', '*', '\/', '%', '**'], ['&', '|', '^', '~', '<<', '>>', '>>>'], ['==', '!=', '===', '!==', '>', '>=', '<', '<='], ['&&', '||'], ['in', 'instanceof']], 'allowSamePrecedence': true}"
       },
-      "no-mixed-requires" : {
-        "active" : 0,
-        "optionString" : "{'grouping': false, 'allowCall': false }"
-      },
       "no-mixed-spaces-and-tabs" : {
-        "active" : 0,
+        "active" : 1,
         "optionString" : ""
       },
       "no-multi-assign" : {
@@ -1542,9 +2224,6 @@
       "no-new-object" : {
         "active" : 0
       },
-      "no-new-require" : {
-        "active" : 0
-      },
       "no-new-symbol" : {
         "active" : 1
       },
@@ -1552,7 +2231,7 @@
         "active" : 0
       },
       "no-nonoctal-decimal-escape" : {
-        "active" : 0
+        "active" : 1
       },
       "no-obj-calls" : {
         "active" : 1
@@ -1567,18 +2246,9 @@
         "active" : 0,
         "optionString" : "{'props': false}"
       },
-      "no-path-concat" : {
-        "active" : 0
-      },
       "no-plusplus" : {
         "active" : 0,
         "optionString" : "{'allowForLoopAfterthoughts': false}"
-      },
-      "no-process-env" : {
-        "active" : 0
-      },
-      "no-process-exit" : {
-        "active" : 0
       },
       "no-promise-executor-return" : {
         "active" : 0
@@ -1587,7 +2257,7 @@
         "active" : 0
       },
       "no-prototype-builtins" : {
-        "active" : 0
+        "active" : 1
       },
       "no-redeclare" : {
         "active" : 1,
@@ -1605,9 +2275,6 @@
         "optionString" : "'event', 'fdescribe'"
       },
       "no-restricted-imports" : {
-        "active" : 0
-      },
-      "no-restricted-modules" : {
         "active" : 0,
         "optionString" : ""
       },
@@ -1645,17 +2312,13 @@
       },
       "no-shadow" : {
         "active" : 0,
-        "optionString" : "{'builtinGlobals': false, 'hoist': 'functions', 'allow': []}"
+        "optionString" : "{'builtinGlobals': false, 'hoist': 'functions', 'allow': [], 'ignoreOnInitialization': false}"
       },
       "no-shadow-restricted-names" : {
-        "active" : 0
+        "active" : 1
       },
       "no-sparse-arrays" : {
         "active" : 1
-      },
-      "no-sync" : {
-        "active" : 0,
-        "optionString" : "{'allowAtRootLevel': false}"
       },
       "no-tabs" : {
         "active" : 0,
@@ -1689,7 +2352,7 @@
       },
       "no-underscore-dangle" : {
         "active" : 0,
-        "optionString" : "{'allow': [], 'allowAfterThis': false, 'allowAfterSuper': false, 'enforceInMethodNames': false}"
+        "optionString" : "{'allow': [], 'allowAfterThis': false, 'allowAfterSuper': false, 'allowAfterThisConstructor': false, 'enforceInMethodNames': false, 'enforceInClassFields': false, 'allowFunctionParams': true}"
       },
       "no-unexpected-multiline" : {
         "active" : 1
@@ -1713,15 +2376,15 @@
       },
       "no-unsafe-negation" : {
         "active" : 1,
-        "optionString" : ""
+        "optionString" : "{'enforceForOrderingRelations': false}"
       },
       "no-unsafe-optional-chaining" : {
-        "active" : 0,
+        "active" : 1,
         "optionString" : "{'disallowArithmeticOperators': false}"
       },
       "no-unused-expressions" : {
         "active" : 0,
-        "optionString" : "{'allowShortCircuit': false, 'allowTernary': false, 'allowTaggedTemplates': false}"
+        "optionString" : "{'allowShortCircuit': false, 'allowTernary': false, 'allowTaggedTemplates': false, 'enforceForJSX': false}"
       },
       "no-unused-labels" : {
         "active" : 1
@@ -1735,20 +2398,20 @@
       },
       "no-use-before-define" : {
         "active" : 0,
-        "optionString" : "{'functions': true, 'classes': true, 'variables': true}"
+        "optionString" : "{'functions': true, 'classes': true, 'variables': true, 'allowNamedExports': false}"
       },
       "no-useless-backreference" : {
-        "active" : 0
+        "active" : 1
       },
       "no-useless-call" : {
         "active" : 0
       },
       "no-useless-catch" : {
-        "active" : 0
+        "active" : 1
       },
       "no-useless-computed-key" : {
         "active" : 0,
-        "optionString" : ""
+        "optionString" : "{'enforceForClassMembers': false}"
       },
       "no-useless-concat" : {
         "active" : 0
@@ -1757,7 +2420,7 @@
         "active" : 0
       },
       "no-useless-escape" : {
-        "active" : 0
+        "active" : 1
       },
       "no-useless-rename" : {
         "active" : 0,
@@ -1771,7 +2434,7 @@
       },
       "no-void" : {
         "active" : 0,
-        "optionString" : ""
+        "optionString" : "{'allowAsStatement': false}"
       },
       "no-warning-comments" : {
         "active" : 0,
@@ -1781,7 +2444,7 @@
         "active" : 0
       },
       "no-with" : {
-        "active" : 0
+        "active" : 1
       },
       "nonblock-statement-body-position" : {
         "active" : 0,
@@ -1888,10 +2551,6 @@
       "require-await" : {
         "active" : 0
       },
-      "require-jsdoc" : {
-        "active" : 0,
-        "optionString" : "{'require': {'FunctionDeclaration': true, 'MethodDefinition': false, 'ClassDeclaration': false, 'ArrowFunctionExpression': false}}"
-      },
       "require-unicode-regexp" : {
         "active" : 0
       },
@@ -1916,11 +2575,11 @@
       },
       "sort-imports" : {
         "active" : 0,
-        "optionString" : "{'ignoreCase': false, 'ignoreMemberSort': true, 'memberSyntaxSortOrder': ['none', 'all', 'multiple', 'single']}"
+        "optionString" : "{'ignoreCase': false, 'ignoreMemberSort': true, 'memberSyntaxSortOrder': ['none', 'all', 'multiple', 'single'], 'allowSeparatedGroups': false}"
       },
       "sort-keys" : {
         "active" : 0,
-        "optionString" : "'asc', {'caseSensitive': true, 'natural': false, 'minKeys': 2}"
+        "optionString" : "'asc', {'caseSensitive': true, 'natural': false, 'minKeys': 2, 'allowLineSeparatedGroups': false}"
       },
       "sort-vars" : {
         "active" : 0,
@@ -1975,11 +2634,7 @@
       },
       "use-isnan" : {
         "active" : 1,
-        "optionString" : ""
-      },
-      "valid-jsdoc" : {
-        "active" : 0,
-        "optionString" : "{'prefer': {'return': 'returns'}, 'requireReturn': true, 'requireReturnDescription': true, 'requireReturnType': true, 'requireParamDescription': true}"
+        "optionString" : "{'enforceForSwitchCase': true, 'enforceForIndexOf': false}"
       },
       "valid-typeof" : {
         "active" : 1,
@@ -2016,14 +2671,14 @@
       "autoOutputPathReplace1" : "",
       "autoOutputPathReplace2" : "",
       "autoOutputPathStyle" : 0,
-      "minifierStyle" : 1,
+      "minifierStyle" : 0,
       "outputStyle" : 0,
       "sourceMapStyle" : 0,
       "transpilerStyle" : 1
     },
     "languageDefaultsCSS" : {
-      "autoOutputAction" : 2,
-      "autoOutputPathFilenamePattern" : "*.css",
+      "autoOutputAction" : 0,
+      "autoOutputPathFilenamePattern" : "*-min.css",
       "autoOutputPathRelativePath" : "",
       "autoOutputPathReplace1" : "",
       "autoOutputPathReplace2" : "",
@@ -2075,7 +2730,7 @@
     },
     "languageDefaultsJS" : {
       "autoOutputAction" : 0,
-      "autoOutputPathFilenamePattern" : "*.js",
+      "autoOutputPathFilenamePattern" : "*-min.js",
       "autoOutputPathRelativePath" : "\/min",
       "autoOutputPathReplace1" : "",
       "autoOutputPathReplace2" : "",
@@ -2083,17 +2738,17 @@
       "bundleFormat" : 0,
       "minifierStyle" : 1,
       "sourceMapStyle" : 0,
-      "syntaxCheckerStyle" : 3,
+      "syntaxCheckerStyle" : 0,
       "transpilerStyle" : 0
     },
     "languageDefaultsJSON" : {
-      "autoOutputAction" : 0,
-      "autoOutputPathFilenamePattern" : "*.json",
+      "autoOutputAction" : 1,
+      "autoOutputPathFilenamePattern" : "*-min.json",
       "autoOutputPathRelativePath" : "",
       "autoOutputPathReplace1" : "",
       "autoOutputPathReplace2" : "",
       "autoOutputPathStyle" : 0,
-      "orderOutput" : 0,
+      "orderOutput" : 1,
       "outputStyle" : 1
     },
     "languageDefaultsKIT" : {
@@ -2104,7 +2759,7 @@
       "autoOutputPathReplace2" : "html",
       "autoOutputPathStyle" : 0,
       "htmlMinifierStyle" : 0,
-      "shouldRunCacheBuster" : 1
+      "shouldRunCacheBuster" : 0
     },
     "languageDefaultsLESS" : {
       "allowInsecureImports" : 0,
@@ -2122,7 +2777,7 @@
       "rewriteURLStyle" : 0,
       "shouldRunAutoprefixer" : 0,
       "shouldRunBless" : 0,
-      "sourceMapStyle" : 1,
+      "sourceMapStyle" : 0,
       "strictImports" : 0,
       "strictUnits" : 0
     },
@@ -2165,7 +2820,7 @@
       "autoOutputPathReplace2" : "",
       "autoOutputPathStyle" : 0,
       "optimizerType" : 1,
-      "quality" : 100,
+      "quality" : 90,
       "webpOptimizationPresetUUID" : "lpckwebp-none",
       "webpRGBQuality" : 75
     },
@@ -2178,7 +2833,7 @@
       "autoOutputPathStyle" : 0,
       "compileDebug" : 1,
       "htmlMinifierStyle" : 0,
-      "outputStyle" : 0,
+      "outputStyle" : 1,
       "shouldRunCacheBuster" : 0
     },
     "languageDefaultsSASS" : {
@@ -2188,7 +2843,7 @@
       "autoOutputPathReplace1" : "sass",
       "autoOutputPathReplace2" : "css",
       "autoOutputPathStyle" : 2,
-      "compilerType" : 1,
+      "compilerType" : 0,
       "cssoStyle" : 0,
       "decimalPrecision" : 10,
       "emitCharset" : 1,
@@ -2231,13 +2886,13 @@
       "sourceMapStyle" : 0
     },
     "languageDefaultsSVG" : {
-      "autoOutputAction" : 0,
+      "autoOutputAction" : 2,
       "autoOutputPathFilenamePattern" : "*.svg",
       "autoOutputPathRelativePath" : "",
       "autoOutputPathReplace1" : "",
       "autoOutputPathReplace2" : "",
       "autoOutputPathStyle" : 0,
-      "pluginMask" : 3758088159
+      "pluginMask" : 52780316221407
     },
     "languageDefaultsTS" : {
       "autoOutputAction" : 0,
@@ -2249,6 +2904,7 @@
       "createDeclarationFile" : 0,
       "jsxMode" : 0,
       "minifierStyle" : 0,
+      "moduleDetectionType" : 0,
       "moduleResolutionType" : 0,
       "moduleType" : 2,
       "removeComments" : 0,
@@ -2481,6 +3137,10 @@
         "active" : 0,
         "flagValue" : -1
       },
+      "keep_numbers" : {
+        "active" : 0,
+        "flagValue" : -1
+      },
       "keep_quoted_props" : {
         "active" : 0,
         "flagValue" : -1
@@ -2504,6 +3164,10 @@
       "passes" : {
         "active" : 1,
         "flagValue" : 1
+      },
+      "preserve_annotations" : {
+        "active" : 0,
+        "flagValue" : -1
       },
       "properties" : {
         "active" : 1,
@@ -2607,6 +3271,10 @@
       },
       "webkit" : {
         "active" : 0,
+        "flagValue" : -1
+      },
+      "wrap_func_args" : {
+        "active" : 1,
         "flagValue" : -1
       },
       "wrap_iife" : {

@@ -11,43 +11,30 @@
   <meta name="description" content="Thank you for coming to visit the little corner of the Internet belonging to Greg Robleto | Director of Product Design and User Experience">
   
   <!-- Borrowing from across the web -->
-  <link rel="stylesheet" href="https://use.typekit.net/rky7luz.css?ckcachebust=683390071">
-  <script src="https://kit.fontawesome.com/ca070a0a98.js?ckcachebust=683390071" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.typekit.net/rky7luz.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 
   <!-- I wrote this one -->
-  <link rel="stylesheet" type="text/css" href="css/style.css?ckcachebust=0A908EDC082BE3923C3F30EEC627D5FB">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  
 
 
   <!-- Other tablestakes -->
-  <link rel="manifest" href="../img/site.webmanifest?ckcachebust=683390071">
-  <link rel="icon" href="..img/favicon.ico?ckcachebust=683390071">
-  <link rel="apple-touch-icon" href="../img/apple-favicon.png?ckcachebust=683390071">
-  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png?ckcachebust=683390071">
-  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png?ckcachebust=683390071">
-  <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-ipad.png?ckcachebust=683390071" />
-  <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-iphone4.png?ckcachebust=683390071" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png?ckcachebust=683390071">
+  <link rel="manifest" href="../img/site.webmanifest">
+  <link rel="icon" href="..img/favicon.ico">
+  <link rel="apple-touch-icon" href="../img/apple-favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-ipad.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-iphone4.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
 
 </head>
 <body id="about">
-  <section class="container">
-      
-    <nav>
-      <header class="center">
-        <img src="/img/gr-logo.png" alt="robleto" />
-      </header>
+  <div class="progress"></div>
 
-      <div class="left nav">
-        <a href="index.html" class="portfolio"><i class="fal fa-palette"></i> Portfolio</a>
-        <a href="thoughts.html" class="thoughts"><i class="fal fa-pencil"></i> Thoughts</a>
-      </div>
-      <div class="right nav">
-        <a href="experiments.html" class="experiments"><i class="fal fa-flask-potion"></i> Experiments</a>
-        <a href="about.html" class="about"><i class="fal fa-address-card"></i> About</a>
-      </div>
-    </nav>
-
-    <main>
 
 
     <blockquote>
@@ -228,24 +215,9 @@
 
     </section>
 
-  </main>
+
   
   <footer>
-    <blockquote> <span class="title">Thanks for dropping by. </span></blockquote>
-    <button data-tf-popup="cN9h6m" data-tf-hide-headers data-tf-size="70" data-tf-iframe-props="title=Robleto.com contact">Please reach out, say hi</button><script src="//embed.typeform.com/next/embed.js?ckcachebust=683390071"></script>
-      <!--<p><a href="https://nuzzel.com/robleto">Or join the mailing list</a></p>-->
-
-      <ul class="social-list">
-          <li><a href="https://www.linkedin.com/in/robleto/" class="effect"><i class="fab fa-linkedin"></i></a></li>
-          <li><a href="https://medium.com/@robleto" class="effect"><i class="fab fa-medium"></i></a></li>
-          <li><a href="https://codepen.io/robleto/pens/public/" class="effect"><i class="fab fa-codepen"></i></a></li>
-          <li><a href="https://dribbble.com/robleto" class="effect"><i class="fab fa-dribbble"></i></a></li>
-          <li><a href="https://github.com/robleto" class="effect"><i class="fab fa-github"></i></a></li>
-          <li><a href="https://twitter.com/robleto" class="effect"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/grobleto" class="effect"><i class="fab fa-facebook"></i></a></li>
-          <li><a href="https://www.instagram.com/grobleto/" class="effect"><i class="fab fa-instagram"></i></a></li>
-          <li><a href="https://www.pinterest.com/grobleto/" class="effect"><i class="fab fa-pinterest-p"></i></a></li>
-      </ul>
 
        <p class="copy-text">
          Designed and coded by hand by Greg Robleto using <a href="www.figma.com">Figma</a>, <a href="https://code.visualstudio.com
@@ -255,7 +227,43 @@
 ">PlaceIt</a> or <a href="www.unsplash.com">Unsplash</a><br />
         Copyright &copy; 2022 to Greg Robleto. All Right Reserved.</p>
  </footer>
- </section>
+
+
+  <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    window.addEventListener('scroll', () => {
+    document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+  }, false);
+    console.log(scroll);
+
+    //Initialize AOS
+    AOS.init();
+
+      const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('animating');
+    } else {
+      entry.target.classList.remove('animating');
+    }
+  })
+}, {
+  root: document.querySelector('#root'),
+  rootMargin: '-50% 0px -50% 0px'
+})
+ 
+const animationItems = document.querySelectorAll('.viewport-checker');
+  animationItems.forEach(item => {
+    observer.observe(item)         
+})
+
+
+
+  </script>
+
 
 </body>
 </html>
