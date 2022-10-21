@@ -15,6 +15,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+  <!-- Counter Up  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+     
+
 
   <!-- I wrote this one -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -163,10 +168,35 @@
 
 
   <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+
+<script id="rendered-js">
+const counterUp = window.counterUp.default;
+
+const callback = entries => {
+  entries.forEach(entry => {
+    const el = entry.target;
+    if (entry.isIntersecting && !el.classList.contains('is-visible')) {
+      counterUp(el, {
+        duration: 2000,
+        delay: 16 });
+
+      el.classList.add('is-visible');
+    }
+  });
+};
+
+const IO = new IntersectionObserver(callback, { threshold: 1 });
+
+const els = document.querySelectorAll('.counter');
+els.forEach(el => IO.observe(el));
+
+
+    </script>
 
   <script>
+
     window.addEventListener('scroll', () => {
     document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
   }, false);
