@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="home">
 
 <head>
   <meta charset="utf-8">
@@ -19,7 +19,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
      
-
 
   <!-- I wrote this one -->
   <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -40,24 +39,25 @@
 <body id="home">
   <div class="progress"></div>
 
+ 
 
-
-    <section id="overview" class="panel overview-section">
+    <section id="overview" class="panel section home-overview">
+     
       
       <div class="nav-container">
           <nav>    
             <header class="center">
-              <img src="/img/gr-logo.png" alt="robleto" />
+              <a href="../index.html"><img src="/img/gr-logo.png" alt="robleto" /></a>
             </header>
       
-            <!-- <div class="left nav">
-              <a href="index.html" class="portfolio"><i class="fal fa-palette"></i> Portfolio</a>
-              <a href="thoughts.html" class="thoughts"><i class="fal fa-pencil"></i> Thoughts</a>
+            <div class="left nav">
+              <a href="../portfolio.html" class="portfolio"><i class="fal fa-palette"></i> Portfolio</a>
+              <a href="../thoughts.html" class="thoughts"><i class="fal fa-pencil"></i> Thoughts</a>
             </div>
             <div class="right nav">
-              <a href="experiments.html" class="experiments"><i class="fal fa-flask-potion"></i> Experiments</a>
-              <a href="about.html" class="about"><i class="fal fa-address-card"></i> About</a>
-            </div> -->
+              <a href="../experiments.html" class="experiments"><i class="fal fa-flask-potion"></i> Experiments</a>
+              <a href="../about.html" class="about"><i class="fal fa-address-card"></i> About</a>
+            </div>
           </nav>
       </div>
       
@@ -69,7 +69,8 @@
                     <ul class="dynamic-txts">
                     <li><span>Creative Director</span></li>
                     <li><span>Product Designer</span></li>
-                    <li><span>Front-End Developer</span></li>
+                    <li><span>Front-End Dev</span></li>
+                    <li><span>Tech Manager</span></li>
                     <li><span>UX Expert</span></li>
                     <li><span>Design Leader</span></li>
                     <li><span>CSS Artist</span></li>
@@ -79,20 +80,21 @@
                 <!-- <span class="title2">Director of Product Design and User Experience</span>  -->
                 <span class="location">working remotely from 
                     <img class="maryland" src="/img/rockvillemd.svg" alt="Rockville, Maryland" />Rockville, Maryland </span>
+                
+                    <ul class="social-list social-list-top viewport-checker">
+                        <li class="animate__animated animate__fadeIn"><a href="https://www.linkedin.com/in/robleto/" class="effect"><i class="fab fa-linkedin"></i></a></li>
+                        <li class="animate__animated animate__fadeIn"><a href="https://medium.com/@robleto" class="effect"><i class="fab fa-medium"></i></a></li>
+                        <li class="animate__animated animate__fadeIn"><a href="https://codepen.io/robleto/pens/public/" class="effect"><i class="fab fa-codepen"></i></a></li>
+                        <li class="animate__animated animate__fadeIn"><a href="https://dribbble.com/robleto" class="effect"><i class="fab fa-dribbble"></i></a></li>
+                        <li class="animate__animated animate__fadeIn"><a href="https://github.com/robleto" class="effect"><i class="fab fa-github"></i></a></li>
+                        <li class="animate__animated animate__fadeIn"><a href="https://twitter.com/robleto" class="effect"><i class="fab fa-twitter"></i></a></li>
+                        <li class="animate__animated animate__fadeIn"><a href="https://www.facebook.com/grobleto" class="effect"><i class="fab fa-facebook"></i></a></li>
+                        <li class="animate__animated animate__fadeIn"><a href="https://www.instagram.com/grobleto/" class="effect"><i class="fab fa-instagram"></i></a></li>
+                        <li class="animate__animated animate__fadeIn"><a href="https://www.pinterest.com/grobleto/" class="effect"><i class="fab fa-pinterest-p"></i></a></li>
+                    </ul>
                 </blockquote>
             
                 
-                      <ul class="social-list social-list-top viewport-checker">
-                          <li class="animate__animated animate__fadeIn"><a href="https://www.linkedin.com/in/robleto/" class="effect"><i class="fab fa-linkedin"></i></a></li>
-                          <li class="animate__animated animate__fadeIn"><a href="https://medium.com/@robleto" class="effect"><i class="fab fa-medium"></i></a></li>
-                          <li class="animate__animated animate__fadeIn"><a href="https://codepen.io/robleto/pens/public/" class="effect"><i class="fab fa-codepen"></i></a></li>
-                          <li class="animate__animated animate__fadeIn"><a href="https://dribbble.com/robleto" class="effect"><i class="fab fa-dribbble"></i></a></li>
-                          <li class="animate__animated animate__fadeIn"><a href="https://github.com/robleto" class="effect"><i class="fab fa-github"></i></a></li>
-                          <li class="animate__animated animate__fadeIn"><a href="https://twitter.com/robleto" class="effect"><i class="fab fa-twitter"></i></a></li>
-                          <li class="animate__animated animate__fadeIn"><a href="https://www.facebook.com/grobleto" class="effect"><i class="fab fa-facebook"></i></a></li>
-                          <li class="animate__animated animate__fadeIn"><a href="https://www.instagram.com/grobleto/" class="effect"><i class="fab fa-instagram"></i></a></li>
-                          <li class="animate__animated animate__fadeIn"><a href="https://www.pinterest.com/grobleto/" class="effect"><i class="fab fa-pinterest-p"></i></a></li>
-                      </ul>
             
                 
             </div>
@@ -107,7 +109,7 @@
     <!--<blockquote>
       Design leader with experience building out UX and product design teams, establishing enterprise branding and design systems, and elevating design as a core competency. 
     </blockquote>-->
-    <section id="portfolio" class="panel section portfolio-section">
+    <section id="portfolio" class="panel section home-portfolio">
       
               <h2>Portfolio Highlights</h2>
               <div class="elements portfolio-elements viewport-checker">
@@ -138,7 +140,7 @@
                   </a>
               </figure>
       
-              <figure class="animate__animated animate__fadeIn">
+              <figure class="animate__animated animate__fadeIn desktop-only">
                 <a href="//robleto.medium.com/establishing-a-new-design-f15a4d963904">
                   <h4>Concept, Creative Direction, Strategy &amp; Architecture</h4>
                      <div class="figure-image">
@@ -176,12 +178,11 @@
               
       
     </section>
-    <section id="aboutme" class="panel section about-section">
+    <section id="aboutme" class="panel section home-about">
       
               <h2>Nice to Meet You!</h2>
-              <div class="elements viewport-checker">
       
-              <img class="animate__animated animate__fadeIn" src="img/greg-robleto.jpg" style="border-radius: 10px;" />
+              <img class="about_img animate__animated animate__fadeIn" src="img/greg-robleto.jpg" style="border-radius: 10px;" />
       
               <div class="about_content">
       
@@ -222,7 +223,6 @@
                       <li>Microsoft Office</li>
                       <li>Google Drive</li>
                   </ul>
-              </div>
       
               <!-- <div class="fullwidth">
                 <!-- <blockquote>
@@ -236,106 +236,97 @@
       
     </section>
     
-    <section id="skills" class="panel section skills-section">
+    <section id="skills" class="panel section home-skills">
       
               <h2>How I Can Help You?</h2>
               <div class="elements skills-elements viewport-checker">
       
+                <figure class="vertical-card animate__animated animate__fadeIn">
+                    <img src="/img/compass-duotone.svg" alt="Creative Direction" />
+                    <figcaption>
+                      <h3>Creative Direction</h3>
+                      <p>Providing high-level creative decision-making and leadership for the business.</p>
+                    </figcaption>
+                </figure>
       
-              <figure class="skill-card animate__animated animate__fadeIn">
-                  <img src="/img/compass-duotone.svg" alt="Creative Direction" />
-                  <figcaption>
-                    <h3>Creative Direction</h3>
-                    <!--<p>Making high-level creative decisions, overseeing the creative department and all design and branding assets.</p>-->
-                  </figcaption>
-              </figure>
+                <figure class="vertical-card animate__animated animate__fadeIn">
+                      <img src="/img/compass-drafting-duotone.svg" alt="User Experience / User Interface Design" />
+                    <figcaption>
+                      <h3>UX / UI Design</h3>
+                    <p>Crafting the experience and interface that delights the user while serving the business.</p>
+                    </figcaption>
+                </figure>
       
+                <figure class="vertical-card animate__animated animate__fadeIn">
+                      <img src="/img/swatchbook-duotone.svg" alt="Design Systems" />
+                    <figcaption>
+                      <h3>Design Systems</h3>
+                    <p>Organizing all visual assets for clarity, efficiency and scalability.</p>
+                    </figcaption>
+                </figure>
       
-              <figure class="skill-card animate__animated animate__fadeIn">
-                    <img src="/img/compass-drafting-duotone.svg" alt="User Experience / User Interface Design" />
-                  <figcaption>
-                    <h3>UX / UI Design</h3>
-                   <!--<p>Crafting all aspects and stages of a user's interaction and engagement with the company.</p>-->
-                  </figcaption>
-              </figure>
+                <figure class="vertical-card animate__animated animate__fadeIn">
+                      <img src="/img/telescope-duotone.svg" alt="UX Research" />
+                    <figcaption>
+                      <h3>User Research</h3>
+                    <p>Uncovering the user needs and testing alignment with the goals of the business.</p>
+                    </figcaption>
+                </figure>
       
+                <figure class="vertical-card animate__animated animate__fadeIn animate__delay-3s">
+                      <img src="/img/box-open-duotone.svg" alt="Product Strategy" />
+                    <figcaption>
+                      <h3>Product Strategy</h3>
+                    <p>Providing direction for creating the right product that will encourage habitual adoption.</p>
+                    </figcaption>
+                </figure>
       
-              <figure class="skill-card animate__animated animate__fadeIn">
-                    <img src="/img/swatchbook-duotone.svg" alt="Design Systems" />
-                  <figcaption>
-                    <h3>Design Systems</h3>
-                   <!--<p>A case study in finding an entirely new style and installing a custom design pattern library in the process.</p>-->
-                  </figcaption>
-              </figure>
+                <figure class="vertical-card animate__animated animate__fadeIn animate__delay-4s animate__delay-2s">
+                      <img src="/img/flag-duotone.svg" alt="Brand Strategy" />
+                    <figcaption>
+                      <h3>Brand Strategy</h3>
+                    <p>Cultivating the identity of the business to increase awareness and positivity.</p>
+                    </figcaption>
+                </figure>
       
-      
-              <figure class="skill-card animate__animated animate__fadeIn">
-                    <img src="/img/telescope-duotone.svg" alt="UX Research" />
-                  <figcaption>
-                    <h3>User Research</h3>
-                   <!--<p>A case study in finding an entirely new style and installing a custom design pattern library in the process.</p>-->
-                  </figcaption>
-              </figure>
-      
-      
-              <figure class="skill-card animate__animated animate__fadeIn animate__delay-3s">
-                    <img src="/img/box-open-duotone.svg" alt="Product Strategy" />
-                  <figcaption>
-                    <h3>Product Strategy</h3>
-                   <!--<p>A case study in finding an entirely new style and installing a custom design pattern library in the process.</p>-->
-                  </figcaption>
-              </figure>
-      
-      
-              <figure class="skill-card animate__animated animate__fadeIn animate__delay-4s animate__delay-2s">
-                    <img src="/img/flag-duotone.svg" alt="Brand Strategy" />
-                  <figcaption>
-                    <h3>Brand Strategy</h3>
-                   <!--<p>A case study in finding an entirely new style and installing a custom design pattern library in the process.</p>-->
-                  </figcaption>
-              </figure>
-      
-              
-              <div class="stat-card">
-                    <img src="/img/clock-duotone.svg" alt="UX Research" />
-                  <figcaption>
-                    <h3>Hours Designing</h3>
-                    <h2 class="counter">36,960</h2>
-                   </figcaption>
               </div>
-              
-             
-              <div class="stat-card">
-                    <img src="/img/rocket-launch-duotone.svg" alt="UX Research" />
-                  <figcaption>
-                    <h3>Projects Shipped</h3>
-                    <h2 class="counter">148</h2>
-                   </figcaption>
-              </div>
-              
-              
-              
-              <div class="stat-card desktop-only">
-                    <img src="/img/hand-holding-heart-duotone.svg" alt="UX Research" />
-                  <figcaption>
-                    <h3>Designers Trained </h3>
-                    <h2 class="counter">94</h2>
-                   </figcaption>
-              </div>
-              
       
+              <div class="elements skills-stat-elements viewport-checker">
+      
+                <div class="vertical-card stat-card">
+                      <img src="/img/clock-duotone.svg" alt="UX Research" />
+                    <figcaption>
+                      <h3>Hours Designing</h3>
+                      <h2 class="counter">36,960</h2>
+                    </figcaption>
+                </div>
+                  
+                <div class="vertical-card stat-card">
+                      <img src="/img/rocket-launch-duotone.svg" alt="UX Research" />
+                    <figcaption>
+                      <h3>Projects Shipped</h3>
+                      <h2 class="counter">148</h2>
+                    </figcaption>
+                </div>
+              
+                <div class="vertical-card stat-card desktop-only">
+                      <img src="/img/hand-holding-heart-duotone.svg" alt="UX Research" />
+                    <figcaption>
+                      <h3>Designers Trained </h3>
+                      <h2 class="counter">94</h2>
+                    </figcaption>
+                </div>
+                
               </div>
               
       
     </section>
-    <section id="contact" class="panel section contact-section">
+    <section id="contact" class="panel section home-contact">
       
               <h2>Get In Touch</h2>
-              <div class="elements viewport-checker">
       
               <div class="contact-info">
-      
-                    <div class="contact-card animate__animated animate__fadeIn">
+                  <div class="vertical-card contact-card animate__animated animate__fadeIn">
                       <img src="/img/map-location-duotone.svg" alt="Creative Direction" />
                       <figcaption>
                       <h3>Location</h3>
@@ -343,7 +334,7 @@
                       </figcaption>
                   </div>
       
-                  <div class="contact-card animate__animated animate__fadeIn">
+                  <div class="vertical-card contact-card animate__animated animate__fadeIn">
                       <img src="/img/phone-duotone.svg" alt="Creative Direction" />
                       <figcaption>
                       <h3>Phone</h3>
@@ -351,26 +342,23 @@
                       </figcaption>
                   </div>
       
-                  <div class="contact-card animate__animated animate__fadeIn">
+                  <div class="vertical-card contact-card animate__animated animate__fadeIn">
                       <img src="/img/envelope-open-text-duotone.svg" alt="Creative Direction" />
                       <figcaption>
                       <h3>Email</h3>
                       <p>hello@robleto.com</p>
                       </figcaption>
                   </div>
-      
-      
               </div>
       
-              <div class="contact_content">
-      
+              <div class="contact-content">
                   <p style="margin-top: 0px;">I'm always happy to meet new people and talk shop over a cup of coffee. </p>
       
                   <p>Subjects I can talk on with little to no notice:  
-                   <ul class="tag-list">
+                   <ul class="tag_list">
                       <li>Design Principles</li>
                       <li>CSS art techniques</li>
-                      <li>Management and/vs Leadership</li>
+                      <li>Management vs Leadership</li>
                       <li>Animal Crossing</li>
                       <li>Design Thinking</li>
                       <li>Work-life as a parent</li>
@@ -379,22 +367,16 @@
                       <li>Any Marvel movie</li>
                       <li>Anything Star Wars</li>
                       <li>Board games</li>
-                      <li>Building out scavenger hunts</li>
                       <li>Broadway musicals</li>
                       <li>Any Shakespeare play</li>
                       <li>The fundamentals balance between Business, Tech, and Design</li>
-                 
                   </ul>
                   
                   <br /><br />
-              <div class="fullwidth">
-                <a href="https://calendly.com/robleto" target="_blank" class="sub-action" style="margin: 0 auto; text-align: center; display: block; max-width: 300px;">Let's Catch Up</a>
-              </div> 
-      
-      
+                  <div class="fullwidth">
+                  <a href="https://calendly.com/robleto" target="_blank" class="sub-action" style="margin: 0 auto; text-align: center; display: block; max-width: 300px;">Let's Catch Up</a>
+                  </div> 
               </div>
-      
-      </div>
       
       <div class="coffee desktop-only"><img src="img/parallax-coffee.png" class="animate__animated animate__bounceInLeft  animate__faster"></div>
               
@@ -416,7 +398,7 @@
           Copyright &copy; 2022 to Greg Robleto. All Right Reserved.</p>
    </footer>
   
-  
+    <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
