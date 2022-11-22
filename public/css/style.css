@@ -9,50 +9,39 @@
 Mixins
 ----------------------------------------*/
 li.animate__animated {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .animating li.animate__animated {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
+  animation-play-state: running;
   /* don't forget to set a duration! */
 }
 .animating li.animate__animated:nth-child(1) {
-  -webkit-animation-delay: 0.75s;
-          animation-delay: 0.75s;
+  animation-delay: 0.75s;
 }
 .animating li.animate__animated:nth-child(2) {
-  -webkit-animation-delay: 1.25s;
-          animation-delay: 1.25s;
+  animation-delay: 1.25s;
 }
 .animating li.animate__animated:nth-child(3) {
-  -webkit-animation-delay: 1.75s;
-          animation-delay: 1.75s;
+  animation-delay: 1.75s;
 }
 .animating li.animate__animated:nth-child(4) {
-  -webkit-animation-delay: 2.25s;
-          animation-delay: 2.25s;
+  animation-delay: 2.25s;
 }
 .animating li.animate__animated:nth-child(5) {
-  -webkit-animation-delay: 2.75s;
-          animation-delay: 2.75s;
+  animation-delay: 2.75s;
 }
 .animating li.animate__animated:nth-child(6) {
-  -webkit-animation-delay: 3.25s;
-          animation-delay: 3.25s;
+  animation-delay: 3.25s;
 }
 .animating li.animate__animated:nth-child(7) {
-  -webkit-animation-delay: 3.75s;
-          animation-delay: 3.75s;
+  animation-delay: 3.75s;
 }
 .animating li.animate__animated:nth-child(8) {
-  -webkit-animation-delay: 4.25s;
-          animation-delay: 4.25s;
+  animation-delay: 4.25s;
 }
 .animating li.animate__animated:nth-child(9) {
-  -webkit-animation-delay: 4.75s;
-          animation-delay: 4.75s;
+  animation-delay: 4.75s;
 }
 
 /*----------------------------------------
@@ -338,12 +327,9 @@ footer .copy-text a:hover {
 
 html#home {
   min-height: 500vh;
-  -ms-scroll-snap-type: mandatory;
-      scroll-snap-type: mandatory;
-  -ms-scroll-snap-points-y: repeat(100vh);
-      scroll-snap-points-y: repeat(100vh);
-  -ms-scroll-snap-type: y mandatory;
-      scroll-snap-type: y mandatory;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory;
 }
 
 body#home {
@@ -403,6 +389,7 @@ body#home .overview-elements {
   justify-items: left;
   align-items: top;
   min-width: 20vmin;
+  position: relative;
 }
 body#home h1.greg {
   line-height: 1.3;
@@ -580,8 +567,7 @@ body#home .contact-section .coffee {
   }
 }
 body#home .contact-section .coffee img {
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 body#home .macbook {
   grid-column: 4/-1;
@@ -616,8 +602,7 @@ body#home .macbook {
   }
 }
 body#home .macbook img {
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 body#home .arms {
   grid-column: 3/-1;
@@ -647,8 +632,7 @@ body#home .arms {
   }
 }
 body#home .arms img {
-  -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 body#home .coffee {
   grid-column: 1/4;
@@ -666,8 +650,7 @@ body#home .coffee {
   }
 }
 body#home .coffee img {
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 body#home .phone {
   grid-column: 2/5;
@@ -700,8 +683,7 @@ body#home .phone {
   }
 }
 body#home .phone img {
-  -webkit-animation-delay: 1.5s;
-          animation-delay: 1.5s;
+  animation-delay: 1.5s;
 }
 body#home .pen {
   grid-column: 1/4;
@@ -727,8 +709,7 @@ body#home .pen {
   }
 }
 body#home .pen img {
-  -webkit-animation-delay: 1.25s;
-          animation-delay: 1.25s;
+  animation-delay: 1.25s;
 }
 body#home .notebook {
   grid-column: 1/6;
@@ -747,8 +728,7 @@ body#home .notebook {
   }
 }
 body#home .notebook img {
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
 }
 
 /*----------------------------------------
@@ -780,14 +760,11 @@ body#portfolio main .portfolio-panel img {
   grid-area: port-image;
   border-radius: 10px;
   aspect-ratio: 1;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -webkit-animation: scale-in both linear;
-          animation: scale-in both linear;
+  object-fit: cover;
+  animation: scale-in both linear;
   view-timeline: --in;
   animation-timeline: --in;
-  -webkit-animation-delay: enter 0%;
-          animation-delay: enter 0%;
+  animation-delay: enter 0%;
   animation-end-delay: cover 50%;
   scroll-snap-align: center;
 }
@@ -870,8 +847,7 @@ body#about main .about-panel img {
   grid-area: about-image;
   border-radius: 10px;
   aspect-ratio: 1;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1049,30 +1025,24 @@ figure figcaption p {
 }
 
 figure.animate__animated {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .animating figure.animate__animated {
-  -webkit-animation-play-state: running;
-          animation-play-state: running;
+  animation-play-state: running;
   /* don't forget to set a duration! */
 }
 .animating figure.animate__animated:nth-child(1) {
-  -webkit-animation-delay: 0.75s;
-          animation-delay: 0.75s;
+  animation-delay: 0.75s;
 }
 .animating figure.animate__animated:nth-child(2) {
-  -webkit-animation-delay: 1.25s;
-          animation-delay: 1.25s;
+  animation-delay: 1.25s;
 }
 .animating figure.animate__animated:nth-child(3) {
-  -webkit-animation-delay: 1.75s;
-          animation-delay: 1.75s;
+  animation-delay: 1.75s;
 }
 .animating figure.animate__animated:nth-child(4) {
-  -webkit-animation-delay: 2.25s;
-          animation-delay: 2.25s;
+  animation-delay: 2.25s;
 }
 
 /*----------------------------------------
@@ -1102,6 +1072,93 @@ ul.social-list a:hover, ul.social-list a:active {
   color: #959595;
 }
 
+.static-txt {
+  font-family: poppins, sans-serif;
+  margin-bottom: -5px;
+  padding-left: 5px;
+  font-size: 80%;
+  opacity: 0.6;
+  display: block;
+  position: relative;
+}
+
+.text-typed {
+  display: inline-block;
+}
+
+.text-typed .dynamic-txts {
+  height: 6rem;
+  margin-left: -10px;
+  color: #484848;
+  overflow: hidden;
+  background: #f0eeec;
+}
+@media ((min-height: 476px) and (min-width: 696px)) {
+  .text-typed .dynamic-txts {
+    height: 8.4rem;
+  }
+}
+@media (min-width: 696px) {
+  .text-typed .dynamic-txts {
+    height: 8.4rem;
+  }
+}
+
+.dynamic-txts li {
+  list-style: none;
+  font-family: poppins, sans-serif;
+  color: #484848;
+  font-weight: 600;
+  font-size: 7.5vmin;
+  white-space: nowrap;
+  line-height: 6.4rem;
+  position: relative;
+  top: 0;
+  animation: slide-mobile 24s steps(8) infinite;
+  padding-inline-start: 10px;
+  text-align: left;
+}
+@media (min-width: 696px) {
+  .dynamic-txts li {
+    font-size: 7.5vmin;
+    line-height: 8.4rem;
+    animation: slide 24s steps(8) infinite;
+  }
+}
+
+@keyframes slide {
+  100% {
+    top: -672px;
+  }
+}
+@keyframes slide-mobile {
+  100% {
+    top: -512px;
+  }
+}
+.dynamic-txts li span {
+  text-align: left;
+}
+
+.dynamic-txts li span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f0eeec;
+  border-left: 0.25rem solid orange;
+  animation: typing 3s steps(40) infinite;
+}
+
+@keyframes typing {
+  40%, 60% {
+    left: calc(100% + 30px);
+  }
+  100% {
+    left: 0;
+  }
+}
 /*----------------------------------------
 Tag List
 ----------------------------------------*/
@@ -1137,4 +1194,6 @@ Buttons
   cursor: pointer;
   transition: all 300ms ease-in;
   transform: scale(1.1);
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

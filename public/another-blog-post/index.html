@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" id="">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Borrowing from across the web -->
+  <link rel="stylesheet" href="https://use.typekit.net/rky7luz.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Counter Up  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/counterup2@2.0.2/dist/index.js">	</script>
+     
+
+
+
+
+   <!-- Other tablestakes -->
+  <link rel="icon" href="/img/favicon/favicon.ico">
+  <link rel="apple-touch-icon" href="/img/favicon/apple-favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/img/favicon/apple-touch-icon-ipad.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="/img/favicon/apple-touch-icon-iphone4.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+
+
+   <!-- I wrote this one -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <title>Blog Post 2 | Greg Robleto – Product / Design / Technology </title>
+  <meta name="description" content="">
+
+</head>
+<body id="">
+
+  
+<article><p>Now, I have created a second blog post.</p>
+</article>
+
+<aside>
+  
+    <p>LinkedIn | linkedin</p> 
+    <p>https://www.linkedin.com/in/robleto/</p> 
+  
+    <p>Medium | medium</p> 
+    <p>https://medium.com/@robleto</p> 
+  
+    <p>CodePen | codepen</p> 
+    <p>https://codepen.io/robleto/pens/public/</p> 
+  
+    <p>Dribbble | dribbble</p> 
+    <p>https://dribbble.com/robleto</p> 
+  
+    <p>GitHub | github</p> 
+    <p>https://github.com/robleto</p> 
+  
+    <p>Twitter | twitter</p> 
+    <p>https://twitter.com/robleto</p> 
+  
+    <p>Facebook | facebook</p> 
+    <p>https://www.facebook.com/grobleto</p> 
+  
+    <p>Instagram | instagram</p> 
+    <p>https://www.instagram.com/grobleto/</p> 
+  
+    <p>Pinterest | pinterest</p> 
+    <p>https://www.pinterest.com/grobleto/</p> 
+  
+</aside>
+
+
+<ul class="social-list">
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://www.linkedin.com/in/robleto/" class="effect"><i class="fab fa-linkedin"></i></a></li>
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://medium.com/@robleto" class="effect"><i class="fab fa-medium"></i></a></li>
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://codepen.io/robleto/pens/public/" class="effect"><i class="fab fa-codepen"></i></a></li>
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://dribbble.com/robleto" class="effect"><i class="fab fa-dribbble"></i></a></li>
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://github.com/robleto" class="effect"><i class="fab fa-github"></i></a></li>
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://twitter.com/robleto" class="effect"><i class="fab fa-twitter"></i></a></li>
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://www.facebook.com/grobleto" class="effect"><i class="fab fa-facebook"></i></a></li>
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://www.instagram.com/grobleto/" class="effect"><i class="fab fa-instagram"></i></a></li>
+  
+        <li class="animate__animated animate__fadeIn"><a href="https://www.pinterest.com/grobleto/" class="effect"><i class="fab fa-pinterest"></i></a></li>
+  
+</ul>
+
+
+  
+  <!-- Scripts -->  
+  <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+
+<script id="rendered-js">
+const counterUp = window.counterUp.default;
+
+const callback = entries => {
+  entries.forEach(entry => {
+    const el = entry.target;
+    if (entry.isIntersecting && !el.classList.contains('is-visible')) {
+      counterUp(el, {
+        duration: 2000,
+        delay: 16 });
+
+      el.classList.add('is-visible');
+    }
+  });
+};
+
+const IO = new IntersectionObserver(callback, { threshold: 1 });
+
+const els = document.querySelectorAll('.counter');
+els.forEach(el => IO.observe(el));
+
+
+    </script>
+
+  <script>
+
+    window.addEventListener('scroll', () => {
+    document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+  }, false);
+    console.log(scroll);
+
+    //Initialize AOS
+    AOS.init();
+
+      const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('animating');
+    } else {
+      entry.target.classList.remove('animating');
+    }
+  })
+}, {
+  root: document.querySelector('#root'),
+  rootMargin: '-50% 0px -50% 0px'
+})
+ 
+const animationItems = document.querySelectorAll('.viewport-checker');
+  animationItems.forEach(item => {
+    observer.observe(item)         
+})
+
+
+
+  </script>
+</body>
+</html>

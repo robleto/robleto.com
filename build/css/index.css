@@ -1,0 +1,32 @@
+html#home {
+  min-height: 500vh;
+  -ms-scroll-snap-type: mandatory;
+      scroll-snap-type: mandatory;
+  -ms-scroll-snap-points-y: repeat(100vh);
+      scroll-snap-points-y: repeat(100vh);
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
+}
+
+body#home section {
+  height: 100vh;
+  max-width: inherit;
+  width: 100vw;
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: [first] repeat(12, 1fr) [end];
+  grid-template-rows: [first] repeat(12, 1fr) [end];
+  grid-auto-rows: minmax(20px, auto);
+  grid-gap: 1rem;
+  overflow: hidden;
+}
+body#home .overview-elements {
+  grid-column: 3/12;
+  grid-row: 2/5;
+}
+@media (min-width: 826px) {
+  body#home .overview-elements {
+    grid-column: 2/8;
+    grid-row: 3/5;
+  }
+}/*# sourceMappingURL=index.css.map */

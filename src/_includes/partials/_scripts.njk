@@ -1,0 +1,62 @@
+
+  <!-- Scripts -->  
+  <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+
+<script id="rendered-js">
+const counterUp = window.counterUp.default;
+
+const callback = entries => {
+  entries.forEach(entry => {
+    const el = entry.target;
+    if (entry.isIntersecting && !el.classList.contains('is-visible')) {
+      counterUp(el, {
+        duration: 2000,
+        delay: 16 });
+
+      el.classList.add('is-visible');
+    }
+  });
+};
+
+const IO = new IntersectionObserver(callback, { threshold: 1 });
+
+const els = document.querySelectorAll('.counter');
+els.forEach(el => IO.observe(el));
+
+
+    </script>
+
+  <script>
+
+    window.addEventListener('scroll', () => {
+    document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
+  }, false);
+    console.log(scroll);
+
+    //Initialize AOS
+    AOS.init();
+
+      const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('animating');
+    } else {
+      entry.target.classList.remove('animating');
+    }
+  })
+}, {
+  root: document.querySelector('#root'),
+  rootMargin: '-50% 0px -50% 0px'
+})
+ 
+const animationItems = document.querySelectorAll('.viewport-checker');
+  animationItems.forEach(item => {
+    observer.observe(item)         
+})
+
+
+
+  </script>

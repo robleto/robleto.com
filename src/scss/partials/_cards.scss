@@ -1,0 +1,41 @@
+    .vertical-card {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      grid-gap: 2rem;
+      justify-content: center;
+      align-content: center;
+        &:hover {
+          h3 {
+          text-decoration: none;
+          color: inherit;
+          }
+        }
+       @media (min-width: 826px) {
+        grid-template-columns: 50px 1fr;
+        }
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+          padding: 3px;
+          border: solid 3px #ccc;
+          border-radius: 90%;
+        }
+        figcaption {
+          display: flex;
+          flex-direction: column;
+          justify-self: start;
+          align-self: center;
+          h3 {
+            margin: 0;
+            text-align: left;
+          }
+          p {
+            margin: 0;
+            text-align: left;
+            font-size: 80%;
+            padding-left: 2px;
+          }
+        }
+      }
