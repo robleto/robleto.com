@@ -91,12 +91,16 @@ h1 {
   text-align: center;
 }
 h2.sub-title {
-  @include fluid(2.5rem, 1.15);
+  @include fluid(1.75rem, 1.15);
   font-weight: 400;
   color: #888;
   text-align: center;
   margin: -5vmin 0 3vmin 0;
   max-inline-size: revert;
+  @media (min-width: 865px) {
+    @include fluid(2.5rem, 1.15);
+    margin: -2vmin 0 3vmin 0;
+  }
 }
 main {
   max-width: 100%;

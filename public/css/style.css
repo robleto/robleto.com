@@ -114,12 +114,18 @@ small {
 
 h1 {
   line-height: 1.3;
-  font-size: clamp(15rem, 20rem + 0.25vw, 60rem);
+  font-size: clamp(6rem, 8rem + 0.25vw, 24rem);
+}
+@media (min-width: 865px) {
+  h1 {
+    line-height: 1.3;
+    font-size: clamp(15rem, 20rem + 0.25vw, 60rem);
+  }
 }
 
 h2 {
   line-height: 1.3;
-  font-size: clamp(6rem, 8rem + 0.25vw, 24rem);
+  font-size: clamp(3.75rem, 5rem + 0.25vw, 15rem);
 }
 
 h3 {
@@ -199,12 +205,19 @@ h1 {
 
 h2.sub-title {
   line-height: 1.3;
-  font-size: clamp(1.875rem, 2.5rem + 0.25vw, 7.5rem);
+  font-size: clamp(1.3125rem, 1.75rem + 0.25vw, 5.25rem);
   font-weight: 400;
   color: #888;
   text-align: center;
   margin: -5vmin 0 3vmin 0;
   max-inline-size: revert;
+}
+@media (min-width: 865px) {
+  h2.sub-title {
+    line-height: 1.3;
+    font-size: clamp(1.875rem, 2.5rem + 0.25vw, 7.5rem);
+    margin: -2vmin 0 3vmin 0;
+  }
 }
 
 main {
@@ -1093,7 +1106,7 @@ ul.social-list a:hover, ul.social-list a:active {
   overflow: hidden;
   background: #f0eeec;
 }
-@media ((min-height: 476px) and (min-width: 696px)) {
+@media (min-height: 476px) and (min-width: 696px) {
   .text-typed .dynamic-txts {
     height: 8.4rem;
   }

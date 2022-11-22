@@ -72,19 +72,24 @@ small {
 }
 
 h1 {
-  $h1-size: 20rem;
-  $h1-lh: 1.15;
+  $h1-size: 8rem;
+  $h1-lh: 0.85;
   @include fluid($h1-size, $h1-lh);
+  @media (min-width: 865px) {
+    $h1-size: 20rem;
+    $h1-lh: 0.85;
+    @include fluid($h1-size, $h1-lh);
+  }
 }
 h2 {
-  $h2-size: 8rem;
+  $h2-size: 5rem;
   $h2-lh: 1.15;
-  @include fluid($h2-size, $h2-lh)
+  @include fluid($h2-size, $h2-lh);
 }
 h3 {
   $h3-size: 2.0rem;
   $h3-lh: 1;
-  @include fluid($h3-size, $h3-lh)
+  @include fluid($h3-size, $h3-lh);
 }
 h4 {
   $h4-size: 2.2rem;
