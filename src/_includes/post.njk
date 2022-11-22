@@ -1,0 +1,15 @@
+---
+layout: layouts/base.njk
+---
+
+<article>{{ content | safe}}</article>
+
+<aside>
+  {% for social in social_list %}
+    <p>{{ social.site }} | {{ social.handle }}</p> 
+    <p>{{ social.url }}</p> 
+  {% endfor %}
+</aside>
+
+
+{% include "partials/_social_list.njk" %}

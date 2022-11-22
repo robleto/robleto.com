@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+---
+
+  <!-- Progress Bar -->
+  <div class="progress"></div>
+
+  <!-- Navigation -->
+  {% include "partials/_nav.njk" %}
+
+  <h1>{{ title }}</h1>
+
+  {% if subtitle %}
+  <h2 class="sub-title">{{ subtitle }}</h2>
+  {% endif %}
+
+  <div class="container">
+
+    <!-- Primary Content -->
+    <main>
+
+      {{ content | safe }}
+    
+    </main>
+
+  </div>
+  
+  <!-- Footer -->
+  {% include "partials/_footer.njk" %}

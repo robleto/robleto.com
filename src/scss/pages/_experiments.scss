@@ -1,0 +1,12 @@
+
+body#experiments main {
+
+  grid-template-columns: [first] repeat(2, 1fr) [end];
+  grid-gap: 1.5rem;
+
+  @media (min-width: 696px) {
+    display: grid;
+    grid-template-columns: [first] repeat(2, 1fr) [end];
+    grid-gap: 3rem;
+  }
+}

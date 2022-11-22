@@ -1,0 +1,5 @@
+<ul class="social-list">
+  {% for social in social_list %}
+        <li class="animate__animated animate__fadeIn"><a href="{{ social.url }}" class="effect"><i class="fab fa-{{ social.handle }}"></i></a></li>
+  {% endfor %}
+</ul>

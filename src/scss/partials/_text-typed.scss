@@ -1,0 +1,78 @@
+
+.static-txt{
+  font-family: poppins, sans-serif;
+  margin-bottom: -5px;
+  padding-left: 5px;
+  font-size: 80%;
+  opacity: 0.6;
+  display: block;
+  position: relative;
+}
+.text-typed{
+  display: inline-block;
+}
+.text-typed .dynamic-txts{
+  height: 6rem;
+  margin-left: -10px;
+  color: #484848;
+  overflow: hidden;
+  background: #f0eeec;
+  @media ((min-height: 476px) and (min-width: 696px)) {
+    height: 8.4rem;
+  }
+  @media (min-width: 696px) {
+    height: 8.4rem;
+  }
+}
+
+.dynamic-txts li{
+  list-style: none;
+  font-family: poppins, sans-serif;
+  color: #484848;
+  font-weight: 600;
+  font-size: 7.5vmin;
+  white-space: nowrap;
+  line-height: 6.4rem;
+  position: relative;
+  top: 0;
+  animation: slide-mobile 24s steps(8) infinite;
+  padding-inline-start: 10px;
+  text-align: left;
+  @media (min-width: 696px) {
+    font-size: 7.5vmin;
+    line-height: 8.4rem;
+    animation: slide 24s steps(8) infinite;
+  }
+}
+
+@keyframes slide {
+  100%{
+    top: -672px;
+  }
+}
+@keyframes slide-mobile {
+  100%{
+    top: -512px;
+  }
+}
+.dynamic-txts li span{
+  text-align: left;
+}
+.dynamic-txts li span::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f0eeec;
+  border-left: .25rem solid orange;
+  animation: typing 3s steps(40) infinite;
+}
+@keyframes typing {
+  40%, 60%{
+    left: calc(100% + 30px);
+  }
+  100%{
+    left: 0;
+  }
+}
