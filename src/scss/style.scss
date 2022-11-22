@@ -111,6 +111,10 @@ main {
   overflow: hidden;
 }
 
+  .fullwidth {
+    grid-column: 1 / -1;
+  }
+
 // Layout
 @import 'layout/nav';
 @import 'layout/footer';

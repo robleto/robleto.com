@@ -240,6 +240,10 @@ main {
   overflow: hidden;
 }
 
+.fullwidth {
+  grid-column: 1/-1;
+}
+
 /*----------------------------------------
 Navigation
 ----------------------------------------*/
@@ -486,9 +490,6 @@ body#home h2 {
   align-self: center;
   margin: 0;
   padding: 0;
-}
-body#home .fullwidth {
-  grid-column: 1/-1;
 }
 body#home .about_img {
   grid-column: 1/-1;
