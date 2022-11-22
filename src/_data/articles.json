@@ -1,0 +1,106 @@
+[
+	{
+		"image": "https://miro.medium.com/max/1400/1*4FiLUfEueqdCVG10Kj63Pg.webp",
+		"url": "https://medium.com/@robleto/my-divtober-2022-css-118340037a11",
+		"title": "31 CSS Art pieces, one HTML tag — My Divtober 2022 Collection",
+		"lead": "A look back at #divtober 2022, the month of building CSS art with as much CSS as you like the challenge of using only one single HTML div.",
+		"publish": "Published on Medium",
+		"date": "Oct 31, 2022",
+		"length": "10"
+	},
+	{
+		"image": "https://miro.medium.com/max/1400/1*YFo2Db9BNkXy-wWgxKymeQ.png",
+		"url": "https://medium.com/@robleto/how-to-lighten-darken-gradients-with-pure-css-4a9800b044e5",
+		"title": "How to lighten/darken a page and background gradients with pure CSS",
+		"lead": "Finding pure CSS solutions to animate the darkening of both the foreground elements on a page and the background gradients too.",
+		"publish": "Published on Medium",
+		"date": "Oct 02, 2022",
+		"length": "5"
+	},
+	{
+		"image": "https://miro.medium.com/max/1400/1*-iNDtxPyFoMBDkBm0H1A0g.png",
+		"url": "https://medium.com/@robleto/how-to-use-codekit-kit-partials-on-your-site-9a47e35c3f45",
+		"title": "How to use Codekit .kit partials on your site",
+		"lead": "I discovered the simple reason why the Codekit partials would not compile into the pages of my static site…",
+		"publish": "Published on Medium",
+		"date": "Jan 20, 2022",
+		"length": "7"
+	},
+	{
+		"image": "https://miro.medium.com/max/2000/1*7iAQcJz80PT4dIgKxIPkPQ.jpeg",
+		"url": "https://robleto.medium.com/my-kids-convinced-me-we-should-invest-in-roblox-rblx-e6070ff95909",
+		"title": "My kids convinced me we should invest in Roblox (RBLX)",
+		"lead": "I bought both of my daughters’ shares of the recently IPO’d Roblox (RBLX) in their UGMA (aka children’s) brokerage accounts. This stock…",
+		"publish": "Published on Medium",
+		"date": "Mar 21, 2021",
+		"length": "4"
+	},
+	{
+		"image": "https://miro.medium.com/max/1360/1*t-tiI4_hZqJjBex3oz8bUw.jpeg",
+		"url": "https://robleto.medium.com/my-explanation-of-what-is-happening-with-gamestop-76224b9a69d8",
+		"title": "What is happening with GameStop (for non-financial people)",
+		"lead": "I was asked what was happening with GameStop, and I am no expert, but was following the story, so I wrote this to help make sense of it.",
+		"publish": "Published on Medium",
+		"date": "Jan 30, 2021",
+		"length": "7"
+	},
+	{
+		"image": "https://miro.medium.com/max/2000/1*e7O7A5rM79ng6b8Dc3EbEg.jpeg",
+		"url": "https://robleto.medium.com/setting-your-annual-goals-based-on-your-age-658053055f",
+		"title": "Setting your annual goals based on your age.",
+		"lead": "Each year I take time on my birthday setting my goals for the coming year. I do one last look back at the goals I set for the previous…",
+		"publish": "Published on Medium",
+		"date": "Aug 7, 2019",
+		"length": "5"
+	},
+	{
+		"image": "https://miro.medium.com/max/2000/1*9rFaLPceYbUb6zua1o7s7A.png",
+		"url": "https://robleto.medium.com/the-complexities-of-building-a-stock-table-using-international-data-bc2ac6da1b6",
+		"title": "The complexities of building a stock table using International data",
+		"lead": "Recently I had the opportunity to help build out a stock data table that included a series of both US and International exchanges. That…",
+		"publish": "Published on Medium",
+		"date": "Sep 10, 2018",
+		"length": "4"
+	},
+	{
+		"image": "https://miro.medium.com/max/2000/1*U004En40y-VZurGv_bxd3w.jpeg",
+		"url": "https://robleto.medium.com/how-to-set-internal-border-lines-on-a-css-grid-layout-f2f1eeaafb61",
+		"title": "How to set internal border lines on a CSS Grid layout",
+		"lead": "Most examples I see of CSSGrid layouts are blocks or cards stacked in different variations. I went looking for a solid example of just thin…",
+		"publish": "Published on Medium",
+		"date": "Aug 10, 2018 ·4"
+	},
+	{
+		"image": "https://miro.medium.com/max/2000/1*WhqWtju4mRLw_OKVQwTjpQ.jpeg",
+		"url": "https://robleto.medium.com/5-practical-takeaways-for-improving-your-codes-accessibility-e6a99e976c01",
+		"title": "5 Practical Takeaways for Improving Your Code’s Accessibility",
+		"lead": "I had the opportunity to hear a presentation by Aaron Gustafson at Accessibilty DC running through some very hands-on ways to improve your…",
+		"publish": "Published on Medium",
+		"date": "Aug 3, 2018",
+		"length": "2"
+	},
+	{
+		"image": "https://miro.medium.com/max/1400/1*b0oolIztdW5Oz5TO88UOTg.png",
+		"url": "https://robleto.medium.com/jumping-into-css-grid-9912b48cd44e",
+		"title": "Jumping into CSS Grid",
+		"lead": "Using CSS Grid to build our Christmas Card insert.",
+		"publish": "Published on Medium",
+		"date": "Mar 11, 2018 ·7"
+	},
+	{
+		"image": "https://miro.medium.com/max/1600/gradv/29/81/40/1*M9yJcvKJp_tVJcU9aOVD7g.png",
+		"url": "https://robleto.medium.com/five-recommendations-for-the-graduating-designer-b836f0376338",
+		"title": "Five Recommendations for the Graduating Designer",
+		"lead": "Just a few quick words for designers in the class of 2015.",
+		"publish": "Published on Medium",
+		"date": "May 16, 2015 ·3"
+	},
+	{
+		"image": "https://miro.medium.com/max/1600/gradv/29/81/40/1*wjifVQzHUeY45576AsYeHg.jpeg",
+		"url": "https://robleto.medium.com/walling-off-the-garden-balancing-security-with-usability-4cbdca53bc22",
+		"title": "Walling off the Garden: Balancing Security with Usability",
+		"lead": "How suggestions to literally wall off a garden reinforced my perspective on the balance of security and user expereince.",
+		"publish": "Published on Medium",
+		"date": "Apr 28, 2015 ·3"
+	}
+]
