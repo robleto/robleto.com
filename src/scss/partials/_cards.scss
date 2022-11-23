@@ -1,41 +1,43 @@
     .vertical-card {
       display: grid;
-      grid-template-columns: 30px 1fr;
-      grid-gap: 2rem;
-      justify-content: center;
-      align-content: center;
+      grid-gap: 1rem;
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: .25fr .25fr;
+      grid-template-areas: 
+      "card-image card-title"
+      "card-desc card-desc";
+      @media (min-width: 826px) { 
+        grid-template-areas: 
+        "card-image card-title"
+        "card-image card-desc";
+      }
+
         &:hover {
           h3 {
           text-decoration: none;
           color: inherit;
           }
         }
-       @media (min-width: 826px) {
-        grid-template-columns: 50px 1fr;
-        }
 
         img {
+          grid-area: card-image;
           display: block;
-          width: 100%;
+          width: 80%;
           height: auto;
           padding: 3px;
           border: solid 3px #ccc;
           border-radius: 90%;
-        }
-        figcaption {
-          display: flex;
-          flex-direction: column;
-          justify-self: start;
-          align-self: center;
+        } 
           h3 {
+            grid-area: card-title;
             margin: 0;
             text-align: left;
           }
           p {
+            grid-area: card-desc;
             margin: 0;
             text-align: left;
             font-size: 80%;
             padding-left: 2px;
           }
-        }
       }

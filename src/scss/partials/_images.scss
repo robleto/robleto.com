@@ -31,9 +31,12 @@ figure {
     display: block;
     text-transform: uppercase;
     margin-top: 0;
-    padding: 0 5rem .5rem;
+    padding: 0 .5rem .5rem;
     @include fluid(1.0rem, 1.1);
     font-weight: 400;
+    @media (min-width: 696px) {
+      padding: 0 5rem .5rem;
+    }
   }
 
   .figure-image {

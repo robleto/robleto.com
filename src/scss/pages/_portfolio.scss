@@ -6,10 +6,14 @@ Portfolio Section
 body#portfolio main  {
 
   .portfolio-overview {
-    grid-column: 2 / -2;
-    padding: 2rem;
+    grid-column: 1 / -1;
+    padding: 1rem 0;
     margin: 0 auto;
     line-height: 1.5;
+    @media (min-width: 865px) {
+      grid-column: 2 / -2;
+      padding: 2rem;
+    }
   }
 
     h2 {
@@ -18,7 +22,7 @@ body#portfolio main  {
     }
 
     .portfolio-panel {
-      grid-column: 3 / -3;
+      grid-column: 1 / -1;
       padding: 0;
       place-items: center;
       justify-items: center;
@@ -28,6 +32,9 @@ body#portfolio main  {
       display: grid;
       grid-gap: 0rem 3rem;
       padding-bottom: 3rem;
+      @media (min-width: 865px) {
+        grid-column: 3 / -3;
+      }
       
 
       img {
