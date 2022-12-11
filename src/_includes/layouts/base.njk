@@ -9,6 +9,7 @@
   <title>{{title}} | Greg Robleto – Product / Design / Technology </title>
   <meta name="description" content="{{ pagedesc }}">
 
+  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body id="{{ pageID }}">
 
@@ -16,5 +17,20 @@
 
 
   {% include "partials/_scripts.njk" %}
+
+
+    {# Netlify Identity Widget #}
+    <script>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+        if (!user) {
+            window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+            });
+        }
+        });
+    }
+    </script>
+
 </body>
 </html>
