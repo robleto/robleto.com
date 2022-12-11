@@ -3,7 +3,7 @@
 Portfolio Section
 ----------------------------------------*/
 
-body#portfolio 
+body#portfolio {
 
    h2.sub-title {
     margin: -2vmin 0 3vmin 0;
@@ -78,5 +78,6 @@ body#portfolio
       grid-template-areas: "port-image port-desc";
       grid-template-columns: 3fr 1.5fr;
       }
+    }
 
 }

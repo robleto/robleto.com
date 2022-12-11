@@ -2,13 +2,6 @@
 layout: layouts/pages.njk
 ---
 
-  {% for article in articles %}
-      <div class="article">
-        <a class="article-image" href="{{ article.link }}"><img src="{{ article.image }}" /></a>
-        <h3 class="article-title">
-          <a href="{{ article.link }}">{{ article.title }}</a>
-        </h3>
-        <p class="article-desc">{{ article.lead }}</p>
-        <p class="article-meta">{{ article.publish }}  ·  {{ article.date }} · {{ article.length }} min read</p>
-      </div>
-  {% endfor %}
+  {%- for post in collections.post | reverse -%}
+    {% include '../partials/_article-snippet.njk' %}
+  {%- endfor -%}
