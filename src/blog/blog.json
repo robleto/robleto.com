@@ -1,5 +1,5 @@
 {
-	"layout": "post.njk",
-  "permalink": "/{{ page.fileSlug }}/",
-  "tags": "post"
+	"layout": "layouts/post.njk",
+  "tags": "post",
+  "pageID": "post"
 }
