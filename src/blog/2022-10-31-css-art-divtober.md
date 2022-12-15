@@ -4,9 +4,7 @@ lede: A look back at divtober 2022, the month of building CSS art with as much
   CSS as you like the challenge of using only one single HTML div.
 author: Greg Robleto
 date: 2021-10-31
-tags:
-  - post
-  - featured
+tags: ['featured']
 image: /img/blog/divtober22.png
 imageAlt: Images of the work from from Divtober 2022
 length: 10

@@ -11,24 +11,32 @@ layout: layouts/base.njk
   <div class="container">
 
     <!-- Primary Content -->
-
-      <article class="main-article">
-      <div class="container container--narrow flow">
+  <main>
+        <div class="article-header">
+          <div class="meta-top">
+            <span class="tags">{{ tags | join(" ") }}</span>
+            <span class="date">{{ date | postDate  }}</span>
+          </div>
         
           <h2 class="article-title">
             {{ title }}
           </h2>
-          {# <figure class="main-article__figure"> #}
-            <img src="{{ image }}" alt="{{ imageAlt }}">
-          {# </figure> #}
-          
-          {{ content | safe }}
-        
-      </div>
-      </article>
+          <h5 class="article-subtitle">
+            {{ lede }}
+         </h5>
+         <p> by <strong>{{ author }}</strong></p>
 
+        {% include "partials/_social_list.njk" %}
+
+      </div>
+      <article class="main-article">
+        <img src="{{ image }}" alt="{{ imageAlt }}" class="primary-image">
+          {{ content | safe }}
+      </article>
+  </main>
 
   </div>
   
   <!-- Footer -->
   {% include "partials/_footer.njk" %}
+  {% include "partials/_scripts.njk" %}

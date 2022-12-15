@@ -76,4 +76,12 @@ nav {
   }
 }
 
+body.portfolio nav a.portfolio,
+body.thoughts nav a.thoughts,
+body.experiments nav a.experiments,
+body.about nav a.about,
+body.post nav a.thoughts {
+      padding-bottom: 4px;
+      border-bottom: 0.5rem solid #999;
+}
 

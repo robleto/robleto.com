@@ -1,5 +1,5 @@
 
-body#experiments main {
+body.experiments main {
 
   grid-template-columns: [first] repeat(2, 1fr) [end];
   grid-gap: 1.5rem;

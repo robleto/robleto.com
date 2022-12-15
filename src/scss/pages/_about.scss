@@ -2,7 +2,7 @@
 About Page
 ----------------------------------------*/
 
-body#about main .about-panel {
+body.about main .about-panel {
   grid-column: 1 / -1;
   display: grid;
   margin-bottom: 3rem;
