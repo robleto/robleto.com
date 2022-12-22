@@ -96,7 +96,28 @@ h1.greg {
       margin-bottom: -12px;
     }
   }
+
 }
+
+  .typewriter-text {
+    font-family: poppins, sans-serif;
+    color: #484848;
+    font-weight: 600;
+    font-size: 7.5vmin;
+    white-space: nowrap;
+    position: relative;
+    top: 0;
+    padding-inline-start: 10px;
+    text-align: left;
+    @media (min-width: 696px) {
+      font-size: 7.5vmin;
+      line-height: 8.4rem;
+    }
+  }
+  .cursorSize {
+    color: lighten($gray, 50%);
+    font-weight: 100;
+  }
 
 
 /*----------------------------------------

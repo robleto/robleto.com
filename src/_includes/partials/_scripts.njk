@@ -3,7 +3,7 @@
   <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.19.0/core.min.js"></script>
 
 <script id="rendered-js">
 const counterUp = window.counterUp.default;
@@ -58,5 +58,42 @@ const animationItems = document.querySelectorAll('.viewport-checker');
 })
 
 
+// Typewriter.js
+var app = document.getElementById('typewriter-text');
+
+var typewriter = new Typewriter(app, {
+    loop: true,
+    delay: 50, // SET TO USE A 1 SECOND DELAY
+    cursorClassName: 'cursorSize' // SET TO MY CUSTOM CLASS NAME
+});
+
+typewriter.typeString('Creative Director!')
+    .pauseFor(500)
+    .deleteAll()
+    .typeString('Product Designer')
+    .pauseFor(500)
+    .deleteAll()
+    .typeString('Product Designer')
+    .pauseFor(500)
+    .deleteAll()
+    .typeString('Front-End Dev')
+    .pauseFor(500)
+    .deleteAll()
+    .typeString('Tech Manager')
+    .pauseFor(500)
+    .deleteAll()
+    .typeString('UX Expert')
+    .pauseFor(500)
+    .deleteAll()
+    .typeString('Design Leader')
+    .pauseFor(500)
+    .deleteAll()
+    .typeString('CSS Artist')
+    .pauseFor(500)
+    .deleteAll()
+    .typeString('Brand Strategist')
+    .pauseFor(500)
+    .start();
 
   </script>
+  
