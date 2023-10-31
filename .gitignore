@@ -8,6 +8,7 @@ css
 # secrets and errors
 .env
 .log
+.codekit3
 
 # macOS related files
 .DS_Store
