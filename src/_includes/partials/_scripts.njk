@@ -1,6 +1,6 @@
 
   <!-- Scripts -->  
-  <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js" crossorigin="anonymous"></script>
+
   <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.19.0/core.min.js"></script>
@@ -8,7 +8,7 @@
 <script id="rendered-js">
 const counterUp = window.counterUp.default;
 
-const callback = entries => {
+{# const callback = entries => {
   entries.forEach(entry => {
     const el = entry.target;
     if (entry.isIntersecting && !el.classList.contains('is-visible')) {
@@ -55,7 +55,7 @@ els.forEach(el => IO.observe(el));
 const animationItems = document.querySelectorAll('.viewport-checker');
   animationItems.forEach(item => {
     observer.observe(item)         
-})
+}) #}
 
 
 // Typewriter.js
@@ -67,25 +67,19 @@ var typewriter = new Typewriter(app, {
     cursorClassName: 'cursorSize' // SET TO MY CUSTOM CLASS NAME
 });
 
-typewriter.typeString('Creative Director!')
+typewriter.typeString('Creative Director')
     .pauseFor(500)
     .deleteAll()
     .typeString('Product Designer')
     .pauseFor(500)
     .deleteAll()
-    .typeString('Product Designer')
+    .typeString('Marketing Lead')
     .pauseFor(500)
     .deleteAll()
-    .typeString('Front-End Dev')
+    .typeString('UI Engineer')
     .pauseFor(500)
     .deleteAll()
-    .typeString('Tech Manager')
-    .pauseFor(500)
-    .deleteAll()
-    .typeString('UX Expert')
-    .pauseFor(500)
-    .deleteAll()
-    .typeString('Design Leader')
+    .typeString('Design Advocate')
     .pauseFor(500)
     .deleteAll()
     .typeString('CSS Artist')

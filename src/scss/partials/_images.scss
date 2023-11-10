@@ -2,16 +2,10 @@
 Images
 ----------------------------------------*/
 figure {
-  margin: 0;
   transition: all 300ms ease-in;
   transform: scale(1);
-  background-color: #fff;
-  border: solid 5px #fff;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  padding: 1rem .5rem;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   &:hover {
     transition: all 300ms ease-in;
@@ -40,16 +34,7 @@ figure {
   }
 
   .figure-image {
-    border-radius: 90%;
-    width: 70px;
-    height: 70px;
-    overflow: hidden;
-    margin: 0 auto;
-    border: solid 3px #ccc;
-    @media (min-width: 826px) { 
-      width: 120px;
-      height: 120px;
-    }
+    min-width: 15vmin;
   }
 
 

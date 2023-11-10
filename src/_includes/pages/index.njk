@@ -2,7 +2,9 @@
 layout: layouts/home.njk
 ---
 
-    <section id="overview" class="panel section home-overview">
+  <div class="grid">
+
+    <section id="overview" class="panel section home-overview viewport-checker">
 
       <!-- Navigation -->
       {% include "partials/_nav.njk" %}
@@ -12,28 +14,45 @@ layout: layouts/home.njk
 
     </section>
 
-    <section id="portfolio" class="panel section home-portfolio">
+    <div class="space"></div>
+
+    <section id="portfolio" class="panel section home-portfolio viewport-checker data-scroll-section data-scroll-container">
 
       <!-- Portfolio -->
       {% include "pages/_index-sections/_portfolio.njk" %}
 
     </section>
-    <section id="aboutme" class="panel section home-about">
+
+
+    <div class="space"></div>
+
+    <section id="thoughts" class="panel section home-thoughts viewport-checker">
 
       <!-- About -->
-      {% include "pages/_index-sections/_aboutme.njk" %}
+      {% include "pages/_index-sections/_thoughts.njk" %}
 
     </section>
+
+
+    <div class="space"></div>
+
     
-    <section id="skills" class="panel section home-skills">
+    <section id="projects" class="panel section home-skills viewport-checker">
 
       <!-- Skills -->
-      {% include "pages/_index-sections/_skills.njk" %}
+      {% include "pages/_index-sections/_projects.njk" %}
 
     </section>
-    <section id="contact" class="panel section home-contact">
+
+
+    <div class="space"></div>
+
+
+    <section id="about" class="panel section home-about viewport-checker">
 
       <!-- Contact -->
-      {% include "pages/_index-sections/_contact.njk" %}
+      {% include "pages/_index-sections/_about.njk" %}
 
     </section>
+
+  </div>

@@ -1,5 +1,7 @@
-<ul class="social-list">
-  {% for social in social_list %}
-        <li><a href="{{ social.url }}" class="effect {{ social.handle }}"><i class="fab fa-{{ social.handle }}"></i></a></li>
-  {% endfor %}
-</ul>
+<div class="social-list-container">
+  <ul class="social-list">
+    {% for social in social_list %}
+          <li><a href="{{ social.url }}" class="effect {{ social.handle }}"><i class="fab fa-{{ social.handle }}"></i></a></li>
+    {% endfor %}
+  </ul>
+</div>
