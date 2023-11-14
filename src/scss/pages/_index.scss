@@ -11,7 +11,7 @@ body.home {
 
     display: grid;
     grid-template-columns: [first] repeat(1, 1fr) [end];
-    grid-template-rows: [first] 100vh 60vw 1fr 45vw 1fr 40vw 1fr 5vw 1fr [end];
+    grid-template-rows: [first] 100vh 60vw 1fr 35vw 1fr 40vw 1fr 5vw 1fr [end];
     //grid-gap: 60vw;
     overflow-x: hidden;
     overflow-y: visible;
@@ -514,7 +514,7 @@ grid-column: 11/16;
     }
 
     #portfolio .port-9tax {
-      transform: scale(1) rotate(135deg);
+      transform: scale(.9) rotate(135deg);
       grid-column: 1/8;
       grid-row: 4/11;
       margin-left: -15vw;
@@ -523,11 +523,11 @@ grid-column: 11/16;
     }
 
     #portfolio .port-siteredesign {
-      transform: scale(1.05) rotate(5deg);  
+      transform: scale(.9) rotate(5deg);  
       transform-origin: center center;
       z-index: 20;
-      grid-column: 4/15;  
-      grid-row: 6/13;
+      grid-column: 6/17;  
+      grid-row: 7/14;
       margin-left: -5vw;
       margin-right: -5vw;
       @media (min-width: 900px) { 
@@ -538,24 +538,25 @@ grid-column: 11/16;
     }
 
     #portfolio .port-designteam {
-      transform: scale(1.05) rotate(-10deg);  
+      transform: scale(.9) rotate(-10deg);  
       transform-origin: center center;
       z-index: 10;
       grid-column: 4/15;  
-      grid-row: 6/13;
+      grid-row: 9/16;
       padding-top: 45vw;
-      padding-left: 20vw;
-      margin-right: -15vw;
+      padding-left: 30vw;
+      margin-right: -25vw;
       margin-left: -10vw;
       @media (min-width: 900px) { 
         padding-top: 35vw;
+        padding-left: 25vw;
         margin-left: -0vw;
-        margin-right: -15vw;
+        margin-right: -20vw;
       }
     }
 
     #portfolio .port-designsys { 
-      transform: scale(1.05) rotate(10deg);
+      transform: scale(.9) rotate(10deg);
       transform-origin: center center;
       grid-column: 4/15;  
       grid-row: 6/13;
@@ -574,11 +575,12 @@ grid-column: 11/16;
     #portfolio blockquote {  
       display: none;
       @media (min-width: 1100px) { 
-        display: block;
-        grid-column: 11/-1;
-        grid-row: 16/-1;
-        padding-top: 35vw;
-        @include fluid(1vw, 1.15);
+          display: block;
+          grid-column: 1/10;
+          grid-row: 16/-1;
+          padding-top: 20vw;
+          line-height: 1.3;
+          font-size: clamp(0.75vw, 1vw + 0.25vmin, 3vw);
       }
     }
 

@@ -1,61 +1,126 @@
 
-  <!-- Scripts -->  
+<script id="GSAPs">
+  
+{#  OVERVIEW  #}
 
-  <script src="https://kit.fontawesome.com/ca070a0a98.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/TypewriterJS/2.19.0/core.min.js"></script>
+gsap.from(".notebook", {
+  y: '-150vw',
+  x: '150vw',
+  ease: 'circ.out',
+  rotation: 270,
+  duration: 2.5
+});
+gsap.from(".pen", {
+  y: '-150vw',
+  x: '150vw',
+  ease: 'circ.out',
+  rotation: 270,
+  duration: 2.5
+});
+gsap.from(".phone", {
+  y: '-90vw',
+  x: '150vw',
+  ease: 'circ.out',
+  rotation: 270,
+  duration: 2.5,
+  delay: .5
+});
+
+gsap.from(".macbook", {
+  y: '-75vw',
+  ease: 'bounce.out',
+  duration: 2.5,
+  delay: 1.5
+});
+
+gsap.from(".coffee", {
+  x: '-100vw',
+  ease: 'back.out',
+  duration: 1,
+  delay: 1.5
+});
+
+gsap.from(".arms", {
+  x: '125vw',
+  duration: 1.5,
+  delay: 3
+});
+
+{#  PORTFOLIO  #}
+
+gsap.from(".folio", {
+  scrollTrigger: '.title-portfolio',
+  x: '-100vw',
+  rotation: -90,
+  duration: 1.5,
+  delay: 1
+});
+
+
+gsap.from(".port-designsys", {
+  scrollTrigger: '.title-portfolio',
+  x: '-200vw',
+  y: '-200vw',
+  rotation: 90,
+  duration: 1.5,
+  delay: 2.5
+});
+
+gsap.from(".port-siteredesign", {
+  scrollTrigger: '.title-portfolio',
+  x: '-150vw',
+  y: '-20vw',
+  rotation: 90,
+  duration: 1.5,
+  delay: 2.75
+});
+
+gsap.from(".port-designteam", {
+  scrollTrigger: '.title-portfolio',
+  x: '-50vw',
+  y: '-50vw',
+  rotation: 90,
+  duration: 1.5,
+  delay: 3
+});
+
+gsap.from(".port-9tax", {
+  scrollTrigger: '.title-portfolio',
+  x: '-100vw',
+  y: '-100vw',
+  rotation: 90,
+  duration: 1.5,
+  delay: 2
+});
+
+
+{#  THOUGHTS  #}
+
+gsap.from(".magazine", {
+  scrollTrigger: '.title-thoughts',
+  x: '-175vw',
+  ease: 'bounce.inOut',
+  duration: 2,
+  delay: 1
+});
+
+gsap.from(".article", {
+  scrollTrigger: '.title-thoughts',
+  ease: "power1.in",
+  opacity: 0,
+  stagger: 0.5,
+  delay: 3
+});
+
+
+</script>
+
+
+
 
 <script id="rendered-js">
 const counterUp = window.counterUp.default;
 
-{# const callback = entries => {
-  entries.forEach(entry => {
-    const el = entry.target;
-    if (entry.isIntersecting && !el.classList.contains('is-visible')) {
-      counterUp(el, {
-        duration: 2000,
-        delay: 16 });
-
-      el.classList.add('is-visible');
-    }
-  });
-};
-
-const IO = new IntersectionObserver(callback, { threshold: 1 });
-
-const els = document.querySelectorAll('.counter');
-els.forEach(el => IO.observe(el));
-
-
-    </script>
-
-  <script>
-
-    window.addEventListener('scroll', () => {
-    document.body.style.setProperty('--scroll', window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
-  }, false);
-    console.log(scroll);
-
-    //Initialize AOS
-    AOS.init();
-
-      const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add('animating');
-    } else {
-      entry.target.classList.remove('animating');
-    }
-  })
-}, {
-  root: document.querySelector('#root'),
-  rootMargin: '-50% 0px -50% 0px'
-})
- 
-const animationItems = document.querySelectorAll('.viewport-checker');
-  animationItems.forEach(item => {
-    observer.observe(item)         
-}) #}
 
 
 // Typewriter.js
