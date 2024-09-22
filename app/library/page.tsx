@@ -1,0 +1,73 @@
+import { fetchNotionData } from "../../lib/notionContentFetcher";
+import { renderBlock } from "../../utils/renderItems";
+import Bookshelf from "./_bookshelf"; // Import Gallery
+import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
+import Subhead from "../../components/layout/Subhead"; // Import Subhead
+import {
+	groupItemsByVariable,
+	sortGroupsAlphabetically,
+} from "../../utils/groupItems"; // Import the missing function
+import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort function
+
+// Map the Library data structure
+const mapLibraryEntry = (entry: any) => {
+	const imageProperty = entry.properties.Image;
+
+	// Fetch the image URL based on file name or external url
+	const imageUrl =
+		imageProperty?.files?.[0]?.file?.url || // For uploaded image URL
+		imageProperty?.files?.[0]?.name || // If it's stored under 'name'
+		"";
+
+	const topics = entry.properties.Topics?.multi_select || [];
+
+	return {
+		id: entry.id,
+		title: entry.properties.Title?.title[0]?.plain_text ?? "Untitled",
+		topics: topics.map((topic: any) => topic.name), // Get an array of topic names
+		image: imageUrl,
+		url: entry.properties.URL?.url || "#",
+	};
+};
+
+export default async function LibraryPage() {
+	const { pageContent, listItems } = await fetchNotionData(
+		process.env.NOTION_LIBRARY_DB_ID!, // Corrected DB ID for Library
+		process.env.NOTION_LIBRARY_PAGE_ID!, // Corrected Page ID for Library
+		mapLibraryEntry // Custom mapping for Library
+	);
+
+	// Group items by topics using the utility
+	const itemsGroupedByTopic = groupItemsByVariable(listItems);
+
+	// Sort the topics alphabetically using the utility
+	const sortedTopics = sortGroupsAlphabetically(itemsGroupedByTopic); // Add this line
+
+	// Sort the items using the shared sort function (if applicable)
+	const sortedItems = sortByPinnedAndDate(listItems); // This will sort by pinned and date if needed
+
+	return (
+		<div className="container mx-auto p-4">
+			
+			<PageTitle title="Library" />
+			<Subhead pageContent={pageContent} />
+
+			{/* Render the Bookshelf component grouped by Topic */}
+			{sortedTopics.map((topic: string) => (
+				<section key={topic}>
+					<section className="relative flex items-center justify-center my-8">
+						<span className="flex-grow h-px bg-gray-300"></span>
+						<h3 className="px-4 text-2xl uppercase font-bold text-gray-700 dark:text-gray-200 oswald font-oswald">
+							{topic}
+						</h3>
+						<span className="flex-grow h-px bg-gray-300"></span>
+					</section>
+					<Bookshelf
+						items={itemsGroupedByTopic[topic]}
+						columns="md:grid-cols-3"
+					/>
+				</section>
+			))}
+		</div>
+	);
+}
