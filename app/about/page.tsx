@@ -40,13 +40,12 @@ export default async function HomePage() {
 
 	return (
 		<div className="container mx-auto p-4">
-			
 			<PageTitle title="About Me" />
 			<Subhead pageContent={pageContent} />
 
 			{/* Render the Lists component */}
 
-			<section className="relative flex items-center justify-center my-8">
+			<section className="z-[-5] sticky top-0 flex items-center justify-center my-8">
 				<span className="flex-grow h-px bg-gray-300"></span>
 				<h3 className="px-4 text-2xl uppercase font-bold text-gray-700 dark:text-gray-200 oswald font-oswald">
 					Recent Updates

@@ -32,7 +32,7 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 			{items.map((item) => (
 				<div
 					key={item.id}
-					className="flex items-center relative justify-between space-x-4 border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+					className="flex z-[-10]  items-center relative justify-between space-x-4 border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
 				>
 					{/* Display Image or Placeholder */}
 					<img

@@ -18,18 +18,12 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	return (
 		<div
 			key={id}
-			className="card-link border bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 rounded-md shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:dark:bg-gray-600"
+			className="card-link z-[-10] border bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 rounded-md shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:dark:bg-gray-600"
 		>
-			{/* Image wrapper with relative positioning to handle full coverage */}
+			{/* Image wrapper with z-index explicitly set lower */}
 			{image && (
-				<div className="relative h-64 w-full overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800">
-					<a
-						href={url}
-						className="text-blue-500 dark:text-blue-300 underline"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						{/* Image with absolute positioning to cover the parent */}
+				<div className="relative  h-64 w-full overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800">
+					<a href={url} target="_blank" rel="noopener noreferrer">
 						<img
 							src={image}
 							alt={title}

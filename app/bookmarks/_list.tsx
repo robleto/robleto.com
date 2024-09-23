@@ -20,7 +20,7 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 			{items.map((item) => (
 				<div
 					key={item.id}
-					className="relative flex items-center space-x-4 border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600"
+					className="relative z-[-10]  flex items-center space-x-4 border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600"
 				>
 					{/* Favicon */}
 					<img
@@ -55,8 +55,8 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 					{/* Tags (now using the Tag component) */}
 					<div className="flex space-x-2">
 						{item.tags.map((tag) => (
-							<Tag key={tag} tag={tag} />) 
-						)}
+							<Tag key={tag} tag={tag} />
+						))}
 					</div>
 				</div>
 			))}

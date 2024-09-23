@@ -1,4 +1,4 @@
-"use client"; // Needed since we're using useState
+"use client"; // Add this directive to mark it as a client component
 
 import React, { useState, useEffect } from "react";
 import SidebarLink from "./SidebarLink";
@@ -6,14 +6,16 @@ import SidebarSectionHeader from "./SidebarSectionHeader";
 import Logo from "./Logo";
 import SidebarToggle from "./SidebarToggle";
 import DarkLightToggle from "../sidebar/DarkLightToggle";
+import Modal from "../../components/layout/Modal"; // Import the Modal component
 
 export default function SideNav() {
-	// State to track sidebar collapse/expand status
 	const [isCollapsed, setIsCollapsed] = useState(false);
-	// State to prevent rendering until window size is determined
 	const [isReady, setIsReady] = useState(false);
 
-	// Set the default state based on the screen width
+	// Modal state
+	const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+	const [isSocialModalOpen, setIsSocialModalOpen] = useState(false);
+
 	useEffect(() => {
 		const handleResize = () => {
 			if (window.innerWidth < 768) {
@@ -23,43 +25,35 @@ export default function SideNav() {
 			}
 		};
 
-		// Set the initial state based on the current screen width and prevent flickering
 		handleResize();
-		setIsReady(true); // Mark as ready to render after checking window size
+		setIsReady(true);
 
-		// Add event listener to update state on window resize
 		window.addEventListener("resize", handleResize);
 
-		// Cleanup the event listener on component unmount
 		return () => {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
 
-	// Prevent rendering until the correct state is determined
 	if (!isReady) {
-		return null; // Or you can return a loading spinner, etc.
+		return null;
 	}
 
 	return (
 		<div className="flex h-screen fixed min-h-[100vh] overflow-scroll">
-			{/* Sidebar Navigation */}
 			<nav
-				className={`bg-mercury  text-gray-900 flex flex-col transition-all duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-200 ${
+				className={`bg-mercury text-gray-900 flex flex-col transition-all duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-200 ${
 					isCollapsed ? "w-16" : "w-48"
 				}`}
 			>
-				{/* Sidebar Toggle */}
 				<SidebarToggle
 					isCollapsed={isCollapsed}
 					toggleCollapse={() => setIsCollapsed(!isCollapsed)}
 				/>
 
 				<div className="flex-grow overflow-y-auto mt-8">
-					{/* Logo */}
 					<Logo isCollapsed={isCollapsed} />
 
-					{/* Sidebar Links */}
 					<div className="px-4">
 						<SidebarSectionHeader
 							title="Biography"
@@ -70,31 +64,43 @@ export default function SideNav() {
 								slug="projects"
 								title="Projects"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="art"
 								title="Art"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="resources"
 								title="Resources"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="posts"
 								title="Posts"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="travel"
 								title="Travels"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="about"
 								title="About"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 						</ul>
 						<SidebarSectionHeader
@@ -106,21 +112,29 @@ export default function SideNav() {
 								slug="library"
 								title="Library"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="bookmarks"
 								title="Bookmarks"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="reading-list"
 								title="Reading List"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="following"
 								title="Following"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
 						</ul>
 						<SidebarSectionHeader
@@ -132,23 +146,46 @@ export default function SideNav() {
 								slug="contact"
 								title="Contact"
 								isCollapsed={isCollapsed}
+								onOpenContact={() =>
+									setIsContactModalOpen(true)
+								} // Open Contact modal
+								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
 								slug="social"
 								title="Social"
 								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => setIsSocialModalOpen(true)} // Open Social modal
 							/>
 						</ul>
 					</div>
 				</div>
 
-				{/* Dark/Light Toggle - Fixed at the bottom */}
 				{!isCollapsed && (
 					<div className="p-4 mt-auto">
 						<DarkLightToggle />
 					</div>
 				)}
 			</nav>
+
+			{/* Contact Modal */}
+			<Modal
+				isOpen={isContactModalOpen}
+				onClose={() => setIsContactModalOpen(false)}
+				title="Contact Us"
+			>
+				<p>This is the Contact modal content.</p>
+			</Modal>
+
+			{/* Social Modal */}
+			<Modal
+				isOpen={isSocialModalOpen}
+				onClose={() => setIsSocialModalOpen(false)}
+				title="Social Links"
+			>
+				<p>This is the Social modal content.</p>
+			</Modal>
 		</div>
 	);
 }
