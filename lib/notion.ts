@@ -1,13 +1,13 @@
 import { Client } from "@notionhq/client";
-import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints"; // Import block types
+import { BlockObjectResponse, PageObjectResponse, PartialBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints"; // Import block types
 
 // Initialize the Notion client with the API key
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 // Fetch data from a Notion database (e.g., Projects or Library)
-export const getDatabaseEntries = async (databaseId: string): Promise<any[]> => {
+export const getDatabaseEntries = async (databaseId: string): Promise<PageObjectResponse[]> => {
 	try {
-		let results: any[] = [];
+		let results: PageObjectResponse[] = [];
 		let hasMore = true;
 		let nextCursor: string | undefined = undefined;
 
@@ -17,7 +17,12 @@ export const getDatabaseEntries = async (databaseId: string): Promise<any[]> => 
 				start_cursor: nextCursor ?? undefined,
 			});
 
-			results = [...results, ...response.results]; // Append the results
+			results = [
+				...results,
+				...response.results.filter(
+					(result): result is PageObjectResponse => 'properties' in result
+				),
+			]; // Append the results
 
 			// Check if there are more pages to fetch
 			hasMore = response.has_more;
@@ -42,15 +47,17 @@ export const getPageContent = async (
 
 		// Fetch children recursively for blocks with children (e.g., synced blocks)
 		const blocksWithChildren = await Promise.all(
-			response.results.map(async (block: any) => {
-				if (block.has_children) {
+			response.results.map(async (block: BlockObjectResponse | PartialBlockObjectResponse) => {
+				if ('has_children' in block && block.has_children) {
 					const children = await getBlockChildren(block.id);
 					return { ...block, children };
 				}
 				return block;
 			})
 		);
-		return blocksWithChildren;
+		return blocksWithChildren.filter(
+			(block): block is BlockObjectResponse => 'type' in block
+		);
 	} catch (error) {
 		console.error("Error fetching page content:", error);
 		return [];
@@ -68,8 +75,8 @@ export const getBlockChildren = async (
 
 		// Recursively fetch children for blocks that also have children
 		const childBlocks = await Promise.all(
-			response.results.map(async (block: any) => {
-				if (block.has_children) {
+			response.results.map(async (block: BlockObjectResponse | PartialBlockObjectResponse) => {
+				if ('has_children' in block && block.has_children) {
 					const children = await getBlockChildren(block.id); // Recursively fetch children
 					return { ...block, children };
 				}
@@ -77,7 +84,9 @@ export const getBlockChildren = async (
 			})
 		);
 
-		return childBlocks;
+		return childBlocks.filter(
+			(block): block is BlockObjectResponse => 'type' in block
+		);
 	} catch (error) {
 		console.error("Error fetching block children:", error);
 		return [];

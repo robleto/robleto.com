@@ -1,10 +1,9 @@
+import React from "react";
 import { fetchNotionData } from "../../lib/notionContentFetcher";
-import { renderBlock } from "../../utils/renderItems";
 import Gallery from "./_gallery"; // Import Gallery
 import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
 import Subhead from "../../components/layout/Subhead"; // Import Subhead
 import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort function
-
 
 // Map the Art data structure
 const mapArtEntry = (entry: any) => {
@@ -43,7 +42,6 @@ export default async function ArtPage() {
 
 	return (
 		<div className="container mx-auto p-4">
-
 			<PageTitle title="Artwork" />
 			<Subhead pageContent={pageContent} />
 

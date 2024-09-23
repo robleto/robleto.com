@@ -1,6 +1,6 @@
 "use client"; // Needed since we're using useState
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SidebarLink from "./SidebarLink";
 import SidebarSectionHeader from "./SidebarSectionHeader";
 import Logo from "./Logo";
@@ -8,11 +8,38 @@ import SidebarToggle from "./SidebarToggle";
 import DarkLightToggle from "../sidebar/DarkLightToggle";
 
 export default function SideNav() {
+	// State to track sidebar collapse/expand status
 	const [isCollapsed, setIsCollapsed] = useState(false);
+	// State to prevent rendering until window size is determined
+	const [isReady, setIsReady] = useState(false);
 
-	const toggleCollapse = () => {
-		setIsCollapsed(!isCollapsed);
-	};
+	// Set the default state based on the screen width
+	useEffect(() => {
+		const handleResize = () => {
+			if (window.innerWidth < 768) {
+				setIsCollapsed(true); // Default to collapsed on mobile
+			} else {
+				setIsCollapsed(false); // Default to expanded on desktop
+			}
+		};
+
+		// Set the initial state based on the current screen width and prevent flickering
+		handleResize();
+		setIsReady(true); // Mark as ready to render after checking window size
+
+		// Add event listener to update state on window resize
+		window.addEventListener("resize", handleResize);
+
+		// Cleanup the event listener on component unmount
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
+
+	// Prevent rendering until the correct state is determined
+	if (!isReady) {
+		return null; // Or you can return a loading spinner, etc.
+	}
 
 	return (
 		<div className="flex h-screen fixed min-h-[100vh] overflow-scroll">
@@ -25,7 +52,7 @@ export default function SideNav() {
 				{/* Sidebar Toggle */}
 				<SidebarToggle
 					isCollapsed={isCollapsed}
-					toggleCollapse={toggleCollapse}
+					toggleCollapse={() => setIsCollapsed(!isCollapsed)}
 				/>
 
 				<div className="flex-grow overflow-y-auto mt-8">
@@ -59,11 +86,6 @@ export default function SideNav() {
 								title="Posts"
 								isCollapsed={isCollapsed}
 							/>
-							{/* <SidebarLink
-								slug="lists"
-								title="Lists"
-								isCollapsed={isCollapsed}
-							/> */}
 							<SidebarLink
 								slug="travel"
 								title="Travels"

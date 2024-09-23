@@ -84,19 +84,18 @@ export default async function TravelPage() {
 
 	return (
 		<div className="container mx-auto p-4">
-
 			<PageTitle title="Travels" />
 			<Subhead pageContent={pageContent} />
 
 			{/* Render the Gallery component grouped by State */}
 			{sortedGroupKeys.map((state: string) => (
 				<section key={state}>
-					<section className="relative flex items-center justify-center my-8">
-						<span className="flex-grow h-px bg-gray-300"></span>
+					<section className="sticky top-0 z-10 flex items-center justify-center my-8">
+						<span className="flex-grow h-px bg-gray-300 shadow"></span>
 						<h3 className="px-4 text-2xl uppercase font-bold text-gray-700 dark:text-gray-200 oswald font-oswald">
-							{state}
+							<span className="shadow">{state}</span>
 						</h3>
-						<span className="flex-grow h-px bg-gray-300"></span>
+						<span className="flex-grow h-px bg-gray-300 shadow"></span>
 					</section>
 					<Gallery
 						items={sortedGroupedItems[state]}

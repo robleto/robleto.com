@@ -1,7 +1,5 @@
-"use client"; // This makes the component a Client Component
-
+import React from "react";
 import { fetchNotionData } from "../lib/notionContentFetcher";
-import { renderBlock } from "../utils/renderItems";
 import Lists from "./about/_list"; // Import the utility
 import { sortByPinnedAndDate } from "../utils/sortItems"; // Import the sort function
 
@@ -29,7 +27,7 @@ const mapHomeEntry = (entry: any) => {
 };
 
 export default async function HomePage() {
-	const { pageContent, listItems } = await fetchNotionData(
+	const { listItems } = await fetchNotionData(
 		process.env.NOTION_ABOUT_DB_ID!,
 		process.env.NOTION_ABOUT_PAGE_ID!,
 		mapHomeEntry // Custom mapping for Home

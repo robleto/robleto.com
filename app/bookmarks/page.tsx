@@ -37,6 +37,7 @@ const mapBookmarksEntry = (entry: any) => {
 	};
 };
 
+
 export default async function BookmarksPage() {
 	const { pageContent, listItems } = await fetchNotionData(
 		process.env.NOTION_BOOKMARKS_DB_ID!,
@@ -44,17 +45,16 @@ export default async function BookmarksPage() {
 		mapBookmarksEntry // Custom mapping for Home
 	);
 
-	// Sort the items using the shared sort function
+	// Sort the items using the shared sort function (sorted by pinned and date)
 	const sortedItems = sortByPinnedAndDate(listItems);
 
 	return (
 		<div className="container mx-auto p-4">
-
 			<PageTitle title="Bookmarks" />
 			<Subhead pageContent={pageContent} />
 
 			{/* Render the Lists component */}
-			<Lists items={listItems} />
+			<Lists items={sortedItems} />
 		</div>
 	);
 }

@@ -1,5 +1,6 @@
+import React from "react";
 import { fetchNotionData } from "../../lib/notionContentFetcher";
-import { renderBlock } from "../../utils/renderItems";
+import { NotionEntryRaw, NotionEntry } from "../../types/notionTypes"; 
 import Bookshelf from "./_bookshelf"; // Import Gallery
 import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
 import Subhead from "../../components/layout/Subhead"; // Import Subhead
@@ -7,10 +8,11 @@ import {
 	groupItemsByVariable,
 	sortGroupsAlphabetically,
 } from "../../utils/groupItems"; // Import the missing function
-import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort function
+// Removed unused import for sortByPinnedAndDate
 
 // Map the Library data structure
-const mapLibraryEntry = (entry: any) => {
+
+const mapLibraryEntry = (entry: NotionEntryRaw): NotionEntry => {
 	const imageProperty = entry.properties.Image;
 
 	// Fetch the image URL based on file name or external url
@@ -24,7 +26,7 @@ const mapLibraryEntry = (entry: any) => {
 	return {
 		id: entry.id,
 		title: entry.properties.Title?.title[0]?.plain_text ?? "Untitled",
-		topics: topics.map((topic: any) => topic.name), // Get an array of topic names
+		topics: topics.map((topic: { name: string }) => topic.name), // Get an array of topic names
 		image: imageUrl,
 		url: entry.properties.URL?.url || "#",
 	};
@@ -42,9 +44,6 @@ export default async function LibraryPage() {
 
 	// Sort the topics alphabetically using the utility
 	const sortedTopics = sortGroupsAlphabetically(itemsGroupedByTopic); // Add this line
-
-	// Sort the items using the shared sort function (if applicable)
-	const sortedItems = sortByPinnedAndDate(listItems); // This will sort by pinned and date if needed
 
 	return (
 		<div className="container mx-auto p-4">
