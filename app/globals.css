@@ -1,0 +1,48 @@
+@tailwind base;
+
+body {
+  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  background-color: #f9f9fb;
+}
+
+.font-bodoni div,
+.font-bodoni div p {
+  font-family: "Libre Bodini", serif;
+}
+
+/* globals.css */
+body {
+  background-color: theme("colors.background");
+}
+.dark body {
+  background-color: theme("colors.foreground");
+}
+
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* In your global CSS or a component-specific CSS file */
+.dark img.svg-icon {
+  filter: invert(1);
+}
+
+
+.blinking-cursor {
+  animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+

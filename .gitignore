@@ -1,14 +1,19 @@
 # dependencies installed by npm
 node_modules
+.history
+.next
 
 # build artefacts
 public
 css
 
 # secrets and errors
+.env.local
 .env
 .log
 .codekit3
 
 # macOS related files
 .DS_Store
+
+yarn 
