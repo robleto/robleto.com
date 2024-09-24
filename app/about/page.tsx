@@ -11,6 +11,7 @@ type ListItem = {
 	description: string;
 	image: string;
 	date: Date;
+	slug: string;
 	url: string;
 	isPinned: boolean;
 };
@@ -23,6 +24,7 @@ const mapAboutEntry = (entry: any): ListItem => {
 		entry.properties.Image?.files?.[0]?.file?.url ||
 		entry.properties.Image?.files?.[0]?.external?.url ||
 		"";
+	const slug = entry.properties.Slug?.slug || "";
 	const date = new Date(entry.properties.Date?.date?.start || "");
 	const url = entry.properties.URL?.url || "#";
 	const isPinned = entry.properties.Pinned?.checkbox || false; // Check if the item is pinned
@@ -32,6 +34,7 @@ const mapAboutEntry = (entry: any): ListItem => {
 		name: entry.properties.Name?.title[0]?.plain_text ?? "Untitled",
 		description,
 		image,
+		slug,
 		date,
 		url,
 		isPinned, // Add isPinned to the item

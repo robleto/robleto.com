@@ -1,8 +1,8 @@
 # Robleto.com
+
 Personal website of Greg Robleto – Product / Design / Technology
 
 ![Robleto.com](https://cdn.dribbble.com/userupload/16756461/file/original-e067ac147a7ffc1a3f97ec69a9fccebd.png?resize=1504x1156)
-
 
 Hello there 👋, thanks for visiting.
 
@@ -10,17 +10,13 @@ This site has been a long time coming and represents my evolution from a simple,
 
 . . .
 
-
 ## Code and Tools
 
 This site was created with: **React**, **Tailwind**, **Typescript**, **HTML**, and **CSS**
 
 Tools used to build this site:  **Figma**, **VS Code**, **Notion**,  **Github**, **Netlify**, and **ChatGPT**  
 
-
 . . .
-
-
 
 ## Authors
 
@@ -28,13 +24,11 @@ Greg Robleto - [@robleto](https://www.github.com/robleto)
 
 . . .
 
-
 ## Roadmap
 
 - Design and add additional resources
 
 . . .
-
 
 ## Requests?
 

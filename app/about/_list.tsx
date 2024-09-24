@@ -7,6 +7,7 @@ type ListItem = {
 	name: string;
 	tags: string[];
 	description: string;
+	slug: string;
 	image: string;
 	date: Date;
 	isPinned: boolean;
@@ -41,7 +42,7 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 					<img
 						src={
 							item.image ||
-							`https://ui-avatars.com/api/?name=${item.name}&background=random`
+							`./about/${item.slug}.svg`
 						}
 						alt={`${item.name} Avatar`}
 						className="w-12 h-12 rounded-full"
