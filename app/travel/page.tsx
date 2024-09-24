@@ -45,12 +45,8 @@ export default async function TravelPage() {
 		mapTravelEntry
 	);
 
-	// Log the fetched list items to ensure they are present
-	console.log("Fetched List Items:", listItems);
-
 	// Check if listItems has valid data
 	if (!listItems || listItems.length === 0) {
-		console.warn("No items were fetched from Notion.");
 		return <div>No travel data available.</div>; // Early exit if no data
 	}
 
@@ -78,9 +74,6 @@ export default async function TravelPage() {
 		},
 		{}
 	);
-
-	// Log the grouped and sorted items
-	console.log("Grouped and Sorted Items:", sortedGroupedItems);
 
 	return (
 		<div className="container mx-auto p-4">
