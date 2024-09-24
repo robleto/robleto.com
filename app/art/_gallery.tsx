@@ -6,7 +6,9 @@ type GalleryItem = {
 	title: string;
 	image: string;
 	url: string;
-	featured: boolean; // Add a featured property
+	featured: boolean;
+	slug: string;
+	animated: boolean;
 };
 
 type GalleryProps = {
@@ -30,6 +32,8 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
 							title={item.title}
 							image={item.image}
 							url={item.url}
+							slug={item.slug}
+							animated={item.animated}
 						/>
 					))}
 				</div>
@@ -38,7 +42,6 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
 			{/* Regular items section (3 columns on desktop) */}
 			{regularItems.length > 0 && (
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-					
 					{regularItems.map((item) => (
 						<GalleryCard
 							key={item.id}
@@ -46,6 +49,8 @@ const Gallery: React.FC<GalleryProps> = ({ items }) => {
 							title={item.title}
 							image={item.image}
 							url={item.url}
+							slug={item.slug}
+							animated={item.animated}
 						/>
 					))}
 				</div>

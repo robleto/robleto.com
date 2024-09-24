@@ -9,7 +9,7 @@ import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort 
 const mapArtEntry = (entry: any) => {
 	const imageProperty = entry.properties.Image;
 
-	// Fetch the image URL based on file name or external url
+	// Fetch the image URL based on file name or external URL
 	const imageUrl =
 		imageProperty?.files?.[0]?.file?.url || // For uploaded image URL
 		imageProperty?.files?.[0]?.name || // If it's stored under 'name'
@@ -17,6 +17,12 @@ const mapArtEntry = (entry: any) => {
 
 	// Fetch the Featured property
 	const featured = entry.properties.Featured?.checkbox || false;
+
+	// Fix slug extraction
+	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || ""; // Assuming it's rich_text
+
+	// Fix animated extraction
+	const animated = entry.properties.Animated?.checkbox || false;
 
 	const topics = entry.properties.Topics?.multi_select || [];
 
@@ -27,6 +33,8 @@ const mapArtEntry = (entry: any) => {
 		image: imageUrl,
 		url: entry.properties.URL?.url || "#",
 		featured, // Pinned field to order the list
+		slug,
+		animated,
 	};
 };
 
