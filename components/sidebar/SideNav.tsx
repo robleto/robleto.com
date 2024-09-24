@@ -6,7 +6,9 @@ import SidebarSectionHeader from "./SidebarSectionHeader";
 import Logo from "./Logo";
 import SidebarToggle from "./SidebarToggle";
 import DarkLightToggle from "../sidebar/DarkLightToggle";
-import Modal from "../../components/layout/Modal"; // Import the Modal component
+import Modal from "../../components/layout/Modal"; 
+import ContactModal from "../../app/about/_contact"; 
+import SocialModal from "../../app/about/_social"; 
 
 export default function SideNav() {
 	const [isCollapsed, setIsCollapsed] = useState(false);
@@ -170,12 +172,14 @@ export default function SideNav() {
 			</nav>
 
 			{/* Contact Modal */}
+
+			{/* Contact Modal */}
 			<Modal
 				isOpen={isContactModalOpen}
-				onClose={() => setIsContactModalOpen(false)}
-				title="Contact Us"
+				onClose={() => setIsContactModalOpen(false)} // Close modal function
+				title="Contact"
 			>
-				<p>This is the Contact modal content.</p>
+				<ContactModal onClose={() => setIsContactModalOpen(false)} />
 			</Modal>
 
 			{/* Social Modal */}
@@ -184,7 +188,7 @@ export default function SideNav() {
 				onClose={() => setIsSocialModalOpen(false)}
 				title="Social Links"
 			>
-				<p>This is the Social modal content.</p>
+				<SocialModal onClose={() => setIsSocialModalOpen(false)} />
 			</Modal>
 		</div>
 	);

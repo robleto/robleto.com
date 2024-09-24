@@ -1,6 +1,7 @@
 import React from "react";
 
 type GalleryCardProps = {
+	key: string;
 	id: string;
 	title: string;
 	image: string;

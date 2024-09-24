@@ -23,16 +23,22 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
 				className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-[90%] max-w-lg"
 				onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
 			>
-				{/* Close button */}
+				{/* Close button with the SVG icon */}
 				<button
 					onClick={onClose}
-					className="absolute top-2 right-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+					className="absolute top-2 right-2"
 				>
-					X
+					<img
+						src="/_icons/close.svg" // Make sure the path is correct
+						alt="Close"
+						className="h-6 w-6 mr-2 mt-2 svg-icon opacity-50 hover:opacity-100"
+					/>
 				</button>
 
 				{/* Modal title */}
-				<h2 className="text-2xl font-bold mb-4">{title}</h2>
+				<h1 className="text-4xl text-center py-4 tracking-tight font-semibold font-oswald text-gray-800 dark:text-gray-200">
+					{title}
+				</h1>
 
 				{/* Modal body */}
 				<div>{children}</div>

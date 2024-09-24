@@ -5,8 +5,18 @@ import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
 import Subhead from "../../components/layout/Subhead"; // Import Subhead
 import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort function
 
-// Map the Home data structure
-const mapHomeEntry = (entry: any) => {
+type ListItem = {
+	id: string;
+	name: string;
+	description: string;
+	image: string;
+	date: Date;
+	url: string;
+	isPinned: boolean;
+};
+
+// Map the About data structure
+const mapAboutEntry = (entry: any): ListItem => {
 	const description =
 		entry.properties.Description?.rich_text[0]?.plain_text || "";
 	const image =
@@ -28,11 +38,11 @@ const mapHomeEntry = (entry: any) => {
 	};
 };
 
-export default async function HomePage() {
+export default async function AboutPage() {
 	const { pageContent, listItems } = await fetchNotionData(
 		process.env.NOTION_ABOUT_DB_ID!,
 		process.env.NOTION_ABOUT_PAGE_ID!,
-		mapHomeEntry // Custom mapping for Home
+		mapAboutEntry // Custom mapping for About
 	);
 
 	// Sort the items using the shared sort function
@@ -44,7 +54,6 @@ export default async function HomePage() {
 			<Subhead pageContent={pageContent} />
 
 			{/* Render the Lists component */}
-
 			<section className="z-[-5] sticky top-0 flex items-center justify-center my-8">
 				<span className="flex-grow h-px bg-gray-300"></span>
 				<h3 className="px-4 text-2xl uppercase font-bold text-gray-700 dark:text-gray-200 oswald font-oswald">
@@ -52,7 +61,7 @@ export default async function HomePage() {
 				</h3>
 				<span className="flex-grow h-px bg-gray-300"></span>
 			</section>
-			<Lists items={listItems} />
+			<Lists items={sortedItems} />
 		</div>
 	);
 }

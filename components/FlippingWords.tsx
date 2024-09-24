@@ -1,61 +1,79 @@
-import React, { useEffect, useRef } from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../tailwind.config"; // Adjust the path to your tailwind.config.js
 
-import { TextPlugin } from "gsap/TextPlugin";
+// Resolve Tailwind config to get the theme values
+const fullConfig = resolveConfig(tailwindConfig);
 
-gsap.registerPlugin(useGSAP, TextPlugin);
+// Extract the colors from the Tailwind theme
+const colors = fullConfig.theme?.colors as unknown as {
+	emperor: string;
+	ferra: string;
+	gunpowder: string;
+	nobel: string;
+	oracle: string;
+	sapling: string;
+	spindle: string;
+	strikemaster: string;
+};
 
 const words = [
-	"UX Designer",
-	"CSS Artist",
-	"Design Director",
-	"Marketing Designer",
-	"Product Strategist",
+	{ text: "Creative Director", color: colors.ferra },
+	{ text: "CSS Artist", color: colors.oracle },
+	{ text: "Design Director", color: colors.strikemaster },
+	{ text: "UI Engineer", color: colors.sapling },
+	{ text: "Marketing Creative", color: colors.emperor },
+	{ text: "Product Lead", color: colors.gunpowder },
+	{ text: "UX Designer", color: colors.nobel },
+	{ text: "Brand Strategist", color: colors.spindle },
 ];
 
 const FlippingWords = () => {
-	const textRef = useRef<HTMLSpanElement>(null); // Ref for the text element
-	const cursorRef = useRef<HTMLSpanElement>(null); // Ref for the cursor element
+	const [currentWord, setCurrentWord] = useState(words[0].text);
+	const textRef = useRef<HTMLHeadingElement>(null);
+	const blockRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const tl = gsap.timeline({ repeat: Infinity, repeatDelay: 1 }); // Timeline with infinite repeat
+		const tl = gsap.timeline({ repeat: -1 });
 
 		words.forEach((word) => {
-			// Add typing animation for each word
-			tl.to(textRef.current, {
-				text: word, // Use GSAP's text plugin to type the word
-				duration: word.length * 0.1, // Adjust typing speed
-				ease: "none", // Linear typing
+			tl.to(blockRef.current, {
+				backgroundColor: word.color,
+				duration: 1,
+				ease: "power2.inOut",
 				onStart: () => {
-					gsap.to(cursorRef.current, { opacity: 1 });
-				}, // Show cursor when typing starts
-			})
-				.to(cursorRef.current, {
-					opacity: 0,
-					ease: "none",
-					duration: 0.5,
-				}) // Small pause before deleting
-				.to(textRef.current, {
-					text: "", // Clear the text
-					duration: word.length * 0.1, // Adjust delete speed
-					ease: "none",
-				});
+					// Change the text when the background color animation starts
+					setCurrentWord(word.text);
+				},
+			}).to({}, { duration: 3 }); // Pause for 3 seconds after changing text and color
 		});
 
-		// Clean up GSAP animation on component unmount
 		return () => {
 			tl.kill();
 		};
 	}, []);
 
 	return (
-		<span>
-			<span ref={textRef} className="inline-block"></span>
-			<span ref={cursorRef} className="blinking-cursor opacity-30 font-light text-white">
-				|
+		<div
+			ref={blockRef}
+			className="relative bg-ferra rounded-lg w-full mt-2 p-4 flex justify-center items-center"
+		>
+			{/* Left-aligned "Is a" text */}
+			<span className="absolute left-4 text-white text-xs md:text-sm lg:text-base uppercase opacity-70">
+				Is a
 			</span>
-		</span>
+
+			{/* Dynamic flipping word in the center */}
+			<h2
+				ref={textRef}
+				className="text-whisper text-center leading-6 text-2xl md:text-4xl lg:text-5xl font-bold"
+			>
+				{currentWord}
+			</h2>
+		</div>
 	);
 };
 

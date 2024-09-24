@@ -36,7 +36,7 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 						{/* Strip 'https://' from the displayed URL and truncate */}
 						<a
 							href={item.website}
-							className="text-blue-500 block overflow-hidden text-ellipsis"
+							className="text-blue-500 block overflow-hidden text-sm text-ellipsis"
 							style={{
 								display: "-webkit-box",
 								WebkitBoxOrient: "vertical",
