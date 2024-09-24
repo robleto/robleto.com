@@ -76,33 +76,35 @@ const mapReadingListEntry = (entry: any) => {
 };
 
 export default async function HomePage() {
+
 	// Fetch the home, posts, and reading list data
-	const { listItems } = await fetchNotionData(
-		process.env.NOTION_ABOUT_DB_ID!,
-		process.env.NOTION_ABOUT_PAGE_ID!,
-		mapHomeEntry // Custom mapping for Home
-	);
+	const { pageContent: aboutContent } =
+		await fetchNotionData({
+			databaseId: process.env.NOTION_ABOUT_DB_ID!,
+			pageId: process.env.NOTION_ABOUT_PAGE_ID!,
+			mapEntry: (entry) => mapHomeEntry(entry),
+		});
 
-	const { listItems: postItems } = await fetchNotionData(
-		process.env.NOTION_POSTS_DB_ID!, // Posts DB ID
-		process.env.NOTION_POSTS_PAGE_ID!, // Posts Page ID
-		mapPostsEntry // Custom mapping for Posts
-	);
+	const { pageContent: postsContent } = await fetchNotionData({
+		databaseId: process.env.NOTION_POSTS_DB_ID!,
+		pageId: process.env.NOTION_POSTS_PAGE_ID!,
+		mapEntry: (entry) => mapPostsEntry(entry),
+	});
 
-	const { listItems: readingListItems } = await fetchNotionData(
-		process.env.NOTION_READINGLIST_DB_ID!, // Reading List DB ID
-		process.env.NOTION_READINGLIST_PAGE_ID!, // Reading List Page ID
-		mapReadingListEntry // Custom mapping for Reading List
-	);
+	const { pageContent: readingListContent } = await fetchNotionData({
+		databaseId: process.env.NOTION_READINGLIST_DB_ID!,
+		pageId: process.env.NOTION_READINGLIST_PAGE_ID!,
+		mapEntry: (entry) => mapReadingListEntry(entry),
+	});
 
 	// Sort and limit the data
-	const sortedHomeItems = sortByPinnedAndDate(listItems);
+	const sortedHomeItems = sortByPinnedAndDate(aboutContent);
 	const limitedHomeItems = sortedHomeItems.slice(0, 4);
 
-	const sortedPostItems = sortByPinnedAndDate(postItems);
+	const sortedPostItems = sortByPinnedAndDate(postsContent);
 	const firstTwoBlogPosts = sortedPostItems.slice(0, 2); // Limit to first 2 posts
 
-	const sortedReadingList = sortByPinnedAndDate(readingListItems); // Sort Reading List
+	const sortedReadingList = sortByPinnedAndDate(readingListContent); // Sort Reading List
 	const firstThreeReadingListPosts = sortedReadingList.slice(0, 4); // Limit to first 3 posts
 
 	return (
