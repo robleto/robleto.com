@@ -1,6 +1,5 @@
 import React from "react";
 import { fetchNotionData } from "../../lib/notionContentFetcher";
-import { NotionEntryRaw, NotionEntry } from "../../types/notionTypes"; 
 import Bookshelf from "./_bookshelf"; // Import Gallery
 import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
 import Subhead from "../../components/layout/Subhead"; // Import Subhead
@@ -12,7 +11,7 @@ import {
 
 // Map the Library data structure
 
-const mapLibraryEntry = (entry: NotionEntryRaw): NotionEntry => {
+const mapLibraryEntry = (entry: any) => {
 	const imageProperty = entry.properties.Image;
 
 	// Fetch the image URL based on file name or external url

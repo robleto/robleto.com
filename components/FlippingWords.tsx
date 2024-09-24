@@ -59,7 +59,7 @@ const FlippingWords = () => {
 	return (
 		<div
 			ref={blockRef}
-			className="relative bg-ferra rounded-lg w-full mt-2 p-4 flex justify-center items-center"
+			className="relative bg-ferra rounded-lg w-full mt-2 p-4 z-[-5] flex justify-center items-center"
 		>
 			{/* Left-aligned "Is a" text */}
 			<span className="absolute left-4 text-white text-xs md:text-sm lg:text-base uppercase opacity-70">
