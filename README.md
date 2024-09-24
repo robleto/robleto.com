@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Robleto.com
+Personal website of Greg Robleto – Product / Design / Technology
 
-## Getting Started
+![Robleto.com](https://cdn.dribbble.com/userupload/16756461/file/original-e067ac147a7ffc1a3f97ec69a9fccebd.png?resize=1504x1156)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Hello there 👋, thanks for visiting.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This site has been a long time coming and represents my evolution from a simple, single-page profile to a more dynamic, app-style site. The goal is to keep it fresh and active, allowing me to continually update and expand it over time. What started as a basic landing page has now grown into a platform that reflects both my work and personal journey, blending functionality with a design that I can continuously improve.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+. . .
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## Code and Tools
 
-To learn more about Next.js, take a look at the following resources:
+This site was created with: **React**, **Tailwind**, **Typescript**, **HTML**, and **CSS**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tools used to build this site:  **Figma**, **VS Code**, **Notion**,  **Github**, **Netlify**, and **ChatGPT**  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+. . .
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Authors
+
+Greg Robleto - [@robleto](https://www.github.com/robleto)
+
+. . .
+
+
+## Roadmap
+
+- Design and add additional resources
+
+. . .
+
+
+## Requests?
+
+What resources, bookmarks or people to follow would you like added?
