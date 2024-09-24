@@ -1,6 +1,6 @@
 import React from "react";
-import { FaThumbtack } from "react-icons/fa"; // Import the FontAwesome pin icon
-import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sorting function
+import { FaThumbtack, FaStar } from "react-icons/fa"; 
+import { sortByPinnedAndDate } from "../../utils/sortItems"; 
 
 type ListItem = {
 	id: string;
@@ -39,14 +39,17 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 					className="flex z-[-10] items-center relative justify-between space-x-4 border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
 				>
 					{/* Display Image or Placeholder */}
-					<img
-						src={
-							item.image ||
-							`./about/${item.slug}.svg`
-						}
-						alt={`${item.name} Avatar`}
-						className="w-12 h-12 rounded-full"
-					/>
+					{item.image ? (
+						<img
+							src={item.image || `./about/${item.slug}.svg`}
+							alt={`${item.name} Avatar`}
+							className="w-12 h-12 rounded-full"
+						/>
+					) : (
+						<div className="w-12 h-12 rounded-full bg-iron flex items-center justify-center">
+							<FaStar className="text-white text-2xl" />
+						</div>
+					)}
 
 					{/* User Details */}
 					<div className="flex-grow">
