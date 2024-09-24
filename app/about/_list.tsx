@@ -1,7 +1,7 @@
 import React from "react";
 import { FaThumbtack } from "react-icons/fa"; // Import the FontAwesome pin icon
+import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sorting function
 
-// Define the ListItem type with the new date field
 type ListItem = {
 	id: string;
 	name: string;
@@ -17,6 +17,9 @@ type ListsProps = {
 };
 
 const Lists: React.FC<ListsProps> = ({ items }) => {
+	// Apply the sorting function to sort items by pinned and date
+	const sortedItems = sortByPinnedAndDate(items);
+
 	// Helper function to format the date as "Dec. 2022"
 	const formatDate = (date: Date) => {
 		return date
@@ -29,10 +32,10 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 
 	return (
 		<div className="space-y-4">
-			{items.map((item) => (
+			{sortedItems.map((item) => (
 				<div
 					key={item.id}
-					className="flex z-[-10]  items-center relative justify-between space-x-4 border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
+					className="flex z-[-10] items-center relative justify-between space-x-4 border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600"
 				>
 					{/* Display Image or Placeholder */}
 					<img

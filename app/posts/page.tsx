@@ -32,11 +32,13 @@ const mapPostsEntry = (entry: any) => {
 };
 
 export default async function PostsPage() {
-	const { pageContent, listItems } = await fetchNotionData(
-		process.env.NOTION_POSTS_DB_ID!,
-		process.env.NOTION_POSTS_PAGE_ID!,
-		mapPostsEntry
-	);
+
+	// Fetch the Notion data
+	const { pageContent, listItems } = await fetchNotionData({
+		databaseId: process.env.NOTION_POSTS_DB_ID!,
+		pageId: process.env.NOTION_POSTS_PAGE_ID!,
+		mapEntry: (entry) => mapPostsEntry(entry),
+	});
 
 	// Sort the items using the shared sort function (sorted by pinned and date)
 	const sortedItems = sortByPinnedAndDate(listItems);

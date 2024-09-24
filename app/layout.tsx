@@ -46,12 +46,11 @@ export default function RootLayout({
 					<div className="flex min-h-screen">
 						{/* SideNav is collapsed by default on mobile and expanded on larger screens */}
 						<SideNav />
-
 						{/* Main content */}
-
 						<main className="flex-grow max-w-screen-lg pl-[20%] w-[80%] md:pl-[25%] lg:w-auto mx-auto p-8 transition-all duration-300 dark:text-white">
 							{children}
 						</main>
+						
 					</div>
 				</ThemeProvider>
 			</body>

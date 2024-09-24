@@ -40,11 +40,13 @@ console.log("SortOrder fetched for", entry.id, ":", sortOrder);
 };
 
 export default async function ProjectsPage() {
-	const { pageContent, listItems } = await fetchNotionData(
-		process.env.NOTION_PROJECTS_DB_ID!, // Corrected DB ID for Projects
-		process.env.NOTION_PROJECTS_PAGE_ID!, // Corrected Page ID for Projects
-		mapProjectsEntry // Custom mapping for Projects
-	);
+
+	// Fetch the Notion data
+	const { pageContent, listItems } = await fetchNotionData({
+		databaseId: process.env.NOTION_PROJECTS_DB_ID!,
+		pageId: process.env.NOTION_PROJECTS_PAGE_ID!,
+		mapEntry: (entry) => mapProjectsEntry(entry),
+	});
 
 	// Sort the items using the shared sort function (sorted by sortOrder)
 	const sortedItems = sortByOrder(listItems);

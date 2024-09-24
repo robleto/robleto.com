@@ -46,12 +46,16 @@ const mapFollowingEntry = async (entry: any) => {
 };
 
 export default async function FollowingPage() {
+	
 	// Fetch the Notion data
-	const { pageContent, listItems } = await fetchNotionData(
-		process.env.NOTION_FOLLOWING_DB_ID!,
-		process.env.NOTION_FOLLOWING_PAGE_ID!,
-		mapFollowingEntry // Custom mapping for Following
-	);
+	const { pageContent, listItems } = await fetchNotionData({
+		databaseId: process.env.NOTION_FOLLOWING_DB_ID!,
+		pageId: process.env.NOTION_FOLLOWING_PAGE_ID!,
+		mapEntry: (entry) => mapFollowingEntry(entry),
+	});
+		
+
+console.log("Notion API Key:", process.env.NOTION_API_KEY);
 
 	// Sort the items using the shared sort function
 	const sortedItems = sortByPinnedAndDate(listItems);

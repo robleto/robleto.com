@@ -7,7 +7,6 @@ export const filterItemsByProperty = (
 	return items.filter((item) => {
 		// Access the property dynamically
 		const itemProperty = item?.[property]; // Use the dynamically passed property
-		console.log(`Item Property for ${property}:`, itemProperty);
 
 		// Return true if the item's property matches the desired value
 		return itemProperty === value;

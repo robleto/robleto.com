@@ -32,11 +32,13 @@ const mapLibraryEntry = (entry: any) => {
 };
 
 export default async function LibraryPage() {
-	const { pageContent, listItems } = await fetchNotionData(
-		process.env.NOTION_LIBRARY_DB_ID!, // Corrected DB ID for Library
-		process.env.NOTION_LIBRARY_PAGE_ID!, // Corrected Page ID for Library
-		mapLibraryEntry // Custom mapping for Library
-	);
+
+	// Fetch the data from Notion	
+	const { pageContent, listItems } = await fetchNotionData({
+		databaseId: process.env.NOTION_LIBRARY_DB_ID!,
+		pageId: process.env.NOTION_LIBRARY_PAGE_ID!,
+		mapEntry: (entry) => mapLibraryEntry(entry),
+	});
 
 	// Group items by topics using the utility
 	const itemsGroupedByTopic = groupItemsByVariable(listItems);

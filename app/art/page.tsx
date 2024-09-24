@@ -31,11 +31,13 @@ const mapArtEntry = (entry: any) => {
 };
 
 export default async function ArtPage() {
-	const { pageContent, listItems } = await fetchNotionData(
-		process.env.NOTION_ART_DB_ID!,
-		process.env.NOTION_ART_PAGE_ID!,
-		mapArtEntry // Custom mapping for Art
-	);
+
+	// Fetch the data from Notion
+	const { pageContent, listItems } = await fetchNotionData({
+		databaseId: process.env.NOTION_ART_DB_ID!,
+		pageId: process.env.NOTION_ART_PAGE_ID!,
+		mapEntry: (entry) => mapArtEntry(entry),
+	});
 
 	// Sort the items using the shared sort function
 	const sortedItems = sortByPinnedAndDate(listItems);

@@ -39,11 +39,11 @@ const mapTravelEntry = (entry: any) => {
 
 export default async function TravelPage() {
 	// Fetch the data from Notion
-	const { pageContent, listItems } = await fetchNotionData(
-		process.env.NOTION_TRAVEL_DB_ID!,
-		process.env.NOTION_TRAVEL_PAGE_ID!,
-		mapTravelEntry
-	);
+	const { pageContent, listItems } = await fetchNotionData({
+		databaseId: process.env.NOTION_TRAVEL_DB_ID!,
+		pageId: process.env.NOTION_TRAVEL_PAGE_ID!,
+		mapEntry: (entry) => mapTravelEntry(entry),
+	});
 
 	// Check if listItems has valid data
 	if (!listItems || listItems.length === 0) {
@@ -83,7 +83,7 @@ export default async function TravelPage() {
 			{/* Render the Gallery component grouped by State */}
 			{sortedGroupKeys.map((state: string) => (
 				<section key={state}>
-					<section className="sticky top-0 z-10 flex items-center justify-center my-8">
+					<section className="sticky top-0 z-[-5] flex items-center justify-center my-8">
 						<span className="flex-grow h-px bg-gray-300 shadow"></span>
 						<h3 className="px-4 text-2xl uppercase font-bold text-gray-700 dark:text-gray-200 oswald font-oswald">
 							<span className="shadow">{state}</span>

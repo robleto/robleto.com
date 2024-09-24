@@ -5,6 +5,7 @@ import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
 import Subhead from "../../components/layout/Subhead"; // Import Subhead
 
 export default async function ResourcesPage() {
+	
 	// Fetch Resources database entries
 	const resourcesItems = await getDatabaseEntries(process.env.NOTION_RESOURCES_DB_ID!);
 	// Fetch the Notion page content for additional content

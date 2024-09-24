@@ -4,7 +4,8 @@ export const sortByPinnedAndDate = (items: any[]) => {
 		if (a.isPinned !== b.isPinned) {
 			return a.isPinned ? -1 : 1; // Pinned items go at the top
 		}
-		return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
+		// Sort by date descending for non-pinned items
+		return new Date(b.date).getTime() - new Date(a.date).getTime();
 	});
 };
 

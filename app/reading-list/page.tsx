@@ -34,11 +34,13 @@ const mapReadingListEntry = (entry: any) => {
 };
 
 export default async function ReadingListPage() {
-	const { pageContent, listItems } = await fetchNotionData(
-		process.env.NOTION_READINGLIST_DB_ID!, // Corrected DB ID for ReadingList
-		process.env.NOTION_READINGLIST_PAGE_ID!, // Corrected Page ID for ReadingList
-		mapReadingListEntry // Custom mapping for ReadingList
-	);
+
+	// Fetch the Notion data
+	const { pageContent, listItems } = await fetchNotionData({
+		databaseId: process.env.NOTION_READINGLIST_DB_ID!,
+		pageId: process.env.NOTION_READINGLIST_PAGE_ID!,
+		mapEntry: (entry) => mapReadingListEntry(entry),
+	});
 
 	// Sort the items using the shared sort function (sorted by pinned and date)
 	const sortedItems = sortByPinnedAndDate(listItems);
