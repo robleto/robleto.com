@@ -4,6 +4,7 @@ node_modules
 .next
 
 # build artefacts
+public
 css
 
 # secrets and errors
