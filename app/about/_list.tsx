@@ -22,13 +22,19 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 	const sortedItems = sortByPinnedAndDate(items);
 
 	// Helper function to format the date as "Dec. 2022"
-	const formatDate = (date: Date) => {
-		return date
+	const formatDate = (date?: Date) => {
+		// Check if date is valid, return a fallback message if it's undefined or invalid
+		if (!date || isNaN(new Date(date).getTime())) {
+			return "Date Not Available";
+		}
+
+		// Format the valid date
+		return new Date(date)
 			.toLocaleDateString("en-US", {
 				month: "short",
 				year: "numeric",
 			})
-			.replace(".", "."); // Ensure the month abbreviation has a period (e.g., "Dec.")
+			.replace(".", "."); // Ensure the month abbreviation has a period (e.g., "Dec.");
 	};
 
 	return (

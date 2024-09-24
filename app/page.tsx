@@ -6,6 +6,19 @@ import FlippingWords from "@/components/FlippingWords";
 import GalleryCard from "./posts/_piece"; // For the posts
 import ReadingListCard from "./reading-list/_card"; // For the Reading List
 
+// Helper function to format the date
+const formatDate = (date?: Date) => {
+	if (!date || isNaN(new Date(date).getTime())) {
+		return "Date Not Available";
+	}
+	return new Date(date)
+		.toLocaleDateString("en-US", {
+			month: "short",
+			year: "numeric",
+		})
+		.replace(".", ".");
+};
+
 // Map the Home data structure
 const mapHomeEntry = (entry: any) => {
 	const description =
@@ -76,35 +89,33 @@ const mapReadingListEntry = (entry: any) => {
 };
 
 export default async function HomePage() {
-
 	// Fetch the home, posts, and reading list data
-	const { pageContent: aboutContent } =
-		await fetchNotionData({
-			databaseId: process.env.NOTION_ABOUT_DB_ID!,
-			pageId: process.env.NOTION_ABOUT_PAGE_ID!,
-			mapEntry: (entry) => mapHomeEntry(entry),
-		});
+	const { listItems: homeItems } = await fetchNotionData({
+		databaseId: process.env.NOTION_ABOUT_DB_ID!,
+		pageId: process.env.NOTION_ABOUT_PAGE_ID!,
+		mapEntry: (entry) => mapHomeEntry(entry),
+	});
 
-	const { pageContent: postsContent } = await fetchNotionData({
+	const { listItems: postItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_POSTS_DB_ID!,
 		pageId: process.env.NOTION_POSTS_PAGE_ID!,
 		mapEntry: (entry) => mapPostsEntry(entry),
 	});
 
-	const { pageContent: readingListContent } = await fetchNotionData({
+	const { listItems: readingListItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_READINGLIST_DB_ID!,
 		pageId: process.env.NOTION_READINGLIST_PAGE_ID!,
 		mapEntry: (entry) => mapReadingListEntry(entry),
 	});
 
 	// Sort and limit the data
-	const sortedHomeItems = sortByPinnedAndDate(aboutContent);
+	const sortedHomeItems = sortByPinnedAndDate(homeItems);
 	const limitedHomeItems = sortedHomeItems.slice(0, 4);
 
-	const sortedPostItems = sortByPinnedAndDate(postsContent);
+	const sortedPostItems = sortByPinnedAndDate(postItems);
 	const firstTwoBlogPosts = sortedPostItems.slice(0, 2); // Limit to first 2 posts
 
-	const sortedReadingList = sortByPinnedAndDate(readingListContent); // Sort Reading List
+	const sortedReadingList = sortByPinnedAndDate(readingListItems);
 	const firstThreeReadingListPosts = sortedReadingList.slice(0, 4); // Limit to first 3 posts
 
 	return (
@@ -162,7 +173,7 @@ export default async function HomePage() {
 						key={post.id}
 						title={post.name}
 						image={post.image}
-						pubDate={post.pubDate.toLocaleDateString()}
+						pubDate={formatDate(post.pubDate)}
 						url={post.url}
 						isPinned={post.isPinned || !post.isPinned}
 					/>
