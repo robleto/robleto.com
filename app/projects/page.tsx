@@ -20,7 +20,7 @@ console.log("SortOrder fetched for", entry.id, ":", sortOrder);
 		imageProperty?.files?.[0]?.file?.url || // For uploaded image URL
 		imageProperty?.files?.[0]?.name || // If it's stored under 'name'
 		"";
-
+	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";	
 	// Fetch the topics/tags
 	const tags =
 		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
@@ -34,6 +34,7 @@ console.log("SortOrder fetched for", entry.id, ":", sortOrder);
 			entry.properties.Description?.rich_text[0]?.plain_text ?? "",
 		image,
 		tags,
+		slug,
 		url,
 		sortOrder, // Use the correctly assigned sortOrder here
 	};

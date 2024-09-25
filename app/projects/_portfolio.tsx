@@ -6,6 +6,7 @@ type PortfolioItem = {
 	title: string;
 	description: string;
 	image: string;
+	slug: string;
 	url: string; // This will be the custom "Url" from the Notion property
 };
 
@@ -24,6 +25,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ items }) => {
 					title={item.title}
 					description={item.description}
 					image={item.image}
+					slug={item.slug}
 					url={item.url}
 				/>
 			))}

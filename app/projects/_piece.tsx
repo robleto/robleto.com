@@ -1,10 +1,12 @@
 import React from "react";
+import { FaImage } from "react-icons/fa";
 
 type GalleryCardProps = {
 	id: string;
 	title: string;
 	image: string;
 	description: string;
+	slug: string;
 	url: string;
 };
 
@@ -14,6 +16,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	image,
 	description,
 	url,
+	slug,
 }) => {
 	return (
 		<div
@@ -21,17 +24,23 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			className="card-link z-[-10] border bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 rounded-md shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:dark:bg-gray-600"
 		>
 			{/* Image wrapper with z-index explicitly set lower */}
-			{image && (
-				<div className="relative  h-64 w-full overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800">
-					<a href={url} target="_blank" rel="noopener noreferrer">
-						<img
-							src={image}
-							alt={title}
-							className="absolute inset-0 object-cover w-full h-full"
-						/>
-					</a>
-				</div>
-			)}
+			<div className="aspect-w-5 aspect-h-4 h-64 w-full flex items-center justify-center overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800  ">
+				{slug ? (
+					<img
+						// Use template literals to dynamically insert the slug and file extension
+						src={`./projects/${slug}.png`}
+						alt={title}
+						className="object-cover h-full w-full "
+					/>
+				) : (
+					// Fallback if the image is not available
+					<div className="flex flex-col items-center justify-center h-full w-full text-gray-400">
+						<FaImage className="text-4xl" />{" "}
+						{/* Image icon from React Icons */}
+						<p className="text-sm mt-2">Image Not Found</p>
+					</div>
+				)}
+			</div>
 
 			{/* Main content area */}
 			<div className="flex-grow my-4 px-4 pb-0">
