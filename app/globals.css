@@ -46,3 +46,12 @@ body {
   }
 }
 
+
+.gallery-card:hover h3 {
+  color: theme("colors.link");
+  text-decoration: underline;
+}
+.dark .gallery-card:hover h3 {
+  color: theme("colors.lightlink");
+  text-decoration: underline;
+}

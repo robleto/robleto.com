@@ -1,5 +1,5 @@
 import React from "react";
-import Tag from "../../components/Tag"; // Import the Tag component with lowercase 'tag'
+import Tag from "../components/Tag"; // Import the Tag component with lowercase 'tag'
 import { FaThumbtack } from "react-icons/fa"; // Import the FontAwesome pin icon
 
 type ListItem = {

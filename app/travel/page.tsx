@@ -1,39 +1,34 @@
-import { fetchNotionData } from "../../lib/notionContentFetcher";
-import { renderBlock } from "../../utils/renderItems";
-import Gallery from "./_gallery"; // Import Gallery
-import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
-import Subhead from "../../components/layout/Subhead"; // Import Subhead
-import {
-	groupItemsByVariable,
-	sortGroupsAlphabetically,
-} from "../../utils/groupItems"; // Import the grouping function
-import { filterItemsByProperty } from "../../utils/filterItems"; // Import the new filtering function
+import React from "react";
+import { fetchNotionData } from "@/lib/notionContentFetcher";
+import PageTitle from "@/app/components/layout/PageTitle";
+import Subhead from "@/app/components/layout/Subhead";
+import Gallery from "@/app/components/Gallery";
+import { groupItemsByVariable } from "@/utils/groupItems";
 
 // Map the Travel data structure
 const mapTravelEntry = (entry: any) => {
-	// Adding fallbacks for properties to avoid breaking the map function
-	const imageProperty = entry?.properties?.Image || {};
-	const city =
-		entry?.properties?.City?.rich_text?.[0]?.plain_text || "Unknown City";
-	const state = entry?.properties?.State?.select?.name || "Unknown State";
-	const cityState = `${city}, ${state}`;
-
-	// Fetch the image URL based on file name or external url
+	const imageProperty = entry.properties.Image;
 	const imageUrl =
 		imageProperty?.files?.[0]?.file?.url ||
 		imageProperty?.files?.[0]?.name ||
 		"";
+	const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
+	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
+	const url = entry.properties.URL?.url || "#";
+	const city = entry.properties.City?.rich_text?.[0]?.plain_text || "";
+	const state = entry.properties.State?.select?.name || "Unknown";
+	const seen = entry.properties.Seen?.select?.name || ""; // Add the Seen property
 
-	// Return the mapped travel entry, including the Seen property
 	return {
 		id: entry.id,
-		title: entry.properties?.Name?.title?.[0]?.plain_text ?? "Untitled",
+		title,
+		image: imageUrl,
+		url,
+		slug,
 		city,
 		state,
-		cityState,
-		Seen: entry?.properties?.Seen?.select?.name || "Unknown", // The Seen property to filter
-		image: imageUrl,
-		url: entry.properties?.URL?.url || "#",
+		cityState: `${city}, ${state}`,
+		seen, // Include the seen status
 	};
 };
 
@@ -45,54 +40,36 @@ export default async function TravelPage() {
 		mapEntry: (entry) => mapTravelEntry(entry),
 	});
 
-	// Check if listItems has valid data
-	if (!listItems || listItems.length === 0) {
-		return <div>No travel data available.</div>; // Early exit if no data
-	}
-
-	// Step 1: Filter the items based on the "Seen?" property being "Been there"
-	// We now pass "Seen" and "Been there" as dynamic values to the filter utility
-	const filteredItems = filterItemsByProperty(
-		listItems,
-		"Seen",
-		"Been there"
+	// Filter the items by Seen status
+	const filteredItems = listItems.filter(
+		(item) => item.seen === "Been there"
 	);
 
-	// Step 2: Group the filtered items by state
+	// Group items by state
 	const groupedItems = groupItemsByVariable(filteredItems, "state");
-
-	// Step 3: Sort the group names alphabetically
-	const sortedGroupKeys = sortGroupsAlphabetically(groupedItems);
-
-	// Step 4: Sort items within each group alphabetically by title
-	const sortedGroupedItems = sortedGroupKeys.reduce(
-		(acc: any, state: string) => {
-			acc[state] = groupedItems[state].sort((a: any, b: any) =>
-				a.title.localeCompare(b.title)
-			);
-			return acc;
-		},
-		{}
-	);
 
 	return (
 		<div className="container mx-auto p-4">
-			<PageTitle title="Travels" />
+			<PageTitle title="Travel" />
 			<Subhead pageContent={pageContent} />
 
-			{/* Render the Gallery component grouped by State */}
-			{sortedGroupKeys.map((state: string) => (
+			{/* Loop through the keys of groupedItems */}
+			{Object.keys(groupedItems).map((state) => (
 				<section key={state}>
-					<section className="sticky top-0 z-[-5] flex items-center justify-center my-8">
-						<span className="flex-grow h-px bg-gray-300 shadow"></span>
-						<h3 className="px-4 text-2xl uppercase font-bold text-gray-700 dark:text-gray-200 oswald font-oswald">
-							<span className="shadow">{state}</span>
+					<section className="relative flex items-center justify-center my-8">
+						<span className="flex-grow h-px bg-gray-300"></span>
+						<h3 className="px-4 text-2xl uppercase font-bold font-oswald text-gray-700 dark:text-gray-200">
+							{state}
 						</h3>
-						<span className="flex-grow h-px bg-gray-300 shadow"></span>
+						<span className="flex-grow h-px bg-gray-300"></span>
 					</section>
 					<Gallery
-						items={sortedGroupedItems[state]}
-						columns="md:grid-cols-3"
+						items={groupedItems[state]} // Items under this topic
+						pageKey="travel"
+						titleKey="title"
+						linkKey="url"
+						slugKey="slug"
+						cityStateKey="cityState"
 					/>
 				</section>
 			))}

@@ -1,65 +1,58 @@
-import { fetchNotionData } from "../../lib/notionContentFetcher";
-import { renderBlock } from "../../utils/renderItems"; // Import the renderBlock utility
-import Portfolio from "./_portfolio"; // Import the reusable Portfolio component
-import { sortByOrder } from "../../utils/sortItems"; // Import the sorting utility
-import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
-import Subhead from "../../components/layout/Subhead"; // Import Subhead
+import React from "react";
+import { fetchNotionData } from "@/lib/notionContentFetcher";
+import PageTitle from "@/app/components/layout/PageTitle";
+import Subhead from "@/app/components/layout/Subhead";
+import { sortByOrder } from "@/utils/sortItems";
+import Gallery from "@/app/components/Gallery";
 
 // Map the Projects data structure
 const mapProjectsEntry = (entry: any) => {
-	// Fetch the website URL
+	const id = entry.id;
+	const title = entry.properties.Name?.title[0]?.plain_text ?? "Untitled";
+	const description =
+		entry.properties.Description?.rich_text[0]?.plain_text ?? "";
 	const url = entry.properties.URL?.url || "#";
-
-	// Fetch SortOrder if it exists, and assign it as a number
-	const sortOrder = entry.properties.SortOrder?.number || Infinity; // Default to Infinity if undefined
-console.log("SortOrder fetched for", entry.id, ":", sortOrder);
-
-	// Fetch the image from the "Images" field in Notion
-	const imageProperty = entry.properties.Image;
-	const image =
-		imageProperty?.files?.[0]?.file?.url || // For uploaded image URL
-		imageProperty?.files?.[0]?.name || // If it's stored under 'name'
-		"";
-	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";	
-	// Fetch the topics/tags
+	const sortOrder = entry.properties.SortOrder?.number || Infinity;
+	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";
 	const tags =
 		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
 		[];
 
-	// Return a properly structured list item
 	return {
-		id: entry.id,
-		title: entry.properties.Name?.title[0]?.plain_text ?? "Untitled",
-		description:
-			entry.properties.Description?.rich_text[0]?.plain_text ?? "",
-		image,
-		tags,
-		slug,
+		id,
+		title,
+		description,
 		url,
-		sortOrder, // Use the correctly assigned sortOrder here
+		sortOrder,
+		slug,
+		tags,
 	};
 };
 
 export default async function ProjectsPage() {
-
-	// Fetch the Notion data
 	const { pageContent, listItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_PROJECTS_DB_ID!,
 		pageId: process.env.NOTION_PROJECTS_PAGE_ID!,
 		mapEntry: (entry) => mapProjectsEntry(entry),
 	});
 
-	// Sort the items using the shared sort function (sorted by sortOrder)
 	const sortedItems = sortByOrder(listItems);
 
 	return (
 		<div className="container mx-auto p-4">
-			
 			<PageTitle title="Projects" />
 			<Subhead pageContent={pageContent} />
 
-			{/* Render the Portfolio component grouped by Topic */}
-			<Portfolio items={sortedItems} />
+			{/* Pass necessary keys and properties to Gallery */}
+			<Gallery
+				items={sortedItems}
+				lgGridCols="lg:grid-cols-2"
+				linkKey="url"
+				pageKey="projects"
+				tagsKey="tags"
+				urlKey="url"
+				slugKey="slug" // Ensure the slug key is passed for image paths
+			/>
 		</div>
 	);
 }

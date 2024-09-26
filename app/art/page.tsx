@@ -1,62 +1,77 @@
 import React from "react";
-import { fetchNotionData } from "../../lib/notionContentFetcher";
-import Gallery from "./_gallery"; // Import Gallery
-import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
-import Subhead from "../../components/layout/Subhead"; // Import Subhead
-import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort function
+import { fetchNotionData } from "@/lib/notionContentFetcher";
+import PageTitle from "@/app/components/layout/PageTitle";
+import Subhead from "@/app/components/layout/Subhead";
+import { filterItemsByProperty } from "@/utils/filterItems";
+import { sortByPinnedAndDate } from "@/utils/sortItems";
+import Gallery from "@/app/components/Gallery"; 
 
 // Map the Art data structure
 const mapArtEntry = (entry: any) => {
 	const imageProperty = entry.properties.Image;
-
-	// Fetch the image URL based on file name or external URL
 	const imageUrl =
-		imageProperty?.files?.[0]?.file?.url || // For uploaded image URL
-		imageProperty?.files?.[0]?.name || // If it's stored under 'name'
-		"";
-
-	// Fetch the Featured property
+		imageProperty?.files?.[0]?.file?.url || imageProperty?.files?.[0]?.name || "";
 	const featured = entry.properties.Featured?.checkbox || false;
-
-	// Fix slug extraction
-	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || ""; // Assuming it's rich_text
-
-	// Fix animated extraction
+	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
 	const animated = entry.properties.Animated?.checkbox || false;
-
 	const topics = entry.properties.Topics?.multi_select || [];
+	const url = entry.properties.URL?.url || "#";
+	const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
+	const description = entry.properties.Description?.rich_text?.[0]?.plain_text || "";
 
 	return {
 		id: entry.id,
-		title: entry.properties.Name?.title[0]?.plain_text ?? "Untitled",
-		topics: topics.map((topic: any) => topic.name), // Get an array of topic names
+		title,
+		topics: topics.map((topic: any) => topic.name),
 		image: imageUrl,
-		url: entry.properties.URL?.url || "#",
-		featured, // Pinned field to order the list
+		url,
+		featured,
 		slug,
 		animated,
+		description,
 	};
 };
 
 export default async function ArtPage() {
-
-	// Fetch the data from Notion
+	// Fetch the Notion data
 	const { pageContent, listItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_ART_DB_ID!,
 		pageId: process.env.NOTION_ART_PAGE_ID!,
 		mapEntry: (entry) => mapArtEntry(entry),
 	});
 
-	// Sort the items using the shared sort function
-	const sortedItems = sortByPinnedAndDate(listItems);
+	// Filter the featured and non-featured items using the filterItemsByProperty utility
+	const featuredItems = filterItemsByProperty(listItems, "featured", true);
+	const regularItems = filterItemsByProperty(listItems, "featured", false);
+
+	// Optionally sort items (e.g., by pinned and date)
+	const sortedRegularItems = sortByPinnedAndDate(regularItems);
 
 	return (
 		<div className="container mx-auto p-4">
 			<PageTitle title="Artwork" />
 			<Subhead pageContent={pageContent} />
 
-			{/* Render the Gallery component grouped by Topic */}
-			<Gallery items={sortedItems} />
+			{/* Featured Gallery */}
+			<Gallery
+				items={featuredItems}
+				smGridCols="sm:grid-cols-1"
+				mdGridCols="md:grid-cols-2"
+				lgGridCols="lg:grid-cols-2"
+				slugKey="slug"
+				pageKey="art"
+				linkKey="url"
+				animatedKey="animated" // Handling gif vs png 
+			/>
+
+			{/* Regular Gallery */}
+			<Gallery
+				items={sortedRegularItems}
+				pageKey="art"
+				slugKey="slug"
+				linkKey="url"
+				animatedKey="animated" // Handling gif vs png 
+			/>
 		</div>
 	);
 }

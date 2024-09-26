@@ -57,8 +57,6 @@ export const sortByOrder = (items: any[]) => {
 		const orderA = a.sortOrder; // Access sortOrder directly
 		const orderB = b.sortOrder; // Access sortOrder directly
 
-		console.log("Sorting A:", orderA, "with B:", orderB); // Debug
-
 		// Handle cases where order is undefined (push undefined to the end)
 		if (orderA === undefined || orderA === null) return 1;
 		if (orderB === undefined || orderB === null) return -1;

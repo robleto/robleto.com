@@ -1,6 +1,6 @@
 import { fetchNotionData } from "../../lib/notionContentFetcher";
-import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
-import Subhead from "../../components/layout/Subhead"; // Import Subhead
+import PageTitle from "../components/layout/PageTitle"; // Import Page Title
+import Subhead from "../components/layout/Subhead"; // Import Subhead
 import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort function
 import PostsContainer from "./_container"; // Import the new PostsContainer
 

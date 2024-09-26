@@ -1,8 +1,8 @@
 import { fetchNotionData } from "../../lib/notionContentFetcher";
 import { renderBlock } from "../../utils/renderItems";
 import Lists from "./_list"; // Import the utility
-import PageTitle from "../../components/layout/PageTitle"; // Import Page Title
-import Subhead from "../../components/layout/Subhead"; // Import Subhead
+import PageTitle from "../components/layout/PageTitle"; // Import Page Title
+import Subhead from "../components/layout/Subhead"; // Import Subhead
 import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort function
 
 

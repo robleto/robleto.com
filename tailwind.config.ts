@@ -12,6 +12,8 @@ const config: Config = {
 			colors: {
 				background: "#F5F7FB", // Light mode background
 				foreground: "#2d333b", // Dark mode background
+				link: "#2B6CB0", // Blue
+				lightlink: "#3182CE", // Light blue
 
 				ferra: "#714950", //Dark purple
 				valencia: "#DA3832", //Red
@@ -27,8 +29,25 @@ const config: Config = {
 				strikemaster: "#956387", //Light purple
 				blossom: "#D6A7B8", //Light pink
 				asphalt: "#4A4A4A", //Dark grey
-				spindle: "#A3C1DA",	//Light blue
-				
+				spindle: "#A3C1DA", //Light blue
+				rosewater: "#f8e1e5", // Whisper Pink
+				mauvewood: "#815C5C", // Ferra Mauve
+				softkhaki: "#D9D5A7", // Sapling Khaki
+				plumwine: "#996478", // Strikemaster Plum
+				deepcharcoal: "#51414F", // Emperor Charcoal
+				stormcloud: "#6D6D72", // Iron Gray
+				seamist: "#B8C7CE", // Spindle Blue
+				darkslate: "#363636", // Oracle Slate
+				oceanblue: "#1E40AF", // Dark Blue
+				goldenyellow: "#F59E0B", // Golden Yellow
+				forestgreen: "#047857", // Forest Green
+				purplehaze: "#6B21A8", // Purple Haze
+				tropicalteal: "#14B8A6", // Tropical Teal
+				firetruckred: "#EF4444", // Firetruck Red
+				midnightindigo: "#4F46E5", // Midnight Indigo
+				hotpink: "#EC4899", // Hot Pink
+				icycyan: "#06B6D4", // Icy Cyan
+				lemongrass: "#84CC16", // Lemongrass Green
 			},
 			fontFamily: {
 				nunito: ["var(--font-nunito-sans)", "sans-serif"],

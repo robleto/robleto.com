@@ -2,7 +2,7 @@ import React from "react";
 import { fetchNotionData } from "../lib/notionContentFetcher";
 import Lists from "./about/_list"; // Import the utility
 import { sortByPinnedAndDate } from "../utils/sortItems"; // Import the sort function
-import FlippingWords from "@/components/FlippingWords";
+import FlippingWords from "@/app/components/FlippingWords";
 import GalleryCard from "./posts/_piece"; // For the posts
 import ReadingListCard from "./reading-list/_card"; // For the Reading List
 

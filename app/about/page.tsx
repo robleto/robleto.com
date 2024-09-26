@@ -1,8 +1,8 @@
 import { fetchNotionData } from "../../lib/notionContentFetcher";
 import Lists from "./_list"; // Import the utility
-import PageTitle from "../../components/layout/PageTitle"; 
-import Subhead from "../../components/layout/Subhead"; 
-import RichText from "../../components/layout/RichText"; 
+import PageTitle from "../components/layout/PageTitle"; 
+import Subhead from "../components/layout/Subhead"; 
+import RichText from "../components/layout/RichText"; 
 import { sortByPinnedAndDate } from "../../utils/sortItems"; 
 
 type ListItem = {

@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import "./globals.css"; // Import global styles
-import SideNav from "../components/sidebar/SideNav"; // Import SideNav
+import SideNav from "./components/sidebar/SideNav"; // Import SideNav
 import { Nunito_Sans, Oswald, Libre_Bodoni } from "next/font/google";
 import { ThemeProvider } from "next-themes"; // Import ThemeProvider for theme switching
 

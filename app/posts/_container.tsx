@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Lists from "./_list"; // Import the Lists component
 import Gallery from "./_gallery"; // Import Gallery view (you can create this if needed)
-import ViewToggle from "../../components/ViewToggle"; // Import the toggle component
+import ViewToggle from "../components/ViewToggle"; // Import the toggle component
 
 type PostsContainerProps = {
 	sortedItems: any[]; // You can improve the typing here based on your data structure
