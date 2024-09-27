@@ -2,7 +2,6 @@
 
 import React from "react";
 import ListItem from "./ListItem";
-import { groupItemsByVariable } from "@/utils/groupItems";
 
 type ListsProps = {
 	items: any[];
@@ -14,9 +13,7 @@ type ListsProps = {
 	descriptionKey?: string;
 	tagsKey?: string;
 	urlKey?: string;
-	groupByKey?: string | null;
-	sortItem?: (items: any[]) => any[];
-	filterItem?: (items: any[]) => any[];
+	pinnedKey?: string;
 };
 
 const Lists: React.FC<ListsProps> = ({
@@ -29,61 +26,28 @@ const Lists: React.FC<ListsProps> = ({
 	descriptionKey = "",
 	tagsKey = "",
 	urlKey = "",
-	groupByKey = null,
-	sortItem,
-	filterItem,
+	pinnedKey = "pinned",
 }) => {
-	// Step 1: Apply filtering and sorting
-	let displayItems = items;
-	if (filterItem) displayItems = filterItem(displayItems);
-	if (sortItem) displayItems = sortItem(displayItems);
-
-	// Step 2: Group items if groupByKey is provided
-	let groupedItems: { [key: string]: any[] } = {};
-	let sortedGroups: string[] = [];
-	if (groupByKey) {
-		groupedItems = groupItemsByVariable(displayItems, groupByKey);
-	} else {
-		groupedItems[""] = displayItems;
-		sortedGroups = [""];
-	}
-
 	return (
 		<div className="container mx-auto">
-			{sortedGroups.map((group: string) => (
-				<section key={group}>
-					{/* Section Header for Grouped Items */}
-					{groupByKey && (
-						<section className="relative flex items-center justify-center my-8">
-							<span className="flex-grow h-px bg-gray-300"></span>
-							<h3 className="px-4 text-2xl uppercase font-bold font-oswald text-gray-700 dark:text-gray-200">
-								{group}
-							</h3>
-							<span className="flex-grow h-px bg-gray-300"></span>
-						</section>
-					)}
-
-					{/* Grid Layout */}
-					<div
-						className={`grid grid-cols-1 gap-6`}
-					>
-						{groupedItems[group].map((item: any, index: number) => (
-							<ListItem
-								key={index}
-								item={item}
-								pageKey={pageKey}
-								titleKey={titleKey}
-								linkKey={linkKey}
-								slugKey={slugKey}
-								pubDateKey={pubDateKey}
-								descriptionKey={descriptionKey}
-								tagsKey={tagsKey}
-								urlKey={urlKey}
-							/>
-						))}
-					</div>
-				</section>
-			))}
+			{/* List Layout */}
+			<div className={`grid grid-cols-1 gap-6`}>
+				{items.map((item: any, index: number) => (
+					<ListItem
+						key={index}
+						item={item}
+						pageKey={pageKey}
+						titleKey={titleKey}
+						linkKey={linkKey}
+						slugKey={slugKey}
+						pubDateKey={pubDateKey}
+						descriptionKey={descriptionKey}
+						pinnedKey={pinnedKey}
+						tagsKey={tagsKey}
+						urlKey={urlKey}
+					/>
+				))}
+			</div>
 		</div>
 	);
 };

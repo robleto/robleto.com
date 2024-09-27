@@ -6,46 +6,20 @@ import { filterItemsByProperty } from "@/utils/filterItems";
 import { sortByPinnedAndDate } from "@/utils/sortItems";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 
-// Map the Art data structure
-const mapArtEntry = (entry: any) => {
-	const imageProperty = entry.properties.Image;
-	const imageUrl =
-		imageProperty?.files?.[0]?.file?.url || imageProperty?.files?.[0]?.name || "";
-	const featured = entry.properties.Featured?.checkbox || false;
-	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
-	const animated = entry.properties.Animated?.checkbox || false;
-	const topics = entry.properties.Topics?.multi_select || [];
-	const url = entry.properties.URL?.url || "#";
-	const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
-	const description = entry.properties.Description?.rich_text?.[0]?.plain_text || "";
-
-	return {
-		id: entry.id,
-		title,
-		topics: topics.map((topic: any) => topic.name),
-		image: imageUrl,
-		url,
-		featured,
-		slug,
-		animated,
-		description,
-	};
-};
-
 export default async function ArtPage() {
-	// Fetch the Notion data
+	// Fetch the Notion data using centralized data mapper
 	const { pageContent, listItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_ART_DB_ID!,
 		pageId: process.env.NOTION_ART_PAGE_ID!,
-		mapEntry: (entry) => mapArtEntry(entry),
+		entryType: "art", // Specify the entry type for data mapping
 	});
 
-	// Filter the featured and non-featured items using the filterItemsByProperty utility
+	// Filter the featured and non-featured items
 	const featuredItems = filterItemsByProperty(listItems, "featured", true);
 	const regularItems = filterItemsByProperty(listItems, "featured", false);
 
-	// Optionally sort items (e.g., by pinned and date)
-	const sortedRegularItems = sortByPinnedAndDate(regularItems);
+	// Sort regular items by pinned and date
+	const sortedRegularItems = sortByPinnedAndDate(regularItems, "date");
 
 	return (
 		<div className="container mx-auto p-4">
@@ -61,7 +35,7 @@ export default async function ArtPage() {
 				slugKey="slug"
 				pageKey="art"
 				linkKey="url"
-				animatedKey="animated" // Handling gif vs png 
+				animatedKey="animated" // Handling gif vs png
 			/>
 
 			{/* Regular Gallery */}
@@ -70,7 +44,7 @@ export default async function ArtPage() {
 				pageKey="art"
 				slugKey="slug"
 				linkKey="url"
-				animatedKey="animated" // Handling gif vs png 
+				animatedKey="animated"
 			/>
 		</div>
 	);

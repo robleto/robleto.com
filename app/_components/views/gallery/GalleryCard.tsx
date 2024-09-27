@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { FaImage } from "react-icons/fa";
-import { format } from "date-fns"; // For date formatting
 import Tags from "../common/Tags"; // Component to display tags
 
 type GalleryCardProps = {
@@ -15,6 +14,7 @@ type GalleryCardProps = {
 	urlKey?: string;
 	cityStateKey?: string;
 	animatedKey?: string;
+	lgGridCols: string;
 };
 
 const GalleryCard: React.FC<GalleryCardProps> = ({
@@ -28,10 +28,11 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	tagsKey = "tags",
 	urlKey = "url",
 	cityStateKey = "cityState",
-	animatedKey = "animated", // Ensure animated images are handled
+	animatedKey = "animated",
+	lgGridCols,
 }) => {
-	const [imageError, setImageError] = useState(false); // Track image load errors
-	const [imageSrc, setImageSrc] = useState(""); // Set the image source dynamically
+	const [imageError, setImageError] = useState(false);
+	const [imageSrc, setImageSrc] = useState("");
 
 	// Determine the file extension based on whether the item is animated
 	let fileExtension = "png"; // Default to png for most
@@ -55,12 +56,24 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		}
 	}, [item, pageKey, slugKey, fileExtension]);
 
+	// Format the date using native JavaScript
+	const formatDate = (dateString?: string) => {
+		if (!dateString) return "Date Not Available";
+		return new Date(dateString).toLocaleDateString("en-US", {
+			month: "short",
+			day: "numeric",
+			year: "numeric",
+		});
+	};
+
 	// Build the card content
 	const cardContent = (
 		<div className="gallery-card bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full">
 			{/* Image */}
 			<div
-				className={`relative h-48 w-full flex items-center justify-center overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800 ${
+				className={`relative ${
+					lgGridCols === "lg:grid-cols-1" ? "h-72" : "h-48"
+				} w-full flex items-center justify-center overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800 ${
 					pageKey === "library" ? "p-4" : ""
 				}`}
 			>
@@ -107,9 +120,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 				{/* Pub Date  */}
 				{item[pubDateKey] && (
 					<p className="mt-4 text-sm text-gray-500">
-						{item[pubDateKey]
-							? format(new Date(item[pubDateKey]), "MMM dd, yyyy")
-							: "Date Not Available"}
+						{formatDate(item[pubDateKey])}
 					</p>
 				)}
 				{/* URL */}

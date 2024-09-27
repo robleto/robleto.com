@@ -1,34 +1,29 @@
 import { getDatabaseEntries, getPageContent } from "./notion";
+import { mapEntry } from "./dataMappers";
 
-// Define a flexible fetcher for Notion data
+// Centralized Notion fetcher
 export const fetchNotionData = async ({
 	databaseId,
 	pageId,
-	mapEntry,
-	includeImages = false, // Add an option to include image fetching
+	entryType, // Determines which mapper to use
+	includeImages = false,
 }: {
 	databaseId?: string;
 	pageId?: string;
-	mapEntry?: (entry: any) => any;
-	includeImages?: boolean; // New flag for whether to fetch image URLs
+	entryType?: string;
+	includeImages?: boolean;
 }) => {
 	try {
 		let listItems: any[] = [];
 		let pageContent: any[] = [];
-		let imageUrls: string[] = []; // Store image URLs if found
+		let imageUrls: string[] = [];
 
-		// Fetch database entries if a databaseId is provided
+		// Fetch database entries
 		if (databaseId) {
-			console.log("Fetching database with ID:", databaseId); // Add this
 			const dbEntries = await getDatabaseEntries(databaseId);
+			listItems = dbEntries.map((entry) => mapEntry(entry, entryType || 'defaultEntryType'));
 
-			if (mapEntry) {
-				listItems = await Promise.all(dbEntries.map(mapEntry));
-			} else {
-				listItems = dbEntries; // If no mapping is provided, return raw entries
-			}
-
-			// If includeImages is true, extract image URLs from the entries
+			// Extract image URLs if includeImages is true
 			if (includeImages) {
 				imageUrls = dbEntries
 					.filter(
@@ -41,13 +36,11 @@ export const fetchNotionData = async ({
 			}
 		}
 
-		// Fetch page content if a pageId is provided
+		// Fetch page content
 		if (pageId) {
-			console.log("Fetching page with ID:", pageId); // Add this
 			pageContent = await getPageContent(pageId);
 		}
 
-		// Return page content, list items, and image URLs (if any)
 		return { pageContent, listItems, imageUrls };
 	} catch (error) {
 		console.error("Error fetching Notion data:", error);

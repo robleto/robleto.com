@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Lists from "../list/List";
@@ -6,23 +6,34 @@ import Gallery from "../gallery/Gallery";
 import ViewToggle from "./Tabs";
 
 type PostsContainerProps = {
-  sortedItems: any[];
+	sortedItems: any[];
 };
 
 const PostsContainer: React.FC<PostsContainerProps> = ({ sortedItems }) => {
-  const [viewMode, setViewMode] = useState<"list" | "gallery">(() => {
-    // Load the viewMode from localStorage, default to 'gallery'
-    return (localStorage.getItem("viewMode") as "list" | "gallery") || "gallery";
-  });
+	const [viewMode, setViewMode] = useState<"list" | "gallery">("gallery");
 
-  useEffect(() => {
-    // Save the selected view mode in localStorage
-    localStorage.setItem("viewMode", viewMode);
-  }, [viewMode]);
+	useEffect(() => {
+		// Check if we are in the browser environment before accessing localStorage
+		if (typeof window !== "undefined") {
+			const storedViewMode = localStorage.getItem("viewMode") as
+				| "list"
+				| "gallery";
+			if (storedViewMode) {
+				setViewMode(storedViewMode);
+			}
+		}
+	}, []);
 
-  const handleToggle = (newViewMode: "list" | "gallery") => {
-    setViewMode(newViewMode);
-  };
+	useEffect(() => {
+		// Save the selected view mode in localStorage
+		if (typeof window !== "undefined") {
+			localStorage.setItem("viewMode", viewMode);
+		}
+	}, [viewMode]);
+
+	const handleToggle = (newViewMode: "list" | "gallery") => {
+		setViewMode(newViewMode);
+	};
 
 	return (
 		<div>
