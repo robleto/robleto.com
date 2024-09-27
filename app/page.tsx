@@ -27,7 +27,7 @@ export default async function HomePage() {
 	// Sort and limit the data
 	const limitedHomeItems = sortByPinnedAndDate(aboutItems, "date").slice(0, 4);
 	const firstTwoBlogPosts = postItems.slice(0, 2);
-	const firstThreeReadingListPosts = readingListItems.slice(0, );
+	const firstThreeReadingListPosts = readingListItems.slice(0,4);
 
 	return (
 		<div className="container mx-auto p-4">

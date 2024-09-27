@@ -47,15 +47,9 @@ const MiniCardView: React.FC<MiniCardProps> = ({
 				{favicon && (
 					<img src={favicon} alt="*" className="h-5 w-5 rounded" />
 				)}
-				<a
-					href={item[linkKey]}
-					target="_blank"
-					rel="noopener noreferrer"
-				>
 					<h3 className="text-md font-semibold leading-5 px-4">
 						{item[titleKey]}
 					</h3>
-				</a>
 			</div>
 
 			{/* Tags aligned to the bottom */}
