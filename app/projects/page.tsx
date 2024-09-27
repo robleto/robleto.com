@@ -1,9 +1,9 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/components/layout/PageTitle";
-import Subhead from "@/app/components/layout/Subhead";
+import PageTitle from "@/app/_components/layout/page/PageTitle";
+import Subhead from "@/app/_components/layout/page/Subhead";
 import { sortByOrder } from "@/utils/sortItems";
-import Gallery from "@/app/components/Gallery";
+import Gallery from "@/app/_components/views/gallery/Gallery";
 
 // Map the Projects data structure
 const mapProjectsEntry = (entry: any) => {

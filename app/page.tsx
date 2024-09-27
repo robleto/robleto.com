@@ -2,21 +2,23 @@ import React from "react";
 import { fetchNotionData } from "../lib/notionContentFetcher";
 import Lists from "./about/_list"; // Import the utility
 import { sortByPinnedAndDate } from "../utils/sortItems"; // Import the sort function
-import FlippingWords from "@/app/components/FlippingWords";
-import GalleryCard from "./posts/_piece"; // For the posts
-import ReadingListCard from "./reading-list/_card"; // For the Reading List
+import FlippingWords from "@/app/_components/custom/FlippingWords";
+import GalleryCard from "@/app/_components/views/gallery/Gallery"; // For the posts
+import { format, parseISO, isValid } from "date-fns";
+import MiniCardView from "@/app/_components/views/mini-card/MiniCardView";
 
-// Helper function to format the date
-const formatDate = (date?: Date) => {
-	if (!date || isNaN(new Date(date).getTime())) {
+// Helper function to format the date using date-fns
+const formatDate = (dateString?: string) => {
+	if (!dateString) {
 		return "Date Not Available";
 	}
-	return new Date(date)
-		.toLocaleDateString("en-US", {
-			month: "short",
-			year: "numeric",
-		})
-		.replace(".", ".");
+
+	const date = parseISO(dateString);
+	if (!isValid(date)) {
+		return "Date Not Available";
+	}
+
+	return format(date, "MMM yyyy");
 };
 
 // Map the Home data structure
@@ -42,49 +44,55 @@ const mapHomeEntry = (entry: any) => {
 	};
 };
 
-// Map the Posts data structure (for the gallery at the bottom)
+// Map the Posts data structure
 const mapPostsEntry = (entry: any) => {
-	const websiteUrl = entry.properties.URL?.url || "#";
-	const imageProperty = entry.properties.Image;
-	const imageUrl =
-		imageProperty?.files?.[0]?.file?.url ||
-		imageProperty?.files?.[0]?.name ||
-		"";
-	const pubDateString =
-		entry.properties["Pub-Date"]?.date?.start || new Date();
-	const pubDate = new Date(pubDateString);
-
-	const isPinned = entry.properties["Pinned?"]?.checkbox || false;
-
-	return {
-		id: entry.id,
-		name: entry.properties.Name?.title[0]?.plain_text ?? "Untitled",
-		image: imageUrl,
-		url: websiteUrl,
-		pubDate,
-		isPinned,
-	};
-};
-
-// Map the Reading List data structure
-const mapReadingListEntry = (entry: any) => {
-	const websiteUrl = entry.properties.URL?.url || "#";
-
-	// Extract the domain name to create a favicon URL
-	const domain = new URL(websiteUrl).hostname;
-	const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
-
-	// Fetch the topics/tags
+	const id = entry.id;
+	const title = entry.properties.Name?.title[0]?.plain_text ?? "Untitled";
+	const pubdate = entry.properties.PubDate?.date?.start || null;
+	const description =
+		entry.properties.Description?.rich_text[0]?.plain_text ?? "";
+	const url = entry.properties.URL?.url || "#";
+	const sortOrder = entry.properties.SortOrder?.number || Infinity;
+	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";
 	const tags =
 		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
 		[];
 
 	return {
-		id: entry.id,
-		name: entry.properties.Name?.title[0]?.plain_text ?? "Untitled",
-		tags: tags,
-		favicon: faviconUrl,
-		url: websiteUrl,
+		id,
+		title,
+		pubdate,
+		description,
+		url,
+		sortOrder,
+		slug,
+		tags,
+	};
+};
+
+// Map the ReadingList data structure
+const mapReadingListEntry = (entry: any) => {
+	const id = entry.id;
+	const title = entry.properties.Name?.title[0]?.plain_text ?? "Untitled";
+	const pubdate = entry.properties.PubDate?.date?.start || null;
+	const description =
+		entry.properties.Description?.rich_text[0]?.plain_text ?? "";
+	const url = entry.properties.URL?.url || "#";
+	const sortOrder = entry.properties.SortOrder?.number || Infinity;
+	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";
+	const tags =
+		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
+		[];
+
+	return {
+		id,
+		title,
+		pubdate,
+		description,
+		url,
+		sortOrder,
+		slug,
+		tags,
 	};
 };
 
@@ -169,14 +177,17 @@ export default async function HomePage() {
 			{/* Render the first two posts */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 				{firstTwoBlogPosts.map((post) => (
-					<GalleryCard
-						key={post.id}
-						title={post.name}
-						image={post.image}
-						pubDate={formatDate(post.pubDate)}
-						url={post.url}
-						isPinned={post.isPinned || !post.isPinned}
-					/>
+
+				<GalleryCard
+					items={firstTwoBlogPosts}
+					lgGridCols="lg:grid-cols-2"
+					linkKey="url"
+					pubDateKey="pubdate"
+					pageKey="posts"
+					tagsKey="tags"
+					slugKey="slug" // Ensure the slug key is passed for image paths
+				/>
+				
 				))}
 			</div>
 
@@ -192,12 +203,19 @@ export default async function HomePage() {
 			{/* Render the Reading List in 3-up grid format */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 				{firstThreeReadingListPosts.map((item) => (
-					<ReadingListCard
+
+
+					<MiniCardView
+						items={firstThreeReadingListPosts}
 						key={item.id}
-						title={item.name}
-						favicon={item.favicon}
-						url={item.url}
-						tags={item.tags}
+						titleKey="title"
+						linkKey="url"
+						urlKey="url"
+						pubDateKey="pubdate"
+						pageKey="reading-list"
+						tagsKey="tags"
+						slugKey="slug" 
+						favicon="favicon"// Ensure the slug key is passed for image paths
 					/>
 				))}
 			</div>

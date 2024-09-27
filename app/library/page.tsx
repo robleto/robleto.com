@@ -1,8 +1,8 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/components/layout/PageTitle";
-import Subhead from "@/app/components/layout/Subhead";
-import Gallery from "@/app/components/Gallery";
+import PageTitle from "@/app/_components/layout/page/PageTitle";
+import Subhead from "@/app/_components/layout/page/Subhead";
+import Gallery from "@/app/_components/views/gallery/Gallery";
 import { groupItemsByVariable } from "@/utils/groupItems";
 
 // Map the Library data structure

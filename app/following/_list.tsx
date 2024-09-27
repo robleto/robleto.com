@@ -1,5 +1,5 @@
 import React from "react";
-import Tag from "../components/Tag"; // Import the Tag component with lowercase 'tag'
+import Tag from "../_components/views/common/Tags"; // Import the Tag component with lowercase 'tag'
 
 type ListItem = {
 	id: string;
@@ -43,7 +43,7 @@ const Lists: React.FC<ListsProps> = ({ items }) => {
 					{/* Tags (now using the Tag component) */}
 					<div className="flex space-x-2">
 						{item.tags.map((tag) => (
-							<Tag key={tag} tag={tag} />
+							<Tag key={tag} tags={[tag]} />
 						))}
 					</div>
 				</div>

@@ -1,62 +1,74 @@
-import { fetchNotionData } from "../../lib/notionContentFetcher";
-import { renderBlock } from "../../utils/renderItems";
-import Lists from "./_list"; // Import the utility
-import PageTitle from "../components/layout/PageTitle"; // Import Page Title
-import Subhead from "../components/layout/Subhead"; // Import Subhead
-import { sortByPinnedAndDate } from "../../utils/sortItems"; // Import the sort function
-
+import React from "react";
+import { fetchNotionData } from "@/lib/notionContentFetcher";
+import PageTitle from "@/app/_components/layout/page/PageTitle";
+import Subhead from "@/app/_components/layout/page/Subhead";
+import { sortByPinnedAndDate } from "@/utils/sortItems";
+import Lists from "@/app/_components/views/list/List";
+import { groupItemsByVariable } from "@/utils/groupItems";
 
 // Map the Bookmarks data structure
 const mapBookmarksEntry = (entry: any) => {
-
-	// Fetch the slug (username) and the website URL
-	const websiteUrl = entry.properties.URL?.url || "#";
-	const slug =
-		entry.properties.slug?.rich_text[0]?.plain_text || "";
-
-	// Extract the domain name to create a favicon URL
-	const domain = new URL(websiteUrl).hostname;
-	const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
-
-	// Fetch the topics/tags
+	const id = entry.id;
+	const title = entry.properties.Name?.title[0]?.plain_text ?? "Untitled";
+	const pubdate = entry.properties.PubDate?.date?.start || null;
+	const description =
+		entry.properties.Description?.rich_text[0]?.plain_text ?? "";
+	const url = entry.properties.URL?.url || "#";
+	const sortOrder = entry.properties.SortOrder?.number || Infinity;
+	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";
 	const tags =
-		entry.properties.Tags?.multi_select.map(
-			(topic: any) => topic.name
-		) || [];
+		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
+		[];
 
-	// Return a properly structured list item
 	return {
-		id: entry.id,
-		name:
-			entry.properties.Name?.title[0]?.plain_text ??
-			"Untitled",
-		tags: tags, // Use the topics as tags
-		website: websiteUrl, // Website URL
-		slug, // Add the Twitter handle as the slug
-		favicon: faviconUrl, // Favicon URL for the website
+		id,
+		title,
+		pubdate,
+		description,
+		url,
+		sortOrder,
+		slug,
+		tags,
 	};
 };
 
-
 export default async function BookmarksPage() {
-
-	// Fetch the Notion data
 	const { pageContent, listItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_BOOKMARKS_DB_ID!,
 		pageId: process.env.NOTION_BOOKMARKS_PAGE_ID!,
 		mapEntry: (entry) => mapBookmarksEntry(entry),
 	});
 
-	// Sort the items using the shared sort function (sorted by pinned and date)
+	// Group items by state
+	const groupedItems = groupItemsByVariable(listItems, "tags");
 	const sortedItems = sortByPinnedAndDate(listItems);
 
 	return (
-		<div className="container mx-auto p-4">
+		<div className="container mx-auto">
 			<PageTitle title="Bookmarks" />
 			<Subhead pageContent={pageContent} />
 
-			{/* Render the Lists component */}
-			<Lists items={sortedItems} />
-		</div>
+			{/* Loop through the keys of groupedItems */}
+			{Object.keys(groupedItems).map((tags) => (
+				<section key={tags}>
+					<section className="relative flex items-center justify-center my-8">
+						<span className="flex-grow h-px bg-gray-300"></span>
+						<h3 className="px-4 text-2xl uppercase font-bold font-oswald text-gray-700 dark:text-gray-200">
+							{tags}
+						</h3>
+						<span className="flex-grow h-px bg-gray-300"></span>
+					</section>
+					<Lists
+						items={groupedItems[tags]} // Items under this tags
+						linkKey="url"
+						pubDateKey="pubdate"
+						pageKey="reading-list"
+						tagsKey="tags"
+						urlKey="url"
+						slugKey="slug" // Ensure the slug key is passed for image paths
+					/>
+				</section>
+		))}
+	</div>
 	);
 }

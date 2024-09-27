@@ -1,35 +1,44 @@
+import { compareAsc, compareDesc, parseISO } from "date-fns";
+
 // Sort by Pinned and Date (Pinned items first, then by date descending)
 export const sortByPinnedAndDate = (items: any[]) => {
 	return items.sort((a, b) => {
 		if (a.isPinned !== b.isPinned) {
 			return a.isPinned ? -1 : 1; // Pinned items go at the top
 		}
-		// Sort by date descending for non-pinned items
-		return new Date(b.date).getTime() - new Date(a.date).getTime();
+		// Sort by date descending, use fallback for invalid dates
+		return compareDesc(
+			parseISO(a.pubdate || '2000-01-01'), 
+			parseISO(b.pubdate || '2000-01-01')
+		);
 	});
 };
 
+// Sort by Date only (sorted by date descending)
+export const sortByDate = (items: any[]) => {
+	return items.sort((a, b) => {
+		// Handle undefined or invalid dates
+		const dateA = a.pubDate ? parseISO(a.pubDate) : new Date(0); // Fallback to epoch for undefined date
+		const dateB = b.pubDate ? parseISO(b.pubDate) : new Date(0); // Fallback to epoch for undefined date
+		// Sort by date descending, use fallback for invalid dates
+		return compareDesc(
+			parseISO(a.pubdate || "2000-01-01"),
+			parseISO(b.pubdate || "2000-01-01")
+		);
+	});
+};
 
 // Sort by Pinned and Name (Pinned items first, then by name alphabetically)
 export const sortByPinnedAndName = (items: any[]) => {
 	return items.sort((a, b) => {
 		if (a.isPinned !== b.isPinned) {
-			return a.isPinned ? -1 : 1; // Pinned items go at the top
+			return a.isPinned ? -1 : 1; // Pinned items at the top
 		}
 		return a.name.localeCompare(b.name);
 	});
 };
 
-
-// Sort by Date only (just sorted by date descending)
-export const sortByDate = (items: any[]) => {
-	return items.sort((a, b) => {
-		return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
-	});
-};
-
-
-// Sort by Name only (just sorted by name alphabetically)
+// Sort by Name only (sorted by name alphabetically)
 export const sortByName = (items: any[]) => {
 	return items.sort((a, b) => {
 		return a.name.localeCompare(b.name);
@@ -50,22 +59,13 @@ export const sortItemsByAlpha = (items: any[], property: string) => {
 	});
 };
 
-
 // Sort by Order key (defaults to "SortOrder")
 export const sortByOrder = (items: any[]) => {
 	return items.sort((a, b) => {
-		const orderA = a.sortOrder; // Access sortOrder directly
-		const orderB = b.sortOrder; // Access sortOrder directly
-
-		// Handle cases where order is undefined (push undefined to the end)
-		if (orderA === undefined || orderA === null) return 1;
-		if (orderB === undefined || orderB === null) return -1;
+		const orderA = a.sortOrder ?? Infinity; // Fallback to Infinity for undefined
+		const orderB = b.sortOrder ?? Infinity;
 
 		// Sort in ascending order
 		return orderA - orderB;
 	});
 };
-
-
-
-

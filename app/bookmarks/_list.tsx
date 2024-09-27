@@ -1,5 +1,5 @@
 import React from "react";
-import Tag from "../components/Tag"; // Import the Tag component with lowercase 'tag'
+import Tag from "../_components/Tag"; // Import the Tag component with lowercase 'tag'
 
 type ListItem = {
 	id: string;
