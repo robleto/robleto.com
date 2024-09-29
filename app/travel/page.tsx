@@ -6,6 +6,7 @@ import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 
 export default async function TravelPage() {
+
 	// Fetch the data from Notion using centralized data mapper
 	const { pageContent, listItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_TRAVEL_DB_ID!,
@@ -24,13 +25,16 @@ export default async function TravelPage() {
 		return acc;
 	}, {});
 
+	// Sort the keys of groupedItems alphabetically
+	const sortedKeys = Object.keys(groupedItems).sort();
+
 	return (
 		<div className="container mx-auto p-4">
 			<PageTitle title="Travel" />
 			<Subhead pageContent={pageContent} />
 
-			{/* Loop through the keys of groupedItems */}
-			{Object.keys(groupedItems).map((state) => (
+			{/* Loop through the sorted keys of groupedItems */}
+			{sortedKeys.map((state) => (
 				<section key={state}>
 					<GroupTitle title={state} />
 					<Gallery

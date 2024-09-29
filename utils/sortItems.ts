@@ -1,16 +1,24 @@
 export const sortByPinnedAndDate = (items: any[], dateKey: string) => {
 	return items.sort((a, b) => {
+
 		// Prioritize pinned items first
-		if (a.isPinned && !b.isPinned) return -1;
-		if (!a.isPinned && b.isPinned) return 1;
+		if (a.isPinned && !b.isPinned) return -1; // a comes first
+		if (!a.isPinned && b.isPinned) return 1; // b comes first
 
 		// Sort by date descending
-		const dateA = a[dateKey] ? new Date(a[dateKey]) : new Date(0);
-		const dateB = b[dateKey] ? new Date(b[dateKey]) : new Date(0);
+		const dateA =
+			a[dateKey] && !isNaN(Date.parse(a[dateKey]))
+				? new Date(a[dateKey])
+				: new Date(0); // Default to epoch for invalid dates
+		const dateB =
+			b[dateKey] && !isNaN(Date.parse(b[dateKey]))
+				? new Date(b[dateKey])
+				: new Date(0); // Default to epoch for invalid dates
+
+		// Compare dates: newest first
 		return dateB.getTime() - dateA.getTime(); // Newest first
 	});
 };
-
 
 export const sortByDate = (items: any[], dateKey: string) => {
 	return items.sort((a, b) => {

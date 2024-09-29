@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaImage } from "react-icons/fa";
+import { FaThumbtack, FaImage } from "react-icons/fa";
 import Tags from "../common/Tags"; // Component to display tags
 
 type GalleryCardProps = {
@@ -34,8 +34,8 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	const [imageError, setImageError] = useState(false);
 	const [imageSrc, setImageSrc] = useState("");
 
-	// Determine the file extension based on whether the item is animated
-	let fileExtension = "png"; // Default to png for most
+	// Determine the file extension based on whether the item is animated or a photo
+	let fileExtension = "png"; 
 	if (item?.[animatedKey]) {
 		fileExtension = "gif"; // Use gif for animated
 	} else if (pageKey === "library" || pageKey === "travel") {
@@ -69,6 +69,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	// Build the card content
 	const cardContent = (
 		<div className="gallery-card bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full">
+			
 			{/* Image */}
 			<div
 				className={`relative ${
@@ -92,6 +93,8 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						</span>
 					</div>
 				)}
+
+				
 			</div>
 
 			{/* Title */}
@@ -145,8 +148,15 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			href={item[linkKey]}
 			target="_blank"
 			rel="noopener noreferrer"
-			className="block"
+			className="block relative"
 		>
+			{/* Pin icon */}
+			{item.isPinned && (
+				<div className="absolute top-[-8px] right-[-8px] z-10">
+					<FaThumbtack className="text-gray-300 h-6 w-6 rotate-45" />
+				</div>
+			)}
+
 			{cardContent}
 		</a>
 	) : (

@@ -13,7 +13,6 @@ type ListsProps = {
 	descriptionKey?: string;
 	tagsKey?: string;
 	urlKey?: string;
-	pinnedKey?: string;
 };
 
 const Lists: React.FC<ListsProps> = ({
@@ -26,7 +25,6 @@ const Lists: React.FC<ListsProps> = ({
 	descriptionKey = "",
 	tagsKey = "",
 	urlKey = "",
-	pinnedKey = "pinned",
 }) => {
 	return (
 		<div className="container mx-auto">
@@ -42,7 +40,6 @@ const Lists: React.FC<ListsProps> = ({
 						slugKey={slugKey}
 						pubDateKey={pubDateKey}
 						descriptionKey={descriptionKey}
-						pinnedKey={pinnedKey}
 						tagsKey={tagsKey}
 						urlKey={urlKey}
 					/>

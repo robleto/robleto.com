@@ -167,7 +167,7 @@ const mapPostsEntry = (entry: any) => {
 	const tags =
 		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
 		[];
-	const isPinned = entry.properties.Pinned?.checkbox || false;
+	const isPinned = entry.properties.Pinned.checkbox || false;
 
 	return {
 		id,

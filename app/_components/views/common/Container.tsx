@@ -1,35 +1,43 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Lists from "../list/List";
-import Gallery from "../gallery/Gallery";
 import ViewToggle from "./Tabs";
 
-type PostsContainerProps = {
-	sortedItems: any[];
+type PostsContainerProps<T> = {
+	sortedItems: T[];
+	ListComponent: React.FC<{ items: T[]; [key: string]: any }>;
+	GalleryComponent: React.FC<{ items: T[]; [key: string]: any }>;
+	listProps?: { [key: string]: any };
+	galleryProps?: { [key: string]: any };
 };
 
-const PostsContainer: React.FC<PostsContainerProps> = ({ sortedItems }) => {
-	const [viewMode, setViewMode] = useState<"list" | "gallery">("gallery");
+const PostsContainer = <T,>({
+	sortedItems,
+	ListComponent,
+	GalleryComponent,
+	listProps,
+	galleryProps,
+}: PostsContainerProps<T>) => {
+	const [viewMode, setViewMode] = useState<"list" | "gallery">("gallery"); // Default to "gallery"
 
 	useEffect(() => {
-		// Check if we are in the browser environment before accessing localStorage
+		// Runs only on the client
 		if (typeof window !== "undefined") {
 			const storedViewMode = localStorage.getItem("viewMode") as
 				| "list"
 				| "gallery";
-			if (storedViewMode) {
-				setViewMode(storedViewMode);
-			}
+			console.log("Stored view mode:", storedViewMode); // Log retrieved value
+			setViewMode(storedViewMode || "gallery"); // Update state with localStorage value
 		}
-	}, []);
+	}, []); // Only runs on mount
 
 	useEffect(() => {
-		// Save the selected view mode in localStorage
+		// This will run on the client to update localStorage when viewMode changes
 		if (typeof window !== "undefined") {
+			console.log("Setting view mode in localStorage:", viewMode); // Debugging log
 			localStorage.setItem("viewMode", viewMode);
 		}
-	}, [viewMode]);
+	}, [viewMode]); // Runs when viewMode changes
 
 	const handleToggle = (newViewMode: "list" | "gallery") => {
 		setViewMode(newViewMode);
@@ -37,29 +45,11 @@ const PostsContainer: React.FC<PostsContainerProps> = ({ sortedItems }) => {
 
 	return (
 		<div>
-			{/* Render the ViewToggle to switch between list and gallery views */}
 			<ViewToggle onToggle={handleToggle} viewMode={viewMode} />
-
-			{/* Conditionally render based on the selected view mode */}
 			{viewMode === "list" ? (
-				<Lists
-					items={sortedItems}
-					linkKey="url"
-					pubDateKey="pubdate"
-					pageKey="posts"
-					tagsKey="tags"
-					slugKey="slug" // Ensure the slug key is passed for image paths
-				/>
+				<ListComponent items={sortedItems} {...listProps} />
 			) : (
-				<Gallery
-					items={sortedItems}
-					lgGridCols="lg:grid-cols-2"
-					linkKey="url"
-					pubDateKey="pubdate"
-					pageKey="posts"
-					tagsKey="tags"
-					slugKey="slug" // Ensure the slug key is passed for image paths
-				/>
+				<GalleryComponent items={sortedItems} {...galleryProps} />
 			)}
 		</div>
 	);

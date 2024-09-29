@@ -12,7 +12,6 @@ type ListItemProps = {
 	pubDateKey?: string;
 	tagsKey?: string;
 	imageKey?: string;
-	pinnedKey?: string;
 	urlKey?: string;
 };
 
@@ -26,7 +25,6 @@ const ListItem: React.FC<ListItemProps> = ({
 	pubDateKey = "pubDate",
 	tagsKey = "tags",
 	imageKey = "image",
-	pinnedKey = "pinned",
 	urlKey = "url",
 }) => {
 	const [imageError, setImageError] = useState(false);
@@ -74,7 +72,7 @@ const ListItem: React.FC<ListItemProps> = ({
 				<img
 					src={imageSrc}
 					alt={item[titleKey] || "Image"}
-					className="h-full w-full object-cover"
+					className="h-full w-full object-cover hidden sm:inline max-w-36"
 					onError={() => setImageError(true)}
 				/>
 			);
@@ -88,8 +86,9 @@ const ListItem: React.FC<ListItemProps> = ({
 
 	const itemContent = (
 		<div className="relative flex items-center border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600">
+
 			{/* Pin icon */}
-			{item[pinnedKey] && (
+			{item.isPinned && (
 				<div className="absolute top-[-8px] right-[-8px]">
 					<FaThumbtack className="text-gray-300 h-6 w-6 rotate-45" />
 				</div>

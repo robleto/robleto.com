@@ -22,6 +22,6 @@
 			"@/*": ["./*"]
 		}
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "scripts/fetch-library-images.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "scripts/fetch-library-images.ts", "app/_components/views/common/ViewModeContext.js"],
   "exclude": ["node_modules"]
 }
