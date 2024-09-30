@@ -63,7 +63,6 @@ export default async function HomePage() {
 				linkKey="url"
 				descriptionKey="description"
 				pubDateKey="date"
-				pinnedKey="isPinned"
 				titleKey="name"
 				tagsKey="tags"
 				slugKey="slug"
