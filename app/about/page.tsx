@@ -27,8 +27,6 @@ export default async function AboutPage() {
 			<PageTitle title="About Me" />
 			<Subhead pageContent={aboutSubheadContent} />
 
-			<RichText pageContent={aboutDescriptionContent} />
-
 			<GroupTitle title="Recent Updates" />
 			{/* Render the Lists component */}
 			<Lists
@@ -42,6 +40,7 @@ export default async function AboutPage() {
 				slugKey="slug"
 			/>
 
+			<GroupTitle title="About Me" />
 			<RichText pageContent={aboutDescriptionContent} />
 		</div>
 	);
