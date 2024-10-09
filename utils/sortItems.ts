@@ -42,7 +42,7 @@ export const sortByPinnedAndName = (items: any[]) => {
 // Sort by Name only (sorted by name alphabetically)
 export const sortByName = (items: any[]) => {
 	return items.sort((a, b) => {
-		return a.name.localeCompare(b.name);
+		return a.title.localeCompare(b.title);
 	});
 };
 

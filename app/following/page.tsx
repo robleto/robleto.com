@@ -2,7 +2,7 @@ import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
 import PageTitle from "@/app/_components/layout/page/PageTitle";
 import Subhead from "@/app/_components/layout/page/Subhead";
-import { sortByPinnedAndDate } from "@/utils/sortItems";
+import { sortByName } from "@/utils/sortItems";
 import Lists from "@/app/_components/views/list/List";
 
 
@@ -13,7 +13,7 @@ export default async function FollowingPage() {
 		entryType: "following", // Specify the entry type for mapping
 	});
 
-	const sortedItems = sortByPinnedAndDate(listItems, "name");
+	const sortedItems = sortByName(listItems);
 
 	return (
 		<div className="container mx-auto">
