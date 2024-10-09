@@ -65,11 +65,11 @@ function downloadImage(url: string, destination: string) {
 		https
 			.get(url, (response) => {
 				if (response.statusCode !== 200) {
-					reject(
-						new Error(
-							`Failed to get '${url}' (${response.statusCode})`
-						)
+					console.log(
+						`Failed to get '${url}' (${response.statusCode}). Skipping this image.`
 					);
+					file.close(); // Close the stream even if it's not used
+					resolve(); // Resolve to allow the script to continue
 					return;
 				}
 
@@ -80,11 +80,19 @@ function downloadImage(url: string, destination: string) {
 				});
 
 				file.on("error", (err) => {
-					fs.unlink(destination, () => reject(err));
+					fs.unlink(destination, () => {
+						console.log(
+							`Error downloading image from '${url}': ${err.message}`
+						);
+						resolve(); // Resolve even on error to allow continuation
+					});
 				});
 			})
 			.on("error", (err) => {
-				reject(err);
+				console.log(
+					`Error downloading image from '${url}': ${err.message}`
+				);
+				resolve(); // Resolve to continue with the next image
 			});
 	});
 }
