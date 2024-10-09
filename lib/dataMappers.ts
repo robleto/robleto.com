@@ -114,7 +114,7 @@ const mapFollowingEntry = (entry: any) => {
 		entry.properties.Description?.rich_text[0]?.plain_text ?? "";
 	const url = entry.properties.URL?.url || "#";
 	const sortOrder = entry.properties.SortOrder?.number || Infinity;
-	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";
+	const slug = entry.properties.slug?.rich_text[0]?.plain_text || "";
 	const tags =
 		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
 		[];

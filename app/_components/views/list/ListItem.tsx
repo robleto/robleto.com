@@ -31,15 +31,23 @@ const ListItem: React.FC<ListItemProps> = ({
 	const [imageSrc, setImageSrc] = useState("");
 	const [favicon, setFavicon] = useState("");
 
+	// Fetch the appropriate image based on pageKey
 	useEffect(() => {
-		if (item[slugKey]) {
+		if (pageKey === "following" && item[slugKey]) {
+			// For following, get the Twitter profile image based on slug
+			const twitterProfileImageUrl = `https://unavatar.io/twitter/${item[slugKey]}`;
+			setImageSrc(twitterProfileImageUrl);
+		} else if (item[slugKey]) {
 			const src = `./${item[pageKey] || pageKey}/${item[slugKey]}.png`;
 			setImageSrc(src);
 		}
 	}, [item, pageKey, slugKey]);
 
 	useEffect(() => {
-		if ((pageKey === "reading-list" || pageKey === "bookmarks") && item[urlKey]) {
+		if (
+			(pageKey === "reading-list" || pageKey === "bookmarks") &&
+			item[urlKey]
+		) {
 			try {
 				const domain = new URL(item[urlKey]).hostname;
 				const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
@@ -51,21 +59,23 @@ const ListItem: React.FC<ListItemProps> = ({
 	}, [item, urlKey, pageKey]);
 
 	const renderImage = () => {
-		if (pageKey === "about") {
-			if (imageSrc) {
-				return (
-					<img
-						src={imageSrc}
-						alt={item[titleKey] || "Image"}
-						className="w-12 h-12 rounded-full"
-						onError={() => setImageSrc("")} // Reset the imageSrc if the image fails to load
-					/>
-				);
-			}
+		if (pageKey === "following" && imageSrc) {
 			return (
-				<div className="w-12 h-12 rounded-full bg-iron flex items-center justify-center">
-					<FaStar className="text-white text-2xl" />
-				</div>
+				<img
+					src={imageSrc}
+					alt={`${item[titleKey] || "Twitter Profile Image"}`}
+					className="w-12 h-12 rounded-full"
+					onError={() => setImageError(true)}
+				/>
+			);
+		} else if (pageKey === "about" && imageSrc) {
+			return (
+				<img
+					src={imageSrc}
+					alt={item[titleKey] || "Image"}
+					className="w-12 h-12 rounded-full"
+					onError={() => setImageSrc("")} // Reset the imageSrc if the image fails to load
+				/>
 			);
 		} else if (!imageError && imageSrc) {
 			return (
@@ -86,7 +96,6 @@ const ListItem: React.FC<ListItemProps> = ({
 
 	const itemContent = (
 		<div className="relative flex items-center border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600">
-
 			{/* Pin icon */}
 			{item.isPinned && (
 				<div className="absolute top-[-8px] right-[-8px]">
