@@ -4,9 +4,9 @@ import PageTitle from "@/app/_components/layout/page/PageTitle";
 import Subhead from "@/app/_components/layout/page/Subhead";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
+import { sortByName } from "@/utils/sortItems"; // Import the sortByName function
 
 export default async function TravelPage() {
-
 	// Fetch the data from Notion using centralized data mapper
 	const { pageContent, listItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_TRAVEL_DB_ID!,
@@ -25,8 +25,13 @@ export default async function TravelPage() {
 		return acc;
 	}, {});
 
-	// Sort the keys of groupedItems alphabetically
+	// Sort the keys of groupedItems alphabetically (the state names)
 	const sortedKeys = Object.keys(groupedItems).sort();
+
+	// Use the sortByName function to sort the items within each state group
+	sortedKeys.forEach((state) => {
+		groupedItems[state] = sortByName(groupedItems[state]);
+	});
 
 	return (
 		<div className="container mx-auto p-4">
@@ -38,7 +43,7 @@ export default async function TravelPage() {
 				<section key={state}>
 					<GroupTitle title={state} />
 					<Gallery
-						items={groupedItems[state]} // Items under this state
+						items={groupedItems[state]} // Items under this state, now sorted by title using sortByName
 						pageKey="travel"
 						titleKey="title"
 						linkKey="url"
