@@ -1,13 +1,13 @@
 @tailwind base;
 
 body {
-  font-family: var(--font-nunito-sans), Arial, Helvetica, sans-serif;
+  font-family: var(font-nunito), Arial, Helvetica, sans-serif;
   background-color: #f9f9fb;
 }
 
 .font-bodoni div,
 .font-bodoni div p {
-  font-family: var(--font-libre-bodoni), serif;
+  font-family: var(font-libre-bodoni), serif;
 }
 
 /* globals.css */

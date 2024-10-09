@@ -49,24 +49,31 @@ export const renderBlock = (block: any) => {
 	switch (block.type) {
 		case "paragraph":
 			return (
-				<p key={block.id}>
+				<p key={block.id} className="my-4">
 					{renderRichText(block.paragraph.rich_text)}
 				</p>
 			);
 
 		case "heading_1":
 			return (
-				<h1 key={block.id}>{renderRichText(block.heading_1.text)}</h1>
+				<h1 key={block.id}>
+					{renderRichText(block.heading_1.rich_text)}
+				</h1>
 			);
 
 		case "heading_2":
+			// Fix here: changed from block.heading_2.text to block.heading_2.rich_text
 			return (
-				<h2 key={block.id}>{renderRichText(block.heading_2.text)}</h2>
+				<h2 key={block.id} className="my-4 pt-5 font-bold text-xl">
+					{renderRichText(block.heading_2.rich_text)}
+				</h2>
 			);
 
 		case "heading_3":
 			return (
-				<h3 key={block.id}>{renderRichText(block.heading_3.text)}</h3>
+				<h3 key={block.id}>
+					{renderRichText(block.heading_3.rich_text)}
+				</h3>
 			);
 
 		case "synced_block":

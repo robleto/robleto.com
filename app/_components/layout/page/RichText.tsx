@@ -9,7 +9,7 @@ interface RichTextProps {
 
 const RichText: React.FC<RichTextProps> = ({ pageContent }) => {
 	return (
-		<div className="page-description my-8">
+		<div className="page-description gap-y-8">
 			{/* Loop over the pageContent and render each block using renderBlock */}
 			{pageContent.map((block: any) => renderBlock(block))}
 		</div>
