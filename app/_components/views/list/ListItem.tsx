@@ -103,7 +103,7 @@ const ListItem: React.FC<ListItemProps> = ({
 				</div>
 			)}
 
-			{pageKey === "reading-list" && favicon ? (
+			{(pageKey === "reading-list" || pageKey === "bookmarks") && favicon ? (
 				<img
 					src={favicon}
 					alt={`${item[titleKey]} Favicon`}
