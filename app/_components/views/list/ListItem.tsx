@@ -130,7 +130,7 @@ const ListItem: React.FC<ListItemProps> = ({
 							"en-US",
 							{
 								month: "short",
-								day: "numeric",
+								// day: "numeric",
 								year: "numeric",
 							}
 						)}
@@ -149,7 +149,7 @@ const ListItem: React.FC<ListItemProps> = ({
 				<p className="text-sm text-gray-600 dark:text-gray-300 py-1">
 					{new Date(item[pubDateKey]).toLocaleDateString("en-US", {
 						month: "short",
-						day: "numeric",
+						// day: "numeric",
 						year: "numeric",
 					})}
 				</p>
