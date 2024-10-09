@@ -41,10 +41,10 @@ export default async function BookmarksPage() {
 				<section key={tags}>
 					<GroupTitle title={tags} />
 					<Lists
-						items={sortedGroups[tags]} // Items sorted by name within each tag group
+						items={sortedGroups[tags]} 
 						linkKey="url"
 						pubDateKey="pubdate"
-						pageKey="reading-list"
+						pageKey="bookmarks"
 						tagsKey="tags"
 						urlKey="url"
 						slugKey="slug"

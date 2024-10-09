@@ -26,7 +26,8 @@ export default async function ReadingListPage() {
 				pubDateKey="pubdate"
 				pageKey="reading-list"
 				tagsKey="tags"
-				slugKey="slug" // Ensure the slug key is passed for image paths
+				slugKey="slug"
+				urlKey="url"
 			/>
 		</div>
 	);

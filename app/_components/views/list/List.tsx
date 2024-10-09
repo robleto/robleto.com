@@ -17,7 +17,7 @@ type ListsProps = {
 
 const Lists: React.FC<ListsProps> = ({
 	items,
-	pageKey = "page",
+	pageKey,
 	titleKey = "title",
 	linkKey = "",
 	slugKey = "slug",

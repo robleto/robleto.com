@@ -39,7 +39,7 @@ const ListItem: React.FC<ListItemProps> = ({
 	}, [item, pageKey, slugKey]);
 
 	useEffect(() => {
-		if (pageKey === "reading-list" && item[urlKey]) {
+		if ((pageKey === "reading-list" || pageKey === "bookmarks") && item[urlKey]) {
 			try {
 				const domain = new URL(item[urlKey]).hostname;
 				const faviconUrl = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
