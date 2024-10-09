@@ -67,7 +67,7 @@ const Gallery: React.FC<GalleryProps> = ({
 	return (
 		<div className="container mx-auto">
 			<div
-				className={`grid ${gridCols} ${smGridCols} ${mdGridCols} ${lgGridCols} gap-6`}
+				className={`grid ${gridCols} ${smGridCols} ${mdGridCols} ${lgGridCols} gap-6 -z-10`}
 			>
 				{Array.isArray(clientItems) &&
 					clientItems.map((item: any, index: number) => (

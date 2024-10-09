@@ -6,7 +6,7 @@ type GroupTitleProps = {
 
 const GroupTitle: React.FC<GroupTitleProps> = ({ title }) => {
 	return (
-		<section className="relative flex items-center justify-center my-8">
+		<section className="relative flex -z-10 items-center justify-center my-8">
 			<span className="flex-grow h-px bg-gray-300"></span>
 			<h3 className="px-4 text-2xl uppercase font-bold font-oswald text-gray-700 dark:text-gray-200">
 				{title}

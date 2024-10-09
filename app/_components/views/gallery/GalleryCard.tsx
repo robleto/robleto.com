@@ -68,7 +68,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 
 	// Build the card content
 	const cardContent = (
-		<div className="gallery-card bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full">
+		<div className="gallery-card -z-30 relative bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full">
 			
 			{/* Image */}
 			<div

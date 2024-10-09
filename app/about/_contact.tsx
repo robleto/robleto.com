@@ -24,7 +24,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
 	};
 
 	return (
-			<div className="grid grid-cols-2 gap-4 p-6">
+			<div className="grid grid-cols-2 z-40 gap-4 p-6">
 				{/* Email Section */}
 				<div>
 					<h3 className="text-lg font-bold">Email</h3>

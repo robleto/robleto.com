@@ -61,7 +61,7 @@ const socialLinks = [
 
 const SocialModal: React.FC<SocialModalProps> = ({ onClose }) => {
 	return (
-		<div className="p-6">
+		<div className="p-6 z-50">
 			<div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
 				{/* Loop over social links to generate the buttons */}
 				{socialLinks.map((social) => (
