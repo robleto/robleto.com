@@ -167,7 +167,12 @@ const ListItem: React.FC<ListItemProps> = ({
 	// If `linkKey` is provided, wrap the item content in a link
 	return item[linkKey] ? (
 		<a
-			href={item[linkKey]}
+			href={
+				item[linkKey].startsWith("http://") ||
+				item[linkKey].startsWith("https://")
+					? item[linkKey]
+					: `https://${item[linkKey]}`
+			}
 			target="_blank"
 			rel="noopener noreferrer"
 			className="block"
