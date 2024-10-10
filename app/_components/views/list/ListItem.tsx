@@ -95,7 +95,7 @@ const ListItem: React.FC<ListItemProps> = ({
 	};
 
 	const itemContent = (
-		<div className="relative flex -z-30 items-center border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600">
+		<div className="relative flex flex-col md:flex-row -z-30 md:items-center text-left border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600">
 			{/* Pin icon */}
 			{item.isPinned && (
 				<div className="absolute top-[-8px] right-[-8px]">
@@ -103,29 +103,30 @@ const ListItem: React.FC<ListItemProps> = ({
 				</div>
 			)}
 
-			{(pageKey === "reading-list" || pageKey === "bookmarks") && favicon ? (
+			{(pageKey === "reading-list" || pageKey === "bookmarks") &&
+			favicon ? (
 				<img
 					src={favicon}
 					alt={`${item[titleKey]} Favicon`}
-					className="h-5 w-5 rounded"
+					className="hidden md:inline-block h-5 w-5 rounded"
 				/>
 			) : (
 				renderImage()
 			)}
 
 			{/* Post Details */}
-			<div className="flex-grow pl-4">
+			<div className="flex-grow mt-4 md:mt-0 md:pl-4">
 				<h3 className="text-lg leading-5 font-semibold text-gray-900 dark:text-gray-100">
 					{item[titleKey] || "Untitled"}
 				</h3>
 				{/* Conditional Rendering for Description and Pub-Date */}
 				{(pageKey === "home" || pageKey === "about") &&
 				item[descriptionKey] ? (
-					<p className="text-sm text-gray-600 dark:text-gray-300 py-1">
+					<p className="text-sm text-gray-600 dark:text-gray-300">
 						{item[descriptionKey]}
 					</p>
 				) : item[pubDateKey] ? (
-					<p className="text-sm text-gray-600 dark:text-gray-300 py-1">
+					<p className="text-sm text-gray-600 dark:text-gray-300">
 						{new Date(item[pubDateKey]).toLocaleDateString(
 							"en-US",
 							{
@@ -138,7 +139,7 @@ const ListItem: React.FC<ListItemProps> = ({
 				) : null}
 				{/* URL */}
 				{item[urlKey] && (
-					<p className="text-sm text-gray-600 dark:text-gray-300 py-1">
+					<p className="truncate max-w-72 md:max-w-96 text-sm text-gray-600 dark:text-gray-300 py-1">
 						{item[urlKey]}
 					</p>
 				)}
