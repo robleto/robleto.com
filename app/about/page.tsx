@@ -27,7 +27,7 @@ export default async function AboutPage() {
 			<PageTitle title="About Me" />
 			<Subhead pageContent={aboutSubheadContent} />
 
-			<GroupTitle title="Recent Updates" />
+			<GroupTitle title="Timeline" />
 			{/* Render the Lists component */}
 			<Lists
 				items={sortedItems}
