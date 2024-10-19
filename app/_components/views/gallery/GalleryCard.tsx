@@ -1,6 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaThumbtack, FaImage } from "react-icons/fa";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Tags from "../common/Tags"; // Component to display tags
+
+gsap.registerPlugin(ScrollTrigger);
 
 type GalleryCardProps = {
 	item: any;
@@ -33,20 +37,19 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 }) => {
 	const [imageError, setImageError] = useState(false);
 	const [imageSrc, setImageSrc] = useState("");
+	const cardRef = useRef<HTMLDivElement | null>(null); // Ref for the card
 
 	// Determine the file extension based on whether the item is animated or a photo
-	let fileExtension = "png"; 
+	let fileExtension = "png";
 	if (item?.[animatedKey]) {
 		fileExtension = "gif"; // Use gif for animated
 	} else if (pageKey === "library" || pageKey === "travel") {
 		fileExtension = "jpg"; // Use jpg for library and travel
 	}
 
-	// Dynamically add padding for "library" page
 	const imageContainerClass =
 		pageKey === "library" ? "object-contain" : "object-cover h-full w-full";
 
-	// Set the image source URL
 	useEffect(() => {
 		if (item[slugKey]) {
 			const src = `./${item[pageKey] || pageKey}/${
@@ -55,6 +58,24 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			setImageSrc(src);
 		}
 	}, [item, pageKey, slugKey, fileExtension]);
+
+	// GSAP animation effect
+	useEffect(() => {
+		gsap.fromTo(
+			cardRef.current,
+			{ opacity: 0 }, // Initial state
+			{
+				opacity: 1,
+				duration: 1,
+				scrollTrigger: {
+					trigger: cardRef.current,
+					start: "top 90%", // When the card enters the viewport
+					end: "bottom 75%", // When it exits
+					toggleActions: "play none none none", // Play animation once
+				},
+			}
+		);
+	}, []);
 
 	// Format the date using native JavaScript
 	const formatDate = (dateString?: string) => {
@@ -66,10 +87,11 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		});
 	};
 
-	// Build the card content
 	const cardContent = (
-		<div className="gallery-card -z-30 relative bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full">
-			
+		<div
+			ref={cardRef} // Attach the ref to the card container
+			className="gallery-card relative bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full"
+		>
 			{/* Image */}
 			<div
 				className={`relative ${
@@ -93,8 +115,6 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						</span>
 					</div>
 				)}
-
-				
 			</div>
 
 			{/* Title */}
@@ -142,7 +162,6 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		</div>
 	);
 
-	// If `linkKey` is provided, wrap the card content in a link
 	return item[linkKey] ? (
 		<a
 			href={

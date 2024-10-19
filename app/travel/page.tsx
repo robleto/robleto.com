@@ -5,6 +5,7 @@ import Subhead from "@/app/_components/layout/page/Subhead";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import { sortByName } from "@/utils/sortItems"; // Import the sortByName function
+import USMap from "@/app/travel/us-map"; // Update the import path to the correct location of the USMap component
 
 export default async function TravelPage() {
 	// Fetch the data from Notion using centralized data mapper
@@ -37,6 +38,9 @@ export default async function TravelPage() {
 		<div className="container mx-auto p-4">
 			<PageTitle title="Travel" />
 			<Subhead pageContent={pageContent} />
+
+			{/* Render the US map */}
+			<USMap />
 
 			{/* Loop through the sorted keys of groupedItems */}
 			{sortedKeys.map((state) => (

@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaThumbtack, FaImage, FaStar } from "react-icons/fa";
 import Tags from "../common/Tags"; // Import your Tags component
 
+// Define the ListItemProps type
 type ListItemProps = {
 	item: any;
 	pageKey?: string;
@@ -14,6 +17,9 @@ type ListItemProps = {
 	imageKey?: string;
 	urlKey?: string;
 };
+
+// Register the ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const ListItem: React.FC<ListItemProps> = ({
 	item,
@@ -30,11 +36,11 @@ const ListItem: React.FC<ListItemProps> = ({
 	const [imageError, setImageError] = useState(false);
 	const [imageSrc, setImageSrc] = useState("");
 	const [favicon, setFavicon] = useState("");
+	const itemRef = useRef<HTMLDivElement>(null); // Reference for the GSAP animation
 
 	// Fetch the appropriate image based on pageKey
 	useEffect(() => {
 		if (pageKey === "following" && item[slugKey]) {
-			// For following, get the Twitter profile image based on slug
 			const twitterProfileImageUrl = `https://unavatar.io/twitter/${item[slugKey]}`;
 			setImageSrc(twitterProfileImageUrl);
 		} else if (item[slugKey]) {
@@ -43,6 +49,7 @@ const ListItem: React.FC<ListItemProps> = ({
 		}
 	}, [item, pageKey, slugKey]);
 
+	// Fetch favicon for reading list or bookmarks
 	useEffect(() => {
 		if (
 			(pageKey === "reading-list" || pageKey === "bookmarks") &&
@@ -58,6 +65,28 @@ const ListItem: React.FC<ListItemProps> = ({
 		}
 	}, [item, urlKey, pageKey]);
 
+	// GSAP animation for fading in the cards on scroll
+	useEffect(() => {
+		const el = itemRef.current;
+		if (el) {
+			gsap.fromTo(
+				el,
+				{ opacity: 0 }, // Start invisible without movement
+				{
+					opacity: 1,
+					duration: 1,
+					scrollTrigger: {
+						trigger: el,
+						start: "top 100%", // When the card enters the viewport
+						end: "bottom 85%", // When it exits
+						toggleActions: "play none none none",
+					},
+				}
+			);
+		}
+	}, []);
+
+	// Render the appropriate image
 	const renderImage = () => {
 		if (pageKey === "following" && imageSrc) {
 			return (
@@ -74,7 +103,7 @@ const ListItem: React.FC<ListItemProps> = ({
 					src={imageSrc}
 					alt={item[titleKey] || "Image"}
 					className="w-12 h-12 rounded-full"
-					onError={() => setImageSrc("")} // Reset the imageSrc if the image fails to load
+					onError={() => setImageSrc("")}
 				/>
 			);
 		} else if (!imageError && imageSrc) {
@@ -95,7 +124,10 @@ const ListItem: React.FC<ListItemProps> = ({
 	};
 
 	const itemContent = (
-		<div className="relative flex flex-col md:flex-row -z-30 md:items-center text-left border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600">
+		<div
+			ref={itemRef}
+			className="relative flex flex-col md:flex-row -z-30 md:items-center text-left border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600"
+		>
 			{/* Pin icon */}
 			{item.isPinned && (
 				<div className="absolute top-[-8px] right-[-8px]">
@@ -119,7 +151,6 @@ const ListItem: React.FC<ListItemProps> = ({
 				<h3 className="text-lg leading-5 font-semibold text-gray-900 dark:text-gray-100">
 					{item[titleKey] || "Untitled"}
 				</h3>
-				{/* Conditional Rendering for Description and Pub-Date */}
 				{(pageKey === "home" || pageKey === "about") &&
 				item[descriptionKey] ? (
 					<p className="text-sm text-gray-600 dark:text-gray-300">
@@ -131,13 +162,11 @@ const ListItem: React.FC<ListItemProps> = ({
 							"en-US",
 							{
 								month: "short",
-								// day: "numeric",
 								year: "numeric",
 							}
 						)}
 					</p>
 				) : null}
-				{/* URL */}
 				{item[urlKey] && (
 					<p className="truncate max-w-72 md:max-w-96 text-sm text-gray-600 dark:text-gray-300 py-1">
 						{item[urlKey]}
@@ -150,7 +179,6 @@ const ListItem: React.FC<ListItemProps> = ({
 				<p className="text-sm text-gray-600 dark:text-gray-300 py-1">
 					{new Date(item[pubDateKey]).toLocaleDateString("en-US", {
 						month: "short",
-						// day: "numeric",
 						year: "numeric",
 					})}
 				</p>

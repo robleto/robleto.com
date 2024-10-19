@@ -1,13 +1,13 @@
 @tailwind base;
 
 body {
-  font-family: 'Nunito', Arial, Helvetica, sans-serif;
+  font-family: 'nunito', Arial, Helvetica, sans-serif;
   background-color: #f9f9fb;
 }
 
 .font-bodoni div,
 .font-bodoni div p {
-  font-family: 'Bodoni', serif;
+  font-family: 'bodoni', serif;
 }
 
 /* globals.css */
