@@ -6,19 +6,24 @@ import SidebarSectionHeader from "./SidebarSectionHeader";
 import Logo from "./Logo";
 import SidebarToggle from "./SidebarToggle";
 import DarkLightToggle from "./DarkLightToggle";
-import Modal from "../../common/Modal"; 
-import ContactModal from "../../../about/_contact"; 
-import SocialModal from "../../../about/_social"; 
+import Modal from "../../common/Modal";
+import ContactModal from "../../../about/_contact";
+import SocialModal from "../../../about/_social";
+import { usePathname } from "next/navigation"; // Import usePathname hook
 
 export default function SideNav() {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [isReady, setIsReady] = useState(false);
+	const [isListsOpen, setIsListsOpen] = useState(false); // Add state for Lists submenu
+
+	const pathname = usePathname(); // Get the current path using usePathname
 
 	// Modal state
 	const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 	const [isSocialModalOpen, setIsSocialModalOpen] = useState(false);
 
 	useEffect(() => {
+		// Auto-collapse on mobile screens
 		const handleResize = () => {
 			if (window.innerWidth < 768) {
 				setIsCollapsed(true); // Default to collapsed on mobile
@@ -36,6 +41,13 @@ export default function SideNav() {
 			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
+
+	// Check the current path and auto-open Lists submenu if necessary
+	useEffect(() => {
+		if (pathname.startsWith("/lists")) {
+			setIsListsOpen(true); // Keep Lists submenu open when on /lists or any subpage
+		}
+	}, [pathname]);
 
 	if (!isReady) {
 		return null;
@@ -63,6 +75,7 @@ export default function SideNav() {
 						/>
 						<ul>
 							<SidebarLink
+								link="projects"
 								slug="projects"
 								title="Projects"
 								isCollapsed={isCollapsed}
@@ -70,6 +83,7 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
+								link="art"
 								slug="art"
 								title="Art"
 								isCollapsed={isCollapsed}
@@ -77,6 +91,7 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
+								link="resources"
 								slug="resources"
 								title="Resources"
 								isCollapsed={isCollapsed}
@@ -84,20 +99,74 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
+								link="posts"
 								slug="posts"
 								title="Posts"
 								isCollapsed={isCollapsed}
 								onOpenContact={() => {}}
 								onOpenSocial={() => {}}
 							/>
+
+							{/* Lists parent link */}
+							<li>
+								<div
+									onClick={() => setIsListsOpen(!isListsOpen)}
+								>
+									<SidebarLink
+										link="lists"
+										slug="lists"
+										title="Lists"
+										isCollapsed={isCollapsed}
+										onOpenContact={() => {}}
+										onOpenSocial={() => {}}
+									/>
+								</div>
+
+								{/* Submenu for Lists */}
+								{isListsOpen && (
+									<ul
+										className={`pl-4 ${
+											isCollapsed ? "hidden" : "block"
+										}`}
+									>
+										<SidebarLink
+											link="lists/travel"
+											slug="travel"
+											title="Travel"
+											isCollapsed={isCollapsed}
+											onOpenContact={() => {}}
+											onOpenSocial={() => {}}
+										/>
+										<SidebarLink
+											link="lists/board-games"
+											slug="board-games"
+											title="Board Games"
+											isCollapsed={isCollapsed}
+											onOpenContact={() => {}}
+											onOpenSocial={() => {}}
+										/>
+										<SidebarLink
+											link="lists/musicals"
+											slug="musical"
+											title="Musicals"
+											isCollapsed={isCollapsed}
+											onOpenContact={() => {}}
+											onOpenSocial={() => {}}
+										/>
+										<SidebarLink
+											link="lists/shakespeare"
+											slug="shakespeare"
+											title="Shakespeare"
+											isCollapsed={isCollapsed}
+											onOpenContact={() => {}}
+											onOpenSocial={() => {}}
+										/>
+									</ul>
+								)}
+							</li>
+
 							<SidebarLink
-								slug="travel"
-								title="Travels"
-								isCollapsed={isCollapsed}
-								onOpenContact={() => {}}
-								onOpenSocial={() => {}}
-							/>
-							<SidebarLink
+								link="about"
 								slug="about"
 								title="About"
 								isCollapsed={isCollapsed}
@@ -105,12 +174,14 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 						</ul>
+
 						<SidebarSectionHeader
 							title="Collection"
 							isCollapsed={isCollapsed}
 						/>
 						<ul>
 							<SidebarLink
+								link="library"
 								slug="library"
 								title="Library"
 								isCollapsed={isCollapsed}
@@ -118,6 +189,7 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
+								link="bookmarks"
 								slug="bookmarks"
 								title="Bookmarks"
 								isCollapsed={isCollapsed}
@@ -125,6 +197,7 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
+								link="reading-list"
 								slug="reading-list"
 								title="Reading List"
 								isCollapsed={isCollapsed}
@@ -132,6 +205,7 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
+								link="following"
 								slug="following"
 								title="Following"
 								isCollapsed={isCollapsed}
@@ -145,6 +219,7 @@ export default function SideNav() {
 						/>
 						<ul>
 							<SidebarLink
+								link="contact"
 								slug="contact"
 								title="Contact"
 								isCollapsed={isCollapsed}
@@ -154,6 +229,7 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
+								link="social"
 								slug="social"
 								title="Social"
 								isCollapsed={isCollapsed}
@@ -170,8 +246,6 @@ export default function SideNav() {
 					</div>
 				)}
 			</nav>
-
-			{/* Contact Modal */}
 
 			{/* Contact Modal */}
 			<Modal

@@ -5,12 +5,18 @@ export const mapEntry = (entry: any, entryType: string) => {
 			return mapArtEntry(entry);
 		case "about":
 			return mapAboutEntry(entry);
+		case "board-games":
+			return mapBoardGamesEntry(entry);
 		case "bookmarks":
 			return mapBookmarksEntry(entry);
 		case "following":
 			return mapFollowingEntry(entry);
 		case "library":
 			return mapLibraryEntry(entry);
+		case "lists":
+			return mapListsEntry(entry);
+		case "musicals":
+			return mapMusicalsEntry(entry);
 		case "posts":
 			return mapPostsEntry(entry);
 		case "projects":
@@ -19,6 +25,8 @@ export const mapEntry = (entry: any, entryType: string) => {
 			return mapReadingListEntry(entry);
 		case "resources":
 			return mapResourcesEntry(entry);
+		case "shakespeare":
+			return mapShakespeareEntry(entry);
 		case "travel":
 			return mapTravelEntry(entry);
 		default:
@@ -77,6 +85,23 @@ const mapAboutEntry = (entry: any) => {
 		tags,
 		isPinned,
 	};
+};
+
+
+// Map the Board Games data structure
+const mapBoardGamesEntry = (entry: any) => {
+  const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
+  const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
+  const own = entry.properties.Own?.status?.name || ""; 
+  const played = entry.properties.Played?.status?.name || ""; 
+
+  return {
+    id: entry.id,
+    title,
+    slug,
+		own,
+    played, // Include the seen status
+  };
 };
 
 // Map the Bookmarks data structure
@@ -150,6 +175,40 @@ const mapLibraryEntry = (entry: any) => {
     image: imageUrl,
     url,
     slug,
+  };
+};
+
+// Map the Lists data structure
+const mapListsEntry = (entry: any) => {
+	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
+	const url = entry.properties.URL?.url || "#";
+	const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
+	const description =
+		entry.properties.Description?.rich_text?.[0]?.plain_text || "";
+	const sortOrder = entry.properties.SortOrder?.number || Infinity;
+
+	return {
+		id: entry.id,
+		title,
+		url,
+		slug,
+		description,
+		sortOrder,
+	};
+};
+
+
+// Map the Musicals data structure
+const mapMusicalsEntry = (entry: any) => {
+  const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
+  const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
+  const seen = entry.properties.Seen?.status?.name || ""; 
+
+  return {
+    id: entry.id,
+    title,
+    slug,
+    seen, // Include the seen status
   };
 };
 
@@ -269,6 +328,21 @@ const mapResourcesEntry = (entry: any) => {
     slug,
     animated,
     description,
+  };
+};
+
+
+// Map the Shakespeare data structure
+const mapShakespeareEntry = (entry: any) => {
+  const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
+  const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
+  const seen = entry.properties.Seen?.status?.name || ""; 
+
+  return {
+    id: entry.id,
+    title,
+    slug,
+    seen, // Include the seen status
   };
 };
 

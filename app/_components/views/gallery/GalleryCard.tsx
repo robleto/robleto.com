@@ -43,12 +43,20 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	let fileExtension = "png";
 	if (item?.[animatedKey]) {
 		fileExtension = "gif"; // Use gif for animated
-	} else if (pageKey === "library" || pageKey === "travel") {
+	} else if (
+		pageKey === "library" ||
+		pageKey === "lists" ||
+		pageKey === "travel" ||
+		pageKey == "musicals" ||
+		pageKey == "board-games"
+	) {
 		fileExtension = "jpg"; // Use jpg for library and travel
 	}
 
 	const imageContainerClass =
-		pageKey === "library" ? "object-contain" : "object-cover h-full w-full";
+		pageKey === "library" ||  
+		pageKey === "musicals" || 
+		pageKey === "board-games" ? "object-contain" : "object-cover h-full w-full";
 
 	useEffect(() => {
 		if (item[slugKey]) {
@@ -97,7 +105,9 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 				className={`relative ${
 					lgGridCols === "lg:grid-cols-1" ? "h-72" : "h-48"
 				} w-full flex items-center justify-center overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800 ${
-					pageKey === "library" ? "p-4" : ""
+					pageKey === "library" || 
+					pageKey === "musicals" || 
+					pageKey === "board-games" ? "p-4" : ""
 				}`}
 			>
 				{!imageError && imageSrc ? (
@@ -167,10 +177,15 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			href={
 				item[linkKey].startsWith("http://") ||
 				item[linkKey].startsWith("https://")
-					? item[linkKey]
-					: `https://${item[linkKey]}`
+					? item[linkKey] // For external links, use the full URL
+					: item[linkKey] // For internal links, no need to prepend "https://"
 			}
-			target="_blank"
+			target={
+				item[linkKey].startsWith("http://") ||
+				item[linkKey].startsWith("https://")
+					? "_blank" // Open external links in a new tab
+					: "_self" // Open internal links in the same tab
+			}
 			rel="noopener noreferrer"
 			className="block relative"
 		>
@@ -186,6 +201,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	) : (
 		<div>{cardContent}</div>
 	);
+
 };
 
 export default GalleryCard;

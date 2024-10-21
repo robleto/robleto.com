@@ -1,6 +1,7 @@
 import React from "react";
 
 type SidebarLinkProps = {
+	link: string;
 	slug: string;
 	title: string;
 	isCollapsed: boolean; // Handle collapsed state
@@ -9,6 +10,7 @@ type SidebarLinkProps = {
 };
 
 const SidebarLink: React.FC<SidebarLinkProps> = ({
+	link,
 	slug,
 	title,
 	isCollapsed,
@@ -49,7 +51,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 				</button>
 			) : (
 				<a
-					href={`/${slug}`}
+					href={`/${link}`}
 					className="flex items-center space-x-2 hover:text-gray-600 hover:dark:text-gray-200"
 				>
 					<img

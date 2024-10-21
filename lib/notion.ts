@@ -92,5 +92,3 @@ export const getBlockChildren = async (
 		return [];
 	}
 };
-
-// here2

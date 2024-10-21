@@ -1,7 +1,7 @@
 "use server"; // This component runs on the client
 
 import React from "react";
-import { renderBlock } from "../../../../utils/renderItems"; // Adjust the import path as needed
+import { renderBlock } from "@/utils/renderItems"; // Adjust the import path as needed
 
 interface SubheadProps {
 	pageContent: any[]; // Adjust the type based on your actual data structure

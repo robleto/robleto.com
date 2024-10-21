@@ -98,7 +98,7 @@ function downloadImage(url: string, destination: string) {
 }
 
 async function downloadImages() {
-	const publicPath = path.join(process.cwd(), "public", "travel");
+	const publicPath = path.join(process.cwd(), "public", "lists/travel");
 
 	if (!fs.existsSync(publicPath)) {
 		fs.mkdirSync(publicPath, { recursive: true });
