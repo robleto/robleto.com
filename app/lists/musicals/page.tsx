@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import { filterItemsByProperty } from "@/utils/filterItems"; // Your utility for filtering
 import { sortByName } from "@/utils/sortItems"; // Your utility for sorting
@@ -30,20 +29,25 @@ export default async function MusicalsPage() {
 	console.log("Sorted items by name:", sortedItems);
 
 	return (
-		<div className="container mx-auto p-4">
-			<PageTitle title="Musicals" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Musicals" pageContent={pageContent} />
 
-			<section>
-				<Gallery
-					items={sortedItems} // The sorted and filtered musicals
-					mdGridCols="md:grid-cols-3"
-					lgGridCols="lg:grid-cols-4"
-					pageKey="musicals"
-					titleKey="title"
-					slugKey="slug"
-				/>
-			</section>
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				<section>
+					<Gallery
+						items={sortedItems} // The sorted and filtered musicals
+						mdGridCols="md:grid-cols-3"
+						lgGridCols="lg:grid-cols-4"
+						pageKey="musicals"
+						titleKey="title"
+						slugKey="slug"
+					/>
+				</section>
+			</div>
 		</div>
 	);
 }

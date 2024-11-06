@@ -1,9 +1,8 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "../_components/layout/page/PageTitle";
-import Subhead from "../_components/layout/page/Subhead";
-import RichText from "../_components/layout/page/RichText";
-import GroupTitle from "../_components/views/common/GroupTitle";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
+import RichText from "@/app/_components/layout/page/RichText";
+import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import Lists from "@/app/_components/views/list/List";
 import { sortByPinnedAndDate } from "@/utils/sortItems";	
 
@@ -23,25 +22,30 @@ export default async function AboutPage() {
 	const sortedItems = sortByPinnedAndDate(listItems, "date");
 
 	return (
-		<div className="container mx-auto p-4">
-			<PageTitle title="About Me" />
-			<Subhead pageContent={aboutSubheadContent} />
+		<div className="pt-10">
+			<PageHeader title="About" pageContent={aboutSubheadContent} />
 
-			<GroupTitle title="Timeline" />
-			{/* Render the Lists component */}
-			<Lists
-				items={sortedItems}
-				pageKey="about"
-				linkKey="url"
-				descriptionKey="description"
-				pubDateKey="date"
-				titleKey="name"
-				tagsKey="tags"
-				slugKey="slug"
-			/>
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				<GroupTitle title="Timeline" />
+				{/* Render the Lists component */}
+				<Lists
+					items={sortedItems}
+					pageKey="about"
+					linkKey="url"
+					descriptionKey="description"
+					pubDateKey="date"
+					titleKey="name"
+					tagsKey="tags"
+					slugKey="slug"
+				/>
 
-			<GroupTitle title="About Me" />
-			<RichText pageContent={aboutDescriptionContent} />
+				<GroupTitle title="About Me" />
+				<RichText pageContent={aboutDescriptionContent} />
+			</div>
 		</div>
 	);
 }

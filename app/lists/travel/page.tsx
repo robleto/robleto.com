@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import { sortByName } from "@/utils/sortItems"; // Import the sortByName function
@@ -35,27 +34,32 @@ export default async function TravelPage() {
 	});
 
 	return (
-		<div className="container mx-auto p-4">
-			<PageTitle title="Travel" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Travel" pageContent={pageContent} />
 
-			{/* Render the US map */}
-			<USMap />
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Render the US map */}
+				<USMap />
 
-			{/* Loop through the sorted keys of groupedItems */}
-			{sortedKeys.map((state) => (
-				<section key={state}>
-					<GroupTitle title={state} />
-					<Gallery
-						items={groupedItems[state]} // Items under this state, now sorted by title using sortByName
-						pageKey="travel"
-						titleKey="title"
-						linkKey="url"
-						slugKey="slug"
-						cityStateKey="cityState"
-					/>
-				</section>
-			))}
+				{/* Loop through the sorted keys of groupedItems */}
+				{sortedKeys.map((state) => (
+					<section key={state}>
+						<GroupTitle title={state} />
+						<Gallery
+							items={groupedItems[state]} // Items under this state, now sorted by title using sortByName
+							pageKey="travel"
+							titleKey="title"
+							linkKey="url"
+							slugKey="slug"
+							cityStateKey="cityState"
+						/>
+					</section>
+				))}
+			</div>
 		</div>
 	);
 }

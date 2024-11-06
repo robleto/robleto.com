@@ -1,8 +1,8 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByOrder } from "@/utils/sortItems";
+import { filterItemsByProperty } from "@/utils/filterItems";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 
 export default async function ProjectsPage() {
@@ -13,25 +13,34 @@ export default async function ProjectsPage() {
 		entryType: "projects", // Use entryType to fetch mapped data
 	});
 
+
+	const projectItems = filterItemsByProperty(listItems, "tags", "Side-Project") || [];
+
+
 	// Sort items
-	const sortedRegularItems = sortByOrder(listItems);
+	const sortedRegularItems = sortByOrder(projectItems);
 
 	return (
-		<div className="container mx-auto p-4">
-			<PageTitle title="Projects" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Projects" pageContent={pageContent} />
 
-			{/* Regular Gallery */}
-			<Gallery
-				mdGridCols="md:grid-cols-1"
-				lgGridCols="lg:grid-cols-1"
-				items={sortedRegularItems}
-				tagsKey="tags"
-				descriptionKey="description"
-				pageKey="projects"
-				slugKey="slug"
-				linkKey="url"
-			/>
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Regular Gallery */}
+				<Gallery
+					mdGridCols="md:grid-cols-1"
+					lgGridCols="lg:grid-cols-1"
+					items={sortedRegularItems}
+					tagsKey="tags"
+					descriptionKey="description"
+					pageKey="projects"
+					slugKey="slug"
+					linkKey="url"
+				/>
+			</div>
 		</div>
 	);
 }

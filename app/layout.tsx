@@ -1,5 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
+import Logo from "./_components/layout/sidebar/Logo";
 import "./_style/globals.css"; // Import global styles
 import { Nunito_Sans, Oswald, Libre_Bodoni, Inter } from "next/font/google";
 

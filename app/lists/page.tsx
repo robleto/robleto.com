@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByOrder } from "@/utils/sortItems";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 
@@ -17,21 +16,26 @@ export default async function ListsPage() {
 	const sortedRegularItems = sortByOrder(listItems);
 
 	return (
-		<div className="container mx-auto p-4">
-			<PageTitle title="Lists" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Lists" pageContent={pageContent} />
 
-			{/* Regular Gallery */}
-			<Gallery
-				mdGridCols="md:grid-cols-1"
-				lgGridCols="lg:grid-cols-1"
-				items={sortedRegularItems}
-				tagsKey="tags"
-				descriptionKey="description"
-				pageKey="lists"
-				slugKey="slug"
-				linkKey="url"
-			/>
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Regular Gallery */}
+				<Gallery
+					mdGridCols="md:grid-cols-1"
+					lgGridCols="lg:grid-cols-1"
+					items={sortedRegularItems}
+					tagsKey="tags"
+					descriptionKey="description"
+					pageKey="lists"
+					slugKey="slug"
+					linkKey="url"
+				/>
+			</div>
 		</div>
 	);
 }

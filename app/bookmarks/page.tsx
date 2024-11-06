@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByPinnedAndDate, sortByName } from "@/utils/sortItems";
 import Lists from "@/app/_components/views/list/List";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
@@ -32,25 +31,30 @@ export default async function BookmarksPage() {
 	);
 
 	return (
-		<div className="container mx-auto">
-			<PageTitle title="Bookmarks" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Bookmarks" pageContent={pageContent} />
 
-			{/* Loop through sorted groups */}
-			{Object.keys(sortedGroups).map((tags) => (
-				<section key={tags}>
-					<GroupTitle title={tags} />
-					<Lists
-						items={sortedGroups[tags]} 
-						linkKey="url"
-						pubDateKey="pubdate"
-						pageKey="bookmarks"
-						tagsKey="tags"
-						urlKey="url"
-						slugKey="slug"
-					/>
-				</section>
-			))}
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Loop through sorted groups */}
+				{Object.keys(sortedGroups).map((tags) => (
+					<section key={tags}>
+						<GroupTitle title={tags} />
+						<Lists
+							items={sortedGroups[tags]}
+							linkKey="url"
+							pubDateKey="pubdate"
+							pageKey="bookmarks"
+							tagsKey="tags"
+							urlKey="url"
+							slugKey="slug"
+						/>
+					</section>
+				))}
+			</div>
 		</div>
 	);
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByName } from "@/utils/sortItems";
 import Lists from "@/app/_components/views/list/List";
 
@@ -16,20 +15,25 @@ export default async function FollowingPage() {
 	const sortedItems = sortByName(listItems);
 
 	return (
-		<div className="container mx-auto">
-			<PageTitle title="Following" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Following" pageContent={pageContent} />
 
-			{/* Render the Lists component */}
-			<Lists
-				items={sortedItems}
-				linkKey="url"
-				pubDateKey="pubdate"
-				pageKey="following"
-				tagsKey="tags"
-				urlKey="url"
-				slugKey="slug" // Ensure the slug key is passed for image paths
-			/>
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Render the Lists component */}
+				<Lists
+					items={sortedItems}
+					linkKey="url"
+					pubDateKey="pubdate"
+					pageKey="following"
+					tagsKey="tags"
+					urlKey="url"
+					slugKey="slug" // Ensure the slug key is passed for image paths
+				/>
+			</div>
 		</div>
 	);
 }
