@@ -31,7 +31,8 @@ export default async function HomePage() {
 	const firstThreeReadingListPosts = readingListItems.slice(0,4);
 
 	return (
-		<div className="container mx-auto p-4">
+		<div className="container pt-10 flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto	mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
 			<h1 className="text-2xl font-bold hidden">Greg Robleto</h1>
 
 			<section className="w-full max-w-6xl mx-auto py-8">

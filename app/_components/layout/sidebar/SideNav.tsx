@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import SidebarLink from "./SidebarLink";
 import SidebarSectionHeader from "./SidebarSectionHeader";
-import Logo from "./Logo";
 import SidebarToggle from "./SidebarToggle";
 import DarkLightToggle from "./DarkLightToggle";
 import Modal from "../../common/Modal";
@@ -54,7 +53,7 @@ export default function SideNav() {
 	}
 
 	return (
-		<div className="flex h-screen fixed min-h-[100vh] overflow-scroll">
+		<div className="flex h-screen fixed min-h-[90vh] overflow-scroll pt-12">
 			<nav
 				className={`bg-mercury text-gray-900 flex flex-col transition-all duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-200 ${
 					isCollapsed ? "w-16" : "w-48"
@@ -65,15 +64,21 @@ export default function SideNav() {
 					toggleCollapse={() => setIsCollapsed(!isCollapsed)}
 				/>
 
-				<div className="flex-grow overflow-y-auto mt-8">
-					<Logo isCollapsed={isCollapsed} />
-
+				<div className="flex-grow overflow-y-auto">
 					<div className="px-4">
 						<SidebarSectionHeader
 							title="Biography"
 							isCollapsed={isCollapsed}
 						/>
 						<ul>
+							<SidebarLink
+								link="portfolio"
+								slug="portfolio"
+								title="Portfolio"
+								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
+							/>
 							<SidebarLink
 								link="projects"
 								slug="projects"

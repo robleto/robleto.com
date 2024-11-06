@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByPinnedAndDate } from "@/utils/sortItems";
 import Lists from "@/app/_components/views/list/List";	
 
@@ -15,20 +14,25 @@ export default async function ReadingListPage() {
 	const sortedItems = sortByPinnedAndDate(listItems, "date");
 
 	return (
-		<div className="container mx-auto">
-			<PageTitle title="Reading List" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Reading List" pageContent={pageContent} />
 
-			{/* Render the Lists component */}
-			<Lists
-				items={sortedItems}
-				linkKey="url"
-				pubDateKey="pubdate"
-				pageKey="reading-list"
-				tagsKey="tags"
-				slugKey="slug"
-				urlKey="url"
-			/>
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Render the Lists component */}
+				<Lists
+					items={sortedItems}
+					linkKey="url"
+					pubDateKey="pubdate"
+					pageKey="reading-list"
+					tagsKey="tags"
+					slugKey="slug"
+					urlKey="url"
+				/>
+			</div>
 		</div>
 	);
 }

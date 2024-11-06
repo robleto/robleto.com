@@ -19,6 +19,8 @@ export const mapEntry = (entry: any, entryType: string) => {
 			return mapMusicalsEntry(entry);
 		case "posts":
 			return mapPostsEntry(entry);
+		case "portfolio":
+			return mapPortfolioEntry(entry);
 		case "projects":
 			return mapProjectsEntry(entry);
 		case "reading-list":
@@ -242,6 +244,33 @@ const mapPostsEntry = (entry: any) => {
 };
 
 
+
+// Map the Projects data structure
+const mapPortfolioEntry = (entry: any) => {
+	const imageProperty = entry.properties.Image;
+	const imageUrl =
+		imageProperty?.files?.[0]?.file?.url ||
+		imageProperty?.files?.[0]?.name ||
+		"";
+	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
+	const url = entry.properties.URL?.url || "#";
+	const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
+	const subtitle =
+		entry.properties.Subtitle?.rich_text?.[0]?.plain_text || "";
+	const sortOrder = entry.properties.SortOrder?.number || Infinity;
+
+	return {
+		id: entry.id,
+		title,
+		image: imageUrl,
+		url,
+		slug,
+		subtitle,
+		sortOrder,
+	};
+};
+
+
 // Map the Projects data structure
 const mapProjectsEntry = (entry: any) => {
 	const imageProperty = entry.properties.Image;
@@ -253,6 +282,7 @@ const mapProjectsEntry = (entry: any) => {
 	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
 	const animated = entry.properties.Animated?.checkbox || false;
 	const topics = entry.properties.Topics?.multi_select || [];
+  const type = entry.properties.Type?.multi_select || [];
 	const url = entry.properties.URL?.url || "#";
 	const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
 	const description =

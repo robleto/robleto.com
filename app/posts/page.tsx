@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByPinnedAndDate } from "@/utils/sortItems";
 import PostsContainer from "@/app/_components/views/common/Container"; // Import the updated PostsContainer
 import Lists from "../_components/views/list/List"; // Import Lists component
@@ -17,31 +16,36 @@ export default async function PostsPage() {
 	const sortedItems = sortByPinnedAndDate(listItems, "pubdate");
 
 	return (
-		<div className="container mx-auto">
-			<PageTitle title="Posts" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Posts" pageContent={pageContent} />
 
-			{/* Pass sortedItems and components to the client-side PostsContainer */}
-			<PostsContainer
-				sortedItems={sortedItems}
-				ListComponent={Lists}
-				GalleryComponent={Gallery}
-				listProps={{
-					linkKey: "url",
-					pubDateKey: "pubdate",
-					pageKey: "posts",
-					tagsKey: "tags",
-					slugKey: "slug",
-				}}
-				galleryProps={{
-					lgGridCols: "lg:grid-cols-2",
-					linkKey: "url",
-					pubDateKey: "pubdate",
-					pageKey: "posts",
-					tagsKey: "tags",
-					slugKey: "slug",
-				}}
-			/>
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Pass sortedItems and components to the client-side PostsContainer */}
+				<PostsContainer
+					sortedItems={sortedItems}
+					ListComponent={Lists}
+					GalleryComponent={Gallery}
+					listProps={{
+						linkKey: "url",
+						pubDateKey: "pubdate",
+						pageKey: "posts",
+						tagsKey: "tags",
+						slugKey: "slug",
+					}}
+					galleryProps={{
+						lgGridCols: "lg:grid-cols-2",
+						linkKey: "url",
+						pubDateKey: "pubdate",
+						pageKey: "posts",
+						tagsKey: "tags",
+						slugKey: "slug",
+					}}
+				/>
+			</div>
 		</div>
 	);
 }

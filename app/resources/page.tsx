@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { filterItemsByProperty } from "@/utils/filterItems";
 import { sortByPinnedAndDate } from "@/utils/sortItems";
 import Gallery from "@/app/_components/views/gallery/Gallery";
@@ -22,29 +21,34 @@ export default async function ResourcesPage() {
 	const sortedRegularItems = sortByPinnedAndDate(regularItems, "name");
 
 	return (
-		<div className="container mx-auto p-4">
-			<PageTitle title="Resources" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Resources" pageContent={pageContent} />
 
-			{/* Featured Gallery */}
-			<Gallery
-				items={featuredItems}
-				smGridCols="sm:grid-cols-1"
-				mdGridCols="md:grid-cols-2"
-				lgGridCols="lg:grid-cols-2"
-				slugKey="slug"
-				pageKey="resources"
-				linkKey="url"
-			/>
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Featured Gallery */}
+				<Gallery
+					items={featuredItems}
+					smGridCols="sm:grid-cols-1"
+					mdGridCols="md:grid-cols-2"
+					lgGridCols="lg:grid-cols-2"
+					slugKey="slug"
+					pageKey="resources"
+					linkKey="url"
+				/>
 
-			{/* Regular Gallery */}
-			<Gallery
-				items={sortedRegularItems}
-				pageKey="resources"
-				slugKey="slug"
-				linkKey="url"
-				animatedKey="animated"
-			/>
+				{/* Regular Gallery */}
+				<Gallery
+					items={sortedRegularItems}
+					pageKey="resources"
+					slugKey="slug"
+					linkKey="url"
+					animatedKey="animated"
+				/>
+			</div>
 		</div>
 	);
 }

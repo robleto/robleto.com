@@ -98,7 +98,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	const cardContent = (
 		<div
 			ref={cardRef} // Attach the ref to the card container
-			className="gallery-card relative bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full"
+			className="gallery-card z-5 relative bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full"
 		>
 			{/* Image */}
 			<div

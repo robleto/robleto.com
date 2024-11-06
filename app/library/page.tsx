@@ -1,7 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import PageTitle from "@/app/_components/layout/page/PageTitle";
-import Subhead from "@/app/_components/layout/page/Subhead";
+import PageHeader from "@/app/_components/layout/page/PageHeader";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import { groupItemsByVariable } from "@/utils/groupItems";
@@ -29,23 +28,28 @@ export default async function LibraryPage() {
 	);
 
 	return (
-		<div className="container mx-auto p-4">
-			<PageTitle title="Library" />
-			<Subhead pageContent={pageContent} />
+		<div className="pt-10">
+			<PageHeader title="Library" pageContent={pageContent} />
 
-			{/* Loop through the sorted groups */}
-			{Object.keys(sortedGroups).map((topic) => (
-				<section key={topic}>
-					<GroupTitle title={topic} />
-					<Gallery
-						items={sortedGroups[topic]} // Items sorted by name under this topic
-						pageKey="library"
-						titleKey="title"
-						linkKey="url"
-						slugKey="slug"
-					/>
-				</section>
-			))}
+			<div
+				className="
+				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
+				mx-auto p-8 transition-all duration-300 dark:text-white"
+			>
+				{/* Loop through the sorted groups */}
+				{Object.keys(sortedGroups).map((topic) => (
+					<section key={topic}>
+						<GroupTitle title={topic} />
+						<Gallery
+							items={sortedGroups[topic]} // Items sorted by name under this topic
+							pageKey="library"
+							titleKey="title"
+							linkKey="url"
+							slugKey="slug"
+						/>
+					</section>
+				))}
+			</div>
 		</div>
 	);
 }
