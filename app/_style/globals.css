@@ -2,7 +2,15 @@
 
 body {
   font-family: 'nunito', Arial, Helvetica, sans-serif;
-  background-color: #f9f9fb;
+  background: linear-gradient(180deg, #000 0%, #201A59 62.09%);
+  background-repeat: no-repeat;
+  background-size: cover; /* Changed to make the background cover the entire viewport */
+  min-height: 100vh; /* Added to make the background cover 100vh */
+}
+main {
+  background-image: url('/home/bg-wave-home.png'); /* Ensure the path is correct */
+  background-position: top 100px center; /* Position the image 100px down */
+  background-size: 100% auto; /* Span the full width */
 }
 
 .font-bodoni div,
