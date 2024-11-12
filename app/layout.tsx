@@ -1,14 +1,12 @@
 import React from "react";
 import type { Metadata } from "next";
-import Logo from "./_components/layout/sidebar/Logo";
-import Logo from "./_components/layout/sidebar/Logo";
 import "./_style/globals.css"; // Import global styles
 import { Nunito_Sans, Oswald, Libre_Bodoni, Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "Greg Robleto | Greg Robleto – Design / Marketing / Product / Technology ",
+	title: "Greg Robleto | Greg Robleto - Design / Marketing / Product / Technology ",
 	description:
 		"Greg Robleto is a creative leader versed in design, marketing, product, branding, and technology. He has a passion for creating experiences that make an impact in people's lives and tinkering with things that make the web just a bit more fun.",
 };
