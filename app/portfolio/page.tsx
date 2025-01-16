@@ -48,6 +48,7 @@ export default async function PortfolioPage() {
 					slugKey="slug"
 					linkKey="url"
 				/>
+				
 
 				{/* Case Study Gallery */}
 				<GroupTitle title="Case Studies" />
