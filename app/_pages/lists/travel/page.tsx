@@ -4,7 +4,7 @@ import PageHeader from "@/app/_components/layout/page/PageHeader";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import { sortByName } from "@/utils/sortItems"; // Import the sortByName function
-import USMap from "@/app/lists/travel/us-map"; // Update the import path to the correct location of the USMap component
+import USMap from "@/app/_pages/lists/travel/us-map"; // Update the import path to the correct location of the USMap component
 
 export default async function TravelPage() {
 	// Fetch the data from Notion using centralized data mapper

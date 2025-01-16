@@ -1,0 +1,41 @@
+@tailwind base;
+
+body {
+  font-family: 'nunito', Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #000 0%, #201A59 62.09%);
+  background-repeat: no-repeat;
+  background-size: cover; /* Changed to make the background cover the entire viewport */
+  min-height: 100vh; /* Added to make the background cover 100vh */
+}
+
+
+page {
+  background-image: url('/home/bg-wave-home.png'); 
+  background-position: top 100px center; /* Position the image 100px down */
+  background-size: 100% auto;
+  background-repeat: no-repeat; /* Ensure the background image does not repeat */
+  min-height: calc(100vh - 100px); /* Fill the rest of the browser */
+}
+.page-home {
+  background-image: url('/home/bg-wave-home.png'); 
+}
+
+main {
+  border: solid 4px white;
+  max-width: 1200px; /* Set the max-width of the page content */
+  margin: 10rem auto 5rem; /* Center the main content */
+  color: white; /* Set default text color to white */
+  display: flex; /* Add flexbox */
+  flex-direction: column; /* Set the flex direction to column */  
+  padding: 2rem; /* Add padding */
+  align-items: center; /* Center items horizontally */
+}
+
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
+}
+
+
+
+@tailwind components;
+@tailwind utilities;

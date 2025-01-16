@@ -13,12 +13,7 @@ export default async function PortfolioPage() {
 		pageId: process.env.NOTION_PORTFOLIO_PAGE_ID!,
 		entryType: "portfolio", // Use entryType to fetch mapped data
 	});
-  
-	const { pageContent: projectsPageContent, listItems: projectsListItems } = await fetchNotionData({
-		databaseId: process.env.NOTION_PROJECTS_DB_ID!,
-		pageId: process.env.NOTION_PROJECTS_PAGE_ID!,
-		entryType: "projects", // Use entryType to fetch mapped data
-	});
+
 
 	const projectItems =
 		filterItemsByProperty(projectsListItems, "tags", "Full-time") || [];

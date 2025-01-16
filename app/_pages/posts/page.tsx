@@ -3,8 +3,8 @@ import { fetchNotionData } from "@/lib/notionContentFetcher";
 import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByPinnedAndDate } from "@/utils/sortItems";
 import PostsContainer from "@/app/_components/views/common/Container"; // Import the updated PostsContainer
-import Lists from "../_components/views/list/List"; // Import Lists component
-import Gallery from "../_components/views/gallery/Gallery"; // Import Gallery component
+import Lists from "../../_components/views/list/List"; // Import Lists component
+import Gallery from "../../_components/views/gallery/Gallery"; // Import Gallery component
 
 export default async function PostsPage() {
 	const { pageContent, listItems } = await fetchNotionData({

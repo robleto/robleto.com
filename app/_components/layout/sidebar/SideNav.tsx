@@ -6,8 +6,8 @@ import SidebarSectionHeader from "./SidebarSectionHeader";
 import SidebarToggle from "./SidebarToggle";
 import DarkLightToggle from "./DarkLightToggle";
 import Modal from "../../common/Modal";
-import ContactModal from "../../../about/_contact";
-import SocialModal from "../../../about/_social";
+import ContactModal from "../../../_pages/about/_contact";
+import SocialModal from "../../../_pages/about/_social";
 import { usePathname } from "next/navigation"; // Import usePathname hook
 
 export default function SideNav() {

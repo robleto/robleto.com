@@ -1,65 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 
 body {
   font-family: 'nunito', Arial, Helvetica, sans-serif;
   background: linear-gradient(180deg, #000 0%, #201A59 62.09%);
   background-repeat: no-repeat;
-  background-size: cover; /* Changed to make the background cover the entire viewport */
-  min-height: 100vh; /* Added to make the background cover 100vh */
+  background-size: cover; 
+  min-height: 100vh; 
 }
 main {
-  background-image: url('/home/bg-wave-home.png'); /* Ensure the path is correct */
+  background-image: url('/home/bg-wave-home.png'); 
   background-position: top 100px center; /* Position the image 100px down */
   background-size: 100% auto; /* Span the full width */
 }
 
-.font-bodoni div,
-.font-bodoni div p {
-  font-family: 'bodoni', serif;
-}
-
-/* globals.css */
-body {
-  background-color: theme("colors.background");
-}
-.dark body {
-  background-color: theme("colors.foreground");
-}
-
-@tailwind components;
-@tailwind utilities;
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-/* In your global CSS or a component-specific CSS file */
-.dark img.svg-icon {
-  filter: invert(1);
-}
-
-
-.blinking-cursor {
-  animation: blink 0.75s step-end infinite;
-}
-
-@keyframes blink {
-  from, to {
-    color: transparent;
-  }
-  50% {
-    color: black;
-  }
-}
-
-
-.gallery-card:hover h3 {
-  color: theme("colors.link");
-  text-decoration: underline;
-}
-.dark .gallery-card:hover h3 {
-  color: theme("colors.lightlink");
-  text-decoration: underline;
+.font-oswald {
+  font-family: 'Oswald', sans-serif;
 }

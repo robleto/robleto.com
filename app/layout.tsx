@@ -1,9 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
-import "./_style/globals.css"; // Import global styles
+import TopNav from "./components/TopNav"; // Import TopNav component
+import "./globals.css"; // Import global styles
 import { Nunito_Sans, Oswald, Libre_Bodoni, Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
+const oswald = Oswald({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "Greg Robleto | Greg Robleto - Design / Marketing / Product / Technology ",
@@ -18,7 +20,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={inter.className}>{children}</body>
+			<body className={`${oswald.className} ${inter.className}`}>
+
+				<TopNav />
+				{children}
+			</body>
 		</html>
 	);
 }
