@@ -19,8 +19,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, icon, pageContent }) => 
 		>
 			{/* Page Title */}
 
-			<h1 className="text-3xl -z-10 relative md:text-4xl font-light tracking-normal text-gray-800 dark:text-gray-200 flex items-center">
-				<img src={`/_icons/${icon}.svg`} alt={title} className="h-10 w-10 svg-icon mr-2"></img>
+			<h1 className="text-xl -z-10 relative md:text-2xl font-medium uppercase tracking-[.25rem]  text-gray-800 dark:text-gray-200 flex items-center">
+				<img
+					src={`/_icons/${icon}.svg`}
+					alt={title}
+					className="h-10 w-10 svg-icon mr-2"
+				></img>
 				{title}
 			</h1>
 
