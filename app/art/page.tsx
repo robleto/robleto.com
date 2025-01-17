@@ -22,7 +22,7 @@ export default async function ArtPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Artwork" pageContent={pageContent} />
+			<PageHeader title="Artwork" icon="art" pageContent={pageContent} />
 
 			<div
 				className="

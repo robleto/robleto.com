@@ -29,7 +29,7 @@ export default async function PortfolioPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Portfolio" pageContent={portfolioPageContent} />
+			<PageHeader title="Portfolio" icon="portfolio" pageContent={portfolioPageContent} />
 
 			<div
 				className="
@@ -53,8 +53,8 @@ export default async function PortfolioPage() {
 				{/* Case Study Gallery */}
 				<GroupTitle title="Case Studies" />
 				<Gallery
-					mdGridCols="md:grid-cols-1"
-					lgGridCols="lg:grid-cols-1"
+					mdGridCols="md:grid-cols-2"
+					lgGridCols="lg:grid-cols-2"
 					items={sortedCaseStudyItems}
 					tagsKey="tags"
 					descriptionKey="subtitle"
@@ -62,6 +62,9 @@ export default async function PortfolioPage() {
 					slugKey="slug"
 					linkKey="url"
 				/>
+
+
+
 			</div>
 		</div>
 	);

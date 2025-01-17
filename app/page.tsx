@@ -31,63 +31,60 @@ export default async function HomePage() {
 	const firstThreeReadingListPosts = readingListItems.slice(0,4);
 
 	return (
-		<div className="container pt-10 flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto	mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-			<h1 className="text-2xl font-bold hidden">Greg Robleto</h1>
-
-			<section className="w-full max-w-6xl mx-auto py-8">
-				<div className="w-full flex items-baseline">
+		<div className="pt-10">
+			<div className="flex flex-col flex-grow max-w-screen-xl -z-20 pl-[20%] md:pl-[25%] lg:w-auto align-left justify-center relative mx-auto p-4 pt-10 transition-all duration-300 min-h-[20em] ">
+				{/* Page Title */}
+				<h1 className="text-xl -z-10 relative md:text-2xl font-semibold uppercase tracking-[.25rem] text-gray-800 dark:text-gray-200 flex items-center">
 					<img
-						src="/home/home-gregrobleto.svg"
+						src={`/_brand/greg-ai.jpg`}
 						alt="Greg Robleto"
-						className="w-full h-auto"
-					/>
-				</div>
+						className="h-20 w-20 rounded-full svg-icon mr-5"
+					></img>
+					Greg Robleto
+				</h1>
 
-				<FlippingWords />
+				<section className="notion-page-content -z-10 relative font-medium text-md md:text-lg mx-auto mt-4 md:pr-[10%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200">
+					Based in Rockville, Maryland, Greg is a creative leader
+					experienced in design, brand, product, marketing & tech
+					trying to make the web a little bit better.
+				</section>
+			</div>
 
-				<div className="flex justify-center items-center mt-2">
-					<img
-						src="/home/home-rockvillemd.svg"
-						alt="Rockville, MD"
-						className="w-full md:w-1/2 h-auto"
-					/>
-				</div>
-			</section>
+			<div className="flex flex-col flex-grow max-w-screen-xl -z-20 pl-[20%] md:pl-[25%] lg:w-auto align-left justify-center relative mx-auto p-4 pt-10 pr-8 transition-all duration-300 min-h-[20em] ">
+				<GroupTitle title="Updates" />
 
-			<GroupTitle title="Updates" />
+				{/* Render the limited home items list */}
+				<Lists
+					items={limitedHomeItems}
+					pageKey="about"
+					linkKey="url"
+					descriptionKey="description"
+					pubDateKey="date"
+					titleKey="name"
+					tagsKey="tags"
+					slugKey="slug"
+				/>
 
-			{/* Render the limited home items list */}
-			<Lists
-				items={limitedHomeItems}
-				pageKey="about"
-				linkKey="url"
-				descriptionKey="description"
-				pubDateKey="date"
-				titleKey="name"
-				tagsKey="tags"
-				slugKey="slug"
-			/>
+				<GroupTitle title="Latest Posts" />
 
-			<GroupTitle title="Latest Posts" />
+				<Gallery
+					items={firstTwoBlogPosts}
+					mdGridCols="md:grid-cols-2"
+					lgGridCols="lg:grid-cols-2"
+					pageKey="posts"
+					slugKey="slug"
+					linkKey="url"
+				/>
 
-			<Gallery
-				items={firstTwoBlogPosts}
-				mdGridCols="md:grid-cols-2"
-				lgGridCols="lg:grid-cols-2"
-				pageKey="posts"
-				slugKey="slug"
-				linkKey="url"
-			/>
+				<GroupTitle title="Reading List" />
 
-			<GroupTitle title="Reading List" />
-
-			<MiniCardView
-				items={firstThreeReadingListPosts}
-				pageKey="reading-list"
-				linkKey="url"
-				tagsKey="tags"
-			/>
+				<MiniCardView
+					items={firstThreeReadingListPosts}
+					pageKey="reading-list"
+					linkKey="url"
+					tagsKey="tags"
+				/>
+			</div>
 		</div>
 	);
 }

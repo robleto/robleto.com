@@ -15,7 +15,7 @@ export default async function ReadingListPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Reading List" pageContent={pageContent} />
+			<PageHeader title="Reading List" icon="reading-list" pageContent={pageContent} />
 
 			<div
 				className="

@@ -22,7 +22,7 @@ export default async function ProjectsPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Projects" pageContent={pageContent} />
+			<PageHeader title="Projects" icon="projects" pageContent={pageContent} />
 
 			<div
 				className="
@@ -31,8 +31,8 @@ export default async function ProjectsPage() {
 			>
 				{/* Regular Gallery */}
 				<Gallery
-					mdGridCols="md:grid-cols-1"
-					lgGridCols="lg:grid-cols-1"
+					mdGridCols="md:grid-cols-2"
+					lgGridCols="lg:grid-cols-2"
 					items={sortedRegularItems}
 					tagsKey="tags"
 					descriptionKey="description"

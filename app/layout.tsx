@@ -45,12 +45,12 @@ export default function RootLayout({
 			>
 				{/* Wrapping the app in ThemeProvider for theme toggling */}
 				<ThemeProvider attribute="class" defaultTheme="system">
-					<Logo />
 					<div className="flex min-h-screen">
 						{/* SideNav is collapsed by default on mobile and expanded on larger screens */}
 						<SideNav />
 						{/* Main content */}
 						<main className="flex-grow max-w-screen-xl lg:w-auto mx-auto transition-all duration-300  dark:text-white">
+							<Logo />
 							{children}
 						</main>
 					</div>

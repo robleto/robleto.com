@@ -35,7 +35,7 @@ export default async function TravelPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Travel" pageContent={pageContent} />
+			<PageHeader title="Travel" icon="travel" pageContent={pageContent} />
 
 			<div
 				className="

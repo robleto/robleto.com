@@ -29,7 +29,7 @@ export default async function LibraryPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Library" pageContent={pageContent} />
+			<PageHeader title="Library" icon="library" pageContent={pageContent} />
 
 			<div
 				className="

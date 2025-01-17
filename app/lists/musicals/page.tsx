@@ -30,7 +30,7 @@ export default async function MusicalsPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Musicals" pageContent={pageContent} />
+			<PageHeader title="Musicals" icon="musical" pageContent={pageContent} />
 
 			<div
 				className="

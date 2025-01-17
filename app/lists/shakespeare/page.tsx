@@ -35,7 +35,7 @@ export default async function ShakespearePage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Shakespeare" pageContent={pageContent} />
+			<PageHeader title="Shakespeare" icon="shakespeare" pageContent={pageContent} />
 
 			<div
 				className="

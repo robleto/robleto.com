@@ -22,7 +22,7 @@ export default async function ResourcesPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Resources" pageContent={pageContent} />
+			<PageHeader title="Resources" icon="resources" pageContent={pageContent} />
 
 			<div
 				className="

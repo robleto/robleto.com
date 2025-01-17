@@ -23,7 +23,7 @@ export default async function AboutPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="About" pageContent={aboutSubheadContent} />
+			<PageHeader title="About" icon="about" pageContent={aboutSubheadContent} />
 
 			<div
 				className="

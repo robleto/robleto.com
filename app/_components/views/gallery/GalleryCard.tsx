@@ -103,11 +103,13 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			{/* Image */}
 			<div
 				className={`relative ${
-					lgGridCols === "lg:grid-cols-1" ? "h-72" : "h-48"
+					lgGridCols === "lg:grid-cols-1" ? "h-72" : "h-72"
 				} w-full flex items-center justify-center overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800 ${
-					pageKey === "library" || 
-					pageKey === "musicals" || 
-					pageKey === "board-games" ? "p-4" : ""
+					pageKey === "library" ||
+					pageKey === "musicals" ||
+					pageKey === "board-games"
+						? "p-4"
+						: ""
 				}`}
 			>
 				{!imageError && imageSrc ? (
@@ -129,12 +131,12 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 
 			{/* Title */}
 			<div className="p-4 flex-grow">
-				<h3 className="text-lg leading-5 font-semibold text-gray-900 dark:text-gray-100">
+				<h3 className="text-sm leading-5 font-semibold text-gray-900 dark:text-gray-100">
 					{item[titleKey] || "Untitled"}
 				</h3>
 				{/* Description */}
 				{item[descriptionKey] && (
-					<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+					<p className="mt-0 text-sm leading-5  text-gray-600 dark:text-gray-400">
 						{item[descriptionKey]}
 					</p>
 				)}

@@ -17,7 +17,7 @@ export default async function PostsPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Posts" pageContent={pageContent} />
+			<PageHeader title="Posts" icon="posts" pageContent={pageContent} />
 
 			<div
 				className="

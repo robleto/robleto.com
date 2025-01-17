@@ -32,7 +32,7 @@ export default async function BookmarksPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Bookmarks" pageContent={pageContent} />
+			<PageHeader title="Bookmarks" icon="bookmarks" pageContent={pageContent} />
 
 			<div
 				className="

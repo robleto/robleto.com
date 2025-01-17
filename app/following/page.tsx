@@ -16,7 +16,7 @@ export default async function FollowingPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Following" pageContent={pageContent} />
+			<PageHeader title="Following" icon="following" pageContent={pageContent} />
 
 			<div
 				className="

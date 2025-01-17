@@ -30,7 +30,7 @@ export default async function BoardGamesPage() {
 
 	return (
 		<div className="pt-10">
-			<PageHeader title="Board Games" pageContent={pageContent} />
+			<PageHeader title="Board Games" icon="board-games" pageContent={pageContent} />
 
 			<div
 				className="
