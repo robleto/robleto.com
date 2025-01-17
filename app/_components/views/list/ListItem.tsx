@@ -147,13 +147,13 @@ const ListItem: React.FC<ListItemProps> = ({
 			)}
 
 			{/* Post Details */}
-			<div className="flex-grow mt-4 md:mt-0 md:pl-4">
-				<h3 className="text-lg leading-5 font-semibold text-gray-900 dark:text-gray-100">
+			<div className="flex-grow mt-4 mb-0 md:mt-0 md:pl-4">
+				<h3 className="text-md leading-5 font-semibold text-gray-900 dark:text-gray-100">
 					{item[titleKey] || "Untitled"}
 				</h3>
 				{(pageKey === "home" || pageKey === "about") &&
 				item[descriptionKey] ? (
-					<p className="text-sm text-gray-600 dark:text-gray-300">
+					<p className="text-sm my-0 py-0 text-gray-600 dark:text-gray-300">
 						{item[descriptionKey]}
 					</p>
 				) : item[pubDateKey] ? (
