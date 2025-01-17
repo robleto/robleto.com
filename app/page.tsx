@@ -43,8 +43,8 @@ export default async function HomePage() {
 					Greg Robleto
 				</h1>
 
-				<section className="notion-page-content -z-10 relative font-medium text-md md:text-lg mx-auto mt-4 md:pr-[10%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200">
-					Based in Rockville, Maryland, Greg is a creative leader
+				<section className="notion-page-content -z-10 relative font-medium text-md md:text-lg mx-auto mt-4 pr-[30%] md:pr-[20%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200">
+					Based in Rockville, Maryland, a creative leader
 					experienced in design, brand, product, marketing & tech
 					trying to make the web a little bit better.
 				</section>
