@@ -5,6 +5,7 @@ const config: Config = {
 		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
 		"./components/**/*.{js,ts,jsx,tsx,mdx}",
 		"./app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/**/*.{js,ts,jsx,tsx}", // Adjust paths based on your project
 	],
 	darkMode: "class", // Enable class-based dark mode
 	theme: {
@@ -57,6 +58,15 @@ const config: Config = {
 		},
 	},
 	plugins: [],
+	safelist: [
+		"group-hover:text-blue-600",
+		"group-hover:text-black",
+		"group-hover:text-pink-500",
+		"group-hover:text-gray-900",
+		"group-hover:text-blue-400",
+		"group-hover:text-purple-500",
+		"group-hover:text-red-600",
+	],
 };
 
 export default config;

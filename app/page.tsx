@@ -6,6 +6,7 @@ import FlippingWords from "@/app/_components/custom/FlippingWords";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import MiniCardView from "@/app/_components/views/mini-card/MiniCardSet";
+import SocialLinks from "@/app/_components/views/common/SocialLinks";
 
 export default async function HomePage() {
 	// Fetch data using the refactored fetchNotionData function
@@ -24,6 +25,7 @@ export default async function HomePage() {
 		entryType: "reading-list",
 	});
 
+
 	// Sort and limit the data
 	const limitedHomeItems = sortByPinnedAndDate(aboutItems, "date").slice(0, 4);
 	const postItemsSorted = sortByPinnedAndDate(postItems, "pubdate");
@@ -32,7 +34,7 @@ export default async function HomePage() {
 
 	return (
 		<div className="pt-10">
-			<div className="flex flex-col flex-grow max-w-screen-xl -z-20 pl-[20%] md:pl-[25%] lg:w-auto align-left justify-center relative mx-auto p-4 pt-10 transition-all duration-300 min-h-[20em] ">
+			<div className="flex flex-col flex-grow max-w-screen-xl z-0 pl-[20%] md:pl-[25%] lg:w-auto align-left justify-center relative mx-auto p-4 pt-10 transition-all duration-300 min-h-[20em] ">
 				{/* Page Title */}
 				<h1 className="text-xl -z-10 relative md:text-2xl font-semibold uppercase tracking-[.25rem] text-gray-800 dark:text-gray-200 flex items-center">
 					<img
@@ -44,11 +46,14 @@ export default async function HomePage() {
 				</h1>
 
 				<section className="notion-page-content -z-10 relative font-medium text-md md:text-lg mx-auto mt-4 pr-[30%] md:pr-[20%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200">
-					Based in Rockville, Maryland, a creative leader
-					experienced in design, brand, product, marketing & tech
-					trying to make the web a little bit better.
+					Based in Rockville, Maryland, a creative leader experienced
+					in design, brand, product, marketing & tech trying to make
+					the web a little bit better.
 				</section>
+
+				<SocialLinks className="mt-5 z-10" />
 			</div>
+
 
 			<div className="flex flex-col flex-grow max-w-screen-xl -z-20 pl-[20%] md:pl-[25%] lg:w-auto align-left justify-center relative mx-auto p-4 pt-10 pr-8 transition-all duration-300 min-h-[20em] ">
 				<GroupTitle title="Updates" />
