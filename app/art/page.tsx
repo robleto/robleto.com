@@ -40,7 +40,7 @@ export default async function ArtPage() {
 					linkKey="url"
 					animatedKey="animated" // Handling gif vs png
 				/>
-
+				<div className="my-6"></div>
 				{/* Regular Gallery */}
 				<Gallery
 					items={sortedRegularItems}

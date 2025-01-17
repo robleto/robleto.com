@@ -38,8 +38,10 @@ export default async function ResourcesPage() {
 					slugKey="slug"
 					pageKey="resources"
 					linkKey="url"
+					animatedKey="animated" // Handling gif vs png
 				/>
 
+				<div className="my-6"></div>
 				{/* Regular Gallery */}
 				<Gallery
 					items={sortedRegularItems}
