@@ -103,7 +103,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			{/* Image */}
 			<div
 				className={`relative ${
-					lgGridCols === "lg:grid-cols-1" ? "h-72" : "h-72"
+					lgGridCols === "lg:grid-cols-1" ? "h-72" : "h-48"
 				} w-full flex items-center justify-center overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800 ${
 					pageKey === "library" ||
 					pageKey === "musicals" ||
