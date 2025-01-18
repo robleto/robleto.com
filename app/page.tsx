@@ -51,9 +51,7 @@ export default async function HomePage() {
 				</h1>
 
 				<section className="notion-page-content -z-10 relative font-medium text-md md:text-lg mx-auto mt-4 pr-[30%] md:pr-[20%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200">
-					Based in Rockville, Maryland, a creative leader experienced
-					in design, brand, product, marketing & tech trying to make
-					the web a little bit better.
+					A Creative Leader in UX, Brand Strategy and Product & Marketing Design, living in Rockville, Maryland, exploring how brand, design, and AI are pivotal tools through this era of digital transformation.
 				</section>
 
 				<SocialLinks className="mt-5 z-10" />
