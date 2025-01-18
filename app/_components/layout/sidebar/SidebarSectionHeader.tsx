@@ -11,8 +11,8 @@ const SidebarSectionHeader: React.FC<SidebarSectionHeaderProps> = ({
 }) => {
 	return (
 		<h3
-			className={`uppercase text-xs font-semibold text-gray-400 mt-6 ${
-				isCollapsed ? "invisible" : "block"
+			className={`uppercase text-xs font-semibold text-gray-400  ${
+				isCollapsed ? "invisible" : "block mt-6"
 			}`}
 		>
 			{title}

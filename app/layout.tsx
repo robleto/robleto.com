@@ -50,7 +50,6 @@ export default function RootLayout({
 						<SideNav />
 						{/* Main content */}
 						<main className="flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto mx-auto transition-all duration-300  dark:text-white">
-							<Logo />
 							{children}
 						</main>
 					</div>

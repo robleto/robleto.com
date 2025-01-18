@@ -1,6 +1,7 @@
 "use client"; // Add this directive to mark it as a client component
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link"; // Import Link from Next.js
 import SidebarLink from "./SidebarLink";
 import SidebarSectionHeader from "./SidebarSectionHeader";
 import SidebarToggle from "./SidebarToggle";
@@ -53,9 +54,9 @@ export default function SideNav() {
 	}
 
 	return (
-		<div className="flex h-screen fixed min-h-[90vh] overflow-scroll pt-12">
+		<div className="flex h-screen fixed min-h-[90vh] z-[99999] overflow-scroll">
 			<nav
-				className={`bg-mercury text-gray-900 flex flex-col transition-all duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-200 ${
+				className={`bg-mercury text-gray-900 flex flex-col transition-all duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-200  pt-8 ${
 					isCollapsed ? "w-16" : "w-48"
 				}`}
 			>
@@ -63,6 +64,18 @@ export default function SideNav() {
 					isCollapsed={isCollapsed}
 					toggleCollapse={() => setIsCollapsed(!isCollapsed)}
 				/>
+
+				<Link href="/" className="opacity-70 hover:opacity-100">
+					<img
+						src="/_brand/gr-logo.svg"
+						alt="gr"
+						className={` ml-4  ${
+							isCollapsed
+								? "w-8 h-8 mt-[.5rem]"
+								: "w-10 h-10 mt-[-1rem]"
+						}`}
+					/>
+				</Link>
 
 				<div className="flex-grow overflow-y-auto">
 					<div className="px-4">
