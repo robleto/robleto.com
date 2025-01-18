@@ -22,30 +22,24 @@ export default async function AboutPage() {
 	const sortedItems = sortByPinnedAndDate(listItems, "date");
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="About" icon="about" pageContent={aboutSubheadContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				<GroupTitle title="Timeline" />
-				{/* Render the Lists component */}
-				<Lists
-					items={sortedItems}
-					pageKey="about"
-					linkKey="url"
-					descriptionKey="description"
-					pubDateKey="date"
-					titleKey="name"
-					tagsKey="tags"
-					slugKey="slug"
-				/>
+			<GroupTitle title="Timeline" />
+			{/* Render the Lists component */}
+			<Lists
+				items={sortedItems}
+				pageKey="about"
+				linkKey="url"
+				descriptionKey="description"
+				pubDateKey="date"
+				titleKey="name"
+				tagsKey="tags"
+				slugKey="slug"
+			/>
 
-				<GroupTitle title="About Me" />
-				<RichText pageContent={aboutDescriptionContent} />
-			</div>
+			<GroupTitle title="About Me" />
+			<RichText pageContent={aboutDescriptionContent} />
 		</div>
 	);
 }

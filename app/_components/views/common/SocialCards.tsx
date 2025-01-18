@@ -3,9 +3,10 @@ import { socialLinks } from "./SocialLinks";
 
 type SocialCardsProps = {
 	className?: string; // Optional className for custom styling
+	iconClassName?: string; // Custom className for styling the individual icons
 };
 
-const SocialCards: React.FC<SocialCardsProps> = ({ className }) => {
+const SocialCards: React.FC<SocialCardsProps> = ({ className, iconClassName }) => {
 	return (
 		<div className={`grid grid-cols-2 sm:grid-cols-4 gap-4 ${className}`}>
 			{socialLinks.map((social) => (
@@ -19,7 +20,10 @@ const SocialCards: React.FC<SocialCardsProps> = ({ className }) => {
 				>
 					{/* Icon inside a white circle */}
 					<div className="social-card-icon flex my-2 items-center justify-center">
-						<div className="text-4xl bg-white p-2 rounded-full">
+						<div className={`text-2xl text-gray-400 group-hover:${
+							social.color
+						} transition-colors ${iconClassName || ""} dark:group-hover:text-white`}
+          >
 							{social.icon}
 						</div>
 					</div>

@@ -28,44 +28,34 @@ export default async function PortfolioPage() {
 	const sortedCaseStudyItems = sortByName(portfolioListItems);
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Portfolio" icon="portfolio" pageContent={portfolioPageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				{/* Regular Gallery */}
-				<GroupTitle title="Professional Experience" />
-				<Gallery
-					mdGridCols="md:grid-cols-2"
-					lgGridCols="lg:grid-cols-2"
-					items={sortedProjectItems}
-					tagsKey="tags"
-					descriptionKey="description"
-					pageKey="portfolio"
-					slugKey="slug"
-					linkKey="url"
-				/>
-				
+			{/* Regular Gallery */}
+			<GroupTitle title="Professional Experience" />
+			<Gallery
+				mdGridCols="md:grid-cols-2"
+				lgGridCols="lg:grid-cols-2"
+				items={sortedProjectItems}
+				tagsKey="tags"
+				descriptionKey="description"
+				pageKey="portfolio"
+				slugKey="slug"
+				linkKey="url"
+			/>
 
-				{/* Case Study Gallery */}
-				<GroupTitle title="Case Studies" />
-				<Gallery
-					mdGridCols="md:grid-cols-2"
-					lgGridCols="lg:grid-cols-2"
-					items={sortedCaseStudyItems}
-					tagsKey="tags"
-					descriptionKey="subtitle"
-					pageKey="portfolio"
-					slugKey="slug"
-					linkKey="url"
-				/>
-
-
-
-			</div>
+			{/* Case Study Gallery */}
+			<GroupTitle title="Case Studies" />
+			<Gallery
+				mdGridCols="md:grid-cols-2"
+				lgGridCols="lg:grid-cols-2"
+				items={sortedCaseStudyItems}
+				tagsKey="tags"
+				descriptionKey="subtitle"
+				pageKey="portfolio"
+				slugKey="slug"
+				linkKey="url"
+			/>
 		</div>
 	);
 }

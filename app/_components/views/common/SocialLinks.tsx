@@ -92,7 +92,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
 					<div
 						className={`text-2xl text-gray-400 group-hover:${
 							social.color
-						} transition-colors ${iconClassName || ""}`}
+						} transition-colors ${iconClassName || ""} dark:group-hover:text-white`}
 					>
 						{social.icon}
 					</div>

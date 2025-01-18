@@ -4,7 +4,7 @@ import Link from "next/link"; // Import Link from Next.js
 
 const Logo: React.FC<{}> = () => {
 	return (
-		<div className="fixed top-2 right-2 z-50">
+		<div className="fixed top-2 right-2 z-50 dark:invert">
 			<Link href="/">
 				<img
 					src="/_brand/gr-logo.svg"

@@ -34,32 +34,27 @@ export default async function TravelPage() {
 	});
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Travel" icon="travel" pageContent={pageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				{/* Render the US map */}
-				<USMap />
+			{/* Render the US map */}
+			<USMap />
 
-				{/* Loop through the sorted keys of groupedItems */}
-				{sortedKeys.map((state) => (
-					<section key={state}>
-						<GroupTitle title={state} />
-						<Gallery
-							items={groupedItems[state]} // Items under this state, now sorted by title using sortByName
-							pageKey="travel"
-							titleKey="title"
-							linkKey="url"
-							slugKey="slug"
-							cityStateKey="cityState"
-						/>
-					</section>
-				))}
-			</div>
+			{/* Loop through the sorted keys of groupedItems */}
+			{sortedKeys.map((state) => (
+				<section key={state}>
+					<GroupTitle title={state} />
+					<Gallery
+						items={groupedItems[state]} // Items under this state, now sorted by title using sortByName
+						pageKey="travel"
+						titleKey="title"
+						linkKey="url"
+						slugKey="slug"
+						cityStateKey="cityState"
+					/>
+				</section>
+			))}
+				
 		</div>
 	);
 }

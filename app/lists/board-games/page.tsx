@@ -29,26 +29,18 @@ export default async function BoardGamesPage() {
 	console.log("Sorted items by name:", sortedItems);
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Board Games" icon="board-games" pageContent={pageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				<section>
-					<Gallery
-						items={sortedItems} // The sorted and filtered boardGames
-						mdGridCols="md:grid-cols-3"
-						lgGridCols="lg:grid-cols-4"
-						pageKey="board-games"
-						titleKey="title"
-						linkKey="url"
-						slugKey="slug"
-					/>
-				</section>
-			</div>
+			<Gallery
+				items={sortedItems} // The sorted and filtered boardGames
+				mdGridCols="md:grid-cols-3"
+				lgGridCols="lg:grid-cols-4"
+				pageKey="board-games"
+				titleKey="title"
+				linkKey="url"
+				slugKey="slug"
+			/>
 		</div>
 	);
 }

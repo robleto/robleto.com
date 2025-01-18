@@ -34,38 +34,28 @@ export default async function ShakespearePage() {
 	console.log("Unseen items by name:", unseenItems);
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Shakespeare" icon="shakespeare" pageContent={pageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				<section>
-					<GroupTitle title="Shakespeare Seen" />
-					<Gallery
-						mdGridCols="md:grid-cols-3"
-						lgGridCols="lg:grid-cols-4"
-						items={seenItems} // The seen and filtered shakespeare
-						pageKey="shakespeare"
-						titleKey="title"
-						slugKey="slug"
-					/>
-				</section>
-
-				<section>
-					<GroupTitle title="Shakespeare Yet to See" />
-					<Gallery
-						mdGridCols="md:grid-cols-3"
-						lgGridCols="lg:grid-cols-4"
-						items={unseenItems} // The seen and filtered shakespeare
-						pageKey="shakespeare"
-						titleKey="title"
-						slugKey="slug"
-					/>
-				</section>
-			</div>
+			<GroupTitle title="Shakespeare Seen" />
+			<Gallery
+				mdGridCols="md:grid-cols-3"
+				lgGridCols="lg:grid-cols-4"
+				items={seenItems} // The seen and filtered shakespeare
+				pageKey="shakespeare"
+				titleKey="title"
+				slugKey="slug"
+			/>
+			
+			<GroupTitle title="Shakespeare Yet to See" />
+			<Gallery
+				mdGridCols="md:grid-cols-3"
+				lgGridCols="lg:grid-cols-4"
+				items={unseenItems} // The seen and filtered shakespeare
+				pageKey="shakespeare"
+				titleKey="title"
+				slugKey="slug"
+			/>
 		</div>
 	);
 }

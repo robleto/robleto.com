@@ -16,26 +16,21 @@ export default async function ListsPage() {
 	const sortedRegularItems = sortByOrder(listItems);
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Lists" icon="lists" pageContent={pageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				{/* Regular Gallery */}
-				<Gallery
-					mdGridCols="md:grid-cols-1"
-					lgGridCols="lg:grid-cols-1"
-					items={sortedRegularItems}
-					tagsKey="tags"
-					descriptionKey="description"
-					pageKey="lists"
-					slugKey="slug"
-					linkKey="url"
-				/>
-			</div>
+			{/* Regular Gallery */}
+			<Gallery
+				mdGridCols="md:grid-cols-2"
+				lgGridCols="lg:grid-cols-2"
+				items={sortedRegularItems}
+				tagsKey="tags"
+				descriptionKey="description"
+				pageKey="lists"
+				slugKey="slug"
+				linkKey="url"
+			/>
+
 		</div>
 	);
 }

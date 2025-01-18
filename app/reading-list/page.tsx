@@ -14,25 +14,19 @@ export default async function ReadingListPage() {
 	const sortedItems = sortByPinnedAndDate(listItems, "date");
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Reading List" icon="reading-list" pageContent={pageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				{/* Render the Lists component */}
-				<Lists
-					items={sortedItems}
-					linkKey="url"
-					pubDateKey="pubdate"
-					pageKey="reading-list"
-					tagsKey="tags"
-					slugKey="slug"
-					urlKey="url"
-				/>
-			</div>
+			{/* Render the Lists component */}
+			<Lists
+				items={sortedItems}
+				linkKey="url"
+				pubDateKey="pubdate"
+				pageKey="reading-list"
+				tagsKey="tags"
+				slugKey="slug"
+				urlKey="url"
+			/>
 		</div>
 	);
 }

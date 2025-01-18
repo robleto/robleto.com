@@ -31,30 +31,25 @@ export default async function BookmarksPage() {
 	);
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Bookmarks" icon="bookmarks" pageContent={pageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				{/* Loop through sorted groups */}
-				{Object.keys(sortedGroups).map((tags) => (
-					<section key={tags}>
-						<GroupTitle title={tags} />
-						<Lists
-							items={sortedGroups[tags]}
-							linkKey="url"
-							pubDateKey="pubdate"
-							pageKey="bookmarks"
-							tagsKey="tags"
-							urlKey="url"
-							slugKey="slug"
-						/>
-					</section>
-				))}
-			</div>
+			{/* Loop through sorted groups */}
+			{Object.keys(sortedGroups).map((tags) => (
+				<section key={tags}>
+					<GroupTitle title={tags} />
+					<Lists
+						items={sortedGroups[tags]}
+						linkKey="url"
+						pubDateKey="pubdate"
+						pageKey="bookmarks"
+						tagsKey="tags"
+						urlKey="url"
+						slugKey="slug"
+					/>
+				</section>
+			))}
 		</div>
+
 	);
 }

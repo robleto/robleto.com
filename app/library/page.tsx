@@ -28,28 +28,22 @@ export default async function LibraryPage() {
 	);
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Library" icon="library" pageContent={pageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				{/* Loop through the sorted groups */}
-				{Object.keys(sortedGroups).map((topic) => (
-					<section key={topic}>
-						<GroupTitle title={topic} />
-						<Gallery
-							items={sortedGroups[topic]} // Items sorted by name under this topic
-							pageKey="library"
-							titleKey="title"
-							linkKey="url"
-							slugKey="slug"
-						/>
-					</section>
-				))}
-			</div>
+			{/* Loop through the sorted groups */}
+			{Object.keys(sortedGroups).map((topic) => (
+				<section key={topic}>
+					<GroupTitle title={topic} />
+					<Gallery
+						items={sortedGroups[topic]} // Items sorted by name under this topic
+						pageKey="library"
+						titleKey="title"
+						linkKey="url"
+						slugKey="slug"
+					/>
+				</section>
+			))}
 		</div>
 	);
 }

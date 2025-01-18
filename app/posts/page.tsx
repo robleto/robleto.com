@@ -16,36 +16,30 @@ export default async function PostsPage() {
 	const sortedItems = sortByPinnedAndDate(listItems, "pubdate");
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Posts" icon="posts" pageContent={pageContent} />
-
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
-				{/* Pass sortedItems and components to the client-side PostsContainer */}
-				<PostsContainer
-					sortedItems={sortedItems}
-					ListComponent={Lists}
-					GalleryComponent={Gallery}
-					listProps={{
-						linkKey: "url",
-						pubDateKey: "pubdate",
-						pageKey: "posts",
-						tagsKey: "tags",
-						slugKey: "slug",
-					}}
-					galleryProps={{
-						lgGridCols: "lg:grid-cols-2",
-						linkKey: "url",
-						pubDateKey: "pubdate",
-						pageKey: "posts",
-						tagsKey: "tags",
-						slugKey: "slug",
-					}}
-				/>
-			</div>
+				
+			{/* Pass sortedItems and components to the client-side PostsContainer */}
+			<PostsContainer
+				sortedItems={sortedItems}
+				ListComponent={Lists}
+				GalleryComponent={Gallery}
+				listProps={{
+					linkKey: "url",
+					pubDateKey: "pubdate",
+					pageKey: "posts",
+					tagsKey: "tags",
+					slugKey: "slug",
+				}}
+				galleryProps={{
+					lgGridCols: "lg:grid-cols-2",
+					linkKey: "url",
+					pubDateKey: "pubdate",
+					pageKey: "posts",
+					tagsKey: "tags",
+					slugKey: "slug",
+				}}
+			/>
 		</div>
 	);
 }

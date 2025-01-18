@@ -21,14 +21,9 @@ export default async function ArtPage() {
 	const sortedRegularItems = sortByPinnedAndDate(regularItems, "date");
 
 	return (
-		<div className="pt-10">
+		<div>
 			<PageHeader title="Artwork" icon="art" pageContent={pageContent} />
 
-			<div
-				className="
-				flex-grow max-w-screen-xl pl-[20%]  md:pl-[25%] lg:w-auto
-				mx-auto p-8 transition-all duration-300 dark:text-white"
-			>
 				{/* Featured Gallery */}
 				<Gallery
 					items={featuredItems}
@@ -40,7 +35,9 @@ export default async function ArtPage() {
 					linkKey="url"
 					animatedKey="animated" // Handling gif vs png
 				/>
+
 				<div className="my-6"></div>
+
 				{/* Regular Gallery */}
 				<Gallery
 					items={sortedRegularItems}
@@ -50,6 +47,5 @@ export default async function ArtPage() {
 					animatedKey="animated"
 				/>
 			</div>
-		</div>
 	);
 }
