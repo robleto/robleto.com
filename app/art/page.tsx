@@ -22,30 +22,36 @@ export default async function ArtPage() {
 
 	return (
 		<div>
-			<PageHeader title="Artwork" icon="art" pageContent={pageContent} />
+			<PageHeader
+				title="Artwork"
+				icon="art"
+				linkUrl="https://codepen.io/collection/PoqzxL"
+				linkText="View on CodePen"
+				pageContent={pageContent}
+			/>
 
-				{/* Featured Gallery */}
-				<Gallery
-					items={featuredItems}
-					smGridCols="sm:grid-cols-1"
-					mdGridCols="md:grid-cols-2"
-					lgGridCols="lg:grid-cols-2"
-					slugKey="slug"
-					pageKey="art"
-					linkKey="url"
-					animatedKey="animated" // Handling gif vs png
-				/>
+			{/* Featured Gallery */}
+			<Gallery
+				items={featuredItems}
+				smGridCols="sm:grid-cols-1"
+				mdGridCols="md:grid-cols-2"
+				lgGridCols="lg:grid-cols-2"
+				slugKey="slug"
+				pageKey="art"
+				linkKey="url"
+				animatedKey="animated" // Handling gif vs png
+			/>
 
-				<div className="my-6"></div>
+			<div className="my-6"></div>
 
-				{/* Regular Gallery */}
-				<Gallery
-					items={sortedRegularItems}
-					pageKey="art"
-					slugKey="slug"
-					linkKey="url"
-					animatedKey="animated"
-				/>
-			</div>
+			{/* Regular Gallery */}
+			<Gallery
+				items={sortedRegularItems}
+				pageKey="art"
+				slugKey="slug"
+				linkKey="url"
+				animatedKey="animated"
+			/>
+		</div>
 	);
 }

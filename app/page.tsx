@@ -35,9 +35,9 @@ export default async function HomePage() {
 	return (
 		<div>
 			<div
-				className="flex flex-col align-left relative
-				mx-auto  py-10 transition-all duration-300 min-h-[20em]">
-
+				className="flex flex-col align-left relative justify-center
+				mx-auto  py-10 transition-all duration-300 min-h-[20em]"
+			>
 				{/* Page Title */}
 				<h1 className="relative flex items-center">
 					<img

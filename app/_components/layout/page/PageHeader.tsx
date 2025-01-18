@@ -39,7 +39,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, icon, linkUrl, linkText,
 			{linkUrl && linkText && (
 				<a
 					href={linkUrl}
-					className="mt-5 z-50 inline-block bg-gray-700 hover:bg-black text-white dark:bg-gray-100 dark:text-gray-700 rounded-full px-6 py-2 transition-colors duration-300 self-start"
+					className="mt-5 z-50 inline-block border border-gray-700 text-gray-700 dark:border-gray-100 dark:text-gray-100 rounded-full px-6 py-2 transition-colors duration-300 self-start hover:bg-gray-700 hover:text-white dark:hover:bg-gray-100 dark:hover:text-gray-700"
 				>
 					{linkText}
 				</a>
