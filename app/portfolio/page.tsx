@@ -6,6 +6,15 @@ import { filterItemsByProperty } from "@/utils/filterItems";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 
+export const generateMetadata = () => {
+	return {
+		robots: {
+			index: false, // Prevent indexing
+			follow: false, // Prevent following links
+		},
+	};
+};
+
 export default async function PortfolioPage() {
 	// Fetch the Notion data using centralized data mapper
 	const { pageContent: portfolioPageContent, listItems: portfolioListItems } = await fetchNotionData({
@@ -29,7 +38,12 @@ export default async function PortfolioPage() {
 
 	return (
 		<div>
-			<PageHeader title="Portfolio" icon="portfolio" pageContent={portfolioPageContent} />
+			<PageHeader 
+				title="Portfolio" 
+				icon="portfolio" 
+				linkUrl="./portfolio/resume-greg-robleto.pdf"
+				linkText="View Resume"
+				pageContent={portfolioPageContent} />
 
 			{/* Regular Gallery */}
 			<GroupTitle title="Professional Experience" />

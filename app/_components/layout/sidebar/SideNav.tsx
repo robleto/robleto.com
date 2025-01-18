@@ -54,7 +54,7 @@ export default function SideNav() {
 	}
 
 	return (
-		<div className="flex h-screen fixed min-h-[90vh] z-[99999] overflow-scroll">
+		<div className="flex h-screen z-50 fixed min-h-[90vh] w-auto overflow-scroll">
 			<nav
 				className={`bg-mercury text-gray-900 flex flex-col transition-all duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-200  pt-8 ${
 					isCollapsed ? "w-16" : "w-48"
@@ -65,7 +65,7 @@ export default function SideNav() {
 					toggleCollapse={() => setIsCollapsed(!isCollapsed)}
 				/>
 
-				<Link href="/" className="opacity-70 hover:opacity-100">
+				<Link href="/" className="opacity-70 hover:opacity-100 dark:invert">
 					<img
 						src="/_brand/gr-logo.svg"
 						alt="gr"

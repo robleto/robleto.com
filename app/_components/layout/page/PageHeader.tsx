@@ -6,14 +6,16 @@ import { renderBlock } from "@/utils/renderItems"; // Adjust the import path as 
 interface PageHeaderProps {
 	title: string;
 	icon: string;
+	linkUrl?: string;
+	linkText?: string;
 	pageContent: any[]; // Adjust the type based on your actual data structure
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ title, icon, pageContent }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({ title, icon, linkUrl, linkText, pageContent }) => {
 	return (
 		<div
 			className="
-				flex flex-col -z-20 lg:w-auto align-left justify-center relative
+				flex flex-col z-10 lg:w-auto align-left justify-center relative
 				mx-auto  py-10 transition-all duration-300 min-h-[20em] 
 			"
 		>
@@ -33,6 +35,15 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, icon, pageContent }) => 
 				{/* Loop over pageContent and render each block using renderBlock */}
 				{pageContent.map((block: any) => renderBlock(block))}
 			</section>
+
+			{linkUrl && linkText && (
+				<a
+					href={linkUrl}
+					className="mt-5 z-50 inline-block bg-gray-700 hover:bg-black text-white dark:bg-gray-100 dark:text-gray-700 rounded-full px-6 py-2 transition-colors duration-300 self-start"
+				>
+					{linkText}
+				</a>
+			)}
 		</div>
 	);
 };
