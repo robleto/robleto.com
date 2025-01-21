@@ -5,8 +5,8 @@ import ViewToggle from "./Tabs";
 
 type PostsContainerProps<T> = {
 	sortedItems: T[];
-	ListComponent: React.FC<{ items: T[]; [key: string]: any }>;
-	GalleryComponent: React.FC<{ items: T[]; [key: string]: any }>;
+	ListComponent: React.FC<{ items: T[]; isLast: boolean; [key: string]: any }>;
+	GalleryComponent: React.FC<{ items: T[]; isLast: boolean; [key: string]: any }>;
 	listProps?: { [key: string]: any };
 	galleryProps?: { [key: string]: any };
 };
@@ -47,9 +47,9 @@ const PostsContainer = <T,>({
 		<div>
 			<ViewToggle onToggle={handleToggle} viewMode={viewMode} />
 			{viewMode === "list" ? (
-				<ListComponent items={sortedItems} {...listProps} />
+				<ListComponent items={sortedItems} isLast={false} {...listProps} />
 			) : (
-				<GalleryComponent items={sortedItems} {...galleryProps} />
+				<GalleryComponent items={sortedItems} isLast={false} {...galleryProps} />
 			)}
 		</div>
 	);

@@ -32,7 +32,11 @@ export default async function BookmarksPage() {
 
 	return (
 		<div>
-			<PageHeader title="Bookmarks" icon="bookmarks" pageContent={pageContent} />
+			<PageHeader
+				title="Bookmarks"
+				icon="bookmarks"
+				pageContent={pageContent}
+			/>
 
 			{/* Loop through sorted groups */}
 			{Object.keys(sortedGroups).map((tags) => (
@@ -46,10 +50,10 @@ export default async function BookmarksPage() {
 						tagsKey="tags"
 						urlKey="url"
 						slugKey="slug"
+						isLast={false}
 					/>
 				</section>
 			))}
 		</div>
-
 	);
 }

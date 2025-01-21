@@ -92,3 +92,19 @@ export const getBlockChildren = async (
 		return [];
 	}
 };
+
+// Fetch case studies from a Notion database
+export const getCaseStudies = async (databaseId: string): Promise<PageObjectResponse[]> => {
+	try {
+		const response = await notion.databases.query({
+			database_id: databaseId,
+		});
+
+		return response.results.filter(
+			(result): result is PageObjectResponse => 'properties' in result
+		);
+	} catch (error) {
+		console.error("Error fetching case studies:", error);
+		return [];
+	}
+};

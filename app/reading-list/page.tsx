@@ -15,7 +15,11 @@ export default async function ReadingListPage() {
 
 	return (
 		<div>
-			<PageHeader title="Reading List" icon="reading-list" pageContent={pageContent} />
+			<PageHeader
+				title="Reading List"
+				icon="reading-list"
+				pageContent={pageContent}
+			/>
 
 			{/* Render the Lists component */}
 			<Lists
@@ -26,6 +30,7 @@ export default async function ReadingListPage() {
 				tagsKey="tags"
 				slugKey="slug"
 				urlKey="url"
+				isLast={false}
 			/>
 		</div>
 	);

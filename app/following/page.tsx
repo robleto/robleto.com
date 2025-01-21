@@ -16,7 +16,11 @@ export default async function FollowingPage() {
 
 	return (
 		<div>
-			<PageHeader title="Following" icon="following" pageContent={pageContent} />
+			<PageHeader
+				title="Following"
+				icon="following"
+				pageContent={pageContent}
+			/>
 
 			{/* Render the Lists component */}
 			<Lists
@@ -26,7 +30,8 @@ export default async function FollowingPage() {
 				pageKey="following"
 				tagsKey="tags"
 				urlKey="url"
-				slugKey="slug" // Ensure the slug key is passed for image paths
+				slugKey="slug"
+				isLast={false}
 			/>
 		</div>
 	);

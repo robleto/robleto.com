@@ -35,7 +35,6 @@ const Lists: React.FC<ListsProps> = ({
 				{items.map((item: any, index: number) => (
 					<ListItem
 						key={index}
-						isLast={index === items.length - 1} 
 						item={item}
 						pageKey={pageKey}
 						titleKey={titleKey}
@@ -45,6 +44,7 @@ const Lists: React.FC<ListsProps> = ({
 						descriptionKey={descriptionKey}
 						tagsKey={tagsKey}
 						urlKey={urlKey}
+						isLast={false}
 					/>
 				))}
 			</div>

@@ -36,6 +36,7 @@ export default async function AboutPage() {
 				titleKey="name"
 				tagsKey="tags"
 				slugKey="slug"
+				isLast={false}			
 			/>
 
 			<GroupTitle title="About Me" />
