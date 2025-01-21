@@ -4,3 +4,9 @@ publish = ".next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[[redirects]]
+  from = "https://gregrobleto.com/*"
+  to = "https://robleto.com/portfolio/:splat"
+  status = 301
+  force = true
