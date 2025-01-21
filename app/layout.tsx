@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Logo from "./_components/layout/sidebar/Logo";
 import "./_style/globals.css"; // Import global styles
 import SideNav from "./_components/layout/sidebar/SideNav"; // Import SideNav
+import Footer from "./_components/layout/chrome/Footer"; // Import Footer
 import { Nunito_Sans, Oswald, Libre_Bodoni } from "next/font/google";
 import { ThemeProvider } from "next-themes"; // Import ThemeProvider for theme switching
 
@@ -45,13 +46,15 @@ export default function RootLayout({
 			>
 				{/* Wrapping the app in ThemeProvider for theme toggling */}
 				<ThemeProvider attribute="class" defaultTheme="system">
-					<div className="flex min-h-screen">
+					<div className="flex min-h-screen flex-col">
 						{/* SideNav is collapsed by default on mobile and expanded on larger screens */}
 						<SideNav />
 						{/* Main content */}
 						<main className="flex-grow max-w-screen-xl pr-[5%] pl-[20%]  md:pl-[25%] lg:w-auto mx-auto transition-all duration-300  dark:text-white">
 							{children}
 						</main>
+						{/* Footer */}
+						<Footer />
 					</div>
 				</ThemeProvider>
 			</body>

@@ -7,6 +7,7 @@ import Tags from "../common/Tags"; // Import your Tags component
 // Define the ListItemProps type
 type ListItemProps = {
 	item: any;
+	isLast?: boolean; // Optional prop
 	pageKey?: string;
 	titleKey?: string;
 	slugKey?: string;
@@ -23,6 +24,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ListItem: React.FC<ListItemProps> = ({
 	item,
+	isLast = false, // Default to false
 	pageKey = "page",
 	titleKey = "title",
 	slugKey = "slug",
@@ -71,14 +73,14 @@ const ListItem: React.FC<ListItemProps> = ({
 		if (el) {
 			gsap.fromTo(
 				el,
-				{ opacity: 0 }, // Start invisible without movement
+				{ opacity: 0 },
 				{
 					opacity: 1,
 					duration: 1,
 					scrollTrigger: {
 						trigger: el,
-						start: "top 100%", // When the card enters the viewport
-						end: "bottom 85%", // When it exits
+						start: "top 100%",
+						end: "bottom 85%",
 						toggleActions: "play none none none",
 					},
 				}
@@ -126,7 +128,11 @@ const ListItem: React.FC<ListItemProps> = ({
 	const itemContent = (
 		<div
 			ref={itemRef}
-			className="relative flex flex-col md:flex-row -z-30 md:items-center text-left border p-4 rounded-lg bg-white dark:bg-gray-700 border-gray-100 dark:border-gray-700 shadow text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600"
+			className={`relative flex flex-col md:flex-row -z-30 md:items-center text-left py-2 px-4 rounded-md bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600 ${
+				isLast
+					? ""
+					: "border-b-[0.1rem] border-b-gray-200 dark:border-gray-700"
+			}`}
 		>
 			{/* Pin icon */}
 			{item.isPinned && (

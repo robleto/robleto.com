@@ -71,14 +71,20 @@ export const socialLinks: SocialLink[] = [
 type SocialLinksProps = {
 	className?: string; // Custom className for styling the wrapper
 	iconClassName?: string; // Custom className for styling the individual icons
+	center?: boolean; // New prop to control alignment
 };
 
 const SocialLinks: React.FC<SocialLinksProps> = ({
 	className,
 	iconClassName,
+	center = false, // Default alignment is not centered
 }) => {
 	return (
-		<div className={`flex space-x-4 ${className || ""}`}>
+		<div
+			className={`flex space-x-4 ${
+				center ? "justify-center" : "justify-start"
+			} ${className || ""}`}
+		>
 			{socialLinks.map((social) => (
 				<a
 					key={social.name}
@@ -92,7 +98,9 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
 					<div
 						className={`text-2xl text-gray-400 group-hover:${
 							social.color
-						} transition-colors ${iconClassName || ""} dark:group-hover:text-white`}
+						} transition-colors ${
+							iconClassName || ""
+						} dark:group-hover:text-white`}
 					>
 						{social.icon}
 					</div>

@@ -5,6 +5,7 @@ import ListItem from "./ListItem";
 
 type ListsProps = {
 	items: any[];
+	isLast: boolean;
 	pageKey?: string;
 	titleKey?: string;
 	linkKey?: string;
@@ -18,6 +19,7 @@ type ListsProps = {
 const Lists: React.FC<ListsProps> = ({
 	items,
 	pageKey,
+	isLast,
 	titleKey = "title",
 	linkKey = "",
 	slugKey = "slug",
@@ -29,10 +31,11 @@ const Lists: React.FC<ListsProps> = ({
 	return (
 		<div className="container mx-auto">
 			{/* List Layout */}
-			<div className={`grid grid-cols-1 gap-6`}>
+			<div className={`grid grid-cols-1 gap-2`}>
 				{items.map((item: any, index: number) => (
 					<ListItem
 						key={index}
+						isLast={index === items.length - 1} 
 						item={item}
 						pageKey={pageKey}
 						titleKey={titleKey}

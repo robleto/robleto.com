@@ -68,8 +68,7 @@ export default async function HomePage() {
 				pubDateKey="date"
 				titleKey="name"
 				tagsKey="tags"
-				slugKey="slug"
-			/>
+				slugKey="slug" isLast={false}			/>
 
 			<GroupTitle title="Latest Posts" />
 
