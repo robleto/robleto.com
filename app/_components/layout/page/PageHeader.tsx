@@ -16,8 +16,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, icon, linkUrl, linkText,
 		<div
 			className="
 				flex flex-col z-10 lg:w-auto align-left justify-center relative
-				mx-auto  py-10 transition-all duration-300 min-h-[20em] 
-			"
+				mx-auto  py-25 transition-all duration-300 min-h-[25rem]"
 		>
 			{/* Page Title */}
 
