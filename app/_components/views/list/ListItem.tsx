@@ -1,10 +1,11 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaThumbtack, FaImage, FaStar } from "react-icons/fa";
+import { FaThumbtack, FaImage } from "react-icons/fa";
 import Tags from "../common/Tags"; // Import your Tags component
 
-// Define the ListItemProps type
 type ListItemProps = {
 	item: any;
 	isLast?: boolean; // Optional prop
@@ -38,7 +39,7 @@ const ListItem: React.FC<ListItemProps> = ({
 	const [imageError, setImageError] = useState(false);
 	const [imageSrc, setImageSrc] = useState("");
 	const [favicon, setFavicon] = useState("");
-	const itemRef = useRef<HTMLDivElement>(null); // Reference for the GSAP animation
+	const itemRef = useRef<HTMLLIElement>(null); // Reference for the GSAP animation
 
 	// Fetch the appropriate image based on pageKey
 	useEffect(() => {
@@ -126,9 +127,9 @@ const ListItem: React.FC<ListItemProps> = ({
 	};
 
 	const itemContent = (
-		<div
+		<li
 			ref={itemRef}
-			className={`relative flex flex-col md:flex-row -z-30 md:items-center text-left py-2 px-4 rounded-md bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600 ${
+			className={`relative flex flex-col md:flex-row items-center text-left py-2 px-4 rounded-md bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600 ${
 				isLast
 					? ""
 					: "border-b-[0.1rem] border-b-gray-200 dark:border-gray-700"
@@ -141,6 +142,7 @@ const ListItem: React.FC<ListItemProps> = ({
 				</div>
 			)}
 
+			{/* Left Section: Image or Favicon */}
 			{(pageKey === "reading-list" || pageKey === "bookmarks") &&
 			favicon ? (
 				<img
@@ -152,7 +154,7 @@ const ListItem: React.FC<ListItemProps> = ({
 				renderImage()
 			)}
 
-			{/* Post Details */}
+			{/* Center Section: Post Details */}
 			<div className="flex-grow mt-4 mb-0 md:mt-0 md:pl-4">
 				<h3 className="text-md leading-5 font-semibold text-gray-900 dark:text-gray-100">
 					{item[titleKey] || "Untitled"}
@@ -180,30 +182,21 @@ const ListItem: React.FC<ListItemProps> = ({
 				)}
 			</div>
 
-			{/* Tags or Date Display */}
-			{(pageKey === "home" || pageKey === "about") && item[pubDateKey] ? (
-				<p className="text-sm text-gray-600 dark:text-gray-300 py-1">
-					{new Date(item[pubDateKey]).toLocaleDateString("en-US", {
-						month: "short",
-						year: "numeric",
-					})}
-				</p>
-			) : (
-				item[tagsKey] && (
-					<div className="flex space-x-2">
-						<Tags tags={item[tagsKey]} />
-					</div>
-				)
+			{/* Right Section: Tags */}
+			{item[tagsKey] && (
+				<div className="flex space-x-2">
+					<Tags tags={item[tagsKey]} />
+				</div>
 			)}
-		</div>
+		</li>
 	);
 
-	// If `linkKey` is provided, wrap the item content in a link
+	// Wrap the content in a link if `linkKey` is provided
 	return item[linkKey] ? (
 		<a
 			href={
-				item[linkKey].startsWith("http://") ||
-				item[linkKey].startsWith("https://")
+				item[linkKey]?.startsWith("http://") ||
+				item[linkKey]?.startsWith("https://")
 					? item[linkKey]
 					: `https://${item[linkKey]}`
 			}

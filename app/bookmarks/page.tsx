@@ -50,7 +50,6 @@ export default async function BookmarksPage() {
 						tagsKey="tags"
 						urlKey="url"
 						slugKey="slug"
-						isLast={false}
 					/>
 				</section>
 			))}

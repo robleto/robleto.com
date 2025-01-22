@@ -1,11 +1,9 @@
-"use client";
-
 import React from "react";
 import ListItem from "./ListItem";
 
+// Define the ListsProps type
 type ListsProps = {
-	items: any[];
-	isLast: boolean;
+	items: any[]; // The array of items to render
 	pageKey?: string;
 	titleKey?: string;
 	linkKey?: string;
@@ -19,19 +17,17 @@ type ListsProps = {
 const Lists: React.FC<ListsProps> = ({
 	items,
 	pageKey,
-	isLast,
 	titleKey = "title",
 	linkKey = "",
 	slugKey = "slug",
 	pubDateKey = "",
 	descriptionKey = "",
-	tagsKey = "",
+	tagsKey = "tags",
 	urlKey = "",
 }) => {
 	return (
 		<div className="container mx-auto">
-			{/* List Layout */}
-			<div className={`grid grid-cols-1 gap-2`}>
+			<ul className="list-none grid grid-cols-1 gap-2">
 				{items.map((item: any, index: number) => (
 					<ListItem
 						key={index}
@@ -42,12 +38,12 @@ const Lists: React.FC<ListsProps> = ({
 						slugKey={slugKey}
 						pubDateKey={pubDateKey}
 						descriptionKey={descriptionKey}
-						tagsKey={tagsKey}
+						tagsKey={tagsKey} // Ensure tagsKey is passed
 						urlKey={urlKey}
-						isLast={false}
+						isLast={index === items.length - 1} // Determine isLast dynamically
 					/>
 				))}
-			</div>
+			</ul>
 		</div>
 	);
 };

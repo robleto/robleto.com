@@ -31,7 +31,6 @@ export default async function FollowingPage() {
 				tagsKey="tags"
 				urlKey="url"
 				slugKey="slug"
-				isLast={false}
 			/>
 		</div>
 	);

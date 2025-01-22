@@ -65,7 +65,10 @@ export default function SideNav() {
 					toggleCollapse={() => setIsCollapsed(!isCollapsed)}
 				/>
 
-				<Link href="/" className="opacity-70 hover:opacity-100 dark:invert">
+				<Link
+					href="/"
+					className="opacity-70 hover:opacity-100 dark:invert"
+				>
 					<img
 						src="/_brand/gr-logo.svg"
 						alt="gr"
@@ -207,17 +210,17 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
-								link="bookmarks"
-								slug="bookmarks"
-								title="Bookmarks"
+								link="reading-list"
+								slug="reading-list"
+								title="Reading List"
 								isCollapsed={isCollapsed}
 								onOpenContact={() => {}}
 								onOpenSocial={() => {}}
 							/>
 							<SidebarLink
-								link="reading-list"
-								slug="reading-list"
-								title="Reading List"
+								link="bookmarks"
+								slug="bookmarks"
+								title="Bookmarks"
 								isCollapsed={isCollapsed}
 								onOpenContact={() => {}}
 								onOpenSocial={() => {}}

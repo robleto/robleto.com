@@ -35,8 +35,7 @@ export default async function AboutPage() {
 				pubDateKey="date"
 				titleKey="name"
 				tagsKey="tags"
-				slugKey="slug"
-				isLast={false}			
+				slugKey="slug"		
 			/>
 
 			<GroupTitle title="About Me" />
