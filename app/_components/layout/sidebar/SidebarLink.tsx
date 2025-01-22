@@ -37,6 +37,8 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 		>
 			{isModalLink ? (
 				<button
+					id={`${title} icon`}
+					aria-label={`${title} icon`}
 					onClick={handleClick}
 					className="flex items-center space-x-2 hover:text-gray-600 hover:dark:text-gray-200 w-full text-left"
 				>

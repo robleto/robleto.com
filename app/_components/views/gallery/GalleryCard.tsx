@@ -125,6 +125,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						<span className="text-gray-400 text-lg mt-2 font-oswald">
 							Image Not Available
 						</span>
+						{(() => { console.log(`Image not available for: ${item[titleKey] || "Untitled"}`); return null; })()}
 					</div>
 				)}
 			</div>
