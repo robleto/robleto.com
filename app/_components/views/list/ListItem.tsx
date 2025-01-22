@@ -3,13 +3,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaThumbtack, FaImage, FaStar } from "react-icons/fa";
+import { FaThumbtack, FaImage } from "react-icons/fa";
 import Tags from "../common/Tags"; // Import your Tags component
 
-// Define the ListItemProps type
 type ListItemProps = {
 	item: any;
-	isLast?: boolean;
+	isLast?: boolean; // Optional prop
 	pageKey?: string;
 	titleKey?: string;
 	slugKey?: string;
@@ -26,7 +25,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const ListItem: React.FC<ListItemProps> = ({
 	item,
-	isLast = false,
+	isLast = false, // Default to false
 	pageKey = "page",
 	titleKey = "title",
 	slugKey = "slug",
@@ -40,8 +39,9 @@ const ListItem: React.FC<ListItemProps> = ({
 	const [imageError, setImageError] = useState(false);
 	const [imageSrc, setImageSrc] = useState("");
 	const [favicon, setFavicon] = useState("");
-	const itemRef = useRef<HTMLLIElement>(null); // Reference for GSAP animation
+	const itemRef = useRef<HTMLLIElement>(null); // Reference for the GSAP animation
 
+	// Fetch the appropriate image based on pageKey
 	useEffect(() => {
 		if (pageKey === "following" && item[slugKey]) {
 			const twitterProfileImageUrl = `https://unavatar.io/twitter/${item[slugKey]}`;
@@ -52,6 +52,7 @@ const ListItem: React.FC<ListItemProps> = ({
 		}
 	}, [item, pageKey, slugKey]);
 
+	// Fetch favicon for reading list or bookmarks
 	useEffect(() => {
 		if (
 			(pageKey === "reading-list" || pageKey === "bookmarks") &&
@@ -67,6 +68,7 @@ const ListItem: React.FC<ListItemProps> = ({
 		}
 	}, [item, urlKey, pageKey]);
 
+	// GSAP animation for fading in the cards on scroll
 	useEffect(() => {
 		const el = itemRef.current;
 		if (el) {
@@ -87,6 +89,7 @@ const ListItem: React.FC<ListItemProps> = ({
 		}
 	}, []);
 
+	// Render the appropriate image
 	const renderImage = () => {
 		if (pageKey === "following" && imageSrc) {
 			return (
@@ -95,6 +98,15 @@ const ListItem: React.FC<ListItemProps> = ({
 					alt={`${item[titleKey] || "Twitter Profile Image"}`}
 					className="w-12 h-12 rounded-full"
 					onError={() => setImageError(true)}
+				/>
+			);
+		} else if (pageKey === "about" && imageSrc) {
+			return (
+				<img
+					src={imageSrc}
+					alt={item[titleKey] || "Image"}
+					className="w-12 h-12 rounded-full"
+					onError={() => setImageSrc("")}
 				/>
 			);
 		} else if (!imageError && imageSrc) {
@@ -115,13 +127,22 @@ const ListItem: React.FC<ListItemProps> = ({
 	};
 
 	const itemContent = (
-		<div
-			className={`relative flex flex-col md:flex-row items-center text-left py-4 px-6 bg-transparent ${
+		<li
+			ref={itemRef}
+			className={`relative flex flex-col md:flex-row items-center text-left py-2 px-4 rounded-md bg-transparent text-gray-700 dark:text-gray-300 hover:bg-gray-100 hover:text-blue-700 hover:dark:bg-gray-600 ${
 				isLast
-					? "" // No border for the last item
-					: "border-b border-gray-200 dark:border-gray-700"
+					? ""
+					: "border-b-[0.1rem] border-b-gray-200 dark:border-gray-700"
 			}`}
 		>
+			{/* Pin icon */}
+			{item.isPinned && (
+				<div className="absolute top-[-8px] right-[-8px]">
+					<FaThumbtack className="text-gray-300 h-6 w-6 rotate-45" />
+				</div>
+			)}
+
+			{/* Left Section: Image or Favicon */}
 			{(pageKey === "reading-list" || pageKey === "bookmarks") &&
 			favicon ? (
 				<img
@@ -133,39 +154,60 @@ const ListItem: React.FC<ListItemProps> = ({
 				renderImage()
 			)}
 
+			{/* Center Section: Post Details */}
 			<div className="flex-grow mt-4 mb-0 md:mt-0 md:pl-4">
 				<h3 className="text-md leading-5 font-semibold text-gray-900 dark:text-gray-100">
 					{item[titleKey] || "Untitled"}
 				</h3>
-				{item[descriptionKey] && (
+				{(pageKey === "home" || pageKey === "about") &&
+				item[descriptionKey] ? (
 					<p className="text-sm my-0 py-0 text-gray-600 dark:text-gray-300">
 						{item[descriptionKey]}
 					</p>
-				)}
+				) : item[pubDateKey] ? (
+					<p className="text-sm text-gray-600 dark:text-gray-300">
+						{new Date(item[pubDateKey]).toLocaleDateString(
+							"en-US",
+							{
+								month: "short",
+								year: "numeric",
+							}
+						)}
+					</p>
+				) : null}
 				{item[urlKey] && (
 					<p className="truncate max-w-72 md:max-w-96 text-sm text-gray-600 dark:text-gray-300 py-1">
 						{item[urlKey]}
 					</p>
 				)}
 			</div>
-		</div>
-	);
 
-	return (
-		<li ref={itemRef} className="block w-full">
-			{item[linkKey] ? (
-				<a
-					href={item[linkKey]}
-					target="_blank"
-					rel="noopener noreferrer"
-					className="block w-full"
-				>
-					{itemContent}
-				</a>
-			) : (
-				itemContent
+			{/* Right Section: Tags */}
+			{item[tagsKey] && (
+				<div className="flex space-x-2">
+					<Tags tags={item[tagsKey]} />
+				</div>
 			)}
 		</li>
+	);
+
+	// Wrap the content in a link if `linkKey` is provided
+	return item[linkKey] ? (
+		<a
+			href={
+				item[linkKey]?.startsWith("http://") ||
+				item[linkKey]?.startsWith("https://")
+					? item[linkKey]
+					: `https://${item[linkKey]}`
+			}
+			target="_blank"
+			rel="noopener noreferrer"
+			className="block"
+		>
+			{itemContent}
+		</a>
+	) : (
+		<div>{itemContent}</div>
 	);
 };
 
