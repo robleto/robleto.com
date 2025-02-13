@@ -15,23 +15,23 @@ export default async function ShakespearePage() {
 	});
 
 	// Log the raw response from the API to verify the data
-	console.log("Raw Notion API response:", listItems);
+	//console.log("Raw Notion API response:", listItems);
 
 	// Filter the items by "Seen it / Complete" status using your utility function
 	const filteredSeenItems = filterItemsByProperty(listItems, "seen", "Seen It");
 	const filteredUnseenItems = filterItemsByProperty(listItems, "seen", "Not yet");
 
 	// Log filtered results to see if the filtering works as expected
-	console.log("Filtered items (Seen it):", filteredSeenItems);
-	console.log("Filtered items (Not Yet):", filteredUnseenItems);
+	//console.log("Filtered items (Seen it):", filteredSeenItems);
+	//console.log("Filtered items (Not Yet):", filteredUnseenItems);
 
 	// Sort items by name
 	const seenItems = sortByName(filteredSeenItems);
 	const unseenItems = sortByName(filteredUnseenItems);
 
 	// Log the seen items to ensure they are correctly ordered
-	console.log("Seen items by name:", seenItems);
-	console.log("Unseen items by name:", unseenItems);
+	//console.log("Seen items by name:", seenItems);
+	//console.log("Unseen items by name:", unseenItems);
 
 	return (
 		<div>

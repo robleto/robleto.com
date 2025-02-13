@@ -32,7 +32,6 @@ body {
   filter: invert(1);
 }
 
-
 .blinking-cursor {
   animation: blink 0.75s step-end infinite;
 }
@@ -45,7 +44,6 @@ body {
     color: black;
   }
 }
-
 
 .gallery-card:hover h3 {
   color: theme("colors.link");

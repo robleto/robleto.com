@@ -14,19 +14,19 @@ export default async function BoardGamesPage() {
 	});
 
 	// Log the raw response from the API to verify the data
-	console.log("Raw Notion API response:", listItems);
+	//console.log("Raw Notion API response:", listItems);
 
 	// Filter the items by "Seen it / Complete" status using your utility function
 	const filteredItems = filterItemsByProperty(listItems, "own", "Own It");
 
 	// Log filtered results to see if the filtering works as expected
-	console.log("Filtered items (Seen it):", filteredItems);
+	//console.log("Filtered items (Seen it):", filteredItems);
 
 	// Sort items by name
 	const sortedItems = sortByName(filteredItems);
 
 	// Log the sorted items to ensure they are correctly ordered
-	console.log("Sorted items by name:", sortedItems);
+	//console.log("Sorted items by name:", sortedItems);
 
 	return (
 		<div>
