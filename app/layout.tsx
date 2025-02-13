@@ -16,7 +16,7 @@ const libreBodoni = Libre_Bodoni({
 
 const nunitoSans = Nunito_Sans({
 	subsets: ["latin"],
-	weight: ["300", "400", "500", "600", "700"],
+	weight: ["400", "700"],
 	variable: "--font-nunito-sans",
 });
 
@@ -46,7 +46,7 @@ export default function RootLayout({
 			>
 				{/* Wrapping the app in ThemeProvider for theme toggling */}
 				<ThemeProvider attribute="class" defaultTheme="system">
-					<div className="flex min-h-screen flex-col">
+					<div className="flex flex-col min-h-screen">
 						{/* SideNav is collapsed by default on mobile and expanded on larger screens */}
 						<SideNav />
 						{/* Main content */}
