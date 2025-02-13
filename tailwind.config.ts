@@ -51,6 +51,7 @@ const config: Config = {
 				lemongrass: "#84CC16", // Lemongrass Green
 			},
 			fontFamily: {
+				sans: ["var(--font-nunito-sans)", "sans-serif"],
 				nunito: ["var(--font-nunito-sans)", "sans-serif"],
 				oswald: ["var(--font-oswald)", "sans-serif"],
 				bodoni: ["var(--font-libre-bodoni)", "sans-serif"],

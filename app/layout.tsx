@@ -1,11 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
 import Logo from "./_components/layout/sidebar/Logo";
-import "./_style/globals.css"; // Import global styles
 import SideNav from "./_components/layout/sidebar/SideNav"; // Import SideNav
 import Footer from "./_components/layout/chrome/Footer"; // Import Footer
 import { Nunito_Sans, Oswald, Libre_Bodoni } from "next/font/google";
 import { ThemeProvider } from "next-themes"; // Import ThemeProvider for theme switching
+import "./_style/globals.css"; // Import global styles
 
 // Import fonts...
 const libreBodoni = Libre_Bodoni({
@@ -39,11 +39,10 @@ export default function RootLayout({
 }) {
 
 	return (
-		<html lang="en">
+		<html lang="en" className={`${nunitoSans.variable} ${oswald.variable} ${libreBodoni.variable}`}>
 			<head></head>
 			<body
-				className={`${nunitoSans.variable} ${oswald.variable} ${libreBodoni.variable} antialiased bg-background dark:bg-dark_background`}
-			>
+				className="antialiased bg-background dark:bg-dark_background">
 				{/* Wrapping the app in ThemeProvider for theme toggling */}
 				<ThemeProvider attribute="class" defaultTheme="system">
 					<div className="flex flex-col min-h-screen">
@@ -57,7 +56,7 @@ export default function RootLayout({
 						<Footer />
 					</div>
 				</ThemeProvider>
-			</body>
+		</body>
 		</html>
 	);
 }
