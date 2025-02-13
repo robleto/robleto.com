@@ -30,7 +30,6 @@ export default async function ReadingListPage() {
 				tagsKey="tags"
 				slugKey="slug"
 				urlKey="url"
-				isLast={false}
 			/>
 		</div>
 	);
