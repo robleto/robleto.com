@@ -3,28 +3,9 @@ import type { Metadata } from "next";
 import Logo from "./_components/layout/sidebar/Logo";
 import SideNav from "./_components/layout/sidebar/SideNav"; // Import SideNav
 import Footer from "./_components/layout/chrome/Footer"; // Import Footer
-import { Nunito_Sans, Oswald, Libre_Bodoni } from "next/font/google";
 import { ThemeProvider } from "next-themes"; // Import ThemeProvider for theme switching
 import "./_style/globals.css"; // Import global styles
 
-// Import fonts...
-const libreBodoni = Libre_Bodoni({
-	subsets: ["latin"],
-	weight: ["400", "500", "600", "700"],
-	variable: "--font-libre-bodoni",
-});
-
-const nunitoSans = Nunito_Sans({
-	subsets: ["latin"],
-	weight: ["400", "700"],
-	variable: "--font-nunito-sans",
-});
-
-const oswald = Oswald({
-	subsets: ["latin"],
-	weight: ["400", "500", "600", "700"],
-	variable: "--font-oswald",
-});
 
 export const metadata: Metadata = {
 	title: "Greg Robleto | Greg Robleto – Design / Marketing / Product / Technology ",
@@ -39,7 +20,7 @@ export default function RootLayout({
 }) {
 
 	return (
-		<html lang="en" className={`${nunitoSans.variable} ${oswald.variable} ${libreBodoni.variable}`}>
+		<html lang="en">
 			<head></head>
 			<body
 				className="antialiased bg-background dark:bg-dark_background">
