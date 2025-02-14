@@ -96,7 +96,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 					<img
 						src={imageSrc}
 						alt={item[titleKey] || "Image"}
-						className={`h-full w-full object-cover rounded-xl transition-transform duration-500 ease-out transform group-hover:scale-110`}
+						className={`h-full w-full object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110`}
 						onError={() => setImageError(true)}
 					/>
 				) : (
