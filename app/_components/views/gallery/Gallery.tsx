@@ -73,7 +73,7 @@ const Gallery: React.FC<GalleryProps> = ({
 					clientItems.map((item: any, index: number) => (
 						<GalleryCard
 							key={index}
-							item={item}
+							item={{ ...item, index }} // Add index for alternating layout
 							pageKey={pageKey}
 							titleKey={titleKey}
 							linkKey={linkKey}

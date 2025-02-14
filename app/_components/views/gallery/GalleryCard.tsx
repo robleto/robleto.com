@@ -37,129 +37,109 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 }) => {
 	const [imageError, setImageError] = useState(false);
 	const [imageSrc, setImageSrc] = useState("");
-	const cardRef = useRef<HTMLDivElement | null>(null); // Ref for the card
+	const cardRef = useRef<HTMLDivElement | null>(null);
 
-	// Determine the file extension based on whether the item is animated or a photo
-	let fileExtension = "png";
-	if (item?.[animatedKey]) {
-		fileExtension = "gif"; // Use gif for animated
-	} else if (
-		pageKey === "library" ||
-		pageKey === "lists" ||
-		pageKey === "travel" ||
-		pageKey == "musicals" ||
-		pageKey == "board-games"
-	) {
-		fileExtension = "jpg"; // Use jpg for library and travel
-	}
-
-	const imageContainerClass =
-		pageKey === "library" ||  
-		pageKey === "musicals" || 
-		pageKey === "board-games" ? "object-contain" : "object-cover h-full w-full";
+	// Get the index of this item in the parent array to alternate layout
+	const index = item.index ?? 0; // This should be set when mapping items in `Gallery.tsx`
 
 	useEffect(() => {
 		if (item[slugKey]) {
-			const src = `./${item[pageKey] || pageKey}/${
-				item[slugKey]
-			}.${fileExtension}`;
+			const src = `./${item[pageKey] || pageKey}/${item[slugKey]}.${
+				item[animatedKey] ? "gif" : "png"
+			}`;
 			setImageSrc(src);
 		}
-	}, [item, pageKey, slugKey, fileExtension]);
+	}, [item, pageKey, slugKey, animatedKey]);
 
-	// GSAP animation effect
+	// GSAP animation
 	useEffect(() => {
 		gsap.fromTo(
 			cardRef.current,
-			{ opacity: 0 }, // Initial state
+			{ opacity: 0 },
 			{
 				opacity: 1,
 				duration: 1,
 				scrollTrigger: {
 					trigger: cardRef.current,
-					start: "top 90%", // When the card enters the viewport
-					end: "bottom 75%", // When it exits
-					toggleActions: "play none none none", // Play animation once
+					start: "top 90%",
+					end: "bottom 75%",
+					toggleActions: "play none none none",
 				},
 			}
 		);
 	}, []);
 
-	// Format the date using native JavaScript
-	const formatDate = (dateString?: string) => {
-		if (!dateString) return "Date Not Available";
-		return new Date(dateString).toLocaleDateString("en-US", {
-			month: "short",
-			day: "numeric",
-			year: "numeric",
-		});
-	};
+	// Only apply two-column layout if lgGridCols is "lg:grid-cols-1"
+	const enableTwoColumnLayout = lgGridCols === "lg:grid-cols-1";
+	const layoutClass = enableTwoColumnLayout
+		? `md:flex md:items-center md:gap-6 ${
+				index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+		  }`
+		: "";
 
-	const cardContent = (
+	return (
 		<div
-			ref={cardRef} // Attach the ref to the card container
-			className="gallery-card z-5 relative bg-white dark:bg-gray-700 shadow-lg hover:shadow-xl rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 flex flex-col h-full"
+			ref={cardRef}
+			className={`relative flex flex-col overflow-hidden shadow-lg rounded-xl ${
+				enableTwoColumnLayout ? layoutClass : "bg-white"
+			} group`}
 		>
-			{/* Image */}
+			{/* Image Section (2/3 width, rounded-xl, transparent if image exists) */}
 			<div
-				className={`relative ${
-					lgGridCols === "lg:grid-cols-1" ? "h-72" : "h-48"
-				} w-full flex items-center justify-center overflow-hidden rounded-t-md bg-gray-200 dark:bg-gray-800 ${
-					pageKey === "library" ||
-					pageKey === "musicals" ||
-					pageKey === "board-games"
-						? "p-4"
-						: ""
-				}`}
+				className={`${
+					enableTwoColumnLayout ? "md:w-2/3 md:h-[350px]" : "w-full"
+				} flex items-center justify-center overflow-hidden ${
+					imageError ? "bg-gray-200" : "bg-transparent"
+				} min-h-[300px] relative`}
 			>
 				{!imageError && imageSrc ? (
 					<img
 						src={imageSrc}
 						alt={item[titleKey] || "Image"}
-						className={`h-full w-full ${imageContainerClass}`}
-						onError={() => setImageError(true)} // Handle image load failure
+						className={`h-full w-full object-cover rounded-xl transition-transform duration-500 ease-out transform group-hover:scale-110`}
+						onError={() => setImageError(true)}
 					/>
 				) : (
-					<div className="h-full w-full bg-gray-200 flex items-center flex-col justify-center">
+					<div className="flex flex-col items-center justify-center w-full h-full bg-gray-200 rounded-xl">
 						<FaImage className="text-4xl text-gray-400" />
-						<span className="text-gray-400 text-lg mt-2 font-oswald">
+						<span className="mt-2 text-lg text-gray-400 font-oswald">
 							Image Not Available
 						</span>
-						{/* {(() => { console.log(`Image not available for: ${imageSrc}`); return null; })()} */}
 					</div>
 				)}
 			</div>
 
-			{/* Title */}
-			<div className="p-4 flex-grow">
-				<h3 className="text-sm leading-5 font-semibold text-gray-900 dark:text-gray-100">
+			{/* Text Content (1/3 width, no shadow, no extra rounding) */}
+			<div
+				className={`${
+					enableTwoColumnLayout
+						? "md:w-1/3 md:h-[350px] p-6 flex flex-col justify-center"
+						: "p-6 bg-white rounded-xl"
+				} w-full`}
+			>
+				<h3 className="font-semibold text-gray-900 dark:text-gray-100">
 					{item[titleKey] || "Untitled"}
 				</h3>
-				{/* Description */}
 				{item[descriptionKey] && (
-					<p className="mt-0 text-sm leading-5  text-gray-600 dark:text-gray-400">
+					<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
 						{item[descriptionKey]}
 					</p>
 				)}
-				{/* Tags */}
 				{item[tagsKey] && (
-					<div className="mt-4 flex flex-wrap gap-2">
+					<div className="flex flex-wrap gap-2 mt-4">
 						<Tags tags={item[tagsKey]} />
 					</div>
 				)}
-				{/* City & State */}
 				{item[cityStateKey] && (
 					<p className="mt-4 text-sm text-gray-500">
 						{item[cityStateKey]}
 					</p>
 				)}
-				{/* Pub Date  */}
 				{item[pubDateKey] && (
 					<p className="mt-4 text-sm text-gray-500">
-						{formatDate(item[pubDateKey])}
+						{new Date(item[pubDateKey]).toLocaleDateString()}
 					</p>
 				)}
-				{/* URL */}
 				{item[urlKey] && (
 					<p className="mt-4 text-sm text-blue-600">
 						<a
@@ -174,37 +154,6 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			</div>
 		</div>
 	);
-
-	return item[linkKey] ? (
-		<a
-			href={
-				item[linkKey].startsWith("http://") ||
-				item[linkKey].startsWith("https://")
-					? item[linkKey] // For external links, use the full URL
-					: item[linkKey] // For internal links, no need to prepend "https://"
-			}
-			target={
-				item[linkKey].startsWith("http://") ||
-				item[linkKey].startsWith("https://")
-					? "_blank" // Open external links in a new tab
-					: "_self" // Open internal links in the same tab
-			}
-			rel="noopener noreferrer"
-			className="block relative"
-		>
-			{/* Pin icon */}
-			{item.isPinned && (
-				<div className="absolute top-[-8px] right-[-8px] z-10">
-					<FaThumbtack className="text-gray-300 h-6 w-6 rotate-45" />
-				</div>
-			)}
-
-			{cardContent}
-		</a>
-	) : (
-		<div>{cardContent}</div>
-	);
-
 };
 
 export default GalleryCard;

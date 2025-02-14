@@ -29,7 +29,6 @@ export default async function ProjectsPage() {
 				mdGridCols="md:grid-cols-2"
 				lgGridCols="lg:grid-cols-2"
 				items={sortedRegularItems}
-				tagsKey="tags"
 				descriptionKey="description"
 				pageKey="projects"
 				slugKey="slug"
