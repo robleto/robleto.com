@@ -35,7 +35,11 @@ export default async function TravelPage() {
 
 	return (
 		<div>
-			<PageHeader title="Travel" icon="travel" pageContent={pageContent} />
+			<PageHeader
+				title="Travel"
+				icon="travel"
+				pageContent={pageContent}
+			/>
 
 			{/* Render the US map */}
 			<USMap />
@@ -46,6 +50,9 @@ export default async function TravelPage() {
 					<GroupTitle title={state} />
 					<Gallery
 						items={groupedItems[state]} // Items under this state, now sorted by title using sortByName
+						smGridCols="sm:grid-cols-1"
+						mdGridCols="md:grid-cols-2"
+						lgGridCols="lg:grid-cols-3"
 						pageKey="travel"
 						titleKey="title"
 						linkKey="url"
@@ -54,7 +61,6 @@ export default async function TravelPage() {
 					/>
 				</section>
 			))}
-				
 		</div>
 	);
 }

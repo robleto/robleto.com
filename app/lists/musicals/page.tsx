@@ -30,15 +30,20 @@ export default async function MusicalsPage() {
 
 	return (
 		<div>
-			<PageHeader title="Musicals" icon="musical" pageContent={pageContent} />
+			<PageHeader
+				title="Musicals"
+				icon="musical"
+				pageContent={pageContent}
+			/>
 
 			<Gallery
 				items={sortedItems} // The sorted and filtered musicals
+				smGridCols="sm:grid-cols-2"
 				mdGridCols="md:grid-cols-3"
 				lgGridCols="lg:grid-cols-4"
 				pageKey="musicals"
 				titleKey="title"
-				slugKey="slug"
+				slugKey="slug" // S
 			/>
 		</div>
 	);

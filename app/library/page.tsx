@@ -29,13 +29,20 @@ export default async function LibraryPage() {
 
 	return (
 		<div>
-			<PageHeader title="Library" icon="library" pageContent={pageContent} />
+			<PageHeader
+				title="Library"
+				icon="library"
+				pageContent={pageContent}
+			/>
 
 			{/* Loop through the sorted groups */}
 			{Object.keys(sortedGroups).map((topic) => (
 				<section key={topic}>
 					<GroupTitle title={topic} />
 					<Gallery
+						smGridCols="sm:grid-cols-2"
+						mdGridCols="md:grid-cols-3"
+						lgGridCols="lg:grid-cols-4"
 						items={sortedGroups[topic]} // Items sorted by name under this topic
 						pageKey="library"
 						titleKey="title"

@@ -30,16 +30,22 @@ export default async function BoardGamesPage() {
 
 	return (
 		<div>
-			<PageHeader title="Board Games" icon="board-games" pageContent={pageContent} />
+			<PageHeader
+				title="Board Games"
+				icon="board-games"
+				pageContent={pageContent}
+			/>
 
 			<Gallery
 				items={sortedItems} // The sorted and filtered boardGames
+				smGridCols="sm:grid-cols-2"
 				mdGridCols="md:grid-cols-3"
 				lgGridCols="lg:grid-cols-4"
 				pageKey="board-games"
 				titleKey="title"
 				linkKey="url"
 				slugKey="slug"
+				minHeight="200px" // Set a minimum height for the cards
 			/>
 		</div>
 	);

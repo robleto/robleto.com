@@ -19,6 +19,7 @@ type GalleryCardProps = {
 	cityStateKey?: string;
 	animatedKey?: string;
 	lgGridCols: string;
+	minHeight?: string; // New prop for adjustable height
 };
 
 const GalleryCard: React.FC<GalleryCardProps> = ({
@@ -34,22 +35,34 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	cityStateKey = "cityState",
 	animatedKey = "animated",
 	lgGridCols,
+	minHeight = "300px", // Default min-height
 }) => {
 	const [imageError, setImageError] = useState(false);
 	const [imageSrc, setImageSrc] = useState("");
 	const cardRef = useRef<HTMLDivElement | null>(null);
 
-	// Get the index of this item in the parent array to alternate layout
-	const index = item.index ?? 0; // This should be set when mapping items in `Gallery.tsx`
+	// Determine correct file extension based on page type
+	let fileExtension = "png";
+	if (item?.[animatedKey]) {
+		fileExtension = "gif"; // Use gif for animated
+	} else if (
+		["library", "travel", "lists", "musicals", "board-games"].includes(
+			pageKey
+		)
+	) {
+		fileExtension = "jpg"; // Use jpg for specific sections
+	}
 
+	// Generate Image Path
 	useEffect(() => {
 		if (item[slugKey]) {
-			const src = `./${item[pageKey] || pageKey}/${item[slugKey]}.${
-				item[animatedKey] ? "gif" : "png"
-			}`;
+			const src = `/${item[pageKey] || pageKey}/${
+				item[slugKey]
+			}.${fileExtension}`;
+			console.log(`Generated Image Path: ${src}`);
 			setImageSrc(src);
 		}
-	}, [item, pageKey, slugKey, animatedKey]);
+	}, [item, pageKey, slugKey, fileExtension]);
 
 	// GSAP animation
 	useEffect(() => {
@@ -69,11 +82,11 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		);
 	}, []);
 
-	// Only apply two-column layout if lgGridCols is "lg:grid-cols-1"
+	// Enable side-by-side layout for `lg:grid-cols-1`
 	const enableTwoColumnLayout = lgGridCols === "lg:grid-cols-1";
 	const layoutClass = enableTwoColumnLayout
 		? `md:flex md:items-center md:gap-6 ${
-				index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+				item.index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
 		  }`
 		: "";
 
@@ -87,10 +100,11 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			{/* Image Section (2/3 width, rounded-xl, transparent if image exists) */}
 			<div
 				className={`${
-					enableTwoColumnLayout ? "md:w-2/3 md:h-[350px]" : "w-full"
+					enableTwoColumnLayout ? "md:w-2/3" : "w-full"
 				} flex items-center justify-center overflow-hidden ${
 					imageError ? "bg-gray-200" : "bg-transparent"
-				} min-h-[300px] relative`}
+				} relative`}
+				style={{ minHeight, height: minHeight }} // Set height and minHeight dynamically
 			>
 				{!imageError && imageSrc ? (
 					<img
@@ -100,7 +114,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						onError={() => setImageError(true)}
 					/>
 				) : (
-					<div className="flex flex-col items-center justify-center w-full h-full bg-gray-200 rounded-xl">
+					<div className="flex flex-col items-center justify-center w-full h-full bg-gray-200 rounded-t-xl">
 						<FaImage className="text-4xl text-gray-400" />
 						<span className="mt-2 text-lg text-gray-400 font-oswald">
 							Image Not Available
@@ -113,7 +127,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			<div
 				className={`${
 					enableTwoColumnLayout
-						? "md:w-1/3 md:h-[350px] p-6 flex flex-col justify-center"
+						? "md:w-1/3 p-6 flex flex-col justify-center"
 						: "p-6 bg-white rounded-xl"
 				} w-full`}
 			>
@@ -131,7 +145,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 					</div>
 				)}
 				{item[cityStateKey] && (
-					<p className="mt-4 text-sm text-gray-500">
+					<p className="mt-1 text-sm text-gray-500">
 						{item[cityStateKey]}
 					</p>
 				)}

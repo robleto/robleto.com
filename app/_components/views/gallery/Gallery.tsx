@@ -19,6 +19,7 @@ type GalleryProps = {
 	urlKey?: string;
 	cityStateKey?: string;
 	animatedKey?: string;
+	minHeight?: string;
 	groupByKey?: string | null;
 	sortItem?: (items: any[]) => any[];
 	filterItem?: (items: any[]) => any[];
@@ -41,6 +42,7 @@ const Gallery: React.FC<GalleryProps> = ({
 	cityStateKey = "",
 	animatedKey = "",
 	groupByKey = null,
+	minHeight = "300px",
 	sortItem,
 	filterItem,
 }) => {
@@ -85,6 +87,7 @@ const Gallery: React.FC<GalleryProps> = ({
 							cityStateKey={cityStateKey}
 							animatedKey={animatedKey}
 							lgGridCols={lgGridCols}
+							minHeight={minHeight}
 						/>
 					))}
 			</div>

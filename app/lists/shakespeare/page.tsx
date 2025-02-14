@@ -35,26 +35,34 @@ export default async function ShakespearePage() {
 
 	return (
 		<div>
-			<PageHeader title="Shakespeare" icon="shakespeare" pageContent={pageContent} />
+			<PageHeader
+				title="Shakespeare"
+				icon="shakespeare"
+				pageContent={pageContent}
+			/>
 
 			<GroupTitle title="Shakespeare Seen" />
 			<Gallery
+				smGridCols="sm:grid-cols-2"
 				mdGridCols="md:grid-cols-3"
 				lgGridCols="lg:grid-cols-4"
 				items={seenItems} // The seen and filtered shakespeare
 				pageKey="shakespeare"
 				titleKey="title"
 				slugKey="slug"
+				minHeight="200px"
 			/>
-			
+
 			<GroupTitle title="Shakespeare Yet to See" />
 			<Gallery
+				smGridCols="sm:grid-cols-2"
 				mdGridCols="md:grid-cols-3"
 				lgGridCols="lg:grid-cols-4"
 				items={unseenItems} // The seen and filtered shakespeare
 				pageKey="shakespeare"
 				titleKey="title"
 				slugKey="slug"
+				minHeight="200px"
 			/>
 		</div>
 	);
