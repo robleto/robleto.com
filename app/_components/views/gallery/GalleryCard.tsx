@@ -27,7 +27,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	pageKey = "page",
 	titleKey = "title",
 	slugKey = "slug",
-	linkKey = "",
+	linkKey = "linkedURL",
 	pubDateKey = "pubDate",
 	descriptionKey = "description",
 	tagsKey = "tags",
@@ -94,7 +94,9 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		<div
 			ref={cardRef}
 			className={`relative flex flex-col overflow-hidden shadow-lg rounded-xl ${
-				enableTwoColumnLayout ? layoutClass : "bg-white"
+				enableTwoColumnLayout
+					? layoutClass
+					: "bg-white dark:bg-gray-800"
 			} group`}
 		>
 			{/* Image Section (2/3 width, rounded-xl, transparent if image exists) */}
@@ -107,12 +109,28 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 				style={{ minHeight, height: minHeight }} // Set height and minHeight dynamically
 			>
 				{!imageError && imageSrc ? (
-					<img
-						src={imageSrc}
-						alt={item[titleKey] || "Image"}
-						className={`h-full w-full object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110`}
-						onError={() => setImageError(true)}
-					/>
+					item[urlKey] ? (
+						<a
+							href={`https://${item[urlKey]}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="block h-full w-full"
+						>
+							<img
+								src={imageSrc}
+								alt={item[titleKey] || "Image"}
+								className="h-full w-full object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+								onError={() => setImageError(true)}
+							/>
+						</a>
+					) : (
+						<img
+							src={imageSrc}
+							alt={item[titleKey] || "Image"}
+							className="h-full w-full object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+							onError={() => setImageError(true)}
+						/>
+					)
 				) : (
 					<div className="flex flex-col items-center justify-center w-full h-full bg-gray-200 rounded-t-xl">
 						<FaImage className="text-4xl text-gray-400" />
@@ -128,12 +146,25 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 				className={`${
 					enableTwoColumnLayout
 						? "md:w-1/3 p-6 flex flex-col justify-center"
-						: "p-6 bg-white rounded-xl"
+						: "p-6 rounded-xl"
 				} w-full`}
 			>
-				<h3 className="font-semibold text-gray-900 dark:text-gray-100">
-					{item[titleKey] || "Untitled"}
-				</h3>
+				{item[urlKey] ? (
+					<h3 className="font-semibold text-gray-900 dark:text-gray-100">
+						<a
+							href={`https://${item[urlKey]}`}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="hover:underline"
+						>
+							{item[titleKey] || "Untitled"}
+						</a>
+					</h3>
+				) : (
+					<h3 className="font-semibold text-gray-900 dark:text-gray-100">
+						{item[titleKey] || "Untitled"}
+					</h3>
+				)}
 				{item[descriptionKey] && (
 					<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
 						{item[descriptionKey]}
@@ -154,17 +185,17 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						{new Date(item[pubDateKey]).toLocaleDateString()}
 					</p>
 				)}
-				{item[urlKey] && (
+				{/* {item[urlKey] && (
 					<p className="mt-4 text-sm text-blue-600">
 						<a
-							href={item[urlKey]}
+							href={`https://${item[urlKey]}`}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
 							{item[urlKey]}
 						</a>
 					</p>
-				)}
+				)} */}
 			</div>
 		</div>
 	);

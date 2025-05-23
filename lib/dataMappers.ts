@@ -222,7 +222,7 @@ const mapPostsEntry = (entry: any) => {
 	const pubdate = entry.properties.PubDate?.date?.start || null;
 	const description =
 		entry.properties.Description?.rich_text[0]?.plain_text ?? "";
-	const url = entry.properties.URL?.url || "#";
+	const url = entry.properties.LinkedURL?.url || "#";
 	const sortOrder = entry.properties.SortOrder?.number || Infinity;
 	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";
 	const tags =
@@ -253,7 +253,7 @@ const mapPortfolioEntry = (entry: any) => {
 		imageProperty?.files?.[0]?.name ||
 		"";
 	const slug = entry.properties.Slug?.rich_text?.[0]?.plain_text || "";
-	const url = entry.properties.URL?.url || "#";
+	const url = entry.properties.LinkedURL?.url || "#";
 	const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
 	const subtitle =
 		entry.properties.Subtitle?.rich_text?.[0]?.plain_text || "";
