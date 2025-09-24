@@ -1,15 +1,16 @@
 import { fetchNotionData } from './notionContentFetcher'
 import { getPageContent } from './notion'
 import { performanceMeasure } from '@/utils/performance'
+import type { BaseItem, PortfolioItem } from '@/types'
 import { env } from '@/config/env'
 
 /**
- * Hybrid content fetcher that tries Supabase first, falls back to Notion
- * This provides the best performance while maintaining reliability
+ * Content fetcher for Notion-backed content.
+ * All data is fetched directly from Notion.
  */
 export class HybridContentFetcher {
 
-  static async getAllPosts() {
+  static async getAllPosts(): Promise<{ listItems: BaseItem[]; pageContent: any[]; imageUrls: string[] }> {
     const timer = performanceMeasure.start('getAllPosts')
     try {
       const data = await fetchNotionData({
@@ -25,7 +26,7 @@ export class HybridContentFetcher {
     }
   }
 
-  static async getAllProjects() {
+  static async getAllProjects(): Promise<{ listItems: BaseItem[]; pageContent: any[]; imageUrls: string[] }> {
     const timer = performanceMeasure.start('getAllProjects')
     try {
       const data = await fetchNotionData({
@@ -41,7 +42,7 @@ export class HybridContentFetcher {
     }
   }
 
-  static async getPortfolioItems() {
+  static async getPortfolioItems(): Promise<{ listItems: PortfolioItem[]; pageContent: any[]; imageUrls: string[] }> {
     const timer = performanceMeasure.start('getPortfolioItems')
     try {
       const data = await fetchNotionData({
@@ -57,14 +58,14 @@ export class HybridContentFetcher {
     }
   }
 
-  static async getPortfolioItemBySlug(slug: string) {
+  static async getPortfolioItemBySlug(slug: string): Promise<(PortfolioItem & { content: any[] }) | null> {
     const timer = performanceMeasure.start('getPortfolioItemBySlug')
     try {
       // Get all portfolio items first
-      const { listItems: portfolioItems } = await this.getPortfolioItems()
+  const { listItems: portfolioItems } = await this.getPortfolioItems()
       
       // Find the item with matching slug
-      const portfolioItem = portfolioItems.find((item: any) => item.slug === slug)
+  const portfolioItem = portfolioItems.find((item: PortfolioItem) => item.slug === slug)
       
       if (!portfolioItem) {
         timer.end()

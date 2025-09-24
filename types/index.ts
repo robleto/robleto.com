@@ -26,6 +26,11 @@ export interface ProjectItem extends BaseItem {
   featured?: boolean;
 }
 
+export interface PortfolioItem extends BaseItem {
+  image?: string;
+  subtitle?: string;
+}
+
 export interface ArtItem extends BaseItem {
   animated?: boolean;
   image?: string;

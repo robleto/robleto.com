@@ -1,6 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
+import type { PortfolioItem } from "@/types";
 import NotionRenderer from "@/app/_components/notion/NotionRenderer";
 import PageHeader from "@/app/_components/layout/page/PageHeader";
 import Link from "next/link";
@@ -15,7 +16,7 @@ export async function generateStaticParams() {
   // Get all portfolio items to generate static paths
   const { listItems: portfolioItems } = await HybridContentFetcher.getPortfolioItems();
   
-  return portfolioItems.map((item: any) => ({
+  return portfolioItems.map((item: PortfolioItem) => ({
     slug: item.slug,
   }));
 }
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PortfolioItemPageProps) {
 
   return {
     title: `${portfolioItem.title} | Greg Robleto Portfolio`,
-    description: portfolioItem.subtitle || `Case study: ${portfolioItem.title}`,
+    description: (portfolioItem as PortfolioItem).subtitle || `Case study: ${portfolioItem.title}`,
     robots: {
       index: false,
       follow: false,
@@ -66,19 +67,19 @@ export default async function PortfolioItemPage({ params }: PortfolioItemPagePro
       />
 
       {/* Subtitle */}
-      {portfolioItem.subtitle && (
+      {(portfolioItem as PortfolioItem).subtitle && (
         <div className="mb-8">
           <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-            {portfolioItem.subtitle}
+            {(portfolioItem as PortfolioItem).subtitle}
           </p>
         </div>
       )}
 
       {/* Hero Image */}
-      {portfolioItem.image && (
+      {(portfolioItem as PortfolioItem).image && (
         <div className="mb-8">
           <img
-            src={portfolioItem.image}
+            src={(portfolioItem as PortfolioItem).image as string}
             alt={portfolioItem.title}
             className="w-full rounded-lg shadow-lg"
           />
