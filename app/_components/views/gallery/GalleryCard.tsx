@@ -109,11 +109,24 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 				style={{ minHeight, height: minHeight }} // Set height and minHeight dynamically
 			>
 				{!imageError && imageSrc ? (
-					item[urlKey] ? (
+					// Check for external URL first, then internal slug
+					item[urlKey] && item[urlKey] !== "#" ? (
 						<a
-							href={`https://${item[urlKey]}`}
+							href={item[urlKey].startsWith('http') ? item[urlKey] : `https://${item[urlKey]}`}
 							target="_blank"
 							rel="noopener noreferrer"
+							className="block h-full w-full"
+						>
+							<img
+								src={imageSrc}
+								alt={item[titleKey] || "Image"}
+								className="h-full w-full object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+								onError={() => setImageError(true)}
+							/>
+						</a>
+					) : item[slugKey] && pageKey === "portfolio" ? (
+						<a
+							href={`/${pageKey}/${item[slugKey]}`}
 							className="block h-full w-full"
 						>
 							<img
@@ -149,12 +162,22 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						: "p-6 rounded-xl"
 				} w-full`}
 			>
-				{item[urlKey] ? (
+				{/* Check for external URL first, then internal slug */}
+				{item[urlKey] && item[urlKey] !== "#" ? (
 					<h3 className="font-semibold text-gray-900 dark:text-gray-100">
 						<a
-							href={`https://${item[urlKey]}`}
+							href={item[urlKey].startsWith('http') ? item[urlKey] : `https://${item[urlKey]}`}
 							target="_blank"
 							rel="noopener noreferrer"
+							className="hover:underline"
+						>
+							{item[titleKey] || "Untitled"}
+						</a>
+					</h3>
+				) : item[slugKey] && pageKey === "portfolio" ? (
+					<h3 className="font-semibold text-gray-900 dark:text-gray-100">
+						<a
+							href={`/${pageKey}/${item[slugKey]}`}
 							className="hover:underline"
 						>
 							{item[titleKey] || "Untitled"}

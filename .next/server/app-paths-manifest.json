@@ -1,3 +1,21 @@
 {
-  "/projects/page": "app/projects/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/bookmarks/page": "app/bookmarks/page.js",
+  "/art/page": "app/art/page.js",
+  "/following/page": "app/following/page.js",
+  "/about/page": "app/about/page.js",
+  "/library/page": "app/library/page.js",
+  "/lists/board-games/page": "app/lists/board-games/page.js",
+  "/lists/musicals/page": "app/lists/musicals/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/lists/shakespeare/page": "app/lists/shakespeare/page.js",
+  "/lists/page": "app/lists/page.js",
+  "/lists/travel/page": "app/lists/travel/page.js",
+  "/page": "app/page.js",
+  "/posts/page": "app/posts/page.js",
+  "/projects/page": "app/projects/page.js",
+  "/resources/page": "app/resources/page.js",
+  "/reading-list/page": "app/reading-list/page.js",
+  "/case-studies/[slug]/page": "app/case-studies/[slug]/page.js",
+  "/portfolio/page": "app/portfolio/page.js"
 }

@@ -159,3 +159,34 @@ export const formatters = {
       .replace(/-+$/, '');
   }
 };
+
+// Performance measurement utilities
+export const performanceMeasure = {
+  start: (label: string) => {
+    const uniqueLabel = `${label}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    const startTime = performance.now();
+    console.time(uniqueLabel);
+    
+    return {
+      end: () => {
+        const endTime = performance.now();
+        console.timeEnd(uniqueLabel);
+        const duration = endTime - startTime;
+        console.log(`${label}: ${duration.toFixed(3)}ms`);
+        return duration;
+      }
+    };
+  },
+
+  measure: async <T>(label: string, fn: () => Promise<T>): Promise<T> => {
+    const timer = performanceMeasure.start(label);
+    try {
+      const result = await fn();
+      timer.end();
+      return result;
+    } catch (error) {
+      timer.end();
+      throw error;
+    }
+  }
+};

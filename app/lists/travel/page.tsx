@@ -5,6 +5,7 @@ import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import { sortByName } from "@/utils/sortItems"; // Import the sortByName function
 import USMap from "@/app/lists/travel/us-map"; // Update the import path to the correct location of the USMap component
+import type { TravelItem } from "@/types";
 
 export default async function TravelPage() {
 	// Fetch the data from Notion using centralized data mapper
@@ -14,16 +15,20 @@ export default async function TravelPage() {
 		entryType: "travel", // Specify the entry type for mapping
 	});
 
+	// Cast to correct type for travel items
+	const travelItems = listItems as TravelItem[];
+
 	// Filter the items by Seen status
-	const filteredItems = listItems.filter(
+	const filteredItems = travelItems.filter(
 		(item) => item.seen === "Been there"
 	);
 
 	// Group items by state
 	const groupedItems = filteredItems.reduce((acc, item) => {
-		(acc[item.state] = acc[item.state] || []).push(item);
+		const state = item.state || 'Unknown';
+		(acc[state] = acc[state] || []).push(item);
 		return acc;
-	}, {});
+	}, {} as Record<string, TravelItem[]>);
 
 	// Sort the keys of groupedItems alphabetically (the state names)
 	const sortedKeys = Object.keys(groupedItems).sort();
@@ -57,7 +62,7 @@ export default async function TravelPage() {
 						titleKey="title"
 						linkKey="url"
 						slugKey="slug"
-						cityStateKey="cityState"
+						cityStateKey={"cityState" as keyof TravelItem}
 					/>
 				</section>
 			))}

@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
+import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
 import { env } from "@/config/env";
 import { validateNotionResponse } from "@/utils/validation";
 import Lists from "@/app/_components/views/list/List";
@@ -14,20 +15,15 @@ import type { BaseItem, PostItem, ReadingListItem } from "@/types";
 
 export default async function HomePage() {
 	try {
-		// Fetch data using the refactored fetchNotionData function with proper env config
+		// Use hybrid fetcher for performance-critical content (posts)
+		// and direct Notion API for less critical content
 		const [aboutData, postData, readingListData] = await Promise.allSettled([
 			fetchNotionData({
 				databaseId: env.NOTION_ABOUT_DB_ID,
 				entryType: "about",
 			}),
-			fetchNotionData({
-				databaseId: env.NOTION_POSTS_DB_ID,
-				entryType: "posts",
-			}),
-			fetchNotionData({
-				databaseId: env.NOTION_READINGLIST_DB_ID,
-				entryType: "reading-list",
-			})
+			HybridContentFetcher.getAllPosts(),
+			HybridContentFetcher.getAllReadinglist()
 		]);
 
 		// Handle potential errors (temporarily bypass validation)

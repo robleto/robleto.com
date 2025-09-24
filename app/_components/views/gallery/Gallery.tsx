@@ -1,56 +1,57 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import GalleryCard from "./GalleryCard";
+import { GalleryLoading } from "@/app/_components/common/Loading";
+import type { GalleryProps, BaseItem } from "@/types";
 
-type GalleryProps = {
-	items: any[];
-	gridCols?: string;
-	smGridCols?: string;
-	mdGridCols?: string;
-	lgGridCols?: string;
-	pageKey?: string;
-	titleKey?: string;
-	linkKey?: string;
-	slugKey?: string;
-	pubDateKey?: string;
-	descriptionKey?: string;
-	tagsKey?: string;
-	urlKey?: string;
-	cityStateKey?: string;
-	animatedKey?: string;
-	minHeight?: string;
-	groupByKey?: string | null;
-	sortItem?: (items: any[]) => any[];
-	filterItem?: (items: any[]) => any[];
-};
+// Enhanced Gallery Props with better type safety
+interface EnhancedGalleryProps<T = BaseItem> extends GalleryProps<T> {
+	loading?: boolean;
+	error?: Error | null;
+	emptyStateMessage?: string;
+	emptyStateComponent?: React.ComponentType;
+	onItemClick?: (item: T) => void;
+}
 
-const Gallery: React.FC<GalleryProps> = ({
+const EmptyState: React.FC<{message: string}> = ({ message }) => (
+	<div className="text-center py-12">
+		<div className="text-4xl mb-4">📭</div>
+		<p className="text-gray-500 dark:text-gray-400">{message}</p>
+	</div>
+);
+
+const Gallery = <T extends BaseItem = BaseItem>({
 	items,
 	gridCols = "grid-cols-1",
 	smGridCols = "sm:grid-cols-1",
 	mdGridCols = "md:grid-cols-2",
 	lgGridCols = "lg:grid-cols-3",
 	pageKey = "page",
-	titleKey = "title",
-	linkKey = "",
-	slugKey = "",
-	pubDateKey = "",
-	descriptionKey = "",
-	tagsKey = "",
-	urlKey = "url",
-	cityStateKey = "",
-	animatedKey = "",
+	titleKey = "title" as keyof T,
+	linkKey = "url" as keyof T,
+	slugKey = "slug" as keyof T,
+	pubDateKey = "pubdate" as keyof T,
+	descriptionKey = "description" as keyof T,
+	tagsKey = "tags" as keyof T,
+	urlKey = "url" as keyof T,
+	cityStateKey = "cityState" as keyof T,
+	animatedKey = "animated" as keyof T,
 	groupByKey = null,
 	minHeight = "300px",
 	sortItem,
 	filterItem,
-}) => {
-	const [clientItems, setClientItems] = useState(items);
+	loading = false,
+	error = null,
+	emptyStateMessage = "No items to display",
+	emptyStateComponent: EmptyStateComponent,
+	onItemClick,
+}: EnhancedGalleryProps<T>): JSX.Element => {
+	const [clientItems, setClientItems] = useState<T[]>(items);
 
-	// Handle sorting and filtering on items
-	useEffect(() => {
-		let updatedItems = [...items]; // Create a copy of the items array
+	// Memoize processed items for performance
+	const processedItems = useMemo(() => {
+		let updatedItems = [...items];
 
 		// Apply filtering if a filter function is provided
 		if (filterItem) {
@@ -62,34 +63,68 @@ const Gallery: React.FC<GalleryProps> = ({
 			updatedItems = sortItem(updatedItems);
 		}
 
-		// Update the state with sorted/filtered items
-		setClientItems(updatedItems);
+		return updatedItems;
 	}, [items, filterItem, sortItem]);
+
+	// Update client items when processed items change
+	useEffect(() => {
+		setClientItems(processedItems);
+	}, [processedItems]);
+
+	// Handle loading state
+	if (loading) {
+		return <GalleryLoading count={6} />;
+	}
+
+	// Handle error state
+	if (error) {
+		return (
+			<div className="text-center py-12">
+				<div className="text-4xl mb-4">⚠️</div>
+				<p className="text-red-500 dark:text-red-400">
+					Error loading content: {error.message}
+				</p>
+			</div>
+		);
+	}
+
+	// Handle empty state
+	if (!Array.isArray(clientItems) || clientItems.length === 0) {
+		return EmptyStateComponent ? (
+			<EmptyStateComponent />
+		) : (
+			<EmptyState message={emptyStateMessage} />
+		);
+	}
 
 	return (
 		<div className="container mx-auto">
 			<div
 				className={`grid ${gridCols} ${smGridCols} ${mdGridCols} ${lgGridCols} gap-6 -z-10`}
 			>
-				{Array.isArray(clientItems) &&
-					clientItems.map((item: any, index: number) => (
+				{clientItems.map((item: T, index: number) => (
+					<div 
+						key={item.id || index}
+						onClick={() => onItemClick?.(item)}
+						className={onItemClick ? "cursor-pointer" : ""}
+					>
 						<GalleryCard
-							key={index}
-							item={{ ...item, index }} // Add index for alternating layout
+							item={{ ...item, index }}
 							pageKey={pageKey}
-							titleKey={titleKey}
-							linkKey={urlKey}
-							slugKey={slugKey}
-							pubDateKey={pubDateKey}
-							descriptionKey={descriptionKey}
-							tagsKey={tagsKey}
-							urlKey={urlKey}
-							cityStateKey={cityStateKey}
-							animatedKey={animatedKey}
+							titleKey={titleKey as string}
+							linkKey={linkKey as string}
+							slugKey={slugKey as string}
+							pubDateKey={pubDateKey as string}
+							descriptionKey={descriptionKey as string}
+							tagsKey={tagsKey as string}
+							urlKey={linkKey as string}
+							cityStateKey={cityStateKey as string}
+							animatedKey={animatedKey as string}
 							lgGridCols={lgGridCols}
 							minHeight={minHeight}
 						/>
-					))}
+					</div>
+				))}
 			</div>
 		</div>
 	);

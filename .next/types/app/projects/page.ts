@@ -1,4 +1,4 @@
-// File: /Users/gregoryrobleto/Dropbox/Greg/Sites/Robleto/robleto.com/app/projects/page.tsx
+// File: /Users/greg.robleto/Dropbox/Greg/Sites/Robleto/robleto/app/projects/page.tsx
 import * as entry from '../../../../app/projects/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
+import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
 import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByOrder, sortByName } from "@/utils/sortItems";
 import { filterItemsByProperty } from "@/utils/filterItems";
@@ -17,12 +18,8 @@ export const generateMetadata = () => {
 };
 
 export default async function PortfolioPage() {
-	// Fetch the Notion data using centralized data mapper
-	const { pageContent: portfolioPageContent, listItems: portfolioListItems } = await fetchNotionData({
-		databaseId: process.env.NOTION_PORTFOLIO_DB_ID!,
-		pageId: process.env.NOTION_PORTFOLIO_PAGE_ID!,
-		entryType: "portfolio", // Use entryType to fetch mapped data
-	});
+	// Use hybrid fetcher for better performance
+	const { pageContent: portfolioPageContent, listItems: portfolioListItems } = await HybridContentFetcher.getPortfolioItems();
   
 	const { pageContent: projectsPageContent, listItems: projectsListItems } = await fetchNotionData({
 		databaseId: process.env.NOTION_PROJECTS_DB_ID!,

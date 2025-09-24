@@ -71,6 +71,10 @@ export const env = {
   TWITTER_API_SECRET_KEY: process.env.TWITTER_API_SECRET_KEY,
   TWITTER_BEARER_TOKEN: process.env.TWITTER_BEARER_TOKEN,
   
+  // Supabase Configuration (optional)
+  SUPABASE_URL: process.env.SUPABASE_URL,
+  SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
+  
   // App Configuration
   NODE_ENV: process.env.NODE_ENV || 'development',
   NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
