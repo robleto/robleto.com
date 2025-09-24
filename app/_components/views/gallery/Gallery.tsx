@@ -100,7 +100,7 @@ const Gallery = <T extends BaseItem = BaseItem>({
 	return (
 		<div className="container mx-auto">
 			<div
-				className={`grid ${gridCols} ${smGridCols} ${mdGridCols} ${lgGridCols} gap-6 -z-10`}
+				className={`grid ${gridCols} ${smGridCols} ${mdGridCols} ${lgGridCols} gap-6`}
 			>
 				{clientItems.map((item: T, index: number) => (
 					<div 

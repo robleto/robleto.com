@@ -91,14 +91,13 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		: "";
 
 	return (
-		<div
-			ref={cardRef}
-			className={`relative flex flex-col overflow-hidden shadow-lg rounded-xl ${
-				enableTwoColumnLayout
-					? layoutClass
-					: "bg-white dark:bg-gray-800"
-			} group`}
-		>
+		<div ref={cardRef} className="relative group">
+			{/* Ensure white background in both layouts */}
+			<div
+				className={`flex flex-col overflow-hidden shadow-lg rounded-xl ${
+					enableTwoColumnLayout ? layoutClass : "bg-white dark:bg-gray-800"
+				}`}
+			>
 			{/* Image Section (2/3 width, rounded-xl, transparent if image exists) */}
 			<div
 				className={`${
@@ -158,7 +157,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			<div
 				className={`${
 					enableTwoColumnLayout
-						? "md:w-1/3 p-6 flex flex-col justify-center"
+						? "md:w-1/3 p-6 flex flex-col justify-center bg-white dark:bg-gray-800"
 						: "p-6 rounded-xl"
 				} w-full`}
 			>
@@ -219,6 +218,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						</a>
 					</p>
 				)} */}
+			</div>
 			</div>
 		</div>
 	);

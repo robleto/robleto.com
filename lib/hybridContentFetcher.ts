@@ -1,6 +1,5 @@
 import { fetchNotionData } from './notionContentFetcher'
 import { getPageContent } from './notion'
-import { SupabaseContentFetcher } from './supabase'
 import { performanceMeasure } from '@/utils/performance'
 import { env } from '@/config/env'
 
@@ -9,113 +8,52 @@ import { env } from '@/config/env'
  * This provides the best performance while maintaining reliability
  */
 export class HybridContentFetcher {
-  private static readonly CACHE_TIMEOUT_HOURS = 1 // Consider cache stale after 1 hour
-  
-  private static isCacheStale(cachedAt: Date): boolean {
-    const now = new Date()
-    const diffHours = (now.getTime() - cachedAt.getTime()) / (1000 * 60 * 60)
-    return diffHours > this.CACHE_TIMEOUT_HOURS
-  }
 
   static async getAllPosts() {
     const timer = performanceMeasure.start('getAllPosts')
     try {
-      // Try Supabase first
-      const cachedAge = await SupabaseContentFetcher.getCachedContentAge('posts')
-      
-      if (cachedAge && !this.isCacheStale(cachedAge)) {
-        console.log('📋 Using cached posts from Supabase')
-        const data = await SupabaseContentFetcher.getAllPosts()
-        if (data.length > 0) {
-          timer.end()
-          return { listItems: data, pageContent: null }
-        }
-      }
-
-      // Fallback to Notion if cache is stale or empty
-      console.log('🔄 Fetching fresh posts from Notion')
       const data = await fetchNotionData({
         databaseId: env.NOTION_POSTS_DB_ID,
-        entryType: "posts",
+        entryType: 'posts',
       })
-      timer.end()
       return data
     } catch (error) {
-      console.error('Error in hybrid posts fetch:', error)
+      console.error('Error fetching posts from Notion:', error)
+      throw error
+    } finally {
       timer.end()
-      // Final fallback to Notion
-      return await fetchNotionData({
-        databaseId: env.NOTION_POSTS_DB_ID,
-        entryType: "posts",
-      })
     }
   }
 
   static async getAllProjects() {
     const timer = performanceMeasure.start('getAllProjects')
     try {
-      // Try Supabase first
-      const cachedAge = await SupabaseContentFetcher.getCachedContentAge('projects')
-      
-      if (cachedAge && !this.isCacheStale(cachedAge)) {
-        console.log('📋 Using cached projects from Supabase')
-        const data = await SupabaseContentFetcher.getAllProjects()
-        if (data.length > 0) {
-          timer.end()
-          return { listItems: data, pageContent: null }
-        }
-      }
-
-      // Fallback to Notion if cache is stale or empty
-      console.log('🔄 Fetching fresh projects from Notion')
       const data = await fetchNotionData({
         databaseId: env.NOTION_PROJECTS_DB_ID,
-        entryType: "projects",
+        entryType: 'projects',
       })
-      timer.end()
       return data
     } catch (error) {
-      console.error('Error in hybrid projects fetch:', error)
+      console.error('Error fetching projects from Notion:', error)
+      throw error
+    } finally {
       timer.end()
-      // Final fallback to Notion
-      return await fetchNotionData({
-        databaseId: env.NOTION_PROJECTS_DB_ID,
-        entryType: "projects",
-      })
     }
   }
 
   static async getPortfolioItems() {
     const timer = performanceMeasure.start('getPortfolioItems')
     try {
-      // Try Supabase first
-      const cachedAge = await SupabaseContentFetcher.getCachedContentAge('portfolio')
-      
-      if (cachedAge && !this.isCacheStale(cachedAge)) {
-        console.log('📋 Using cached portfolio from Supabase')
-        const data = await SupabaseContentFetcher.getPortfolioItems()
-        if (data.length > 0) {
-          timer.end()
-          return { listItems: data, pageContent: null }
-        }
-      }
-
-      // Fallback to Notion if cache is stale or empty
-      console.log('🔄 Fetching fresh portfolio from Notion')
       const data = await fetchNotionData({
         databaseId: env.NOTION_PORTFOLIO_DB_ID,
-        entryType: "portfolio",
+        entryType: 'portfolio',
       })
-      timer.end()
       return data
     } catch (error) {
-      console.error('Error in hybrid portfolio fetch:', error)
+      console.error('Error fetching portfolio from Notion:', error)
+      throw error
+    } finally {
       timer.end()
-      // Final fallback to Notion
-      return await fetchNotionData({
-        databaseId: env.NOTION_PORTFOLIO_DB_ID,
-        entryType: "portfolio",
-      })
     }
   }
 

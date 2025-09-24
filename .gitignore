@@ -1,16 +1,22 @@
 # dependencies installed by npm
-node_modules
-.history
-.nextx
-.next/cache`
+node_modules/
+.history/
 
-# build artefacts
-css
+# Next.js build output
+.next/
 
-# secrets and errors
+# build artifacts
+css/
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files (never commit)
 .env
-.env.local
-.log
+.env.*
 
 # macOS related files
 .DS_Store
