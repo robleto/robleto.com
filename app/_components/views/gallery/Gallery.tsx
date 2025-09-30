@@ -46,7 +46,7 @@ const Gallery = <T extends BaseItem = BaseItem>({
 	emptyStateMessage = "No items to display",
 	emptyStateComponent: EmptyStateComponent,
 	onItemClick,
-}: EnhancedGalleryProps<T>): JSX.Element => {
+}: EnhancedGalleryProps<T>): React.ReactElement => {
 	const [clientItems, setClientItems] = useState<T[]>(items);
 
 	// Memoize processed items for performance

@@ -12,7 +12,7 @@ import {
 
 type SocialLink = {
 	name: string;
-	icon: JSX.Element;
+	icon: React.ReactElement;
 	url: string;
 	color: string; // Tailwind color class for hover state
 };

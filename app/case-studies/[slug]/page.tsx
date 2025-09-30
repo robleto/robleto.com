@@ -19,16 +19,17 @@ export async function generateStaticParams() {
 export default async function CaseStudyPage({
 	params,
 }: {
-	params: { slug: string };
+	params: Promise<{ slug: string }>;
 }) {
+	const { slug } = await params;
 	const caseStudies = await getCaseStudies(DATABASE_ID!);
 	const caseStudy = caseStudies.find(
 		(item: any) =>
-			item.properties.Slug.rich_text[0]?.plain_text === params.slug
+			item.properties.Slug.rich_text[0]?.plain_text === slug
 	);
 
 	if (!caseStudy) {
-		console.log("Case study not found for slug:", params.slug);
+		console.log("Case study not found for slug:", slug);
 		return <div>Case study not found.</div>;
 	}
 

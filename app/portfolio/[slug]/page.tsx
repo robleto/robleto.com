@@ -7,9 +7,9 @@ import PageHeader from "@/app/_components/layout/page/PageHeader";
 import Link from "next/link";
 
 interface PortfolioItemPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -22,7 +22,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PortfolioItemPageProps) {
-  const portfolioItem = await HybridContentFetcher.getPortfolioItemBySlug(params.slug);
+  const { slug } = await params;
+  const portfolioItem = await HybridContentFetcher.getPortfolioItemBySlug(slug);
   
   if (!portfolioItem) {
     return {
@@ -41,7 +42,8 @@ export async function generateMetadata({ params }: PortfolioItemPageProps) {
 }
 
 export default async function PortfolioItemPage({ params }: PortfolioItemPageProps) {
-  const portfolioItem = await HybridContentFetcher.getPortfolioItemBySlug(params.slug);
+  const { slug } = await params;
+  const portfolioItem = await HybridContentFetcher.getPortfolioItemBySlug(slug);
 
   if (!portfolioItem) {
     notFound();
