@@ -4,26 +4,57 @@ import { performanceMeasure } from '@/utils/performance'
 import type { BaseItem, PortfolioItem, PostItem } from '@/types'
 import { env } from '@/config/env'
 
+// Build-time cache to avoid redundant Notion API calls during static generation
+const buildCache = new Map<string, { data: any; timestamp: number }>()
+const CACHE_TTL = 5 * 60 * 1000 // 5 minutes — covers a full build
+
+function getCached<T>(key: string): T | null {
+  const entry = buildCache.get(key)
+  if (entry && Date.now() - entry.timestamp < CACHE_TTL) {
+    return entry.data as T
+  }
+  return null
+}
+
+function setCache(key: string, data: any) {
+  buildCache.set(key, { data, timestamp: Date.now() })
+}
+
+// Track in-flight promises to deduplicate concurrent requests
+const inFlight = new Map<string, Promise<any>>()
+
 /**
  * Content fetcher for Notion-backed content.
- * All data is fetched directly from Notion.
+ * All data is fetched directly from Notion with build-time caching.
  */
 export class HybridContentFetcher {
 
   static async getAllPosts(): Promise<{ listItems: BaseItem[]; pageContent: any[]; imageUrls: string[] }> {
+    const cacheKey = 'allPosts'
+    const cached = getCached<{ listItems: BaseItem[]; pageContent: any[]; imageUrls: string[] }>(cacheKey)
+    if (cached) return cached
+
+    // Deduplicate concurrent calls
+    if (inFlight.has(cacheKey)) return inFlight.get(cacheKey)
+
     const timer = performanceMeasure.start('getAllPosts')
-    try {
-      const data = await fetchNotionData({
-        databaseId: env.NOTION_POSTS_DB_ID,
-        entryType: 'posts',
-      })
+    const promise = fetchNotionData({
+      databaseId: env.NOTION_POSTS_DB_ID,
+      entryType: 'posts',
+    }).then(data => {
+      setCache(cacheKey, data)
+      inFlight.delete(cacheKey)
+      timer.end()
       return data
-    } catch (error) {
+    }).catch(error => {
+      inFlight.delete(cacheKey)
+      timer.end()
       console.error('Error fetching posts from Notion:', error)
       throw error
-    } finally {
-      timer.end()
-    }
+    })
+
+    inFlight.set(cacheKey, promise)
+    return promise
   }
 
   static async getPostBySlug(slug: string): Promise<(PostItem & { content: any[] }) | null> {
@@ -53,35 +84,57 @@ export class HybridContentFetcher {
   }
 
   static async getAllProjects(): Promise<{ listItems: BaseItem[]; pageContent: any[]; imageUrls: string[] }> {
+    const cacheKey = 'allProjects'
+    const cached = getCached<{ listItems: BaseItem[]; pageContent: any[]; imageUrls: string[] }>(cacheKey)
+    if (cached) return cached
+
+    if (inFlight.has(cacheKey)) return inFlight.get(cacheKey)
+
     const timer = performanceMeasure.start('getAllProjects')
-    try {
-      const data = await fetchNotionData({
-        databaseId: env.NOTION_PROJECTS_DB_ID,
-        entryType: 'projects',
-      })
+    const promise = fetchNotionData({
+      databaseId: env.NOTION_PROJECTS_DB_ID,
+      entryType: 'projects',
+    }).then(data => {
+      setCache(cacheKey, data)
+      inFlight.delete(cacheKey)
+      timer.end()
       return data
-    } catch (error) {
+    }).catch(error => {
+      inFlight.delete(cacheKey)
+      timer.end()
       console.error('Error fetching projects from Notion:', error)
       throw error
-    } finally {
-      timer.end()
-    }
+    })
+
+    inFlight.set(cacheKey, promise)
+    return promise
   }
 
   static async getPortfolioItems(): Promise<{ listItems: PortfolioItem[]; pageContent: any[]; imageUrls: string[] }> {
+    const cacheKey = 'allPortfolio'
+    const cached = getCached<{ listItems: PortfolioItem[]; pageContent: any[]; imageUrls: string[] }>(cacheKey)
+    if (cached) return cached
+
+    if (inFlight.has(cacheKey)) return inFlight.get(cacheKey)
+
     const timer = performanceMeasure.start('getPortfolioItems')
-    try {
-      const data = await fetchNotionData({
-        databaseId: env.NOTION_PORTFOLIO_DB_ID,
-        entryType: 'portfolio',
-      })
-      return data
-    } catch (error) {
+    const promise = fetchNotionData({
+      databaseId: env.NOTION_PORTFOLIO_DB_ID,
+      entryType: 'portfolio',
+    }).then(data => {
+      setCache(cacheKey, data)
+      inFlight.delete(cacheKey)
+      timer.end()
+      return data as { listItems: PortfolioItem[]; pageContent: any[]; imageUrls: string[] }
+    }).catch(error => {
+      inFlight.delete(cacheKey)
+      timer.end()
       console.error('Error fetching portfolio from Notion:', error)
       throw error
-    } finally {
-      timer.end()
-    }
+    })
+
+    inFlight.set(cacheKey, promise)
+    return promise
   }
 
   static async getPortfolioItemBySlug(slug: string): Promise<(PortfolioItem & { content: any[] }) | null> {

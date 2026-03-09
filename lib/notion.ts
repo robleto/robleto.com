@@ -1,8 +1,11 @@
 import { Client } from "@notionhq/client";
 import { BlockObjectResponse, PageObjectResponse, PartialBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints"; // Import block types
 
-// Initialize the Notion client with the API key
-const notion = new Client({ auth: process.env.NOTION_API_KEY });
+// Initialize the Notion client with the API key and extended timeout
+const notion = new Client({
+	auth: process.env.NOTION_API_KEY,
+	timeoutMs: 120_000,
+});
 
 // Fetch data from a Notion database (e.g., Projects or Library)
 export const getDatabaseEntries = async (databaseId: string): Promise<PageObjectResponse[]> => {
