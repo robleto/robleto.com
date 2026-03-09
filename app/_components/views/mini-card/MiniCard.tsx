@@ -45,7 +45,7 @@ const MiniCardView: React.FC<MiniCardProps> = ({
 			{/* Favicon and Title */}
 			<div key={item.id} className="flex items-center">
 				{favicon && (
-					<img src={favicon} alt="*" className="h-5 w-5 rounded" />
+					<img src={favicon} alt="" className="h-5 w-5 rounded" />
 				)}
 					<h3 className="text-md font-semibold leading-5 px-4">
 						{item[titleKey]}

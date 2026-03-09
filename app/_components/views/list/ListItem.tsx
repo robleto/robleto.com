@@ -191,18 +191,27 @@ const ListItem: React.FC<ListItemProps> = ({
 		</li>
 	);
 
+	const linkValue = item[linkKey];
+	const normalizedLink =
+		typeof linkValue === "string" ? linkValue.trim() : "";
+	const isPlaceholderHref =
+		normalizedLink === "#" ||
+		normalizedLink === "https:/#" ||
+		normalizedLink === "http:/#";
+	const isExternalHref = /^https?:\/\/\S+$/i.test(normalizedLink);
+	const isInternalHref = normalizedLink.startsWith("/");
+	const isValidHref =
+		normalizedLink.length > 0 &&
+		!isPlaceholderHref &&
+		(isExternalHref || isInternalHref);
+
 	// Wrap the content in a link if `linkKey` is provided
-	return item[linkKey] ? (
+	return isValidHref ? (
 		<a
-			href={
-				item[linkKey]?.startsWith("http://") ||
-				item[linkKey]?.startsWith("https://")
-					? item[linkKey]
-					: `https://${item[linkKey]}`
-			}
-			target="_blank"
-			rel="noopener noreferrer"
-			className="block"
+			href={normalizedLink}
+			target={isExternalHref ? "_blank" : undefined}
+			rel={isExternalHref ? "noopener noreferrer" : undefined}
+			className="block rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
 		>
 			{itemContent}
 		</a>

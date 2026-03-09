@@ -1,7 +1,7 @@
 import { fetchNotionData } from './notionContentFetcher'
 import { getPageContent } from './notion'
 import { performanceMeasure } from '@/utils/performance'
-import type { BaseItem, PortfolioItem } from '@/types'
+import type { BaseItem, PortfolioItem, PostItem } from '@/types'
 import { env } from '@/config/env'
 
 /**
@@ -23,6 +23,32 @@ export class HybridContentFetcher {
       throw error
     } finally {
       timer.end()
+    }
+  }
+
+  static async getPostBySlug(slug: string): Promise<(PostItem & { content: any[] }) | null> {
+    const timer = performanceMeasure.start('getPostBySlug')
+    try {
+      const { listItems } = await this.getAllPosts()
+      const postItems = listItems as PostItem[]
+      const postItem = postItems.find((item) => item.slug === slug)
+
+      if (!postItem) {
+        timer.end()
+        return null
+      }
+
+      const pageContent = await getPageContent(postItem.id)
+
+      timer.end()
+      return {
+        ...postItem,
+        content: pageContent,
+      }
+    } catch (error) {
+      console.error('Error fetching post by slug:', error)
+      timer.end()
+      return null
     }
   }
 

@@ -83,7 +83,7 @@ export default function SideNav() {
 				<div className="flex-grow overflow-y-auto">
 					<div className="px-4">
 						<SidebarSectionHeader
-							title="Biography"
+							title="Work"
 							isCollapsed={isCollapsed}
 						/>
 						<ul>
@@ -122,7 +122,7 @@ export default function SideNav() {
 							<SidebarLink
 								link="posts"
 								slug="posts"
-								title="Posts"
+								title="Writing"
 								isCollapsed={isCollapsed}
 								onOpenContact={() => {}}
 								onOpenSocial={() => {}}
@@ -140,6 +140,7 @@ export default function SideNav() {
 										isCollapsed={isCollapsed}
 										onOpenContact={() => {}}
 										onOpenSocial={() => {}}
+										as="div"
 									/>
 								</div>
 

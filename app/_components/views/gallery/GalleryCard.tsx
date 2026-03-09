@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaThumbtack, FaImage } from "react-icons/fa";
+import Image from "next/image";
+import { FaImage } from "react-icons/fa";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Tags from "../common/Tags"; // Component to display tags
@@ -18,6 +19,7 @@ type GalleryCardProps = {
 	urlKey?: string;
 	cityStateKey?: string;
 	animatedKey?: string;
+	dateFormat?: "default" | "month-year";
 	lgGridCols: string;
 	minHeight?: string; // New prop for adjustable height
 };
@@ -34,6 +36,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 	urlKey = "url",
 	cityStateKey = "cityState",
 	animatedKey = "animated",
+	dateFormat = "default",
 	lgGridCols,
 	minHeight = "300px", // Default min-height
 }) => {
@@ -53,15 +56,16 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		fileExtension = "jpg"; // Use jpg for specific sections
 	}
 
-	// Generate Image Path
+	// Generate image source: prefer local slug image, fallback to mapped Notion image
 	useEffect(() => {
-		if (item[slugKey]) {
-			const src = `/${item[pageKey] || pageKey}/${
-				item[slugKey]
-			}.${fileExtension}`;
-			console.log(`Generated Image Path: ${src}`);
-			setImageSrc(src);
-		}
+		const notionImage =
+			typeof item.image === "string" ? item.image.trim() : "";
+		const localImage = item[slugKey]
+			? `/${item[pageKey] || pageKey}/${item[slugKey]}.${fileExtension}`
+			: "";
+
+		setImageError(false);
+		setImageSrc(localImage || notionImage);
 	}, [item, pageKey, slugKey, fileExtension]);
 
 	// GSAP animation
@@ -90,6 +94,49 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		  }`
 		: "";
 
+	const rawUrl = typeof item[urlKey] === "string" ? item[urlKey].trim() : "";
+	const isPlaceholderUrl =
+		rawUrl === "#" || rawUrl === "https:/#" || rawUrl === "http:/#";
+	const isInternalUrl = rawUrl.startsWith("/");
+	const isExternalUrl = /^https?:\/\//i.test(rawUrl);
+	const isDomainLikeUrl = rawUrl.length > 0 && !isInternalUrl && !isExternalUrl;
+	const hasValidUrl = rawUrl.length > 0 && !isPlaceholderUrl;
+	const resolvedUrl = isInternalUrl || isExternalUrl ? rawUrl : isDomainLikeUrl ? `https://${rawUrl}` : "";
+
+	// Posts-card specific: use first tag as primary category
+	const isPostsCard = pageKey === "posts";
+	const category =
+		isPostsCard &&
+		Array.isArray(item[tagsKey]) &&
+		item[tagsKey].length > 0
+			? item[tagsKey][0]
+			: null;
+
+	const formattedDate = item[pubDateKey]
+		? new Date(item[pubDateKey]).toLocaleDateString(
+				"en-US",
+				dateFormat === "month-year"
+					? { month: "short", year: "numeric" }
+					: undefined
+		  )
+		: null;
+	const notionFallbackSrc =
+		typeof item.image === "string" ? item.image.trim() : "";
+
+	const handleImageError = () => {
+		if (notionFallbackSrc && imageSrc !== notionFallbackSrc) {
+			setImageSrc(notionFallbackSrc);
+			return;
+		}
+		setImageError(true);
+	};
+
+	const titleClass = `font-semibold text-gray-900 dark:text-gray-100${
+		isPostsCard ? " leading-tight line-clamp-3 md:line-clamp-2" : ""
+	}`;
+	const optimizedCardSizes =
+		"(max-width: 768px) 96vw, (max-width: 1280px) 48vw, 520px";
+
 	return (
 		<div ref={cardRef} className="relative group">
 			{/* Ensure white background in both layouts */}
@@ -105,22 +152,26 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 				} flex items-center justify-center overflow-hidden ${
 					imageError ? "bg-gray-200" : "bg-transparent"
 				} relative`}
-				style={{ minHeight, height: minHeight }} // Set height and minHeight dynamically
+				style={{ minHeight, height: minHeight }}
 			>
 				{!imageError && imageSrc ? (
 					// Check for external URL first, then internal slug
-					item[urlKey] && item[urlKey] !== "#" ? (
+					hasValidUrl ? (
 						<a
-							href={item[urlKey].startsWith('http') ? item[urlKey] : `https://${item[urlKey]}`}
-							target="_blank"
-							rel="noopener noreferrer"
+							href={resolvedUrl}
+							target={isExternalUrl || isDomainLikeUrl ? "_blank" : undefined}
+							rel={isExternalUrl || isDomainLikeUrl ? "noopener noreferrer" : undefined}
 							className="block h-full w-full"
 						>
-							<img
+							<Image
 								src={imageSrc}
 								alt={item[titleKey] || "Image"}
-								className="h-full w-full object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
-								onError={() => setImageError(true)}
+								fill
+								sizes={optimizedCardSizes}
+								quality={65}
+								loading="lazy"
+								className="object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+								onError={handleImageError}
 							/>
 						</a>
 					) : item[slugKey] && pageKey === "portfolio" ? (
@@ -128,26 +179,42 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 							href={`/${pageKey}/${item[slugKey]}`}
 							className="block h-full w-full"
 						>
-							<img
+							<Image
 								src={imageSrc}
 								alt={item[titleKey] || "Image"}
-								className="h-full w-full object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
-								onError={() => setImageError(true)}
+								fill
+								sizes={optimizedCardSizes}
+								quality={65}
+								loading="lazy"
+								className="object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+								onError={handleImageError}
 							/>
 						</a>
 					) : (
-						<img
+						<Image
 							src={imageSrc}
 							alt={item[titleKey] || "Image"}
-							className="h-full w-full object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
-							onError={() => setImageError(true)}
+							fill
+							sizes={optimizedCardSizes}
+							quality={65}
+							loading="lazy"
+							className="object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+							onError={handleImageError}
 						/>
 					)
 				) : (
-					<div className="flex flex-col items-center justify-center w-full h-full bg-gray-200 rounded-t-xl">
-						<FaImage className="text-4xl text-gray-400" />
-						<span className="mt-2 text-lg text-gray-400 font-oswald">
-							Image Not Available
+					<div
+						className="flex items-center justify-center w-full h-full bg-gray-200 rounded-t-xl"
+						aria-hidden="true"
+					>
+						<FaImage className="text-3xl text-gray-400" />
+					</div>
+				)}
+				{/* Category pill overlay — posts cards only */}
+				{isPostsCard && category && (
+					<div className="absolute top-2 left-2 z-10 pointer-events-none">
+						<span className="bg-black/50 backdrop-blur-sm text-white text-[11px] font-medium leading-none px-2.5 py-1 rounded-full border border-white/20">
+							{category}
 						</span>
 					</div>
 				)}
@@ -162,19 +229,19 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 				} w-full`}
 			>
 				{/* Check for external URL first, then internal slug */}
-				{item[urlKey] && item[urlKey] !== "#" ? (
-					<h3 className="font-semibold text-gray-900 dark:text-gray-100">
+				{hasValidUrl ? (
+					<h3 className={titleClass}>
 						<a
-							href={item[urlKey].startsWith('http') ? item[urlKey] : `https://${item[urlKey]}`}
-							target="_blank"
-							rel="noopener noreferrer"
+							href={resolvedUrl}
+							target={isExternalUrl || isDomainLikeUrl ? "_blank" : undefined}
+							rel={isExternalUrl || isDomainLikeUrl ? "noopener noreferrer" : undefined}
 							className="hover:underline"
 						>
 							{item[titleKey] || "Untitled"}
 						</a>
 					</h3>
 				) : item[slugKey] && pageKey === "portfolio" ? (
-					<h3 className="font-semibold text-gray-900 dark:text-gray-100">
+					<h3 className={titleClass}>
 						<a
 							href={`/${pageKey}/${item[slugKey]}`}
 							className="hover:underline"
@@ -183,16 +250,23 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						</a>
 					</h3>
 				) : (
-					<h3 className="font-semibold text-gray-900 dark:text-gray-100">
+					<h3 className={titleClass}>
 						{item[titleKey] || "Untitled"}
 					</h3>
+				)}
+				{/* Date meta line directly under title — posts cards only */}
+				{isPostsCard && formattedDate && (
+					<p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
+						{formattedDate}
+					</p>
 				)}
 				{item[descriptionKey] && (
 					<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
 						{item[descriptionKey]}
 					</p>
 				)}
-				{item[tagsKey] && (
+				{/* Tags row — hidden on posts cards, shown elsewhere */}
+				{!isPostsCard && Array.isArray(item[tagsKey]) && item[tagsKey].length > 0 && (
 					<div className="flex flex-wrap gap-2 mt-4">
 						<Tags tags={item[tagsKey]} />
 					</div>
@@ -202,22 +276,12 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 						{item[cityStateKey]}
 					</p>
 				)}
-				{item[pubDateKey] && (
+				{/* Date row — non-posts cards only */}
+				{!isPostsCard && formattedDate && (
 					<p className="mt-4 text-sm text-gray-500">
-						{new Date(item[pubDateKey]).toLocaleDateString()}
+						{formattedDate}
 					</p>
 				)}
-				{/* {item[urlKey] && (
-					<p className="mt-4 text-sm text-blue-600">
-						<a
-							href={`https://${item[urlKey]}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{item[urlKey]}
-						</a>
-					</p>
-				)} */}
 			</div>
 			</div>
 		</div>

@@ -17,10 +17,11 @@ const DarkLightToggle = () => {
 		<div className="flex w-full opacity-50 divide-x divide-gray-300 border border-gray-300 dark:divide-gray-700 dark:border-gray-700 rounded">
 			{/* Light mode option */}
 			<button
-				className={`flex-1 p-2 flex justify-center items-center rounded-l ${
+				className={`flex-1 p-2 flex justify-center items-center rounded-l focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-1 ${
 					theme === "light" ? "bg-gray-200 dark:bg-gray-600" : ""
 				}`}
 				onClick={() => setTheme("light")}
+				aria-label="Theme: light"
 			>
 				<img
 					src={`/_icons/sun.svg`}
@@ -31,10 +32,11 @@ const DarkLightToggle = () => {
 
 			{/* System mode option */}
 			<button
-				className={`flex-1 p-2 flex justify-center items-center ${
+				className={`flex-1 p-2 flex justify-center items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-1 ${
 					theme === "system" ? "bg-gray-200 dark:bg-gray-500" : ""
 				}`}
 				onClick={() => setTheme("system")}
+				aria-label="Theme: system"
 			>
 				<img
 					src={`/_icons/system.svg`}
@@ -45,10 +47,11 @@ const DarkLightToggle = () => {
 
 			{/* Dark mode option */}
 			<button
-				className={`flex-1 p-2 flex justify-center items-center rounded-r ${
+				className={`flex-1 p-2 flex justify-center items-center rounded-r focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-1 ${
 					theme === "dark" ? "bg-gray-500 dark:bg-gray-500" : ""
 				}`}
 				onClick={() => setTheme("dark")}
+				aria-label="Theme: dark"
 			>
 				<img
 					src={`/_icons/moon.svg`}

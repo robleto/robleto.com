@@ -92,7 +92,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label={social.name}
-					className={`group transition-transform transform hover:scale-110`}
+					className={`group transition-transform transform hover:scale-110 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2`}
 				>
 					{/* Icon */}
 					<div

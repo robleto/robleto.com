@@ -2,7 +2,6 @@ import React from "react";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
 import PageHeader from "@/app/_components/layout/page/PageHeader";
 import { sortByPinnedAndDate } from "@/utils/sortItems";
-import Lists from "../_components/views/list/List";
 import Gallery from "../_components/views/gallery/Gallery";
 
 export default async function PostsPage() {
@@ -42,7 +41,7 @@ export default async function PostsPage() {
 		// Validate listItems
 		const sortedItems =
 			Array.isArray(listItems) && listItems.length > 0
-				? sortByPinnedAndDate(listItems, "date")
+				? sortByPinnedAndDate(listItems, "pubdate")
 				: [];
 
 		return (
@@ -53,19 +52,15 @@ export default async function PostsPage() {
 					pageContent={pageContent}
 				/>
 
-				{/* Only render Lists & Gallery if sortedItems exist */}
+				{/* Only render gallery if sortedItems exist */}
 				{sortedItems.length > 0 ? (
-					<>
-						<Lists
-							items={sortedItems}
-							linkKey="url"
-							pubDateKey="date"
-							pageKey="posts"
-							tagsKey="tags"
-							slugKey="slug"
-						/>
-						<Gallery items={sortedItems} />
-					</>
+					<Gallery
+						items={sortedItems}
+						pageKey="posts"
+						slugKey="slug"
+						linkKey="url"
+						dateFormat="month-year"
+					/>
 				) : (
 					<p>No posts available.</p>
 				)}

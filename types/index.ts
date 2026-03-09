@@ -19,6 +19,12 @@ export interface BaseItem {
 export interface PostItem extends BaseItem {
   pubdate?: string;
   date?: string;
+  linkedUrl?: string;
+  image?: string;
+  /** Article variant — controls template layout ("post" is default) */
+  variant?: 'post' | 'case-study';
+  /** Series or collection name shown in the article meta row */
+  series?: string;
 }
 
 export interface ProjectItem extends BaseItem {

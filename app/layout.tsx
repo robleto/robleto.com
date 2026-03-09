@@ -21,7 +21,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<head></head>
 			<body className="antialiased bg-background dark:bg-dark_background">
 				{/* Wrapping the app in ThemeProvider for theme toggling */}

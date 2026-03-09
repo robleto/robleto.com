@@ -1,49 +1,51 @@
 import React from "react";
-import { fetchNotionData } from "@/lib/notionContentFetcher";
 import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
-import { env } from "@/config/env";
-import { validateNotionResponse } from "@/utils/validation";
-import Lists from "@/app/_components/views/list/List";
 import { sortByPinnedAndDate } from "@/utils/sortItems";
-import FlippingWords from "@/app/_components/custom/FlippingWords";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
-import MiniCardView from "@/app/_components/views/mini-card/MiniCardSet";
+import FeaturedBuilds from "@/app/_components/views/home/FeaturedBuilds";
 import SocialLinks from "@/app/_components/views/common/SocialLinks";
-import Loading, { GalleryLoading, ListLoading } from "@/app/_components/common/Loading";
-import type { BaseItem, PostItem, ReadingListItem } from "@/types";
+import { GalleryLoading } from "@/app/_components/common/Loading";
+import type { PostItem } from "@/types";
+
+// Slugs pinned to the top of the homepage Writing section.
+// Add or remove slugs here to control featured order; remaining posts follow by recency.
+const pinnedPostSlugs: string[] = [
+	"making-the-most-out-of-mulch-stay-with-me",
+];
 
 export default async function HomePage() {
 	try {
 		// Use hybrid fetcher for performance-critical content (posts)
 		// and direct Notion API for less critical content
-		const [aboutData, postData, readingListData] = await Promise.allSettled([
-			fetchNotionData({
-				databaseId: env.NOTION_ABOUT_DB_ID,
-				entryType: "about",
-			}),
+		const [postData] = await Promise.allSettled([
 			HybridContentFetcher.getAllPosts(),
-			HybridContentFetcher.getAllReadinglist()
 		]);
-
-		// Handle potential errors (temporarily bypass validation)
-		const aboutItems: BaseItem[] = aboutData.status === 'fulfilled' 
-			? aboutData.value.listItems 
-			: [];
 
 		const postItems: PostItem[] = postData.status === 'fulfilled' 
 			? postData.value.listItems 
 			: [];
 
-		const readingListItems: ReadingListItem[] = readingListData.status === 'fulfilled' 
-			? readingListData.value.listItems 
-			: [];
+		// Apply local pinning: mark any post whose slug is in pinnedPostSlugs as isPinned
+		const postItemsWithPins = postItems.map((post) => ({
+			...post,
+			isPinned: pinnedPostSlugs.includes(post.slug ?? "") || post.isPinned,
+		}));
 
-		// Sort and limit the data
-		const limitedHomeItems = sortByPinnedAndDate(aboutItems, "date").slice(0, 4);
-		const postItemsSorted = sortByPinnedAndDate(postItems, "pubdate");
-		const firstTwoBlogPosts = postItemsSorted.slice(0, 2);
-		const firstThreeReadingListPosts = readingListItems.slice(0, 4);
+		const isSignalsOfDesign = (series?: string) =>
+			typeof series === "string" &&
+			series.trim().toLowerCase() === "signals of design";
+
+		const signalItems = sortByPinnedAndDate(
+			postItemsWithPins.filter((post) => isSignalsOfDesign(post.series)),
+			"pubdate"
+		).slice(0, 4);
+
+		const postItemsSorted = sortByPinnedAndDate(postItemsWithPins, "pubdate");
+		const signalItemIds = new Set(signalItems.map((item) => item.id));
+		const firstFourBlogPosts = postItemsSorted
+			.filter((post) => !signalItemIds.has(post.id))
+			.slice(0, 4);
 
 		return (
 			<div>
@@ -51,79 +53,70 @@ export default async function HomePage() {
 					className="flex flex-col align-left relative justify-center
 					mx-auto py-25 transition-all duration-300 min-h-[25rem]"
 				>
-					{/* Page Title */}
-					<h1 className="relative flex items-center">
+					<div className="flex items-center">
 						<img
 							src={`/_brand/greg-ai.jpg`}
 							alt="Greg Robleto"
 							className="h-20 w-20 rounded-full mr-5"
 						/>
-						<span className="text-2xl md:text-3xl font-bold uppercase tracking-[.25rem] text-gray-800 dark:text-gray-200">
-							Greg Robleto
-						</span>
-					</h1>
-
+						<h1 className="relative flex items-center">
+							<span className="text-2xl md:text-3xl font-bold uppercase tracking-[.25rem] text-gray-800 dark:text-gray-200">
+								Greg Robleto
+							</span>
+						</h1>
+					</div>
 					<section className="notion-page-content -z-10 relative font-medium text-md md:text-lg mx-auto mt-4 pr-[30%] md:pr-[20%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200">
-						A Creative Leader in UX, Brand Strategy and Product & Marketing Design, living in Rockville, Maryland, exploring how brand, design, and AI are pivotal tools through this era of digital transformation.
+						Design and product leader working at the intersection of
+						finance, brand, and digital platforms—based in
+						Rockville, Maryland and exploring how design, systems,
+						and AI shape the future of financial products.
 					</section>
+					<p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
+						Design Director at Motley Fool Asset Management.
+					</p>
 
 					<SocialLinks className="mt-5 z-10" />
 				</div>
 
-				{limitedHomeItems.length > 0 ? (
-					<>
-						<GroupTitle title="Updates" />
-						<Lists
-							items={limitedHomeItems}
-							pageKey="about"
-							linkKey="url"
-							descriptionKey="description"
-							pubDateKey="date"
-							titleKey="name"
-							tagsKey="tags"
-							slugKey="slug" 	
-						/>
-					</>
-				) : (
-					<>
-						<GroupTitle title="Updates" />
-						<ListLoading />
-					</>
-				)}
+				<FeaturedBuilds />
 
-				{firstTwoBlogPosts.length > 0 ? (
+				{signalItems.length > 0 ? (
 					<>
-						<GroupTitle title="Latest Posts" />
+						<GroupTitle title="Signals" />
 						<Gallery
-							items={firstTwoBlogPosts}
+							items={signalItems}
 							mdGridCols="md:grid-cols-2"
 							lgGridCols="lg:grid-cols-2"
 							pageKey="posts"
 							slugKey="slug"
 							linkKey="url"
+							dateFormat="month-year"
 						/>
 					</>
 				) : (
 					<>
-						<GroupTitle title="Latest Posts" />
+						<GroupTitle title="Signals" />
 						<GalleryLoading />
 					</>
 				)}
 
-				{firstThreeReadingListPosts.length > 0 ? (
+				{firstFourBlogPosts.length > 0 ? (
 					<>
-						<GroupTitle title="Reading List" />
-						<MiniCardView
-							items={firstThreeReadingListPosts}
-							pageKey="reading-list"
+						<GroupTitle title="Writing" />
+						<Gallery
+							items={firstFourBlogPosts}
+							mdGridCols="md:grid-cols-2"
+							lgGridCols="lg:grid-cols-2"
+							pageKey="posts"
+							slugKey="slug"
 							linkKey="url"
-							tagsKey="tags"
+							dateFormat="month-year"
 						/>
 					</>
 				) : (
 					<>
-						<GroupTitle title="Reading List" />
-						<ListLoading />
+						<GroupTitle title="Writing" />
+						<GalleryLoading />
 					</>
 				)}
 			</div>

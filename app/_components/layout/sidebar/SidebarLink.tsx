@@ -7,6 +7,7 @@ type SidebarLinkProps = {
 	isCollapsed: boolean; // Handle collapsed state
 	onOpenContact: () => void; // Handler to open Contact modal
 	onOpenSocial: () => void; // Handler to open Social modal
+	as?: "li" | "div";
 };
 
 const SidebarLink: React.FC<SidebarLinkProps> = ({
@@ -16,6 +17,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 	isCollapsed,
 	onOpenContact,
 	onOpenSocial,
+	as = "li",
 }) => {
 	// Determine if the slug is "contact" or "social"
 	const isModalLink = slug === "contact" || slug === "social";
@@ -29,8 +31,10 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 		}
 	};
 
+	const WrapperTag = as;
+
 	return (
-		<li
+		<WrapperTag
 			className={`flex items-center hover:shadow-sm hover:bg-white hover:border-nobel hover:dark:bg-gray-700 px-2 py-2 rounded-lg ${
 				isCollapsed ? "justify-center" : "justify-start"
 			}`}
@@ -66,7 +70,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 					)}
 				</a>
 			)}
-		</li>
+		</WrapperTag>
 	);
 };
 

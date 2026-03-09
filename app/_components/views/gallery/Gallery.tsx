@@ -12,6 +12,7 @@ interface EnhancedGalleryProps<T = BaseItem> extends GalleryProps<T> {
 	emptyStateMessage?: string;
 	emptyStateComponent?: React.ComponentType;
 	onItemClick?: (item: T) => void;
+	dateFormat?: "default" | "month-year";
 }
 
 const EmptyState: React.FC<{message: string}> = ({ message }) => (
@@ -46,6 +47,7 @@ const Gallery = <T extends BaseItem = BaseItem>({
 	emptyStateMessage = "No items to display",
 	emptyStateComponent: EmptyStateComponent,
 	onItemClick,
+	dateFormat = "default",
 }: EnhancedGalleryProps<T>): React.ReactElement => {
 	const [clientItems, setClientItems] = useState<T[]>(items);
 
@@ -120,6 +122,7 @@ const Gallery = <T extends BaseItem = BaseItem>({
 							urlKey={linkKey as string}
 							cityStateKey={cityStateKey as string}
 							animatedKey={animatedKey as string}
+							dateFormat={dateFormat}
 							lgGridCols={lgGridCols}
 							minHeight={minHeight}
 						/>

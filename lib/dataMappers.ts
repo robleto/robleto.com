@@ -222,24 +222,39 @@ const mapPostsEntry = (entry: any) => {
 	const pubdate = entry.properties.PubDate?.date?.start || null;
 	const description =
 		entry.properties.Description?.rich_text[0]?.plain_text ?? "";
-	const url = entry.properties.LinkedURL?.url || "#";
+	const imageProperty = entry.properties.Image;
+	const image =
+		imageProperty?.files?.[0]?.file?.url ||
+		imageProperty?.files?.[0]?.external?.url ||
+		"";
+	const linkedUrl = entry.properties.LinkedURL?.url || "";
 	const sortOrder = entry.properties.SortOrder?.number || Infinity;
 	const slug = entry.properties.Slug?.rich_text[0]?.plain_text || "";
+	const url = slug ? `/posts/${slug}` : linkedUrl || "#";
 	const tags =
 		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
 		[];
-	const isPinned = entry.properties.Pinned.checkbox || false;
+	const isPinned = entry.properties.Pinned?.checkbox || false;
+	const series =
+		entry.properties.Collection?.select?.name ||
+		entry.properties.Series?.select?.name ||
+		entry.properties.Collection?.rich_text?.[0]?.plain_text ||
+		entry.properties.Series?.rich_text?.[0]?.plain_text ||
+		"";
 
 	return {
 		id,
 		title,
 		pubdate,
 		description,
+		image,
 		url,
+		linkedUrl,
 		sortOrder,
 		slug,
 		tags,
-    isPinned
+		isPinned,
+		series,
 	};
 };
 
