@@ -30,11 +30,16 @@ const FeaturedBuilds = async () => {
 			<div className="overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 				<div className="flex gap-4 snap-x snap-mandatory">
 					{itemsToRender.map((item) => {
-						const href = item.url && item.url !== "#"
+						let href = item.url && item.url !== "#"
 							? item.url
 							: item.slug
 							? `/projects/${item.slug}`
 							: "/projects";
+
+						// Ensure URLs like "www.example.com" get a protocol prefix
+						if (href && /^www\./i.test(href)) {
+							href = `https://${href}`;
+						}
 
 						const imageSrc = item.image || (item.slug ? `/projects/${item.slug}.png` : "");
 

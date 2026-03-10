@@ -39,7 +39,7 @@ export default async function HomePage() {
 		const signalItems = sortByPinnedAndDate(
 			postItemsWithPins.filter((post) => isSignalsOfDesign(post.series)),
 			"pubdate"
-		).slice(0, 4);
+		).slice(0, 3);
 
 		const postItemsSorted = sortByPinnedAndDate(postItemsWithPins, "pubdate");
 		const signalItemIds = new Set(signalItems.map((item) => item.id));
@@ -82,11 +82,11 @@ export default async function HomePage() {
 
 				{signalItems.length > 0 ? (
 					<>
-						<GroupTitle title="Signals" />
+						<GroupTitle title="Signals" subtitle="Notes on design, systems, and the work of making complex things coherent." />
 						<Gallery
 							items={signalItems}
-							mdGridCols="md:grid-cols-2"
-							lgGridCols="lg:grid-cols-2"
+							mdGridCols="md:grid-cols-3"
+							lgGridCols="lg:grid-cols-3"
 							pageKey="posts"
 							slugKey="slug"
 							linkKey="url"
