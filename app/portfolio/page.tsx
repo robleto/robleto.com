@@ -4,6 +4,7 @@ import { fetchNotionData } from "@/lib/notionContentFetcher";
 import { sortByPinnedAndDate, sortByOrder } from "@/utils/sortItems";
 import { filterItemsByProperty } from "@/utils/filterItems";
 import Gallery from "@/app/_components/views/gallery/Gallery";
+import CaseStudyList from "@/app/_components/views/home/CaseStudyList";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import PageHeader from "@/app/_components/layout/page/PageHeader";
 import type { PostItem } from "@/types";
@@ -108,16 +109,7 @@ export default async function PortfolioPage() {
 						title="Selected Work"
 						subtitle="Case studies in design systems, brand architecture, and product strategy."
 					/>
-					<Gallery
-						mdGridCols="md:grid-cols-1"
-						lgGridCols="lg:grid-cols-1"
-						items={selectedCaseStudies}
-						tagsKey="tags"
-						descriptionKey="subtitle"
-						pageKey="portfolio"
-						slugKey="slug"
-						linkKey="url"
-					/>
+					<CaseStudyList items={selectedCaseStudies as any[]} />
 				</>
 			)}
 
