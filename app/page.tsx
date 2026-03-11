@@ -4,6 +4,7 @@ import { sortByPinnedAndDate } from "@/utils/sortItems";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import FeaturedBuilds from "@/app/_components/views/home/FeaturedBuilds";
+import WritingList from "@/app/_components/views/home/WritingList";
 import SocialLinks from "@/app/_components/views/common/SocialLinks";
 import { GalleryLoading } from "@/app/_components/common/Loading";
 import type { PostItem } from "@/types";
@@ -14,19 +15,20 @@ const pinnedPostSlugs: string[] = [
 	"making-the-most-out-of-mulch-stay-with-me",
 ];
 
+const MIN_WRITING_POSTS = 5;
+const RECENT_MONTHS = 3;
+
 export default async function HomePage() {
 	try {
-		// Use hybrid fetcher for performance-critical content (posts)
-		// and direct Notion API for less critical content
 		const [postData] = await Promise.allSettled([
 			HybridContentFetcher.getAllPosts(),
 		]);
 
-		const postItems: PostItem[] = postData.status === 'fulfilled' 
-			? postData.value.listItems 
+		const postItems: PostItem[] = postData.status === 'fulfilled'
+			? postData.value.listItems
 			: [];
 
-		// Apply local pinning: mark any post whose slug is in pinnedPostSlugs as isPinned
+		// Apply local pinning
 		const postItemsWithPins = postItems.map((post) => ({
 			...post,
 			isPinned: pinnedPostSlugs.includes(post.slug ?? "") || post.isPinned,
@@ -36,16 +38,31 @@ export default async function HomePage() {
 			typeof series === "string" &&
 			series.trim().toLowerCase() === "signals of design";
 
+		// Signals: exactly 4 items for 2x2 grid
 		const signalItems = sortByPinnedAndDate(
 			postItemsWithPins.filter((post) => isSignalsOfDesign(post.series)),
 			"pubdate"
-		).slice(0, 3);
+		).slice(0, 4);
 
+		// Writing: posts from last 3 months, minimum 5
 		const postItemsSorted = sortByPinnedAndDate(postItemsWithPins, "pubdate");
 		const signalItemIds = new Set(signalItems.map((item) => item.id));
-		const firstFourBlogPosts = postItemsSorted
-			.filter((post) => !signalItemIds.has(post.id))
-			.slice(0, 4);
+		const nonSignalPosts = postItemsSorted.filter(
+			(post) => !signalItemIds.has(post.id)
+		);
+
+		const cutoffDate = new Date();
+		cutoffDate.setMonth(cutoffDate.getMonth() - RECENT_MONTHS);
+
+		const recentPosts = nonSignalPosts.filter((post) => {
+			if (!post.pubdate) return false;
+			return new Date(post.pubdate) >= cutoffDate;
+		});
+
+		const writingPosts =
+			recentPosts.length >= MIN_WRITING_POSTS
+				? recentPosts
+				: nonSignalPosts.slice(0, Math.max(MIN_WRITING_POSTS, recentPosts.length));
 
 		return (
 			<div>
@@ -85,8 +102,8 @@ export default async function HomePage() {
 						<GroupTitle title="Signals" subtitle="Notes on design, systems, and the work of making complex things coherent." />
 						<Gallery
 							items={signalItems}
-							mdGridCols="md:grid-cols-3"
-							lgGridCols="lg:grid-cols-3"
+							mdGridCols="md:grid-cols-2"
+							lgGridCols="lg:grid-cols-2"
 							pageKey="posts"
 							slugKey="slug"
 							linkKey="url"
@@ -100,18 +117,10 @@ export default async function HomePage() {
 					</>
 				)}
 
-				{firstFourBlogPosts.length > 0 ? (
+				{writingPosts.length > 0 ? (
 					<>
 						<GroupTitle title="Writing" />
-						<Gallery
-							items={firstFourBlogPosts}
-							mdGridCols="md:grid-cols-2"
-							lgGridCols="lg:grid-cols-2"
-							pageKey="posts"
-							slugKey="slug"
-							linkKey="url"
-							dateFormat="month-year"
-						/>
+						<WritingList items={writingPosts as PostItem[]} />
 					</>
 				) : (
 					<>
@@ -123,8 +132,7 @@ export default async function HomePage() {
 		);
 	} catch (error) {
 		console.error('Error loading homepage:', error);
-		
-		// Return error fallback UI
+
 		return (
 			<div className="my-16 pb-16 lg:my-24 max-w-7xl mx-auto px-4 lg:px-8">
 				<div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6">
