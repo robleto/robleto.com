@@ -84,9 +84,9 @@ export default async function HomePage() {
 					</div>
 					<section className="notion-page-content -z-10 relative font-medium text-md md:text-lg mx-auto mt-4 pr-[30%] md:pr-[20%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200">
 						Design and product leader working at the intersection of
-						finance, brand, and digital platforms—based in
-						Rockville, Maryland and exploring how design, systems,
-						and AI shape the future of financial products.
+						finance, brand, and digital platforms. Based in
+						Rockville, Maryland, I explore how design, systems, and
+						AI shape the next generation of financial products.
 					</section>
 					<p className="mt-3 text-sm text-gray-500 dark:text-gray-400">
 						Design Director at Motley Fool Asset Management.
@@ -95,11 +95,12 @@ export default async function HomePage() {
 					<SocialLinks className="mt-5 z-10" />
 				</div>
 
-				<FeaturedBuilds />
-
 				{signalItems.length > 0 ? (
 					<>
-						<GroupTitle title="Signals" subtitle="Notes on design, systems, and the work of making complex things coherent." />
+						<GroupTitle
+							title="Signals"
+							subtitle="Notes on design, systems, and the work of making complex things coherent."
+						/>
 						<Gallery
 							items={signalItems}
 							mdGridCols="md:grid-cols-2"
@@ -116,6 +117,8 @@ export default async function HomePage() {
 						<GalleryLoading />
 					</>
 				)}
+
+				<FeaturedBuilds />
 
 				{writingPosts.length > 0 ? (
 					<>

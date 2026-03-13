@@ -23,7 +23,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head></head>
-			<body className="antialiased bg-background dark:bg-dark_background">
+			<body className="overflow-x-hidden antialiased bg-background dark:bg-dark_background">
 				{/* Wrapping the app in ThemeProvider for theme toggling */}
 				<ThemeProvider attribute="class" defaultTheme="system">
 					<ErrorBoundary>
@@ -31,7 +31,7 @@ export default function RootLayout({
 							{/* SideNav is collapsed by default on mobile and expanded on larger screens */}
 							<SideNav />
 							{/* Main content */}
-							<main className="flex-grow max-w-screen-xl pr-[5%] pl-[20%] md:pl-[25%] lg:w-auto mx-auto transition-all duration-300 dark:text-white">
+							<main className="flex-grow w-full max-w-screen-xl mx-auto pr-4 pl-24 sm:pr-6 sm:pl-28 md:pr-[5%] md:pl-56 lg:pl-60 transition-all duration-300 dark:text-white">
 								<ErrorBoundary>
 									{children}
 								</ErrorBoundary>

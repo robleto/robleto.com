@@ -81,7 +81,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
 }) => {
 	return (
 		<div
-			className={`flex space-x-4 ${
+			className={`flex flex-wrap gap-4 ${
 				center ? "justify-center" : "justify-start"
 			} ${className || ""}`}
 		>

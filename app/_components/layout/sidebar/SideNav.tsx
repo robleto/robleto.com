@@ -54,7 +54,7 @@ export default function SideNav() {
 	}
 
 	return (
-		<div className="flex h-screen z-50 fixed min-h-[90vh] w-auto overflow-scroll">
+		<div className="fixed z-50 flex h-screen min-h-[90vh] overflow-y-auto overflow-x-hidden">
 			<nav
 				className={`bg-mercury text-gray-900 flex flex-col transition-all duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-200  pt-8 ${
 					isCollapsed ? "w-16" : "w-48"
