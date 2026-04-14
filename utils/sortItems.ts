@@ -60,6 +60,16 @@ export const sortItemsByAlpha = (items: any[], property: string) => {
 	});
 };
 
+// Fisher-Yates shuffle — returns a new shuffled array, does not mutate input
+export const shuffleItems = <T>(items: T[]): T[] => {
+	const result = [...items];
+	for (let i = result.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[result[i], result[j]] = [result[j], result[i]];
+	}
+	return result;
+};
+
 // Sort by Order key (defaults to "SortOrder")
 export const sortByOrder = (items: any[]) => {
 	return items.sort((a, b) => {

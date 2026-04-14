@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useMemo } from "react";
 import GalleryCard from "./GalleryCard";
 import { GalleryLoading } from "@/app/_components/common/Loading";
 import type { GalleryProps, BaseItem } from "@/types";
@@ -49,36 +49,18 @@ const Gallery = <T extends BaseItem = BaseItem>({
 	onItemClick,
 	dateFormat = "default",
 }: EnhancedGalleryProps<T>): React.ReactElement => {
-	const [clientItems, setClientItems] = useState<T[]>(items);
-
-	// Memoize processed items for performance
+	// Memoize processed items — filter and sort only when inputs change
 	const processedItems = useMemo(() => {
 		let updatedItems = [...items];
-
-		// Apply filtering if a filter function is provided
-		if (filterItem) {
-			updatedItems = filterItem(updatedItems);
-		}
-
-		// Apply sorting if a sort function is provided
-		if (sortItem) {
-			updatedItems = sortItem(updatedItems);
-		}
-
+		if (filterItem) updatedItems = filterItem(updatedItems);
+		if (sortItem) updatedItems = sortItem(updatedItems);
 		return updatedItems;
 	}, [items, filterItem, sortItem]);
 
-	// Update client items when processed items change
-	useEffect(() => {
-		setClientItems(processedItems);
-	}, [processedItems]);
-
-	// Handle loading state
 	if (loading) {
 		return <GalleryLoading count={6} />;
 	}
 
-	// Handle error state
 	if (error) {
 		return (
 			<div className="text-center py-12">
@@ -90,8 +72,7 @@ const Gallery = <T extends BaseItem = BaseItem>({
 		);
 	}
 
-	// Handle empty state
-	if (!Array.isArray(clientItems) || clientItems.length === 0) {
+	if (!Array.isArray(processedItems) || processedItems.length === 0) {
 		return EmptyStateComponent ? (
 			<EmptyStateComponent />
 		) : (
@@ -104,8 +85,8 @@ const Gallery = <T extends BaseItem = BaseItem>({
 			<div
 				className={`grid ${gridCols} ${smGridCols} ${mdGridCols} ${lgGridCols} gap-6`}
 			>
-				{clientItems.map((item: T, index: number) => (
-					<div 
+				{processedItems.map((item: T, index: number) => (
+					<div
 						key={item.id || index}
 						onClick={() => onItemClick?.(item)}
 						className={onItemClick ? "cursor-pointer" : ""}

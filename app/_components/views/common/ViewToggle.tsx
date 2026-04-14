@@ -1,11 +1,11 @@
 // app/_components/views/common/ViewToggle.tsx
-"use client"; // Mark this component as a client component
+"use client";
 
 import React from "react";
 
 type ViewToggleProps = {
-	onToggle: (newViewMode: "list" | "gallery") => void; // Callback to handle view mode change
-	viewMode: "list" | "gallery"; // Current view mode
+	onToggle: (newViewMode: "list" | "gallery") => void;
+	viewMode: "list" | "gallery";
 };
 
 const ViewToggle: React.FC<ViewToggleProps> = ({ onToggle, viewMode }) => {
@@ -13,20 +13,22 @@ const ViewToggle: React.FC<ViewToggleProps> = ({ onToggle, viewMode }) => {
 		<div className="flex space-x-4 mb-4">
 			<button
 				onClick={() => onToggle("list")}
-				className={`py-2 px-4 rounded ${
+				aria-pressed={viewMode === "list"}
+				className={`py-2 px-4 rounded transition-colors ${
 					viewMode === "list"
-						? "bg-blue-500 text-white"
-						: "bg-gray-200 text-black"
+						? "bg-link text-white dark:bg-lightlink"
+						: "bg-iron text-emperor dark:bg-gray-700 dark:text-gray-200"
 				}`}
 			>
 				List View
 			</button>
 			<button
 				onClick={() => onToggle("gallery")}
-				className={`py-2 px-4 rounded ${
+				aria-pressed={viewMode === "gallery"}
+				className={`py-2 px-4 rounded transition-colors ${
 					viewMode === "gallery"
-						? "bg-blue-500 text-white"
-						: "bg-gray-200 text-black"
+						? "bg-link text-white dark:bg-lightlink"
+						: "bg-iron text-emperor dark:bg-gray-700 dark:text-gray-200"
 				}`}
 			>
 				Gallery View

@@ -49,12 +49,13 @@ export default function SideNav() {
 		}
 	}, [pathname]);
 
-	if (!isReady) {
-		return null;
-	}
-
+	// Render with opacity-0 during SSR/hydration to prevent layout flash
 	return (
-		<div className="fixed z-50 flex h-screen min-h-[90vh] overflow-y-auto overflow-x-hidden">
+		<div
+			className={`fixed z-50 flex h-screen min-h-[90vh] overflow-y-auto overflow-x-hidden transition-opacity duration-150 ${
+				!isReady ? "opacity-0 pointer-events-none" : ""
+			}`}
+		>
 			<nav
 				className={`bg-mercury text-gray-900 flex flex-col transition-all duration-300 ease-in-out dark:bg-gray-800 dark:text-gray-200  pt-8 ${
 					isCollapsed ? "w-16" : "w-48"
@@ -128,29 +129,61 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 
-							{/* Lists parent link */}
+							{/* Lists parent — disclosure pattern: link navigates, chevron toggles submenu */}
 							<li>
 								<div
-									onClick={() => setIsListsOpen(!isListsOpen)}
+									className={`flex items-center hover:shadow-sm hover:bg-white hover:border-nobel hover:dark:bg-gray-700 px-2 py-2 rounded-lg ${
+										isCollapsed ? "justify-center" : "justify-start"
+									}`}
 								>
-									<SidebarLink
-										link="lists"
-										slug="lists"
-										title="Lists"
-										isCollapsed={isCollapsed}
-										onOpenContact={() => {}}
-										onOpenSocial={() => {}}
-										as="div"
-									/>
+									<a
+										href="/lists"
+										className="flex items-center space-x-2 hover:text-gray-600 hover:dark:text-gray-200 flex-1 min-w-0"
+									>
+										<img
+											src="/_icons/lists.svg"
+											alt=""
+											aria-hidden="true"
+											className="h-4 w-4 svg-icon shrink-0"
+										/>
+										{!isCollapsed && (
+											<span className="text-sm font-medium">Lists</span>
+										)}
+									</a>
+									{!isCollapsed && (
+										<button
+											onClick={() => setIsListsOpen(!isListsOpen)}
+											aria-expanded={isListsOpen}
+											aria-label={
+												isListsOpen
+													? "Collapse lists submenu"
+													: "Expand lists submenu"
+											}
+											className="ml-auto p-1 rounded hover:text-gray-600 dark:hover:text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-1"
+										>
+											<svg
+												className={`h-3 w-3 transition-transform duration-200 ${
+													isListsOpen ? "rotate-90" : ""
+												}`}
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+												aria-hidden="true"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth={2}
+													d="M9 5l7 7-7 7"
+												/>
+											</svg>
+										</button>
+									)}
 								</div>
 
 								{/* Submenu for Lists */}
-								{isListsOpen && (
-									<ul
-										className={`pl-4 ${
-											isCollapsed ? "hidden" : "block"
-										}`}
-									>
+								{isListsOpen && !isCollapsed && (
+									<ul className="pl-4">
 										<SidebarLink
 											link="lists/travel"
 											slug="travel"

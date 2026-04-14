@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
-import { sortByOrder } from "@/utils/sortItems";
+import { sortByOrder, shuffleItems } from "@/utils/sortItems";
 import type { ProjectItem } from "@/types";
 
 const isWorkInProgress = (item: ProjectItem): boolean => {
@@ -22,7 +22,8 @@ const FeaturedBuilds = async () => {
 	const { listItems } = await HybridContentFetcher.getAllProjects();
 	const projectItems = listItems as ProjectItem[];
 	const wipItems = sortByOrder(projectItems.filter(isWorkInProgress));
-	const itemsToRender = wipItems.length > 0 ? wipItems : sortByOrder(projectItems);
+	const sorted = wipItems.length > 0 ? wipItems : sortByOrder(projectItems);
+	const itemsToRender = shuffleItems(sorted);
 
 	return (
 		<section id="featured-builds" className="scroll-mt-24" aria-label="Featured builds">

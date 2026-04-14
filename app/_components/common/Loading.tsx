@@ -8,7 +8,7 @@ interface LoadingProps {
 }
 
 const LoadingSpinner: React.FC<{size: string}> = ({ size }) => (
-  <div className={`animate-spin rounded-full border-t-2 border-b-2 border-blue-600 ${size}`}></div>
+  <div className={`animate-spin rounded-full border-t-2 border-b-2 border-link dark:border-lightlink ${size}`}></div>
 );
 
 const LoadingSkeleton: React.FC<{size: string}> = ({ size }) => (

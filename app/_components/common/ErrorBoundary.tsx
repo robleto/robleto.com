@@ -34,7 +34,7 @@ const DefaultErrorFallback: React.FC<{error?: Error}> = ({ error }) => (
       )}
       <button 
         onClick={() => window.location.reload()}
-        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+        className="mt-4 px-4 py-2 bg-link text-white rounded-md hover:opacity-90 transition-opacity dark:bg-lightlink"
       >
         Refresh Page
       </button>

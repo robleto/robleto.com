@@ -1,17 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Oswald:wght@400;700&family=Libre+Bodoni:wght@400;700&display=swap');
-
+/* Fonts loaded via next/font/google in layout.tsx — no @import needed */
 
 @tailwind base;
-
-body {
-  font-family: 'nunito', Arial, Helvetica, sans-serif;
-  background-color: #f9f9fb;
-}
-
-.font-bodoni div,
-.font-bodoni div p {
-  font-family: 'bodoni', serif;
-}
 
 /* globals.css */
 body {
@@ -19,6 +8,11 @@ body {
 }
 .dark body {
   background-color: theme("colors.foreground");
+}
+
+.font-bodoni div,
+.font-bodoni div p {
+  font-family: var(--font-bodoni), serif;
 }
 
 @tailwind components;
@@ -55,4 +49,16 @@ body {
 .dark .gallery-card:hover h3 {
   color: theme("colors.lightlink");
   text-decoration: underline;
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

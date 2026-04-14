@@ -68,8 +68,10 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 		setImageSrc(localImage || notionImage);
 	}, [item, pageKey, slugKey, fileExtension]);
 
-	// GSAP animation
+	// GSAP animation — skipped for users who prefer reduced motion
 	useEffect(() => {
+		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
 		gsap.fromTo(
 			cardRef.current,
 			{ opacity: 0 },
