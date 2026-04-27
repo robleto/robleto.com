@@ -42,7 +42,7 @@ const FeaturedBuilds = async () => {
 							href = `https://${href}`;
 						}
 
-						const imageSrc = item.image || (item.slug ? `/projects/${item.slug}.png` : "");
+						const imageSrc = (item.slug ? `/projects/${item.slug}.png` : "") || item.image || "";
 
 						const isExternal = /^https?:\/\//i.test(href);
 
