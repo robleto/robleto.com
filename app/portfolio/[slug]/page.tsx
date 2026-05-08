@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
 import type { PortfolioItem } from "@/types";
 import NotionRenderer from "@/app/_components/notion/NotionRenderer";
+import NotionImage from "@/app/_components/notion/NotionImage";
 import PageHeader from "@/app/_components/layout/page/PageHeader";
 import Link from "next/link";
 
@@ -77,11 +78,21 @@ export default async function PortfolioItemPage({ params }: PortfolioItemPagePro
         </div>
       )}
 
-      {/* Hero Image */}
-      {(portfolioItem as PortfolioItem).image && (
+      {/* Hero Image — prefer local downloaded copy (public/portfolio/{slug}.png),
+          fall back to the (potentially expiring) Notion URL on error. */}
+      {((portfolioItem as PortfolioItem).image || portfolioItem.slug) && (
         <div className="mb-8">
-          <img
-            src={(portfolioItem as PortfolioItem).image as string}
+          <NotionImage
+            src={
+              portfolioItem.slug
+                ? `/portfolio/${portfolioItem.slug}.png`
+                : ((portfolioItem as PortfolioItem).image as string)
+            }
+            fallbackSrc={
+              portfolioItem.slug
+                ? ((portfolioItem as PortfolioItem).image as string) || undefined
+                : undefined
+            }
             alt={portfolioItem.title}
             className="w-full rounded-lg shadow-lg"
           />

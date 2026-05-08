@@ -17,6 +17,8 @@
 import React from 'react';
 import { BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints';
 import CodeBlock from '@/app/_components/article/CodeBlock';
+import NotionImage from '@/app/_components/notion/NotionImage';
+import inlineImageManifest from '@/lib/notionInlineImages.json';
 
 interface NotionRendererProps {
   blocks: BlockObjectResponse[];
@@ -173,18 +175,25 @@ const NotionRenderer: React.FC<NotionRendererProps> = ({ blocks, headingIdMap = 
       }
 
       // ── Image ────────────────────────────────────────────────────────────────
+      // Notion file URLs are signed and expire (~1h). At build, the
+      // download-posts-inline-images script pulls each image block locally and
+      // records the public path in lib/notionInlineImages.json, keyed by block id.
+      // Prefer the local copy and fall back to the (possibly stale) Notion URL.
       case 'image': {
-        const imageUrl =
+        const notionUrl =
           block.image.type === 'file'
             ? block.image.file.url
-            : block.image.external?.url;
+            : block.image.external?.url ?? '';
+        const localPath = (inlineImageManifest as Record<string, string>)[block.id];
         const caption = block.image.caption?.map((t) => t.plain_text).join('') || '';
+        const primary = localPath || notionUrl;
+        const fallback = localPath && notionUrl !== localPath ? notionUrl : undefined;
 
         return (
           <figure key={block.id} className="my-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={imageUrl}
+            <NotionImage
+              src={primary}
+              fallbackSrc={fallback}
               alt={caption}
               className="w-full rounded-lg shadow-md"
             />

@@ -44,6 +44,7 @@ import {
 
 // Content renderer
 import NotionRenderer from "@/app/_components/notion/NotionRenderer";
+import NotionImage from "@/app/_components/notion/NotionImage";
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -159,12 +160,13 @@ export default async function PostPage({ params }: PostPageProps) {
         variant={variant}
       />
 
-      {/* Featured image */}
-      {postItem.image && (
+      {/* Featured image — prefer local downloaded copy (public/posts/{slug}.png),
+          fall back to the (potentially expiring) Notion URL on error. */}
+      {(postItem.image || postItem.slug) && (
         <div className="mb-10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={postItem.image}
+          <NotionImage
+            src={postItem.slug ? `/posts/${postItem.slug}.png` : (postItem.image as string)}
+            fallbackSrc={postItem.slug ? (postItem.image || undefined) : undefined}
             alt={postItem.title ?? "Featured image"}
             className="w-full rounded-lg shadow-lg"
           />
