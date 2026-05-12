@@ -79,8 +79,10 @@ const ArticleHeader: React.FC<ArticleHeaderProps> = ({
         </div>
       )}
 
-      {/* Title */}
-      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 leading-tight mb-4 text-balance">
+      {/* Title — bumped one step on lg with tighter tracking and leading for
+          a more emphatic article opening. Same family (Nunito Sans), more
+          confident shape. */}
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.05] text-gray-900 dark:text-gray-100 mb-5 text-balance">
         {title}
       </h1>
 

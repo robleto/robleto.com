@@ -149,21 +149,26 @@ export default async function PostPage({ params }: PostPageProps) {
       {/* Fixed reading progress bar (2px at very top of viewport) */}
       <ReadingProgress />
 
-      {/* Article header: back nav, variant badge, title, lede, meta row + copy link */}
-      <ArticleHeader
-        title={postItem.title ?? "Untitled"}
-        lede={postItem.description}
-        pubdate={postItem.pubdate}
-        readingTime={readingTime}
-        tags={postItem.tags}
-        series={postItem.series}
-        variant={variant}
-      />
+      {/* Article header — constrained to reading measure (max-w-2xl ≈ 42rem / 672px).
+          Title and lede live within ~65ch line length so they read editorially
+          rather than spreading the full main width. */}
+      <div className="max-w-2xl mx-auto">
+        <ArticleHeader
+          title={postItem.title ?? "Untitled"}
+          lede={postItem.description}
+          pubdate={postItem.pubdate}
+          readingTime={readingTime}
+          tags={postItem.tags}
+          series={postItem.series}
+          variant={variant}
+        />
+      </div>
 
-      {/* Featured image — prefer local downloaded copy (public/posts/{slug}.png),
-          fall back to the (potentially expiring) Notion URL on error. */}
+      {/* Featured image — breaks out one step wider than the body (max-w-3xl,
+          ~48rem / 768px). Editorial print convention: image breathes wider
+          than the reading measure for impact, then body returns to the measure. */}
       {(postItem.image || postItem.slug) && (
-        <div className="mb-10">
+        <div className="mb-10 max-w-3xl mx-auto">
           <NotionImage
             src={postItem.slug ? `/posts/${postItem.slug}.png` : (postItem.image as string)}
             fallbackSrc={postItem.slug ? (postItem.image || undefined) : undefined}
@@ -177,25 +182,30 @@ export default async function PostPage({ params }: PostPageProps) {
           Only rendered when variant === 'case-study'.
           Populate `data` from Notion fields mapped in lib/dataMappers.ts. */}
       {variant === "case-study" && (
-        <CaseStudyBrief
-          data={{
-            // Uncomment and map these as you add fields to PostItem / dataMappers.ts:
-            // role:        postItem.caseStudyRole,
-            // timeline:    postItem.caseStudyTimeline,
-            // team:        postItem.caseStudyTeam,
-            // context:     postItem.caseStudyContext,
-            // constraints: postItem.caseStudyConstraints,
-            // outcomes:    postItem.caseStudyOutcomes,
-            // artifacts:   postItem.caseStudyArtifacts,
-          }}
-        />
+        <div className="max-w-2xl mx-auto">
+          <CaseStudyBrief
+            data={{
+              // Uncomment and map these as you add fields to PostItem / dataMappers.ts:
+              // role:        postItem.caseStudyRole,
+              // timeline:    postItem.caseStudyTimeline,
+              // team:        postItem.caseStudyTeam,
+              // context:     postItem.caseStudyContext,
+              // constraints: postItem.caseStudyConstraints,
+              // outcomes:    postItem.caseStudyOutcomes,
+              // artifacts:   postItem.caseStudyArtifacts,
+            }}
+          />
+        </div>
       )}
 
-      {/* ── Two-column layout: article content | desktop TOC right rail ── */}
-      <div className="flex gap-10 items-start">
+      {/* ── Body + TOC layout ──
+          Default: single centered column at max-w-2xl (reading measure).
+          xl+: expand to max-w-4xl, split into body + TOC rail. The body
+          stays close to ~42rem; TOC takes ~13rem on the right. */}
+      <div className="max-w-2xl xl:max-w-4xl mx-auto xl:flex xl:gap-10 xl:items-start">
 
         {/* Content column */}
-        <div className="flex-1 min-w-0">
+        <div className="xl:flex-1 xl:min-w-0">
 
           {/* Mobile TOC — collapsible panel, hidden on xl+ screens */}
           {hasToc && (

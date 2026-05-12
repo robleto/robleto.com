@@ -52,36 +52,38 @@ export default async function PortfolioItemPage({ params }: PortfolioItemPagePro
 
   return (
     <div>
-      {/* Navigation breadcrumb */}
-      <div className="mb-6">
-        <Link 
-          href="/portfolio" 
-          className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 text-sm"
-        >
-          ← Back to Portfolio
-        </Link>
+      {/* Header band — breadcrumb, title, subtitle all live at reading measure */}
+      <div className="max-w-2xl mx-auto">
+        {/* Navigation breadcrumb */}
+        <div className="mb-6">
+          <Link
+            href="/portfolio"
+            className="text-sm text-gray-400 dark:text-gray-500 hover:text-link dark:hover:text-blue-400 transition-colors"
+          >
+            ← Back to Portfolio
+          </Link>
+        </div>
+
+        {/* Page Header */}
+        <PageHeader
+          title={portfolioItem.title}
+          icon="portfolio"
+          pageContent={[]} // No additional page content needed
+        />
+
+        {/* Subtitle */}
+        {(portfolioItem as PortfolioItem).subtitle && (
+          <div className="mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
+              {(portfolioItem as PortfolioItem).subtitle}
+            </p>
+          </div>
+        )}
       </div>
 
-      {/* Page Header */}
-      <PageHeader
-        title={portfolioItem.title}
-        icon="portfolio"
-        pageContent={[]} // No additional page content needed
-      />
-
-      {/* Subtitle */}
-      {(portfolioItem as PortfolioItem).subtitle && (
-        <div className="mb-8">
-          <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
-            {(portfolioItem as PortfolioItem).subtitle}
-          </p>
-        </div>
-      )}
-
-      {/* Hero Image — prefer local downloaded copy (public/portfolio/{slug}.png),
-          fall back to the (potentially expiring) Notion URL on error. */}
+      {/* Hero Image — breaks out one step wider than the body (max-w-3xl). */}
       {((portfolioItem as PortfolioItem).image || portfolioItem.slug) && (
-        <div className="mb-8">
+        <div className="mb-8 max-w-3xl mx-auto">
           <NotionImage
             src={
               portfolioItem.slug
@@ -99,28 +101,27 @@ export default async function PortfolioItemPage({ params }: PortfolioItemPagePro
         </div>
       )}
 
-      {/* Case Study Content */}
-      <div className="max-w-4xl mx-auto">
+      {/* Case Study Content — constrained to the reading measure */}
+      <div className="max-w-2xl mx-auto">
         {portfolioItem.content && portfolioItem.content.length > 0 ? (
           <NotionRenderer blocks={portfolioItem.content} />
         ) : (
           <div className="text-center py-12">
-            <div className="text-4xl mb-4">📝</div>
-            <p className="text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-gray-400 dark:text-gray-500">
               Case study content is being prepared. Please check back soon.
             </p>
           </div>
         )}
-      </div>
 
-      {/* Back to portfolio link */}
-      <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
-        <Link 
-          href="/portfolio" 
-          className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-        >
-          ← View All Portfolio Work
-        </Link>
+        {/* Back to portfolio — quieter close, no SaaS-blue CTA */}
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <Link
+            href="/portfolio"
+            className="text-sm text-gray-400 dark:text-gray-500 hover:text-link dark:hover:text-blue-400 transition-colors"
+          >
+            ← View All Portfolio Work
+          </Link>
+        </div>
       </div>
     </div>
   );
