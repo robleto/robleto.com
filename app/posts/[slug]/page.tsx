@@ -214,8 +214,10 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
           )}
 
-          {/* Main article content */}
-          <article id="article-content">
+          {/* Main article content — set in Source Serif 4 for long-form reading.
+              The sans title above and serif body below mirror the print
+              editorial convention: bold sans display, comfortable serif body. */}
+          <article id="article-content" className="font-serif text-[17px] leading-[1.7]">
             {content.length > 0 ? (
               <NotionRenderer blocks={content} headingIdMap={headingIdMap} />
             ) : (

@@ -55,6 +55,16 @@ const config: Config = {
 				nunito: ["var(--font-nunito-sans)", "sans-serif"],
 				oswald: ["var(--font-oswald)", "sans-serif"],
 				bodoni: ["var(--font-bodoni)", "serif"],
+				// Editorial body serif — used for long-form reading on /posts/[slug].
+				// Charter / Cambria / Georgia provide metric-matched fallbacks if
+				// Source Serif fails to load.
+				serif: [
+					"var(--font-source-serif)",
+					"Charter",
+					"Cambria",
+					"Georgia",
+					"serif",
+				],
 			},
 			transitionTimingFunction: {
 				// Site-wide motion easing — ease-out-quart. Used on every
