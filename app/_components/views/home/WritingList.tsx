@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GSAP_EASE, DURATION, REVEAL_RISE_PX } from "@/app/_components/motion/tokens";
 import type { PostItem } from "@/types";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -34,13 +35,17 @@ const WritingListItem: React.FC<{ item: PostItem }> = ({ item }) => {
 		: null;
 
 	useEffect(() => {
+		// Reveal on scroll using site-wide motion tokens.
+		// Same timing/easing as CSS .reveal so GSAP-driven and observer-driven
+		// reveals feel identical across the site.
 		gsap.fromTo(
 			rowRef.current,
-			{ opacity: 0, y: 12 },
+			{ opacity: 0, y: REVEAL_RISE_PX },
 			{
 				opacity: 1,
 				y: 0,
-				duration: 0.6,
+				duration: DURATION.reveal.s,
+				ease: GSAP_EASE,
 				scrollTrigger: {
 					trigger: rowRef.current,
 					start: "top 92%",
@@ -95,7 +100,7 @@ const WritingListItem: React.FC<{ item: PostItem }> = ({ item }) => {
 								sizes="(max-width: 640px) 100vw, 200px"
 								quality={60}
 								loading="lazy"
-								className="object-cover transition-transform duration-300 group-hover:scale-105"
+								className="motion-card-media object-cover"
 								onError={handleImageError}
 							/>
 						) : (

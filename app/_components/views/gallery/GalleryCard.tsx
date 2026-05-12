@@ -3,6 +3,7 @@ import Image from "next/image";
 import { FaImage } from "react-icons/fa";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GSAP_EASE, DURATION } from "@/app/_components/motion/tokens";
 import Tags from "../common/Tags"; // Component to display tags
 
 gsap.registerPlugin(ScrollTrigger);
@@ -77,7 +78,8 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 			{ opacity: 0 },
 			{
 				opacity: 1,
-				duration: 1,
+				duration: DURATION.reveal.s,
+				ease: GSAP_EASE,
 				scrollTrigger: {
 					trigger: cardRef.current,
 					start: "top 90%",
@@ -172,7 +174,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 								sizes={optimizedCardSizes}
 								quality={65}
 								loading="lazy"
-								className="object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+								className="motion-card-media object-cover rounded-t-xl"
 								onError={handleImageError}
 							/>
 						</a>
@@ -188,7 +190,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 								sizes={optimizedCardSizes}
 								quality={65}
 								loading="lazy"
-								className="object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+								className="motion-card-media object-cover rounded-t-xl"
 								onError={handleImageError}
 							/>
 						</a>
@@ -200,7 +202,7 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 							sizes={optimizedCardSizes}
 							quality={65}
 							loading="lazy"
-							className="object-cover rounded-t-xl transition-transform duration-500 ease-out transform group-hover:scale-110"
+							className="motion-card-media object-cover rounded-t-xl"
 							onError={handleImageError}
 						/>
 					)

@@ -56,6 +56,19 @@ const config: Config = {
 				oswald: ["var(--font-oswald)", "sans-serif"],
 				bodoni: ["var(--font-bodoni)", "serif"],
 			},
+			transitionTimingFunction: {
+				// Site-wide motion easing — ease-out-quart. Used on every
+				// transform/opacity transition. Snappy at the start,
+				// settles softly.
+				motion: "cubic-bezier(0.165, 0.84, 0.44, 1)",
+			},
+			transitionDuration: {
+				// Three timings carry the whole site:
+				//   fast (200ms) — color shifts, simple state changes
+				//   base (320ms) — primary hover transforms (cards, links)
+				//   slow (500ms) — image zooms, reveals
+				320: "320ms",
+			},
 		},
 	},
 	plugins: [],

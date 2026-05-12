@@ -137,7 +137,7 @@ export default async function PortfolioPage() {
 								const tags = Array.isArray(item.tags) ? item.tags : [];
 
 								const card = (
-									<article className="h-[18.5rem] rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg border border-gray-100 dark:border-gray-700 transition-transform duration-200 hover:-translate-y-1">
+									<article className="motion-card h-[18.5rem] rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg group-hover:shadow-xl border border-gray-100 dark:border-gray-700">
 										<div className="h-32 w-full bg-gray-200 dark:bg-gray-700 overflow-hidden relative">
 											{imageSrc ? (
 												<Image
@@ -147,7 +147,7 @@ export default async function PortfolioPage() {
 													sizes="(max-width: 640px) 240px, 256px"
 													quality={60}
 													loading="lazy"
-													className="object-cover"
+													className="motion-card-media object-cover"
 												/>
 											) : (
 												<div className="h-full w-full" />
@@ -172,7 +172,7 @@ export default async function PortfolioPage() {
 								);
 
 								return (
-									<div key={item.id} className="snap-start w-[15rem] sm:w-[16rem] shrink-0">
+									<div key={item.id} className="snap-start w-[15rem] sm:w-[16rem] shrink-0 group">
 										{isExternal ? (
 											<a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
 												{card}

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { GSAP_EASE, DURATION, REVEAL_RISE_PX } from "@/app/_components/motion/tokens";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,11 +37,12 @@ const CaseStudyCard: React.FC<{ item: CaseStudyItem }> = ({ item }) => {
 	useEffect(() => {
 		gsap.fromTo(
 			cardRef.current,
-			{ opacity: 0, y: 16 },
+			{ opacity: 0, y: REVEAL_RISE_PX },
 			{
 				opacity: 1,
 				y: 0,
-				duration: 0.7,
+				duration: DURATION.reveal.s,
+				ease: GSAP_EASE,
 				scrollTrigger: {
 					trigger: cardRef.current,
 					start: "top 92%",
@@ -72,7 +74,7 @@ const CaseStudyCard: React.FC<{ item: CaseStudyItem }> = ({ item }) => {
 								sizes="(max-width: 768px) 100vw, 55vw"
 								quality={70}
 								loading="lazy"
-								className="object-cover transition-transform duration-500 group-hover:scale-105"
+								className="motion-card-media object-cover"
 								onError={handleImageError}
 							/>
 						) : (

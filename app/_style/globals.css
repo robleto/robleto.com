@@ -13,6 +13,59 @@ body {
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Motion tokens ────────────────────────────────────────────────────────
+   Single source of truth for the site's motion language. Both CSS and JS
+   read from here (JS via app/_components/motion/tokens.ts).
+
+   ease-out-quart: snappy at the start, settles softly. Used on every
+   transform/opacity transition across the site. */
+:root {
+  --ease-motion: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --motion-fast: 200ms;   /* color shifts, simple state changes */
+  --motion-base: 320ms;   /* hover transforms on cards, links */
+  --motion-slow: 500ms;   /* image zooms, reveal animations */
+  --motion-reveal: 600ms; /* scroll-triggered section entrances */
+}
+
+@layer components {
+  /* The card lift — apply to any tile-style card that should respond to
+     hover. Pairs with .motion-card-media on inner images for the subtle
+     zoom inside the lifted card. */
+  .motion-card {
+    transition: transform var(--motion-base) var(--ease-motion),
+                box-shadow var(--motion-base) var(--ease-motion);
+    will-change: transform;
+  }
+  .motion-card:hover,
+  .group:hover > .motion-card,
+  .group:hover .motion-card {
+    transform: translateY(-4px);
+  }
+
+  .motion-card-media {
+    transition: transform var(--motion-slow) var(--ease-motion);
+    will-change: transform;
+  }
+  .motion-card:hover .motion-card-media,
+  .group:hover .motion-card-media {
+    transform: scale(1.02);
+  }
+
+  /* Scroll reveal — apply .reveal in initial state; toggle .reveal--in
+     when the IntersectionObserver fires. Pairs with the Reveal component
+     in app/_components/motion/Reveal.tsx. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity var(--motion-reveal) var(--ease-motion),
+                transform var(--motion-reveal) var(--ease-motion);
+  }
+  .reveal--in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -46,7 +99,9 @@ body {
   text-decoration: underline;
 }
 
-/* Respect user motion preferences */
+/* Respect user motion preferences. Hover micro-shifts (color, subtle
+   transforms) are not motion-sickness triggers and stay as feedback;
+   the global animation kill covers entrance reveals and longer motion. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -55,5 +110,9 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }

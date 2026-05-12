@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaThumbtack, FaImage } from "react-icons/fa";
+import { GSAP_EASE, DURATION } from "@/app/_components/motion/tokens";
 import Tags from "../common/Tags"; // Import your Tags component
 
 type ListItemProps = {
@@ -77,7 +78,8 @@ const ListItem: React.FC<ListItemProps> = ({
 				{ opacity: 0 },
 				{
 					opacity: 1,
-					duration: 1,
+					duration: DURATION.reveal.s,
+					ease: GSAP_EASE,
 					scrollTrigger: {
 						trigger: el,
 						start: "top 100%",

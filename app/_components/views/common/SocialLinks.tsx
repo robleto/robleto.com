@@ -92,13 +92,14 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label={social.name}
-					className={`group transition-transform transform hover:scale-110 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2`}
+					className="group rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
 				>
-					{/* Icon */}
+					{/* Icon — color shift on hover, no transform. Stays consistent
+					    with the site's "fast color, no jump" motion language. */}
 					<div
 						className={`text-2xl text-gray-400 group-hover:${
 							social.color
-						} transition-colors ${
+						} transition-colors duration-200 ${
 							iconClassName || ""
 						} dark:group-hover:text-white`}
 					>

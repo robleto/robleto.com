@@ -148,7 +148,7 @@ export default async function HomePage() {
 													sizes="(max-width: 640px) 45vw, 25vw"
 													quality={60}
 													loading="lazy"
-													className="object-cover transition-transform duration-300 group-hover:scale-105"
+													className="motion-card-media object-cover"
 												/>
 											)}
 										</div>
