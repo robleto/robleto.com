@@ -5,6 +5,9 @@ node_modules/
 # Next.js build output
 .next/
 
+# TypeScript incremental build state
+tsconfig.tsbuildinfo
+
 # build artifacts
 css/
 

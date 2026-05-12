@@ -10,11 +10,6 @@ body {
   background-color: theme("colors.foreground");
 }
 
-.font-bodoni div,
-.font-bodoni div p {
-  font-family: var(--font-bodoni), serif;
-}
-
 @tailwind components;
 @tailwind utilities;
 
