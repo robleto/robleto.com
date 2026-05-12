@@ -66,6 +66,22 @@ body {
   }
 }
 
+@layer components {
+  /* Editorial colophon — the signature gesture. Used on every meta row
+     that carries dates, reading time, series, categories. Tabular and
+     lining numerals so digits align across cards; OpenType kerning so
+     en-dashes sit cleanly between words. The canonical separator across
+     the site is an en-dash (–) with spaces, never a middot or a pipe.
+     This is the small editorial signature that recurs everywhere. */
+  .colophon {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+  .colophon time {
+    font-variant-numeric: inherit;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -259,10 +259,13 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 					</h3>
 				)}
 				{/* Date meta line directly under title — posts cards only */}
-				{isPostsCard && formattedDate && (
-					<p className="mt-1 text-xs text-gray-400 dark:text-gray-500">
+				{isPostsCard && formattedDate && item[pubDateKey] && (
+					<time
+						dateTime={new Date(item[pubDateKey]).toISOString().slice(0, 10)}
+						className="colophon mt-1 block text-xs text-gray-400 dark:text-gray-500"
+					>
 						{formattedDate}
-					</p>
+					</time>
 				)}
 				{item[descriptionKey] && (
 					<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
@@ -281,10 +284,13 @@ const GalleryCard: React.FC<GalleryCardProps> = ({
 					</p>
 				)}
 				{/* Date row — non-posts cards only */}
-				{!isPostsCard && formattedDate && (
-					<p className="mt-4 text-sm text-gray-500">
+				{!isPostsCard && formattedDate && item[pubDateKey] && (
+					<time
+						dateTime={new Date(item[pubDateKey]).toISOString().slice(0, 10)}
+						className="colophon mt-4 block text-sm text-gray-500"
+					>
 						{formattedDate}
-					</p>
+					</time>
 				)}
 			</div>
 			</div>

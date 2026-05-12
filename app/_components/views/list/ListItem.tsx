@@ -167,7 +167,10 @@ const ListItem: React.FC<ListItemProps> = ({
 						{item[descriptionKey]}
 					</p>
 				) : item[pubDateKey] ? (
-					<p className="text-sm text-gray-600 dark:text-gray-300">
+					<time
+						dateTime={new Date(item[pubDateKey]).toISOString().slice(0, 10)}
+						className="colophon block text-sm text-gray-600 dark:text-gray-300"
+					>
 						{new Date(item[pubDateKey]).toLocaleDateString(
 							"en-US",
 							{
@@ -175,7 +178,7 @@ const ListItem: React.FC<ListItemProps> = ({
 								year: "numeric",
 							}
 						)}
-					</p>
+					</time>
 				) : null}
 				{item[urlKey] && (
 					<p className="truncate max-w-72 md:max-w-96 text-sm text-gray-600 dark:text-gray-300 py-1">

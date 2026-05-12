@@ -91,27 +91,32 @@ const ArticleHeader: React.FC<ArticleHeaderProps> = ({
         </p>
       )}
 
-      {/* Meta row: date · reading time · series · tags   + copy link */}
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-gray-400 dark:text-gray-500">
-        {formattedDate && <span>{formattedDate}</span>}
+      {/* Meta colophon — date – reading time – series – tags. En-dash is
+          the site-wide signature separator; tabular numerals from .colophon. */}
+      <div className="colophon flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-gray-400 dark:text-gray-500">
+        {formattedDate && pubdate && (
+          <time dateTime={new Date(pubdate).toISOString().slice(0, 10)}>
+            {formattedDate}
+          </time>
+        )}
 
         {readingTime && (
           <>
-            {formattedDate && <span aria-hidden="true">·</span>}
+            {formattedDate && <span aria-hidden="true">&#x2013;</span>}
             <span>{readingTime} min read</span>
           </>
         )}
 
         {series && (
           <>
-            <span aria-hidden="true">·</span>
+            <span aria-hidden="true">&#x2013;</span>
             <span className="text-oracle dark:text-tropicalteal font-medium">{series}</span>
           </>
         )}
 
         {tags.length > 0 && (
           <>
-            <span aria-hidden="true">·</span>
+            <span aria-hidden="true">&#x2013;</span>
             <div className="flex flex-wrap gap-1.5">
               {tags.map((tag) => (
                 <span

@@ -77,16 +77,20 @@ const WritingListItem: React.FC<{ item: PostItem }> = ({ item }) => {
 								{item.description}
 							</p>
 						)}
-						<div className="mt-2 flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+						<div className="colophon mt-2 flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
 							{category && (
 								<>
 									<span className="uppercase tracking-wide font-medium text-gray-500 dark:text-gray-400">
 										{category}
 									</span>
-									<span aria-hidden="true">&middot;</span>
+									<span aria-hidden="true">&#x2013;</span>
 								</>
 							)}
-							{formattedDate && <span>{formattedDate}</span>}
+							{formattedDate && item.pubdate && (
+								<time dateTime={new Date(item.pubdate).toISOString().slice(0, 10)}>
+									{formattedDate}
+								</time>
+							)}
 						</div>
 					</div>
 

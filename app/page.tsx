@@ -155,10 +155,13 @@ export default async function HomePage() {
 										<h3 className="text-xs font-semibold text-gray-800 dark:text-gray-200 line-clamp-2 leading-snug group-hover:text-link dark:group-hover:text-lightlink transition-colors">
 											{item.title || "Untitled"}
 										</h3>
-										{formattedDate && (
-											<p className="text-[10px] text-gray-400 dark:text-gray-500 mt-0.5">
+										{formattedDate && item.pubdate && (
+											<time
+												dateTime={new Date(item.pubdate).toISOString().slice(0, 10)}
+												className="colophon block text-[10px] text-gray-400 dark:text-gray-500 mt-0.5"
+											>
 												{formattedDate}
-											</p>
+											</time>
 										)}
 									</Link>
 								);
