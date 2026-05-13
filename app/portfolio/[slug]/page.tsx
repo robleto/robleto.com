@@ -51,7 +51,7 @@ export default async function PortfolioItemPage({ params }: PortfolioItemPagePro
   }
 
   return (
-    <div>
+    <div className="pt-12 md:pt-16 lg:pt-20">
       {/* Header band — breadcrumb, title, subtitle all live at reading measure */}
       <div className="max-w-2xl mx-auto">
         {/* Navigation breadcrumb */}

@@ -114,13 +114,17 @@ const NotionRenderer: React.FC<NotionRendererProps> = ({ blocks, headingIdMap = 
       // ── Headings ────────────────────────────────────────────────────────────
       // headingIdMap provides anchor IDs so the TOC scroll tracking works.
 
+      // Article headings: sans-serif against the article's serif body, so
+      // they read as a different voice — the print convention of bold sans
+      // heads breaking up a serif body. Sized up one step per level so the
+      // hierarchy is unambiguous against 17px serif body.
       case 'heading_1': {
         const text = renderRichText(block.heading_1.rich_text as RichText[], block.id);
         return (
           <h2
             key={block.id}
             id={headingIdMap[block.id]}
-            className="text-2xl font-bold mt-12 mb-4 text-gray-900 dark:text-gray-100 scroll-mt-8"
+            className="font-sans text-3xl font-extrabold tracking-tight mt-14 mb-4 text-gray-900 dark:text-gray-100 scroll-mt-8"
           >
             {text}
           </h2>
@@ -133,7 +137,7 @@ const NotionRenderer: React.FC<NotionRendererProps> = ({ blocks, headingIdMap = 
           <h2
             key={block.id}
             id={headingIdMap[block.id]}
-            className="text-xl font-semibold mt-10 mb-3 text-gray-900 dark:text-gray-100 scroll-mt-8"
+            className="font-sans text-2xl font-bold tracking-tight mt-12 mb-3 text-gray-900 dark:text-gray-100 scroll-mt-8"
           >
             {text}
           </h2>
@@ -146,7 +150,7 @@ const NotionRenderer: React.FC<NotionRendererProps> = ({ blocks, headingIdMap = 
           <h3
             key={block.id}
             id={headingIdMap[block.id]}
-            className="text-lg font-semibold mt-8 mb-2 text-gray-800 dark:text-gray-200 scroll-mt-8"
+            className="font-sans text-xl font-bold tracking-tight mt-10 mb-2 text-gray-800 dark:text-gray-200 scroll-mt-8"
           >
             {text}
           </h3>

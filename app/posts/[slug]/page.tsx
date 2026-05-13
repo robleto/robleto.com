@@ -145,7 +145,7 @@ export default async function PostPage({ params }: PostPageProps) {
   // ── Render ─────────────────────────────────────────────────────────────────
 
   return (
-    <>
+    <div className="pt-12 md:pt-16 lg:pt-20">
       {/* Fixed reading progress bar (2px at very top of viewport) */}
       <ReadingProgress />
 
@@ -259,6 +259,6 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
 
       </div>
-    </>
+    </div>
   );
 }

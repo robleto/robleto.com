@@ -7,7 +7,8 @@
 		"start": "next start",
 		"build": "NODE_OPTIONS='--no-deprecation' next build",
 		"lint": "next lint",
-		"download:notion-images": "node -r dotenv/config scripts/download-notion-inline-images.mjs"
+		"download:notion-images": "node -r dotenv/config scripts/download-notion-inline-images.mjs",
+		"download:posts-images": "ts-node --project scripts/tsconfig.scripts.json scripts/download-posts-images.ts"
 	},
 	"dependencies": {
 		"@eslint/config-array": "^0.19.2",
