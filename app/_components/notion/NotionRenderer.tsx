@@ -124,7 +124,7 @@ const NotionRenderer: React.FC<NotionRendererProps> = ({ blocks, headingIdMap = 
           <h2
             key={block.id}
             id={headingIdMap[block.id]}
-            className="font-sans text-4xl md:text-5xl font-extrabold tracking-tight leading-[1.05] mt-16 mb-5 text-gray-900 dark:text-gray-100 scroll-mt-8 text-balance"
+            className="font-sans text-4xl font-extrabold tracking-tight leading-[1.1] mt-14 mb-5 text-gray-900 dark:text-gray-100 scroll-mt-8 text-balance"
           >
             {text}
           </h2>
@@ -137,7 +137,7 @@ const NotionRenderer: React.FC<NotionRendererProps> = ({ blocks, headingIdMap = 
           <h2
             key={block.id}
             id={headingIdMap[block.id]}
-            className="font-sans text-3xl md:text-4xl font-extrabold tracking-tight leading-[1.1] mt-14 mb-4 text-gray-900 dark:text-gray-100 scroll-mt-8 text-balance"
+            className="font-sans text-3xl font-extrabold tracking-tight leading-[1.15] mt-12 mb-4 text-gray-900 dark:text-gray-100 scroll-mt-8 text-balance"
           >
             {text}
           </h2>
@@ -150,7 +150,7 @@ const NotionRenderer: React.FC<NotionRendererProps> = ({ blocks, headingIdMap = 
           <h3
             key={block.id}
             id={headingIdMap[block.id]}
-            className="font-sans text-2xl md:text-3xl font-bold tracking-tight leading-[1.15] mt-12 mb-3 text-gray-800 dark:text-gray-200 scroll-mt-8 text-balance"
+            className="font-sans text-2xl font-bold tracking-tight leading-[1.2] mt-10 mb-3 text-gray-800 dark:text-gray-200 scroll-mt-8 text-balance"
           >
             {text}
           </h3>
