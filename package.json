@@ -21,7 +21,7 @@
 		"date-fns": "^4.1.0",
 		"dotenv": "^17.2.2",
 		"gsap": "^3.12.5",
-		"next": "^15.5.12",
+		"next": "^15.5.18",
 		"next-themes": "^0.4.6",
 		"node-fetch": "^3.3.2",
 		"notion-client": "^6.16.0",
@@ -44,11 +44,14 @@
 		"eslint-config-next": "^15.1.7",
 		"eslint-plugin-react": "^7.37.1",
 		"globals": "^15.10.0",
-		"postcss": "^8.4.47",
+		"postcss": "^8.5.10",
 		"tailwindcss": "^3.4.13",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.6.3",
 		"typescript-eslint": "^8.8.1"
+	},
+	"overrides": {
+		"postcss": "^8.5.10"
 	},
 	"resolutions": {
 		"punycode": "^2.3.1"
