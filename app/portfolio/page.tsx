@@ -1,26 +1,49 @@
 import React from "react";
 import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
 import { fetchNotionData } from "@/lib/notionContentFetcher";
-import { sortByPinnedAndDate, sortByOrder } from "@/utils/sortItems";
+import { sortByOrder } from "@/utils/sortItems";
 import { filterItemsByProperty } from "@/utils/filterItems";
 import Image from "next/image";
 import Link from "next/link";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 import CaseStudyList from "@/app/_components/views/home/CaseStudyList";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
-import PageHeader from "@/app/_components/layout/page/PageHeader";
+import ProfileHero from "@/app/_components/views/common/ProfileHero";
+import SocialLinks from "@/app/_components/views/common/SocialLinks";
 import type { PostItem } from "@/types";
 
 // Top 3 case study slugs in preferred display order
 const selectedCaseStudySlugs = [
-	"design-system",
 	"rebranding",
-	"levels-project",
+	"summer-of-tmfc",
+	"design-system",
+];
+
+// Hand-picked "How I Think" posts, in display order
+const selectedPostSlugs = [
+	"designing-trust-in-financial-products",
+	"building-the-boundaries-design-has-moved-to-before-the-prompt",
+	"ai-in-design-isnt-just-about-speed-it-s-about-what-you-can-afford-to-discard",
+	"20-years-of-fooldom",
+];
+
+// "Things I Build" — these lead the row regardless of Notion tags
+const pinnedProjectSlugs = ["margin-call-me"];
+const AI_TOOL_TAGS = ["Claude", "ChatGPT"];
+
+// Recognition, split by audience: business press first, then design community
+const pressRecognitions = [
+	"Wall Street Journal", "Nasdaq", "Yahoo! News", "Business Wire",
+];
+const communityRecognitions = [
+	"UX Collective", "CSS Weekly", "CodePen Spark", "CodePen Trending",
+	"CSS Winner", "CSS Author", "Dev Community", "Medium Trending",
+	"Popular on Dribbble",
 ];
 
 export const generateMetadata = () => ({
-	title: "Work — Greg Robleto",
-	description: "How I think about design leadership, selected case studies, and things I build.",
+	title: "Portfolio — Greg Robleto",
+	description: "Brand and creative leadership in investing and asset management: selected case studies, perspectives, and things I build.",
 });
 
 export default async function PortfolioPage() {
@@ -34,18 +57,13 @@ export default async function PortfolioPage() {
 		}),
 	]);
 
-	// Signals — same logic as homepage
+	// How I Think — hand-picked posts, ordered by the array above
 	const postItems: PostItem[] =
 		postData.status === "fulfilled" ? postData.value.listItems : [];
 
-	const isSignalsOfDesign = (series?: string) =>
-		typeof series === "string" &&
-		series.trim().toLowerCase() === "signals of design";
-
-	const signalItems = sortByPinnedAndDate(
-		postItems.filter((post) => isSignalsOfDesign(post.series)),
-		"pubdate"
-	).slice(0, 4);
+	const signalItems = selectedPostSlugs
+		.map((slug) => postItems.find((post) => post.slug === slug))
+		.filter((post): post is PostItem => Boolean(post));
 
 	// Case studies — filtered to selected slugs, ordered by the array above
 	const portfolioItems =
@@ -55,42 +73,59 @@ export default async function PortfolioPage() {
 		.map((slug) => portfolioItems.find((item: any) => item.slug === slug))
 		.filter(Boolean);
 
-	// Side projects
-	const projectItems =
-		projectsData.status === "fulfilled"
-			? filterItemsByProperty(projectsData.value.listItems, "tags", "Side-Project") || []
-			: [];
-	const sortedProjectItems = sortByOrder(projectItems);
-
-	// Recognition data
-	const recognitions = [
-		"Wall Street Journal", "Nasdaq", "Yahoo! News", "Business Wire",
-		"UX Collective", "CSS Weekly", "CodePen Spark", "CodePen Trending",
-		"CSS Winner", "CSS Author", "Dev Community", "Medium Trending",
-		"Popular on Dribbble", "Leaders of Awesomeness",
+	// Side projects — pinned slugs lead the row (even if untagged), then
+	// everything tagged Side-Project in Notion sort order
+	const allProjectItems =
+		projectsData.status === "fulfilled" ? projectsData.value.listItems : [];
+	const pinnedProjects = pinnedProjectSlugs
+		.map((slug) => allProjectItems.find((item: any) => item.slug === slug))
+		.filter(Boolean);
+	const sortedProjectItems = [
+		...pinnedProjects,
+		...sortByOrder(
+			(filterItemsByProperty(allProjectItems, "tags", "Side-Project") || []).filter(
+				(item: any) => !pinnedProjectSlugs.includes(item.slug)
+			)
+		),
 	];
+
+	// Card chip: show the tool used (AI tools first) instead of "Side-Project"
+	const projectChip = (tags: string[]) => {
+		const tools = tags.filter((tag) => tag !== "Side-Project");
+		return tools.find((tag) => AI_TOOL_TAGS.includes(tag)) ?? tools[0] ?? null;
+	};
 
 	return (
 		<div>
-			<PageHeader
-				title="Work"
-				icon="portfolio"
-				pageContent={[]}
+			<ProfileHero
+				blurb={
+					<>
+						Brand and creative leader with 20 years in investing and asset
+						management. I build the positioning, identity systems, and
+						AI-enabled production that keep a brand consistent at scale.
+					</>
+				}
+				subline="Head of Brand, Marketing & Product Design at Motley Fool Asset Management."
+				showContact={false}
 			/>
 
-			{/* Brief intro */}
-			<p className="text-base text-gray-600 dark:text-gray-400 -mt-16 mb-12 pr-[20%]">
-				Design and product leader with 25 years building at the intersection of
-				finance, brand, and digital platforms. Currently Design Director at
-				Motley Fool Asset Management.
-			</p>
+			{/* Selected Case Studies */}
+			{selectedCaseStudies.length > 0 && (
+				<>
+					<GroupTitle
+						title="Selected Work"
+						subtitle="Case studies in brand architecture, governance, and growth in regulated finance."
+					/>
+					<CaseStudyList items={selectedCaseStudies as any[]} />
+				</>
+			)}
 
-			{/* Signals — How I Think */}
+			{/* How I Think — hand-picked posts */}
 			{signalItems.length > 0 && (
 				<>
 					<GroupTitle
 						title="How I Think"
-						subtitle="Strategic perspectives on design, systems, and leadership."
+						subtitle="Perspectives on trust, brand governance, and design in the age of AI."
 					/>
 					<Gallery
 						items={signalItems}
@@ -104,21 +139,48 @@ export default async function PortfolioPage() {
 				</>
 			)}
 
-			{/* Selected Case Studies */}
-			{selectedCaseStudies.length > 0 && (
-				<>
-					<GroupTitle
-						title="Selected Work"
-						subtitle="Case studies in design systems, brand architecture, and product strategy."
-					/>
-					<CaseStudyList items={selectedCaseStudies as any[]} />
-				</>
-			)}
+			{/* Recognition */}
+			<GroupTitle title="Recognition" />
+			<div className="md:px-[10%] mb-12 space-y-6 text-center">
+				<div>
+					<p className="text-[10px] tracking-[.2em] uppercase font-semibold text-gray-400 dark:text-gray-500 mb-2">
+						Press &amp; Markets
+					</p>
+					<ul className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+						{pressRecognitions.map((name) => (
+							<li
+								key={name}
+								className="text-base font-semibold text-gray-800 dark:text-gray-200"
+							>
+								{name}
+							</li>
+						))}
+					</ul>
+				</div>
+				<div>
+					<p className="text-[10px] tracking-[.2em] uppercase font-semibold text-gray-400 dark:text-gray-500 mb-2">
+						Design Community
+					</p>
+					<ul className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+						{communityRecognitions.map((name) => (
+							<li
+								key={name}
+								className="text-sm text-gray-500 dark:text-gray-400"
+							>
+								{name}
+							</li>
+						))}
+					</ul>
+				</div>
+			</div>
 
 			{/* Side Projects — horizontal scroll cards matching homepage */}
 			{sortedProjectItems.length > 0 && (
 				<>
-					<GroupTitle title="Things I Build" />
+					<GroupTitle
+						title="Things I Build"
+						subtitle="Where I prototype the tools and AI workflows I bring to brand operations."
+					/>
 					<div className="overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
 						<div className="flex gap-4 snap-x snap-mandatory">
 							{sortedProjectItems.map((item: any) => {
@@ -132,9 +194,11 @@ export default async function PortfolioPage() {
 									href = `https://${href}`;
 								}
 
-								const imageSrc = item.image || (item.slug ? `/projects/${item.slug}.png` : "");
+								// Prefer the local image: Notion file URLs are presigned and expire
+								// after ~1h, which breaks on statically cached pages.
+								const imageSrc = (item.slug ? `/projects/${item.slug}.png` : "") || item.image || "";
 								const isExternal = /^https?:\/\//i.test(href);
-								const tags = Array.isArray(item.tags) ? item.tags : [];
+								const chip = projectChip(Array.isArray(item.tags) ? item.tags : []);
 
 								const card = (
 									<article className="motion-card h-[18.5rem] rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg group-hover:shadow-xl border border-gray-100 dark:border-gray-700">
@@ -161,9 +225,9 @@ export default async function PortfolioPage() {
 												{item.description || ""}
 											</p>
 											<div className="mt-auto pt-2">
-												{tags[0] ? (
+												{chip ? (
 													<span className="inline-flex items-center rounded-full border border-gray-300 dark:border-gray-600 px-2 py-0.5 text-[10px] tracking-wide uppercase text-gray-600 dark:text-gray-300">
-														{tags[0]}
+														{chip}
 													</span>
 												) : null}
 											</div>
@@ -190,18 +254,37 @@ export default async function PortfolioPage() {
 				</>
 			)}
 
-			{/* Recognition */}
-			<GroupTitle title="Recognition" />
-			<div className="flex flex-wrap justify-center gap-x-6 gap-y-2 md:px-[10%] mb-12">
-				{recognitions.map((name) => (
-					<span
-						key={name}
-						className="text-sm text-gray-500 dark:text-gray-400"
+			{/* Closing CTA */}
+			<section
+				aria-label="Get in touch"
+				className="mt-16 mb-12 rounded-xl border border-gray-200 dark:border-gray-700 px-6 py-8 text-center"
+			>
+				<h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+					Need a brand that stays consistent at scale? Let&rsquo;s talk.
+				</h2>
+				<div className="mt-5 flex flex-wrap justify-center gap-3">
+					<a
+						href="/portfolio/resume-greg-robleto.pdf"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="inline-flex items-center rounded-full bg-gray-900 dark:bg-gray-100 px-5 py-2 text-sm font-semibold text-white dark:text-gray-900 hover:opacity-90 transition-opacity"
 					>
-						{name}
-					</span>
-				))}
-			</div>
+						Download résumé (PDF)
+					</a>
+					<a
+						href="mailto:hello@robleto.com"
+						className="inline-flex items-center rounded-full border border-gray-300 dark:border-gray-600 px-5 py-2 text-sm font-semibold text-gray-800 dark:text-gray-200 hover:border-gray-500 dark:hover:border-gray-400 transition-colors"
+					>
+						Email hello@robleto.com
+					</a>
+				</div>
+				<SocialLinks
+					only={["LinkedIn", "GitHub", "Dribbble", "CodePen", "Medium"]}
+					center
+					iconClassName="!text-xl"
+					className="mt-6"
+				/>
+			</section>
 		</div>
 	);
 }

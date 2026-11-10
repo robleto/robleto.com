@@ -132,3 +132,17 @@ body {
     transform: none;
   }
 }
+
+/* Main column reclaims the sidebar's space when the nav is collapsed.
+   SideNav sets html[data-nav]; gaps match the expanded layout
+   (nav 4rem + 2rem at md, + 3rem at lg). Mobile is always collapsed. */
+@media (min-width: 768px) {
+	html[data-nav="collapsed"] .site-main {
+		padding-left: 6rem;
+	}
+}
+@media (min-width: 1024px) {
+	html[data-nav="collapsed"] .site-main {
+		padding-left: 7rem;
+	}
+}

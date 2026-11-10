@@ -8,6 +8,7 @@ import {
 	FaInstagram,
 	FaPinterest,
 	FaYoutube,
+	FaMedium,
 } from "react-icons/fa";
 
 type SocialLink = {
@@ -15,6 +16,7 @@ type SocialLink = {
 	icon: React.ReactElement;
 	url: string;
 	color: string; // Tailwind color class for hover state
+	hiddenByDefault?: boolean; // Only rendered when requested via `only`
 };
 
 export const socialLinks: SocialLink[] = [
@@ -66,26 +68,41 @@ export const socialLinks: SocialLink[] = [
 		url: "https://youtube.com/gregrobleto",
 		color: "text-red-600",
 	},
+	{
+		name: "Medium",
+		icon: <FaMedium />,
+		url: "https://robleto.medium.com",
+		color: "text-black",
+		hiddenByDefault: true,
+	},
 ];
 
 type SocialLinksProps = {
 	className?: string; // Custom className for styling the wrapper
 	iconClassName?: string; // Custom className for styling the individual icons
 	center?: boolean; // New prop to control alignment
+	only?: string[]; // Render just these links, in this order (by name)
 };
 
 const SocialLinks: React.FC<SocialLinksProps> = ({
 	className,
 	iconClassName,
 	center = false, // Default alignment is not centered
+	only,
 }) => {
+	const links = only
+		? only
+				.map((name) => socialLinks.find((social) => social.name === name))
+				.filter((social): social is SocialLink => Boolean(social))
+		: socialLinks.filter((social) => !social.hiddenByDefault);
+
 	return (
 		<div
 			className={`flex flex-wrap gap-4 ${
 				center ? "justify-center" : "justify-start"
 			} ${className || ""}`}
 		>
-			{socialLinks.map((social) => (
+			{links.map((social) => (
 				<a
 					key={social.name}
 					href={social.url}

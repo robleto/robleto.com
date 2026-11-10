@@ -11,6 +11,8 @@ import ContactModal from "../../../about/_contact";
 import SocialModal from "../../../about/_social";
 import { usePathname } from "next/navigation"; // Import usePathname hook
 
+const COLLAPSED_LANDING_PATHS = ["/portfolio"];
+
 export default function SideNav() {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [isReady, setIsReady] = useState(false);
@@ -33,6 +35,28 @@ export default function SideNav() {
 		};
 
 		handleResize();
+
+		// Direct visits to these pages (e.g. a link from a résumé) open with the
+		// nav collapsed so the content leads. Sidebar links are full page loads,
+		// so use the referrer to skip the rule when arriving from elsewhere on
+		// this site.
+		const cameFromThisSite = (() => {
+			try {
+				return (
+					document.referrer !== "" &&
+					new URL(document.referrer).origin === window.location.origin
+				);
+			} catch {
+				return false;
+			}
+		})();
+		if (
+			!cameFromThisSite &&
+			COLLAPSED_LANDING_PATHS.some((path) => pathname.startsWith(path))
+		) {
+			setIsCollapsed(true);
+		}
+
 		setIsReady(true);
 
 		window.addEventListener("resize", handleResize);
@@ -40,7 +64,15 @@ export default function SideNav() {
 		return () => {
 			window.removeEventListener("resize", handleResize);
 		};
+		// Intentionally first-load only: pathname is read once for the landing rule.
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	// Expose nav state to the page so the main column can reclaim the space
+	// (see .site-main rules in globals.css)
+	useEffect(() => {
+		document.documentElement.dataset.nav = isCollapsed ? "collapsed" : "expanded";
+	}, [isCollapsed]);
 
 	// Check the current path and auto-open Lists submenu if necessary
 	useEffect(() => {
@@ -84,7 +116,7 @@ export default function SideNav() {
 				<div className="flex-grow overflow-y-auto">
 					<div className="px-4">
 						<SidebarSectionHeader
-							title="Work"
+							title="Creative"
 							isCollapsed={isCollapsed}
 						/>
 						<ul>

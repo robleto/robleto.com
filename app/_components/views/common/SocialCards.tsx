@@ -9,7 +9,7 @@ type SocialCardsProps = {
 const SocialCards: React.FC<SocialCardsProps> = ({ className, iconClassName }) => {
 	return (
 		<div className={`grid grid-cols-2 sm:grid-cols-4 gap-4 ${className}`}>
-			{socialLinks.map((social) => (
+			{socialLinks.filter((social) => !social.hiddenByDefault).map((social) => (
 				<a
 					key={social.name}
 					href={social.url}

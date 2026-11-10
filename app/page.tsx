@@ -6,7 +6,7 @@ import { sortByPinnedAndDate, shuffleItems } from "@/utils/sortItems";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import FeaturedBuilds from "@/app/_components/views/home/FeaturedBuilds";
 import WritingList from "@/app/_components/views/home/WritingList";
-import SocialLinks from "@/app/_components/views/common/SocialLinks";
+import ProfileHero from "@/app/_components/views/common/ProfileHero";
 import type { PostItem } from "@/types";
 
 const pinnedPostSlugs: string[] = [
@@ -69,40 +69,17 @@ export default async function HomePage() {
 		return (
 			<div>
 				{/* Hero */}
-				<div className="flex flex-col align-left relative justify-center mx-auto pt-16 pb-10 mb-2 border-b border-gray-100 dark:border-gray-800 min-h-[22rem] transition-all duration-300">
-					<div className="flex items-center">
-						<Image
-							src="/_brand/greg-ai.jpg"
-							alt="Greg Robleto"
-							width={80}
-							height={80}
-							className="rounded-full mr-5"
-							priority
-						/>
-						<h1 className="relative flex items-center">
-							<span className="text-2xl md:text-3xl font-bold uppercase tracking-[.25rem] text-gray-800 dark:text-gray-200">
-								Greg Robleto
-							</span>
-						</h1>
-					</div>
-					<p className="relative font-medium text-base md:text-lg mt-4 pr-[30%] md:pr-[20%] leading-relaxed text-gray-700 dark:text-gray-300">
-						Design and product leader working at the intersection of
-						finance, brand, and digital platforms. Based in
-						Rockville, Maryland, I explore how design, systems, and
-						AI shape the next generation of financial products.
-					</p>
-					<p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-						Design Director at Motley Fool Asset Management.
-					</p>
-					<a
-						href="mailto:hello@robleto.com"
-						className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-link dark:text-lightlink hover:underline underline-offset-4"
-					>
-						hello@robleto.com
-						<span aria-hidden="true">→</span>
-					</a>
-					<SocialLinks className="mt-4 z-10" />
-				</div>
+				<ProfileHero
+					blurb={
+						<>
+							Brand and creative leader with 20 years in investing and
+							asset management. Based in Rockville, Maryland, I build
+							the positioning, identity systems, and AI-enabled
+							production that keep a brand consistent at scale.
+						</>
+					}
+					subline="Head of Brand, Marketing & Product Design at Motley Fool Asset Management."
+				/>
 
 				{/* Featured work -- horizontal scroll strip, randomized */}
 				<FeaturedBuilds />

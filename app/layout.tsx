@@ -66,7 +66,7 @@ export default function RootLayout({
 					<ErrorBoundary>
 						<div className="flex flex-col min-h-screen">
 							<SideNav />
-							<main className="flex-grow w-full max-w-screen-xl mx-auto pr-4 pl-24 sm:pr-6 sm:pl-28 md:pr-[5%] md:pl-56 lg:pl-60 transition-all duration-300 dark:text-white">
+							<main className="site-main flex-grow w-full max-w-screen-xl mx-auto pr-4 pl-24 sm:pr-6 sm:pl-28 md:pr-[5%] md:pl-56 lg:pl-60 transition-all duration-300 dark:text-white">
 								<ErrorBoundary>
 									{children}
 								</ErrorBoundary>
