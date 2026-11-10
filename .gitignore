@@ -26,3 +26,6 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# Local AI-agent tooling (not part of the site)
+.devin/
