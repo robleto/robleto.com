@@ -6,9 +6,6 @@ import SidebarLink from "./SidebarLink";
 import SidebarSectionHeader from "./SidebarSectionHeader";
 import SidebarToggle from "./SidebarToggle";
 import DarkLightToggle from "./DarkLightToggle";
-import Modal from "../../common/Modal";
-import ContactModal from "../../../about/_contact";
-import SocialModal from "../../../about/_social";
 import { usePathname } from "next/navigation"; // Import usePathname hook
 
 const COLLAPSED_LANDING_PATHS = ["/portfolio"];
@@ -24,9 +21,6 @@ export default function SideNav() {
 
 	const pathname = usePathname(); // Get the current path using usePathname
 
-	// Modal state
-	const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-	const [isSocialModalOpen, setIsSocialModalOpen] = useState(false);
 
 	useEffect(() => {
 		// Auto-collapse on mobile screens
@@ -310,30 +304,6 @@ export default function SideNav() {
 						</ul>
 						</>
 						)}
-						<SidebarSectionHeader
-							title="Reach Out"
-							isCollapsed={isCollapsed}
-						/>
-						<ul>
-							<SidebarLink
-								link="contact"
-								slug="contact"
-								title="Contact"
-								isCollapsed={isCollapsed}
-								onOpenContact={() =>
-									setIsContactModalOpen(true)
-								} // Open Contact modal
-								onOpenSocial={() => {}}
-							/>
-							<SidebarLink
-								link="social"
-								slug="social"
-								title="Social"
-								isCollapsed={isCollapsed}
-								onOpenContact={() => {}}
-								onOpenSocial={() => setIsSocialModalOpen(true)} // Open Social modal
-							/>
-						</ul>
 					</div>
 				</div>
 
@@ -343,24 +313,6 @@ export default function SideNav() {
 					</div>
 				)}
 			</nav>
-
-			{/* Contact Modal */}
-			<Modal
-				isOpen={isContactModalOpen}
-				onClose={() => setIsContactModalOpen(false)} // Close modal function
-				title="Contact"
-			>
-				<ContactModal onClose={() => setIsContactModalOpen(false)} />
-			</Modal>
-
-			{/* Social Modal */}
-			<Modal
-				isOpen={isSocialModalOpen}
-				onClose={() => setIsSocialModalOpen(false)}
-				title="Social Links"
-			>
-				<SocialModal onClose={() => setIsSocialModalOpen(false)} />
-			</Modal>
 		</div>
 	);
 }
