@@ -93,6 +93,7 @@ export class HybridContentFetcher {
     const timer = performanceMeasure.start('getAllProjects')
     const promise = fetchNotionData({
       databaseId: env.NOTION_PROJECTS_DB_ID,
+      pageId: env.NOTION_PROJECTS_PAGE_ID, // intro text for the Projects page header
       entryType: 'projects',
     }).then(data => {
       setCache(cacheKey, data)
