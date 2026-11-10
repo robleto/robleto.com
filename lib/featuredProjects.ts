@@ -14,7 +14,7 @@ export const pinnedSiteSlugs = [
 	"holyshirtballs",
 ];
 export const trailingSiteSlugs = ["margin-call-me"];
-export const hiddenProjectSlugs = ["lightsabers"]; // lightsabers.art is down
+export const hiddenProjectSlugs: string[] = []; // slugs to keep off the site, e.g. while a site is down
 
 type ProjectLike = { slug?: string; tags?: string[]; active?: boolean };
 
