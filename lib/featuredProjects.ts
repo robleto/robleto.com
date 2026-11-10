@@ -16,7 +16,7 @@ export const pinnedSiteSlugs = [
 export const trailingSiteSlugs = ["margin-call-me"];
 export const hiddenProjectSlugs = ["lightsabers"]; // lightsabers.art is down
 
-type ProjectLike = { slug?: string; tags?: string[] };
+type ProjectLike = { slug?: string; tags?: string[]; active?: boolean };
 
 const bySlugs = <T extends ProjectLike>(items: T[], slugs: string[]): T[] =>
 	slugs
@@ -43,4 +43,23 @@ export const getFeaturedSites = <T extends ProjectLike>(items: T[]): T[] => {
 		),
 		...bySlugs(items, trailingSiteSlugs),
 	];
+};
+
+// Projects page: every Active project with a slug, minus hidden ones —
+// Featured Apps, then Featured Sites, then other work (full-time, freelance)
+// in Notion sort order
+export const getAllProjects = <T extends ProjectLike>(items: T[]): T[] => {
+	const apps = getFeaturedApps(items);
+	const sites = getFeaturedSites(items);
+	const placed = new Set([...apps, ...sites]);
+	const rest = sortByOrder(
+		items.filter(
+			(item) =>
+				item.active &&
+				Boolean(item.slug) &&
+				!placed.has(item) &&
+				!hiddenProjectSlugs.includes(item.slug ?? "")
+		)
+	);
+	return [...apps, ...sites, ...rest];
 };

@@ -303,6 +303,7 @@ const mapProjectsEntry = (entry: any) => {
 	const description =
 		entry.properties.Description?.rich_text?.[0]?.plain_text || "";
 	const sortOrder = entry.properties.SortOrder?.number || Infinity;
+	const active = entry.properties.Active?.checkbox || false;
 	const tags =
 		entry.properties.Tags?.multi_select.map((topic: any) => topic.name) ||
 		[];
@@ -314,6 +315,7 @@ const mapProjectsEntry = (entry: any) => {
 		image: imageUrl,
 		url,
 		featured,
+		active,
 		slug,
 		tags,
 		description,

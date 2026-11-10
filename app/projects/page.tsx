@@ -1,9 +1,7 @@
 import React from "react";
-import { fetchNotionData } from "@/lib/notionContentFetcher";
 import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
 import PageHeader from "@/app/_components/layout/page/PageHeader";
-import { sortByOrder } from "@/utils/sortItems";
-import { filterItemsByProperty } from "@/utils/filterItems";
+import { getAllProjects } from "@/lib/featuredProjects";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 
 export default async function ProjectsPage() {
@@ -11,11 +9,8 @@ export default async function ProjectsPage() {
 	const { pageContent, listItems } = await HybridContentFetcher.getAllProjects();
 
 
-	const projectItems = filterItemsByProperty(listItems, "tags", "Side-Project") || [];
-
-
-	// Sort items
-	const sortedRegularItems = sortByOrder(projectItems);
+	// Every Active project: Featured Apps, Featured Sites, then other work
+	const sortedRegularItems = getAllProjects(listItems as any[]);
 
 	return (
 		<div>
