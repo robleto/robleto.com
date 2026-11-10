@@ -30,9 +30,11 @@ const selectedPostSlugs = [
 
 // "Featured Apps" — hand-picked, in display order
 const featuredAppSlugs = ["swweather", "reawarding", "giftinglist"];
-// "Featured Sites" — these lead the row regardless of Notion tags; every other
-// Side-Project follows in Notion sort order, minus anything hidden below
-const pinnedSiteSlugs = ["brandmarks", "creativemadness", "meeplego", "margin-call-me"];
+// "Featured Sites" — pinned slugs lead the row and trailing slugs close it,
+// regardless of Notion tags; every other Side-Project sits between them in
+// Notion sort order, minus anything hidden below
+const pinnedSiteSlugs = ["brandmarks", "creativemadness", "meeplego", "elsewhere-yearly", "holyshirtballs"];
+const trailingSiteSlugs = ["margin-call-me"];
 const hiddenProjectSlugs = ["lightsabers"]; // lightsabers.art is down
 const AI_TOOL_TAGS = ["Claude", "ChatGPT"];
 
@@ -88,7 +90,12 @@ export default async function PortfolioPage() {
 			.map((slug) => allProjectItems.find((item: any) => item.slug === slug))
 			.filter(Boolean);
 	const featuredApps = bySlugs(featuredAppSlugs);
-	const placedSlugs = [...featuredAppSlugs, ...pinnedSiteSlugs, ...hiddenProjectSlugs];
+	const placedSlugs = [
+		...featuredAppSlugs,
+		...pinnedSiteSlugs,
+		...trailingSiteSlugs,
+		...hiddenProjectSlugs,
+	];
 	const featuredSites = [
 		...bySlugs(pinnedSiteSlugs),
 		...sortByOrder(
@@ -96,6 +103,7 @@ export default async function PortfolioPage() {
 				(item: any) => !placedSlugs.includes(item.slug)
 			)
 		),
+		...bySlugs(trailingSiteSlugs),
 	];
 
 	// Card chip: show the tool used (AI tools first) instead of "Side-Project"
