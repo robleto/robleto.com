@@ -298,7 +298,10 @@ const mapProjectsEntry = (entry: any) => {
 	const animated = entry.properties.Animated?.checkbox || false;
 	const topics = entry.properties.Topics?.multi_select || [];
   const type = entry.properties.Type?.multi_select || [];
-	const url = entry.properties.URL?.url || "#";
+	// Link through the LinkedURL formula ("https://" + URL); an empty URL
+	// leaves just the protocol, which means no link
+	const linkedUrl = (entry.properties.LinkedURL?.formula?.string || "").trim();
+	const url = /^https?:\/\/.+/i.test(linkedUrl) ? linkedUrl : "#";
 	const title = entry.properties.Name?.title?.[0]?.plain_text || "Untitled";
 	const description =
 		entry.properties.Description?.rich_text?.[0]?.plain_text || "";
