@@ -13,10 +13,6 @@ import { usePathname } from "next/navigation"; // Import usePathname hook
 
 const COLLAPSED_LANDING_PATHS = ["/portfolio"];
 
-// Lists and the Collection section are hidden from the nav while their content
-// gets cleaned up; the pages still exist at their URLs. Flip to true to restore.
-const SHOW_DRAFT_SECTIONS = false;
-
 export default function SideNav() {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [isReady, setIsReady] = useState(false);
@@ -119,103 +115,102 @@ export default function SideNav() {
 
 				<div className="flex-grow overflow-y-auto">
 					<div className="px-4">
-				<SidebarSectionHeader
-					title="Creative"
-					isCollapsed={isCollapsed}
-				/>
-				<ul>
-					<SidebarLink
-					link="portfolio"
-					slug="portfolio"
-					title="Portfolio"
-					isCollapsed={isCollapsed}
-					onOpenContact={() => {}}
-					onOpenSocial={() => {}}
-					/>
-					<SidebarLink
-					link="projects"
-					slug="projects"
-					title="Projects"
-					isCollapsed={isCollapsed}
-					onOpenContact={() => {}}
-					onOpenSocial={() => {}}
-					/>
-					<SidebarLink
-					link="art"
-					slug="art"
-					title="Art"
-					isCollapsed={isCollapsed}
-					onOpenContact={() => {}}
-					onOpenSocial={() => {}}
-					/>
-					<SidebarLink
-					link="resources"
-					slug="resources"
-					title="Resources"
-					isCollapsed={isCollapsed}
-					onOpenContact={() => {}}
-					onOpenSocial={() => {}}
-					/>
-					<SidebarLink
-					link="posts"
-					slug="posts"
-					title="Writing"
-					isCollapsed={isCollapsed}
-					onOpenContact={() => {}}
-					onOpenSocial={() => {}}
-					/>
-
-					{/* Lists parent — disclosure pattern: link navigates, chevron toggles submenu */}
-					{SHOW_DRAFT_SECTIONS && (
-					<li>
-					<div
-						className={`flex items-center hover:shadow-sm hover:bg-white hover:border-nobel hover:dark:bg-gray-700 px-2 py-2 rounded-lg ${
-							isCollapsed ? "justify-center" : "justify-start"
-						}`}
-					>
-						<a
-							href="/lists"
-							className="flex items-center space-x-2 hover:text-gray-600 hover:dark:text-gray-200 flex-1 min-w-0"
-						>
-							<img
-								src="/_icons/lists.svg"
-								alt=""
-								aria-hidden="true"
-								className="h-4 w-4 svg-icon shrink-0"
+						<SidebarSectionHeader
+							title="Creative"
+							isCollapsed={isCollapsed}
+						/>
+						<ul>
+							<SidebarLink
+								link="portfolio"
+								slug="portfolio"
+								title="Portfolio"
+								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
 							/>
-							{!isCollapsed && (
-								<span className="text-sm font-medium">Lists</span>
-							)}
-						</a>
-						{!isCollapsed && (
-							<button
-								onClick={() => setIsListsOpen(!isListsOpen)}
-								aria-expanded={isListsOpen}
-								aria-label={
-									isListsOpen
-										? "Collapse lists submenu"
-										: "Expand lists submenu"
-								}
-								className="ml-auto p-1 rounded hover:text-gray-600 dark:hover:text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-1"
-							>
-								<svg
-									className={`h-3 w-3 transition-transform duration-200 ${
-										isListsOpen ? "rotate-90" : ""
+							<SidebarLink
+								link="projects"
+								slug="projects"
+								title="Projects"
+								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
+							/>
+							<SidebarLink
+								link="art"
+								slug="art"
+								title="Art"
+								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
+							/>
+							<SidebarLink
+								link="resources"
+								slug="resources"
+								title="Resources"
+								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
+							/>
+							<SidebarLink
+								link="posts"
+								slug="posts"
+								title="Writing"
+								isCollapsed={isCollapsed}
+								onOpenContact={() => {}}
+								onOpenSocial={() => {}}
+							/>
+
+							{/* Lists parent — disclosure pattern: link navigates, chevron toggles submenu */}
+							<li>
+								<div
+									className={`flex items-center hover:shadow-sm hover:bg-white hover:border-nobel hover:dark:bg-gray-700 px-2 py-2 rounded-lg ${
+										isCollapsed ? "justify-center" : "justify-start"
 									}`}
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									aria-hidden="true"
 								>
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={2}
-										d="M9 5l7 7-7 7"
-									/>
-								</svg>
-							</button>
-						)}
+									<a
+										href="/lists"
+										className="flex items-center space-x-2 hover:text-gray-600 hover:dark:text-gray-200 flex-1 min-w-0"
+									>
+										<img
+											src="/_icons/lists.svg"
+											alt=""
+											aria-hidden="true"
+											className="h-4 w-4 svg-icon shrink-0"
+										/>
+										{!isCollapsed && (
+											<span className="text-sm font-medium">Lists</span>
+										)}
+									</a>
+									{!isCollapsed && (
+										<button
+											onClick={() => setIsListsOpen(!isListsOpen)}
+											aria-expanded={isListsOpen}
+											aria-label={
+												isListsOpen
+													? "Collapse lists submenu"
+													: "Expand lists submenu"
+											}
+											className="ml-auto p-1 rounded hover:text-gray-600 dark:hover:text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-1"
+										>
+											<svg
+												className={`h-3 w-3 transition-transform duration-200 ${
+													isListsOpen ? "rotate-90" : ""
+												}`}
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+												aria-hidden="true"
+											>
+												<path
+													strokeLinecap="round"
+													strokeLinejoin="round"
+													strokeWidth={2}
+													d="M9 5l7 7-7 7"
+												/>
+											</svg>
+										</button>
+									)}
 								</div>
 
 								{/* Submenu for Lists */}
@@ -256,7 +251,6 @@ export default function SideNav() {
 									</ul>
 								)}
 							</li>
-							)}
 
 							<SidebarLink
 								link="about"
@@ -268,8 +262,6 @@ export default function SideNav() {
 							/>
 						</ul>
 
-						{SHOW_DRAFT_SECTIONS && (
-						<>
 						<SidebarSectionHeader
 							title="Collection"
 							isCollapsed={isCollapsed}
@@ -308,37 +300,35 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 						</ul>
-						</>
-						)}
 					</div>
 				</div>
 
 				{/* Reach Out — pinned to the bottom of the nav, above the theme toggle */}
 				<div className="px-4">
-						<SidebarSectionHeader
-							title="Reach Out"
+					<SidebarSectionHeader
+						title="Reach Out"
+						isCollapsed={isCollapsed}
+					/>
+					<ul>
+						<SidebarLink
+							link="contact"
+							slug="contact"
+							title="Contact"
 							isCollapsed={isCollapsed}
+							onOpenContact={() =>
+								setIsContactModalOpen(true)
+							} // Open Contact modal
+							onOpenSocial={() => {}}
 						/>
-						<ul>
-							<SidebarLink
-								link="contact"
-								slug="contact"
-								title="Contact"
-								isCollapsed={isCollapsed}
-								onOpenContact={() =>
-									setIsContactModalOpen(true)
-								} // Open Contact modal
-								onOpenSocial={() => {}}
-							/>
-							<SidebarLink
-								link="social"
-								slug="social"
-								title="Social"
-								isCollapsed={isCollapsed}
-								onOpenContact={() => {}}
-								onOpenSocial={() => setIsSocialModalOpen(true)} // Open Social modal
-							/>
-						</ul>
+						<SidebarLink
+							link="social"
+							slug="social"
+							title="Social"
+							isCollapsed={isCollapsed}
+							onOpenContact={() => {}}
+							onOpenSocial={() => setIsSocialModalOpen(true)} // Open Social modal
+						/>
+					</ul>
 				</div>
 
 				{!isCollapsed && (
