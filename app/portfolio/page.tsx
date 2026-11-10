@@ -14,6 +14,7 @@ import type { PostItem } from "@/types";
 
 // Top 3 case study slugs in preferred display order
 const selectedCaseStudySlugs = [
+	"brand-governance-system",
 	"rebranding",
 	"summer-of-tmfc",
 	"design-system",
