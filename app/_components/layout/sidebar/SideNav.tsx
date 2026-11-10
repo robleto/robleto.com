@@ -13,6 +13,10 @@ import { usePathname } from "next/navigation"; // Import usePathname hook
 
 const COLLAPSED_LANDING_PATHS = ["/portfolio"];
 
+// Lists and the Collection section are hidden from the nav while their content
+// gets cleaned up; the pages still exist at their URLs. Flip to true to restore.
+const SHOW_DRAFT_SECTIONS = false;
+
 export default function SideNav() {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [isReady, setIsReady] = useState(false);
@@ -162,6 +166,7 @@ export default function SideNav() {
 							/>
 
 							{/* Lists parent — disclosure pattern: link navigates, chevron toggles submenu */}
+							{SHOW_DRAFT_SECTIONS && (
 							<li>
 								<div
 									className={`flex items-center hover:shadow-sm hover:bg-white hover:border-nobel hover:dark:bg-gray-700 px-2 py-2 rounded-lg ${
@@ -251,6 +256,7 @@ export default function SideNav() {
 									</ul>
 								)}
 							</li>
+							)}
 
 							<SidebarLink
 								link="about"
@@ -262,6 +268,8 @@ export default function SideNav() {
 							/>
 						</ul>
 
+						{SHOW_DRAFT_SECTIONS && (
+						<>
 						<SidebarSectionHeader
 							title="Collection"
 							isCollapsed={isCollapsed}
@@ -300,6 +308,8 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 						</ul>
+						</>
+						)}
 						<SidebarSectionHeader
 							title="Reach Out"
 							isCollapsed={isCollapsed}
