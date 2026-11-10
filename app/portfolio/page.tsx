@@ -32,7 +32,7 @@ const selectedPostSlugs = [
 const featuredAppSlugs = ["swweather", "reawarding", "giftinglist"];
 // "Featured Sites" — these lead the row regardless of Notion tags; every other
 // Side-Project follows in Notion sort order, minus anything hidden below
-const pinnedSiteSlugs = ["margin-call-me"];
+const pinnedSiteSlugs = ["brandmarks", "creativemadness", "meeplego", "margin-call-me"];
 const hiddenProjectSlugs = ["lightsabers"]; // lightsabers.art is down
 const AI_TOOL_TAGS = ["Claude", "ChatGPT"];
 
