@@ -1,7 +1,7 @@
 import { sortByOrder } from "@/utils/sortItems";
 
 // "Featured Apps" — hand-picked, in display order
-export const featuredAppSlugs = ["swweather", "reawarding", "giftinglist"];
+export const featuredAppSlugs = ["galacticweather", "reawarding", "giftinglist"];
 
 // "Featured Sites" — pinned slugs lead the row and trailing slugs close it,
 // regardless of Notion tags; every other Side-Project sits between them in
