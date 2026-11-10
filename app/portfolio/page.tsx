@@ -5,7 +5,7 @@ import { sortByOrder } from "@/utils/sortItems";
 import { filterItemsByProperty } from "@/utils/filterItems";
 import Image from "next/image";
 import Link from "next/link";
-import Gallery from "@/app/_components/views/gallery/Gallery";
+import WritingList from "@/app/_components/views/home/WritingList";
 import CaseStudyList from "@/app/_components/views/home/CaseStudyList";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
 import ProfileHero from "@/app/_components/views/common/ProfileHero";
@@ -28,8 +28,12 @@ const selectedPostSlugs = [
 	"20-years-of-fooldom",
 ];
 
-// "Things I Build" — these lead the row regardless of Notion tags
-const pinnedProjectSlugs = ["margin-call-me"];
+// "Featured Apps" — hand-picked, in display order
+const featuredAppSlugs = ["swweather", "reawarding", "giftinglist"];
+// "Featured Sites" — these lead the row regardless of Notion tags; every other
+// Side-Project follows in Notion sort order, minus anything hidden below
+const pinnedSiteSlugs = ["margin-call-me"];
+const hiddenProjectSlugs = ["lightsabers"]; // lightsabers.art is down
 const AI_TOOL_TAGS = ["Claude", "ChatGPT"];
 
 // Recognition, split by audience: business press first, then design community
@@ -74,18 +78,22 @@ export default async function PortfolioPage() {
 		.map((slug) => portfolioItems.find((item: any) => item.slug === slug))
 		.filter(Boolean);
 
-	// Side projects — pinned slugs lead the row (even if untagged), then
-	// everything tagged Side-Project in Notion sort order
+	// Side projects — Featured Apps are hand-picked; Featured Sites are the
+	// pinned slugs (even if untagged), then every other Side-Project in Notion
+	// sort order
 	const allProjectItems =
 		projectsData.status === "fulfilled" ? projectsData.value.listItems : [];
-	const pinnedProjects = pinnedProjectSlugs
-		.map((slug) => allProjectItems.find((item: any) => item.slug === slug))
-		.filter(Boolean);
-	const sortedProjectItems = [
-		...pinnedProjects,
+	const bySlugs = (slugs: string[]) =>
+		slugs
+			.map((slug) => allProjectItems.find((item: any) => item.slug === slug))
+			.filter(Boolean);
+	const featuredApps = bySlugs(featuredAppSlugs);
+	const placedSlugs = [...featuredAppSlugs, ...pinnedSiteSlugs, ...hiddenProjectSlugs];
+	const featuredSites = [
+		...bySlugs(pinnedSiteSlugs),
 		...sortByOrder(
 			(filterItemsByProperty(allProjectItems, "tags", "Side-Project") || []).filter(
-				(item: any) => !pinnedProjectSlugs.includes(item.slug)
+				(item: any) => !placedSlugs.includes(item.slug)
 			)
 		),
 	];
@@ -95,6 +103,79 @@ export default async function PortfolioPage() {
 		const tools = tags.filter((tag) => tag !== "Side-Project");
 		return tools.find((tag) => AI_TOOL_TAGS.includes(tag)) ?? tools[0] ?? null;
 	};
+
+	// Horizontal-scroll card row shared by Featured Apps and Featured Sites
+	const projectRow = (items: any[]) => (
+		<div className="overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+			<div className="flex gap-4 snap-x snap-mandatory">
+				{items.map((item: any) => {
+					// No URL: render the card unlinked (there is no /projects/[slug] route)
+					let href = item.url && item.url !== "#" ? item.url : "";
+
+					if (href && /^www\./i.test(href)) {
+						href = `https://${href}`;
+					}
+
+					// Prefer the local image: Notion file URLs are presigned and expire
+					// after ~1h, which breaks on statically cached pages.
+					const imageSrc = (item.slug ? `/projects/${item.slug}.png` : "") || item.image || "";
+					const isExternal = /^https?:\/\//i.test(href);
+					const chip = projectChip(Array.isArray(item.tags) ? item.tags : []);
+
+					const card = (
+						<article className="motion-card h-[18.5rem] rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg group-hover:shadow-xl border border-gray-100 dark:border-gray-700">
+							<div className="h-32 w-full bg-gray-200 dark:bg-gray-700 overflow-hidden relative">
+								{imageSrc ? (
+									<Image
+										src={imageSrc}
+										alt={item.title || "Project image"}
+										fill
+										sizes="(max-width: 640px) 240px, 256px"
+										quality={60}
+										loading="lazy"
+										className="motion-card-media object-cover"
+									/>
+								) : (
+									<div className="h-full w-full" />
+								)}
+							</div>
+							<div className="h-[10.5rem] p-3.5 flex flex-col">
+								<h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 line-clamp-2 min-h-[2.5rem]">
+									{item.title || "Untitled"}
+								</h3>
+								<p className="mt-1.5 text-xs text-gray-600 dark:text-gray-400 line-clamp-3 min-h-[3.6rem]">
+									{item.description || ""}
+								</p>
+								<div className="mt-auto pt-2">
+									{chip ? (
+										<span className="inline-flex items-center rounded-full border border-gray-300 dark:border-gray-600 px-2 py-0.5 text-[10px] tracking-wide uppercase text-gray-600 dark:text-gray-300">
+											{chip}
+										</span>
+									) : null}
+								</div>
+							</div>
+						</article>
+					);
+
+					return (
+						<div key={item.id} className="snap-start w-[15rem] sm:w-[16rem] shrink-0 group">
+							{!href ? (
+								card
+							) : isExternal ? (
+								<a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
+									{card}
+								</a>
+							) : (
+								<Link href={href} className="block h-full">
+									{card}
+								</Link>
+							)}
+						</div>
+					);
+				})}
+			</div>
+		</div>
+	);
 
 	return (
 		<div>
@@ -128,15 +209,7 @@ export default async function PortfolioPage() {
 						title="How I Think"
 						subtitle="Perspectives on trust, brand governance, and design in the age of AI."
 					/>
-					<Gallery
-						items={signalItems}
-						mdGridCols="md:grid-cols-2"
-						lgGridCols="lg:grid-cols-2"
-						pageKey="posts"
-						slugKey="slug"
-						linkKey="url"
-						dateFormat="month-year"
-					/>
+					<WritingList items={signalItems} />
 				</>
 			)}
 
@@ -175,83 +248,23 @@ export default async function PortfolioPage() {
 				</div>
 			</div>
 
-			{/* Side Projects — horizontal scroll cards matching homepage */}
-			{sortedProjectItems.length > 0 && (
+			{/* Featured Apps & Sites — horizontal scroll cards matching homepage */}
+			{featuredApps.length > 0 && (
 				<>
 					<GroupTitle
-						title="Things I Build"
+						title="Featured Apps"
+						subtitle="Products I design, build, and ship end to end."
+					/>
+					{projectRow(featuredApps)}
+				</>
+			)}
+			{featuredSites.length > 0 && (
+				<>
+					<GroupTitle
+						title="Featured Sites"
 						subtitle="Where I prototype the tools and AI workflows I bring to brand operations."
 					/>
-					<div className="overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-						<div className="flex gap-4 snap-x snap-mandatory">
-							{sortedProjectItems.map((item: any) => {
-								let href = item.url && item.url !== "#"
-									? item.url
-									: item.slug
-									? `/projects/${item.slug}`
-									: "/projects";
-
-								if (href && /^www\./i.test(href)) {
-									href = `https://${href}`;
-								}
-
-								// Prefer the local image: Notion file URLs are presigned and expire
-								// after ~1h, which breaks on statically cached pages.
-								const imageSrc = (item.slug ? `/projects/${item.slug}.png` : "") || item.image || "";
-								const isExternal = /^https?:\/\//i.test(href);
-								const chip = projectChip(Array.isArray(item.tags) ? item.tags : []);
-
-								const card = (
-									<article className="motion-card h-[18.5rem] rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg group-hover:shadow-xl border border-gray-100 dark:border-gray-700">
-										<div className="h-32 w-full bg-gray-200 dark:bg-gray-700 overflow-hidden relative">
-											{imageSrc ? (
-												<Image
-													src={imageSrc}
-													alt={item.title || "Project image"}
-													fill
-													sizes="(max-width: 640px) 240px, 256px"
-													quality={60}
-													loading="lazy"
-													className="motion-card-media object-cover"
-												/>
-											) : (
-												<div className="h-full w-full" />
-											)}
-										</div>
-										<div className="h-[10.5rem] p-3.5 flex flex-col">
-											<h3 className="text-sm font-semibold text-gray-900 dark:text-gray-100 line-clamp-2 min-h-[2.5rem]">
-												{item.title || "Untitled"}
-											</h3>
-											<p className="mt-1.5 text-xs text-gray-600 dark:text-gray-400 line-clamp-3 min-h-[3.6rem]">
-												{item.description || ""}
-											</p>
-											<div className="mt-auto pt-2">
-												{chip ? (
-													<span className="inline-flex items-center rounded-full border border-gray-300 dark:border-gray-600 px-2 py-0.5 text-[10px] tracking-wide uppercase text-gray-600 dark:text-gray-300">
-														{chip}
-													</span>
-												) : null}
-											</div>
-										</div>
-									</article>
-								);
-
-								return (
-									<div key={item.id} className="snap-start w-[15rem] sm:w-[16rem] shrink-0 group">
-										{isExternal ? (
-											<a href={href} target="_blank" rel="noopener noreferrer" className="block h-full">
-												{card}
-											</a>
-										) : (
-											<Link href={href} className="block h-full">
-												{card}
-											</Link>
-										)}
-									</div>
-								);
-							})}
-						</div>
-					</div>
+					{projectRow(featuredSites)}
 				</>
 			)}
 
