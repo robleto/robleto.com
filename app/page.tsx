@@ -9,9 +9,9 @@ import WritingList from "@/app/_components/views/home/WritingList";
 import ProfileHero from "@/app/_components/views/common/ProfileHero";
 import type { PostItem } from "@/types";
 
-const pinnedPostSlugs: string[] = [
-	"making-the-most-out-of-mulch-stay-with-me",
-];
+// Posts pinned to the top of Writing. Pin in Notion (Pinned checkbox) instead
+// of listing slugs here.
+const pinnedPostSlugs: string[] = [];
 
 const MIN_WRITING_POSTS = 5;
 const RECENT_MONTHS = 3;
