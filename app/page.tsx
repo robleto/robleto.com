@@ -4,8 +4,8 @@ import Link from "next/link";
 import { HybridContentFetcher } from "@/lib/hybridContentFetcher";
 import { sortByPinnedAndDate, shuffleItems } from "@/utils/sortItems";
 import GroupTitle from "@/app/_components/views/common/GroupTitle";
-import FeaturedBuilds from "@/app/_components/views/home/FeaturedBuilds";
 import WritingList from "@/app/_components/views/home/WritingList";
+import FeaturedBuilds from "@/app/_components/views/home/FeaturedBuilds";
 import ProfileHero from "@/app/_components/views/common/ProfileHero";
 import type { PostItem } from "@/types";
 
@@ -20,9 +20,9 @@ const WRITING_HEAD_COUNT = 3;
 
 export default async function HomePage() {
 	try {
-		const [postData] = await Promise.allSettled([
-			HybridContentFetcher.getAllPosts(),
-		]);
+		const postData = await Promise.allSettled([HybridContentFetcher.getAllPosts()]).then(
+			(results) => results[0]
+		);
 
 		const postItems: PostItem[] = postData.status === "fulfilled"
 			? postData.value.listItems
@@ -62,9 +62,8 @@ export default async function HomePage() {
 				? recentPosts
 				: nonSignalPosts.slice(0, Math.max(MIN_WRITING_POSTS, recentPosts.length));
 
-		// Split writing: first N rows, then Signals strip, then the rest
+		// Home shows the latest few posts; the full list lives on /posts
 		const writingHead = writingPosts.slice(0, WRITING_HEAD_COUNT);
-		const writingTail = writingPosts.slice(WRITING_HEAD_COUNT);
 
 		return (
 			<div>
@@ -81,21 +80,18 @@ export default async function HomePage() {
 					subline="Head of Brand, Marketing & Product Design at Motley Fool Asset Management."
 				/>
 
-				{/* Featured work -- horizontal scroll strip, randomized */}
-				<FeaturedBuilds />
-
 				{/* Writing -- first few posts */}
 				<section aria-label="Recent writing">
-					<GroupTitle title="Writing" variant="left" />
+					<GroupTitle title="Writing" variant="left" as="h2" />
 					<WritingList items={writingHead} />
 				</section>
 
 				{/* Signals grid -- visual break mid-writing, 4-up, randomized */}
 				{signalItems.length > 0 && (
 					<div className="my-10 rounded-xl border border-gray-200 dark:border-gray-700 p-4">
-						<p className="text-[10px] tracking-[.2em] uppercase font-semibold text-gray-400 dark:text-gray-500 mb-3">
+						<h2 className="text-xs tracking-[.2em] uppercase font-semibold text-gray-600 dark:text-gray-300 mb-3">
 							Signals of Design
-						</p>
+						</h2>
 						<div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
 							{signalItems.map((item) => {
 								const slug = item.slug ?? "";
@@ -135,7 +131,7 @@ export default async function HomePage() {
 										{formattedDate && item.pubdate && (
 											<time
 												dateTime={new Date(item.pubdate).toISOString().slice(0, 10)}
-												className="colophon block text-[10px] text-gray-400 dark:text-gray-500 mt-0.5"
+												className="colophon block text-xs text-gray-600 dark:text-gray-300 mt-0.5"
 											>
 												{formattedDate}
 											</time>
@@ -147,12 +143,19 @@ export default async function HomePage() {
 					</div>
 				)}
 
-				{/* Writing -- remaining posts */}
-				{writingTail.length > 0 && (
-					<section aria-label="More writing" className="mb-16">
-						<WritingList items={writingTail} />
-					</section>
-				)}
+				{/* Apps being built now. Case studies and the full archive live on /portfolio */}
+				<div className="mb-12">
+					<FeaturedBuilds siteLimit={0} />
+				</div>
+
+				<div className="mb-16 text-center text-sm">
+					<Link
+						href="/portfolio"
+						className="font-semibold text-link dark:text-lightlink hover:underline"
+					>
+						Case studies, recognition, and everything else &rarr;
+					</Link>
+				</div>
 			</div>
 		);
 	} catch (error) {

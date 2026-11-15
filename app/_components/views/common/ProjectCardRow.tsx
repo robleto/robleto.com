@@ -64,7 +64,7 @@ const ProjectCardRow = ({ items }: { items: any[] }) => (
 				);
 
 				return (
-					<div key={item.id} className="snap-start w-[15rem] sm:w-[16rem] shrink-0 group">
+					<div key={item.id} className="snap-start w-[13rem] sm:w-[16rem] shrink-0 group">
 						{!href ? (
 							card
 						) : isExternal ? (

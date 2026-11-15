@@ -378,6 +378,7 @@ const mapResourcesEntry = (entry: any) => {
     slug,
     animated,
     description,
+    tags: (entry.properties.Tags?.multi_select || []).map((tag: any) => tag.name),
   };
 };
 

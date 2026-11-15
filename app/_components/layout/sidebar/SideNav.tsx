@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link"; // Import Link from Next.js
 import SidebarLink from "./SidebarLink";
-import SidebarSectionHeader from "./SidebarSectionHeader";
 import SidebarToggle from "./SidebarToggle";
 import DarkLightToggle from "./DarkLightToggle";
 import Modal from "../../common/Modal";
@@ -16,7 +15,7 @@ const COLLAPSED_LANDING_PATHS = ["/portfolio"];
 export default function SideNav() {
 	const [isCollapsed, setIsCollapsed] = useState(false);
 	const [isReady, setIsReady] = useState(false);
-	const [isListsOpen, setIsListsOpen] = useState(false); // Add state for Lists submenu
+	const [isArtOpen, setIsArtOpen] = useState(false); // Art submenu
 
 	const pathname = usePathname(); // Get the current path using usePathname
 
@@ -74,10 +73,10 @@ export default function SideNav() {
 		document.documentElement.dataset.nav = isCollapsed ? "collapsed" : "expanded";
 	}, [isCollapsed]);
 
-	// Check the current path and auto-open Lists submenu if necessary
+	// Keep the Art submenu open on /art and its sub-pages
 	useEffect(() => {
-		if (pathname.startsWith("/lists")) {
-			setIsListsOpen(true); // Keep Lists submenu open when on /lists or any subpage
+		if (pathname.startsWith("/art")) {
+			setIsArtOpen(true);
 		}
 	}, [pathname]);
 
@@ -107,18 +106,14 @@ export default function SideNav() {
 						alt="gr"
 						className={` ml-4  ${
 							isCollapsed
-								? "w-8 h-8 mt-[.5rem]"
-								: "w-10 h-10 mt-[-1rem]"
+								? "w-8 h-8 mt-[1.5rem] mb-4"
+								: "w-10 h-10 mt-[-1rem] mb-6"
 						}`}
 					/>
 				</Link>
 
 				<div className="flex-grow overflow-y-auto">
 					<div className="px-4">
-						<SidebarSectionHeader
-							title="Creative"
-							isCollapsed={isCollapsed}
-						/>
 						<ul>
 							<SidebarLink
 								link="portfolio"
@@ -136,14 +131,77 @@ export default function SideNav() {
 								onOpenContact={() => {}}
 								onOpenSocial={() => {}}
 							/>
-							<SidebarLink
-								link="art"
-								slug="art"
-								title="Art"
-								isCollapsed={isCollapsed}
-								onOpenContact={() => {}}
-								onOpenSocial={() => {}}
-							/>
+							{/* Art parent — disclosure pattern: link navigates, chevron toggles submenu */}
+							<li>
+								<div
+									className={`flex items-center hover:shadow-sm hover:bg-white hover:border-nobel hover:dark:bg-gray-700 px-2 py-2 rounded-lg ${
+										isCollapsed ? "justify-center" : "justify-start"
+									}`}
+								>
+									<a
+										href="/art"
+										className="flex items-center space-x-2 hover:text-gray-600 hover:dark:text-gray-200 flex-1 min-w-0"
+									>
+										<img
+											src="/_icons/art.svg"
+											alt=""
+											aria-hidden="true"
+											className="h-4 w-4 svg-icon shrink-0"
+										/>
+										{!isCollapsed && (
+											<span className="text-sm font-medium">Art</span>
+										)}
+									</a>
+									{!isCollapsed && (
+										<button
+											onClick={() => setIsArtOpen(!isArtOpen)}
+											aria-expanded={isArtOpen}
+											aria-label={isArtOpen ? "Collapse art submenu" : "Expand art submenu"}
+											className="ml-auto p-1 rounded hover:text-gray-600 dark:hover:text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-1"
+										>
+											<svg
+												className={`h-3 w-3 transition-transform duration-200 ${isArtOpen ? "rotate-90" : ""}`}
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+												aria-hidden="true"
+											>
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+											</svg>
+										</button>
+									)}
+								</div>
+
+								{/* Submenu for Art */}
+								{isArtOpen && !isCollapsed && (
+									<ul className="pl-4">
+										<SidebarLink
+											link="art/css"
+											slug="css"
+											title="CSS Art"
+											isCollapsed={isCollapsed}
+											onOpenContact={() => {}}
+											onOpenSocial={() => {}}
+										/>
+<SidebarLink
+											link="art/digital"
+											slug="digital"
+											title="Digital Art"
+											isCollapsed={isCollapsed}
+											onOpenContact={() => {}}
+											onOpenSocial={() => {}}
+										/>
+<SidebarLink
+											link="art/ai"
+											slug="ai"
+											title="AI Art"
+											isCollapsed={isCollapsed}
+											onOpenContact={() => {}}
+											onOpenSocial={() => {}}
+										/>
+									</ul>
+								)}
+							</li>
 							<SidebarLink
 								link="resources"
 								slug="resources"
@@ -161,98 +219,7 @@ export default function SideNav() {
 								onOpenSocial={() => {}}
 							/>
 
-							{/* Lists parent — disclosure pattern: link navigates, chevron toggles submenu */}
-							<li>
-								<div
-									className={`flex items-center hover:shadow-sm hover:bg-white hover:border-nobel hover:dark:bg-gray-700 px-2 py-2 rounded-lg ${
-										isCollapsed ? "justify-center" : "justify-start"
-									}`}
-								>
-									<a
-										href="/lists"
-										className="flex items-center space-x-2 hover:text-gray-600 hover:dark:text-gray-200 flex-1 min-w-0"
-									>
-										<img
-											src="/_icons/lists.svg"
-											alt=""
-											aria-hidden="true"
-											className="h-4 w-4 svg-icon shrink-0"
-										/>
-										{!isCollapsed && (
-											<span className="text-sm font-medium">Lists</span>
-										)}
-									</a>
-									{!isCollapsed && (
-										<button
-											onClick={() => setIsListsOpen(!isListsOpen)}
-											aria-expanded={isListsOpen}
-											aria-label={
-												isListsOpen
-													? "Collapse lists submenu"
-													: "Expand lists submenu"
-											}
-											className="ml-auto p-1 rounded hover:text-gray-600 dark:hover:text-gray-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-1"
-										>
-											<svg
-												className={`h-3 w-3 transition-transform duration-200 ${
-													isListsOpen ? "rotate-90" : ""
-												}`}
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke="currentColor"
-												aria-hidden="true"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth={2}
-													d="M9 5l7 7-7 7"
-												/>
-											</svg>
-										</button>
-									)}
-								</div>
-
-								{/* Submenu for Lists */}
-								{isListsOpen && !isCollapsed && (
-									<ul className="pl-4">
-										<SidebarLink
-											link="lists/travel"
-											slug="travel"
-											title="Travel"
-											isCollapsed={isCollapsed}
-											onOpenContact={() => {}}
-											onOpenSocial={() => {}}
-										/>
-										<SidebarLink
-											link="lists/board-games"
-											slug="board-games"
-											title="Board Games"
-											isCollapsed={isCollapsed}
-											onOpenContact={() => {}}
-											onOpenSocial={() => {}}
-										/>
-										<SidebarLink
-											link="lists/musicals"
-											slug="musical"
-											title="Musicals"
-											isCollapsed={isCollapsed}
-											onOpenContact={() => {}}
-											onOpenSocial={() => {}}
-										/>
-										<SidebarLink
-											link="lists/shakespeare"
-											slug="shakespeare"
-											title="Shakespeare"
-											isCollapsed={isCollapsed}
-											onOpenContact={() => {}}
-											onOpenSocial={() => {}}
-										/>
-									</ul>
-								)}
-							</li>
-
-							<SidebarLink
+<SidebarLink
 								link="about"
 								slug="about"
 								title="About"
@@ -262,53 +229,11 @@ export default function SideNav() {
 							/>
 						</ul>
 
-						<SidebarSectionHeader
-							title="Collection"
-							isCollapsed={isCollapsed}
-						/>
-						<ul>
-							<SidebarLink
-								link="library"
-								slug="library"
-								title="Library"
-								isCollapsed={isCollapsed}
-								onOpenContact={() => {}}
-								onOpenSocial={() => {}}
-							/>
-							<SidebarLink
-								link="reading-list"
-								slug="reading-list"
-								title="Reading List"
-								isCollapsed={isCollapsed}
-								onOpenContact={() => {}}
-								onOpenSocial={() => {}}
-							/>
-							<SidebarLink
-								link="bookmarks"
-								slug="bookmarks"
-								title="Bookmarks"
-								isCollapsed={isCollapsed}
-								onOpenContact={() => {}}
-								onOpenSocial={() => {}}
-							/>
-							<SidebarLink
-								link="following"
-								slug="following"
-								title="Following"
-								isCollapsed={isCollapsed}
-								onOpenContact={() => {}}
-								onOpenSocial={() => {}}
-							/>
-						</ul>
 					</div>
 				</div>
 
 				{/* Reach Out — pinned to the bottom of the nav, above the theme toggle */}
 				<div className="px-4">
-					<SidebarSectionHeader
-						title="Reach Out"
-						isCollapsed={isCollapsed}
-					/>
 					<ul>
 						<SidebarLink
 							link="contact"

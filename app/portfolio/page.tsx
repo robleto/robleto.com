@@ -33,7 +33,7 @@ const pressRecognitions = [
 const communityRecognitions = [
 	"UX Collective", "CSS Weekly", "CodePen Spark", "CodePen Trending",
 	"CSS Winner", "CSS Author", "Dev Community", "Medium Trending",
-	"Popular on Dribbble",
+	"Popular on Dribbble", "BootCamp", "DomainsArrival",
 ];
 
 export const generateMetadata = () => ({

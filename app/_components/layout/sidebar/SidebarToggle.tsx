@@ -15,7 +15,12 @@ const SidebarToggle: React.FC<SidebarToggleProps> = ({
 				isCollapsed ? "left-1/2 transform -translate-x-1/2" : "right-2"
 			}`}
 		>
-			<button id="sidebarToggle" aria-label="sidebarToggle" onClick={toggleCollapse}>
+			<button
+				id="sidebarToggle"
+				aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}
+				onClick={toggleCollapse}
+				className="inline-flex size-11 items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-500"
+			>
 				{isCollapsed ? (
 					// Right double arrow for collapsed state (centered)
 					<svg

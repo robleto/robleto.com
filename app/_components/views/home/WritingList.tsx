@@ -35,24 +35,32 @@ const WritingListItem: React.FC<{ item: PostItem }> = ({ item }) => {
 		: null;
 
 	useEffect(() => {
+		const node = rowRef.current;
+		if (!node) return;
+		const motion = gsap.matchMedia();
+
 		// Reveal on scroll using site-wide motion tokens.
 		// Same timing/easing as CSS .reveal so GSAP-driven and observer-driven
 		// reveals feel identical across the site.
-		gsap.fromTo(
-			rowRef.current,
-			{ opacity: 0, y: REVEAL_RISE_PX },
-			{
-				opacity: 1,
-				y: 0,
-				duration: DURATION.reveal.s,
-				ease: GSAP_EASE,
-				scrollTrigger: {
-					trigger: rowRef.current,
-					start: "top 92%",
-					toggleActions: "play none none none",
-				},
-			}
-		);
+		motion.add("(prefers-reduced-motion: no-preference)", () => {
+			gsap.fromTo(
+				node,
+				{ opacity: 0, y: REVEAL_RISE_PX },
+				{
+					opacity: 1,
+					y: 0,
+					duration: DURATION.reveal.s,
+					ease: GSAP_EASE,
+					scrollTrigger: {
+						trigger: node,
+						start: "top 92%",
+						toggleActions: "play none none none",
+					},
+				}
+			);
+		});
+
+		return () => motion.revert();
 	}, []);
 
 	const handleImageError = () => {
@@ -77,7 +85,7 @@ const WritingListItem: React.FC<{ item: PostItem }> = ({ item }) => {
 								{item.description}
 							</p>
 						)}
-						<div className="colophon mt-2 flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+						<div className="colophon mt-2 flex items-center gap-2 text-xs text-gray-600 dark:text-gray-300">
 							{category && (
 								<>
 									<span className="uppercase tracking-wide font-medium text-gray-500 dark:text-gray-400">
