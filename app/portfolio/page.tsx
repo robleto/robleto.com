@@ -14,13 +14,12 @@ import type { PostItem } from "@/types";
 const selectedCaseStudySlugs = [
 	"brand-governance-system",
 	"rebranding",
-	"summer-of-tmfc",
 	"levels-project",
-	"design-system",
-	"design-team",
+	"summer-of-tmfc",
+	"ai-email",
 	"brand-video",
 	"webinar-rebuild",
-	"ai-email",
+	"design-team",
 ];
 
 // Hand-picked "How I Think" posts, in display order
@@ -89,7 +88,7 @@ export default async function PortfolioPage() {
 						AI-enabled production that keep a brand consistent at scale.
 					</>
 				}
-				subline="Head of Brand, Marketing & Product Design at Motley Fool Asset Management."
+				subline="Creative leader across brand, marketing and product at Motley Fool Asset Management."
 				showContact={false}
 			/>
 

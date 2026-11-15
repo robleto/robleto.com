@@ -77,7 +77,7 @@ export default async function HomePage() {
 							production that keep a brand consistent at scale.
 						</>
 					}
-					subline="Head of Brand, Marketing & Product Design at Motley Fool Asset Management."
+					subline="Creative leader across brand, marketing and product at Motley Fool Asset Management."
 				/>
 
 				{/* Writing -- first few posts */}

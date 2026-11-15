@@ -10,7 +10,7 @@ import SocialLinks from "@/app/_components/views/common/SocialLinks";
 export const generateMetadata = () => ({
 	title: "About — Greg Robleto",
 	description:
-		"Head of Brand, Marketing & Product Design at Motley Fool Asset Management. 20 years designing for investing and asset management.",
+		"Creative leader across brand, marketing and product at Motley Fool Asset Management. 20 years designing for investing and asset management.",
 });
 
 type Proof = { year: string; text: string; href?: string; linkText?: string };
@@ -85,7 +85,7 @@ export default function AboutPage() {
 				</h1>
 				<section className="relative font-medium text-md md:text-lg mx-auto mt-0 md:pr-[30%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200">
 					<p className="my-4">
-						Head of Brand, Marketing &amp; Product Design at Motley Fool
+						Creative leader across brand, marketing &amp; product at Motley Fool
 						Asset Management. 20 years in investing and asset
 						management.
 					</p>
