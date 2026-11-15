@@ -65,7 +65,7 @@ const CaseStudyCard: React.FC<{ item: CaseStudyItem }> = ({ item }) => {
 			<Link href={href} className="block group">
 				<article className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-0 overflow-hidden rounded-lg bg-white/50 dark:bg-gray-800/30 shadow-sm transition-shadow duration-200 group-hover:shadow-md">
 					{/* Image */}
-					<div className="relative aspect-[16/10] md:aspect-auto overflow-hidden">
+					<div className="relative aspect-[16/9] overflow-hidden">
 						{!imageError && imageSrc ? (
 							<Image
 								src={imageSrc}
