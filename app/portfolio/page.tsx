@@ -22,6 +22,108 @@ const selectedCaseStudySlugs = [
 	"design-team",
 ];
 
+// Experience, leadership, and recognition quotes (from résumé and public recommendations)
+const experience = [
+	{
+		title: "Head of Brand, Marketing & Product Design",
+		org: "Motley Fool Asset Management",
+		dates: "Jan 2023 – Present",
+	},
+	{
+		title: "Brand, Creative & Product Leadership",
+		org: "The Motley Fool",
+		dates: "2006 – 2022",
+		roles: [
+			"Head of Brand Design and Identity, 2019–2021",
+			"Head of Product Design & UX Research, 2020–2022",
+			"Head of Digital Product Experience, 2016–2020",
+			"Lead Brand Strategist, 2011–2012",
+			"Head of Creative Services, 2009–2011",
+		],
+	},
+	{
+		title: "Design Faculty",
+		org: "Ohio State University and Boston University",
+		dates: "2008–2010, 2022–2023",
+	},
+];
+
+const leadership = [
+	{
+		title: "Co-Founder, Managing Director & Board Member (Emeritus)",
+		org: "Delaware Shakespeare Festival",
+		dates: "2004 – 2024",
+		note: "Built the brand and sponsorships behind a $500K+ annual budget.",
+	},
+	{
+		title: "Board Member & Technical Advisor",
+		org: "Rockville HSBC",
+		dates: "2024 – Present",
+		note: "Advise the board on design and technology strategy, optimizing digital comms and branding.",
+	},
+	{
+		title: "Design Mentor",
+		org: "University of Delaware, via Mentor Collective",
+		dates: "2020 – 2023",
+		note: "Mentored aspiring designers on portfolio development and career growth.",
+	},
+	{
+		title: "Mentorship",
+		org: "The Motley Fool",
+		dates: "2016 – 2019",
+		note: "Mentored 20+ developers, with 40% advancing to senior roles.",
+	},
+	{
+		title: "Executive Leadership Development Program",
+		org: "The Motley Fool",
+		dates: "2008 – 2010",
+		note: "Fellowship focused on leadership, strategy, finance, marketing, HR, and technology.",
+	},
+];
+
+const recognitionQuotes = [
+	{
+		quote: "I think this is the best site redesign in Fool history.",
+		attribution: "Tom G., CEO, 2015",
+	},
+	{
+		quote: "You are an incredible leader, coach, and friend",
+		attribution: "Holly F., UX Research Lead, 2022",
+	},
+	{
+		quote:
+			"Thank you for sharing our marketing work with our important stakeholders!",
+		attribution: "Rebekah H., Dir. of Marketing, 2024",
+	},
+	{
+		quote:
+			"The graphics you created for our Nasdaq bell ringing were absolutely next level.",
+		attribution: "Beth R., Director of Investor Relations, 2026",
+	},
+	{
+		quote: "continually in awe of the breadth of skills you bring to the table",
+		attribution: "Nate M., CTO, 2020",
+	},
+	{
+		quote:
+			"You are a respected leader at the company because you've earned it with your work.",
+		attribution: "Lee B., Head of Culture & HR, 2015",
+	},
+	{
+		quote:
+			"I really appreciate your long and storied efforts that have created value for members",
+		attribution: "David G., Co-Founder, 2009",
+	},
+	{
+		quote: "you have been the best bosses",
+		attribution: "Jenny M., Senior UX Designer, 2023",
+	},
+	{
+		quote: "You've assembled a talented group and have been a terrific UX evangelist.",
+		attribution: "Steve M., User Experience Designer, 2022",
+	},
+];
+
 // Hand-picked "How I Think" posts, in display order
 const selectedPostSlugs = [
 	"designing-trust-in-financial-products",
@@ -32,11 +134,11 @@ const selectedPostSlugs = [
 
 // Recognition, split by audience: business press first, then design community
 const pressRecognitions = [
-	"Wall Street Journal", "Nasdaq", "Yahoo! News", "Business Wire",
+	"Wall Street Journal", "Nasdaq", "Yahoo! News", "Business Wire", "AOL", "The News Journal", "Delaware Today", "Technical.ly Philly",
 ];
 const communityRecognitions = [
 	"UX Collective", "CSS Weekly", "CodePen Spark", "CodePen Trending",
-	"CSS Winner", "CSS Author", "Dev Community", "Medium Trending",
+	"CSS Winner", "CSS Author", "CSS Tricks", "Pure CSS Artists", "Dev Community", "Medium Trending", "Leaders of Awesomeness", "Dribbble New and Noteworthy",
 	"Popular on Dribbble", "BootCamp", "DomainsArrival",
 ];
 
@@ -75,8 +177,37 @@ export default async function PortfolioPage() {
 	// Side projects — selection and order live in lib/featuredProjects
 	const allProjectItems =
 		projectsData.status === "fulfilled" ? projectsData.value.listItems : [];
-	const featuredApps = getFeaturedApps(allProjectItems as any[]);
+	const featuredApps = getFeaturedApps(allProjectItems as any[]).filter(
+		(app: any) => app.slug !== "galacticweather"
+	);
 	const featuredSites = getFeaturedSites(allProjectItems as any[]);
+	const galacticWeather = (allProjectItems as any[]).filter(
+		(item: any) => item.slug === "galacticweather"
+	);
+	const removedSlugs = [
+		"margincallme",
+		"margin-call-me",
+		"chatgptroll",
+		"lightsabers",
+		"palindrome",
+		"holyshirtballs",
+		"heresthething",
+		"elsewhere-yearly",
+		"meeplego",
+	];
+	const leadSlugs = ["brandmarks", "cssart"];
+	const combined = [...featuredApps, ...featuredSites, ...galacticWeather].filter(
+		(item: any) => !removedSlugs.includes(item.slug)
+	);
+	const featuredRow = [
+		...leadSlugs
+			.map((slug) => combined.find((item: any) => item.slug === slug))
+			.filter(Boolean),
+		...combined.filter(
+			(item: any) => !leadSlugs.includes(item.slug) && item.slug !== "galacticweather"
+		),
+		...combined.filter((item: any) => item.slug === "galacticweather"),
+	];
 
 	return (
 		<div>
@@ -114,8 +245,60 @@ export default async function PortfolioPage() {
 				</>
 			)}
 
+			{/* Experience & Leadership */}
+			<GroupTitle title="Experience" />
+			<ul className="md:px-[10%] mb-12 divide-y divide-gray-200 dark:divide-gray-700">
+				{experience.map((job) => (
+					<li key={job.title + job.org} className="py-5">
+						<p className="font-semibold text-gray-900 dark:text-gray-100">{job.title}</p>
+						<p className="text-sm text-gray-500 dark:text-gray-400">
+							{job.org} · {job.dates}
+						</p>
+						{job.roles && (
+							<ul className="mt-2 space-y-1 text-sm text-gray-600 dark:text-gray-300">
+								{job.roles.map((role) => (
+									<li key={role}>{role}</li>
+								))}
+							</ul>
+						)}
+					</li>
+				))}
+			</ul>
+
+			<GroupTitle title="Leadership" />
+			<ul className="md:px-[10%] mb-12 divide-y divide-gray-200 dark:divide-gray-700">
+				{leadership.map((item) => (
+					<li key={item.title} className="py-5">
+						<p className="font-semibold text-gray-900 dark:text-gray-100">{item.title}</p>
+						<p className="text-sm text-gray-500 dark:text-gray-400">
+							{item.org} · {item.dates}
+						</p>
+						<p className="mt-2 text-sm text-gray-600 dark:text-gray-300">{item.note}</p>
+					</li>
+				))}
+			</ul>
+
 			{/* Recognition */}
 			<GroupTitle title="Recognition" />
+			<div className="mb-12 -mx-6 px-6 md:mx-0 md:px-[10%] overflow-x-auto snap-x snap-mandatory">
+				<ul className="flex gap-4 pb-2">
+					{recognitionQuotes.map((item) => (
+						<li
+							key={item.quote}
+							className="snap-start shrink-0 w-72 md:w-80 flex"
+						>
+							<figure className="flex flex-col justify-between w-full rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+								<blockquote className="text-base font-medium leading-6 text-gray-900 dark:text-gray-100">
+									&ldquo;{item.quote}&rdquo;
+								</blockquote>
+								<figcaption className="mt-4 text-xs text-gray-500 dark:text-gray-400">
+									{item.attribution}
+								</figcaption>
+							</figure>
+						</li>
+					))}
+				</ul>
+			</div>
 			<div className="md:px-[10%] mb-12 space-y-6 text-center">
 				<div>
 					<p className="text-[10px] tracking-[.2em] uppercase font-semibold text-gray-400 dark:text-gray-500 mb-2">
@@ -149,23 +332,14 @@ export default async function PortfolioPage() {
 				</div>
 			</div>
 
-			{/* Featured Apps & Sites — horizontal scroll cards matching homepage */}
-			{featuredApps.length > 0 && (
+			{/* Featured work — one horizontal-scroll row */}
+			{featuredRow.length > 0 && (
 				<>
 					<GroupTitle
-						title="Featured Apps"
-						subtitle="Products I design, build, and ship end to end."
+						title="Side Projects"
+						subtitle="Products and sites I design, build, and ship end to end."
 					/>
-					<ProjectCardRow items={featuredApps} />
-				</>
-			)}
-			{featuredSites.length > 0 && (
-				<>
-					<GroupTitle
-						title="Featured Sites"
-						subtitle="Where I prototype the tools and AI workflows I bring to brand operations."
-					/>
-					<ProjectCardRow items={featuredSites} />
+					<ProjectCardRow items={featuredRow} />
 				</>
 			)}
 
