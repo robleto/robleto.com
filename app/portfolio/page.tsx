@@ -10,12 +10,17 @@ import ProfileHero from "@/app/_components/views/common/ProfileHero";
 import SocialLinks from "@/app/_components/views/common/SocialLinks";
 import type { PostItem } from "@/types";
 
-// Top 3 case study slugs in preferred display order
+// Case study slugs in preferred display order
 const selectedCaseStudySlugs = [
 	"brand-governance-system",
 	"rebranding",
 	"summer-of-tmfc",
+	"levels-project",
 	"design-system",
+	"design-team",
+	"brand-video",
+	"webinar-rebuild",
+	"ai-email",
 ];
 
 // Hand-picked "How I Think" posts, in display order
