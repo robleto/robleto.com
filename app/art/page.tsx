@@ -35,7 +35,7 @@ const collections: Collection[] = [
 		databaseId: process.env.NOTION_DIGITALART_DB_ID,
 	},
 	{
-		title: "AI Art",
+		title: "AI-Assisted Art",
 		description: "Fictional travel posters, made by prompting for a style.",
 		href: "/art/ai",
 		folder: "ai",

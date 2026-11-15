@@ -194,7 +194,7 @@ export default function SideNav() {
 <SidebarLink
 											link="art/ai"
 											slug="ai"
-											title="AI Art"
+											title="AI-Assisted Art"
 											isCollapsed={isCollapsed}
 											onOpenContact={() => {}}
 											onOpenSocial={() => {}}

@@ -14,7 +14,7 @@ const ArtHeader: React.FC<ArtHeaderProps> = ({ title, icon, children }) => (
 			<img src={`/_icons/${icon}.svg`} alt="" className="h-10 w-10 svg-icon mr-2" />
 			{title}
 		</h1>
-		<section className="relative font-medium text-md md:text-lg mx-auto mt-0 md:pr-[30%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200 space-y-3">
+		<section className="relative font-medium text-md md:text-lg mx-auto mt-0 md:pr-[30%] leading-5 md:leading-6 text-gray-800 dark:text-gray-200 [&>p]:my-4 [&_a]:font-semibold [&_a]:text-link dark:[&_a]:text-lightlink [&_a]:underline-offset-4 [&_a:hover]:underline">
 			{children}
 		</section>
 	</div>

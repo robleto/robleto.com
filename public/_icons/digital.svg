@@ -1,7 +1,11 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M3 6H9V12H15V18H21" stroke="black" stroke-width="2" stroke-linejoin="round"/>
-<circle cx="3" cy="6" r="2" fill="black"/>
-<circle cx="9" cy="6" r="2" fill="black"/>
-<circle cx="15" cy="12" r="2" fill="black"/>
-<circle cx="21" cy="18" r="2" fill="black"/>
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M64 26C64 27.104 63.106 28 62 28H38C36.896 28 36 27.104 36 26V22C36 20.896 36.896 20 38 20H62C63.106 20 64 20.896 64 22V26Z" stroke-width="4" stroke-miterlimit="10" stroke="black"/>
+<path d="M15.1538 98L26.6918 88.332" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="black"/>
+<path d="M84.8461 98L73.3081 88.332" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="black"/>
+<path d="M33.982 8H30C23.376 8 18 13.12 18 19.428V76.572C18 82.88 23.376 88 30 88H70C76.624 88 82 82.88 82 76.572V19.428C82 13.12 76.624 8 70 8H66.136M56.066 8H44.246" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="black"/>
+<path d="M66 7C66 9.76142 63.7614 12 61 12C58.2386 12 56 9.76142 56 7C56 4.23858 58.2386 2 61 2C63.7614 2 66 4.23858 66 7Z" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="black"/>
+<path d="M44 7C44 9.76142 41.7614 12 39 12C36.2386 12 34 9.76142 34 7C34 4.23858 36.2386 2 39 2C41.7614 2 44 4.23858 44 7Z" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="black"/>
+<path d="M26 31.666C26 29.642 27.792 28 30 28H70C72.208 28 74 29.642 74 31.666V48.332C74 50.356 72.208 52 70 52H30C27.792 52 26 50.356 26 48.332V31.666Z" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="black"/>
+<path d="M38 72C38 75.3137 35.3137 78 32 78C28.6863 78 26 75.3137 26 72C26 68.6863 28.6863 66 32 66C35.3137 66 38 68.6863 38 72Z" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="black"/>
+<path d="M74 72C74 75.3137 71.3137 78 68 78C64.6863 78 62 75.3137 62 72C62 68.6863 64.6863 66 68 66C71.3137 66 74 68.6863 74 72Z" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke="black"/>
 </svg>

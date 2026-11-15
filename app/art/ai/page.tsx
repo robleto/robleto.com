@@ -4,7 +4,7 @@ import ArtHeader from "@/app/_components/views/art/ArtHeader";
 import Gallery from "@/app/_components/views/gallery/Gallery";
 
 export const generateMetadata = () => ({
-	title: "AI Art — Greg Robleto",
+	title: "AI-Assisted Art — Greg Robleto",
 	description: "Fictional travel posters made by prompting for a style, which became an Etsy shop.",
 });
 
@@ -15,16 +15,12 @@ export default async function AiArtPage() {
 
 	return (
 		<div>
-			<ArtHeader title="AI Art" icon="art">
-				<p>
-					I wanted to see whether a style could be found through prompts
-					alone. The fictional travel poster is the genre I keep returning
-					to, so I used it as the test.
-				</p>
-				<p>
-					The goal is a simplified, impressionist watercolour look with bold
-					colour, built as a skill I can reuse. The posters grew into an
-					Etsy shop, which I never planned.
+			<ArtHeader title="AI-Assisted Art" icon="ai">
+					<p className="my-4">
+					I tested whether prompts alone could produce a style, using
+					fictional travel posters. The target is an impressionist watercolour
+					look with bold colour, packaged as a reusable skill. The posters
+					became an Etsy shop, which I hadn't planned.
 				</p>
 			</ArtHeader>
 

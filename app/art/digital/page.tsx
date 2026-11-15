@@ -15,16 +15,9 @@ export default async function DigitalArtPage() {
 
 	return (
 		<div>
-			<ArtHeader title="Digital Art" icon="art">
+			<ArtHeader title="Digital Art" icon="digital">
 				<p>
-					I love maps, and stories so vast they need a map at the front of
-					the book. These imagine the lands from those stories installing
-					mass transit, drawn in the style of the DC Metro.
-				</p>
-				<p>
-					Every line and station is placed by hand. It is exceptionally
-					tedious, and one of my favourite things to work on. The prints
-					are now in the shop.
+					I love maps, and stories so vast they need a map at the front of the book. These pieces imagine those lands with mass transit, drawn in the style of the DC Metro. Every line and station is placed by hand. The prints are now <a href="https://creativemadness.studio/collections/metro-maps" target="_blank">available in the shop</a>.
 				</p>
 			</ArtHeader>
 
