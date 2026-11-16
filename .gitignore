@@ -9,7 +9,7 @@ node_modules/
 tsconfig.tsbuildinfo
 
 # build artifacts
-css/
+/css/
 
 # logs
 *.log

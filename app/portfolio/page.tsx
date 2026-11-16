@@ -17,6 +17,7 @@ const selectedCaseStudySlugs = [
 	"levels-project",
 	"summer-of-tmfc",
 	"ai-email",
+	"hat-press-bar",
 	"brand-video",
 	"webinar-rebuild",
 	"design-team",
