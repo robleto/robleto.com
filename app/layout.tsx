@@ -6,6 +6,7 @@ import Footer from "./_components/layout/chrome/Footer";
 import ErrorBoundary from "./_components/common/ErrorBoundary";
 import { ThemeProvider } from "next-themes";
 import "./_style/globals.css";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 // Self-hosted via next/font — eliminates render-blocking @import
 // 800 added for the article title's extrabold weight; 400/600/700 are the body/UI workhorses.
@@ -62,6 +63,7 @@ export default function RootLayout({
 		>
 			<head></head>
 			<body className="font-sans overflow-x-hidden antialiased bg-background dark:bg-dark_background">
+				<GoogleAnalytics />
 				<ThemeProvider attribute="class" defaultTheme="system">
 					<ErrorBoundary>
 						<div className="flex flex-col min-h-screen">
