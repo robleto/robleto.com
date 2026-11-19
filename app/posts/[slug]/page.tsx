@@ -90,10 +90,12 @@ export async function generateMetadata({ params }: PostPageProps) {
     title: pageTitle,
     description,
     alternates: { canonical: url },
+    authors: [{ name: "Greg Robleto", url: SITE_URL }],
     openGraph: {
       type: "article",
       url,
       siteName: "Greg Robleto",
+      authors: ["https://www.linkedin.com/in/robleto"],
       title: postItem.title,
       description,
       ...(postItem.pubdate ? { publishedTime: postItem.pubdate } : {}),
