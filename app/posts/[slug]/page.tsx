@@ -77,9 +77,34 @@ export async function generateMetadata({ params }: PostPageProps) {
     return { title: "Post Not Found" };
   }
 
+  const SITE_URL = "https://www.robleto.com";
+  const pageTitle = `${postItem.title} | Greg Robleto Writing`;
+  const description = postItem.description || `Post: ${postItem.title}`;
+  const url = `${SITE_URL}/posts/${slug}`;
+  // Same image the article page renders as its featured image.
+  const imageUrl = postItem.slug
+    ? `${SITE_URL}/posts/${postItem.slug}.png`
+    : postItem.image;
+
   return {
-    title: `${postItem.title} | Greg Robleto Writing`,
-    description: postItem.description || `Post: ${postItem.title}`,
+    title: pageTitle,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: "article",
+      url,
+      siteName: "Greg Robleto",
+      title: postItem.title,
+      description,
+      ...(postItem.pubdate ? { publishedTime: postItem.pubdate } : {}),
+      ...(imageUrl ? { images: [{ url: imageUrl, alt: postItem.title }] } : {}),
+    },
+    twitter: {
+      card: imageUrl ? "summary_large_image" : "summary",
+      title: postItem.title,
+      description,
+      ...(imageUrl ? { images: [imageUrl] } : {}),
+    },
   };
 }
 
